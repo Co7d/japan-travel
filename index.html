@@ -1,65 +1,57 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Japon 2026</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="dark-mode">
-
-    <div class="app-container">
-        
-        <header>
-            <h1>🇯🇵 Japon 2026</h1>
-            <p class="subtitle">Application personnelle de voyage</p>
-        </header>
-
-        <section class="card glass countdown-section">
-            <div id="timer">000 : 00 : 00 : 00</div>
-            <p class="label">Avant l'aventure</p>
-        </section>
-
-        <div class="grid-stats">
-            <div class="card glass stat-card">
-                <i data-lucide="map-pin"></i>
-                <div class="stat-info">
-                    <span class="stat-label">Prochaine étape</span>
-                    <span id="next-step" class="stat-value">Tokyo</span>
-                </div>
-            </div>
-            <div class="card glass stat-card">
-                <i data-lucide="cloud-sun"></i>
-                <div class="stat-info">
-                    <span class="stat-label">Météo Tokyo</span>
-                    <span class="stat-value">22°C</span>
-                </div>
-            </div>
+<nav class="timeline-container">
+    
+    <a href="tokyo.html" class="step-card">
+        <div class="step-icon tokyo-icon"><i data-lucide="tower-control"></i></div>
+        <div class="step-details">
+            <span class="step-name">Tokyo</span>
+            <span class="step-info">5 Jours • Départ</span>
         </div>
+        <div class="step-number">01</div>
+    </a>
 
-        <nav class="villes-grid">
-            <a href="tokyo.html" class="city-card tokyo"><span>Tokyo</span></a>
-            <a href="kawaguchiko.html" class="city-card fuji"><span>Kawaguchiko</span></a>
-            <a href="kiso.html" class="city-card kiso"><span>Vallée de Kiso</span></a>
-            <a href="kyoto.html" class="city-card kyoto"><span>Kyoto</span></a>
-            <a href="hiroshima.html" class="city-card hiroshima"><span>Hiroshima</span></a>
-            <a href="osaka.html" class="city-card osaka"><span>Osaka</span></a>
-        </nav>
+    <a href="kawaguchiko.html" class="step-card">
+        <div class="step-icon fuji-icon"><i data-lucide="mountain"></i></div>
+        <div class="step-details">
+            <span class="step-name">Kawaguchiko</span>
+            <span class="step-info">2 Jours • Nature</span>
+        </div>
+        <div class="step-number">02</div>
+    </a>
 
-        <section class="card glass lexique-section">
-            <h3><i data-lucide="languages"></i> Lexique Express</h3>
-            <div class="lexique-grid">
-                <div class="phrase"><span>Bonjour</span> <strong>Kon'nichiwa</strong></div>
-                <div class="phrase"><span>Merci</span> <strong>Arigatō</strong></div>
-                <div class="phrase"><span>L'addition</span> <strong>O-kanjō</strong></div>
-                <div class="phrase"><span>Toilettes</span> <strong>Toire wa?</strong></div>
-            </div>
-        </section>
+    <a href="kiso.html" class="step-card">
+        <div class="step-icon kiso-icon"><i data-lucide="trees"></i></div>
+        <div class="step-details">
+            <span class="step-name">Vallée de Kiso</span>
+            <span class="step-info">2 Jours • Randonnée</span>
+        </div>
+        <div class="step-number">03</div>
+    </a>
 
-    </div>
+    <a href="kyoto.html" class="step-card">
+        <div class="step-icon kyoto-icon"><i data-lucide="shrine"></i></div>
+        <div class="step-details">
+            <span class="step-name">Kyoto</span>
+            <span class="step-info">4 Jours • Tradition</span>
+        </div>
+        <div class="step-number">04</div>
+    </a>
 
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+    <a href="hiroshima.html" class="step-card">
+        <div class="step-icon hiro-icon"><i data-lucide="landmark"></i></div>
+        <div class="step-details">
+            <span class="step-name">Hiroshima</span>
+            <span class="step-info">2 Jours • Histoire</span>
+        </div>
+        <div class="step-number">05</div>
+    </a>
+
+    <a href="osaka.html" class="step-card">
+        <div class="step-icon osaka-icon"><i data-lucide="soup"></i></div>
+        <div class="step-details">
+            <span class="step-name">Osaka</span>
+            <span class="step-info">3 Jours • Food</span>
+        </div>
+        <div class="step-number">06</div>
+    </a>
+
+</nav>
