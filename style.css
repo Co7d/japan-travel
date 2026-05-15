@@ -83,28 +83,31 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
-    background: var(--accent-color);
+    width: 10px;
+    height: 10px;
+    background: #ffffff; /* Cœur blanc pour l'effet néon */
+    border: 2px solid #ff3b30; /* Contour rouge */
     border-radius: 50%;
-    margin-top: 28px; /* Aligne le point avec le milieu de la tuile */
+    margin-top: 28px;
     z-index: 2;
-    box-shadow: 0 0 12px rgbar(255, 59, 48, 0.8);
+    /* Lueur néon : une petite intense et une grande diffuse */
+    box-shadow: 0 0 8px #ff3b30, 0 0 15px rgba(255, 59, 48, 0.6);
 }
 
 .line {
     width: 2px;
     flex-grow: 1;
-    background: rgba(255, 255, 255, 0.2);
+    /* Rouge sombre et discret */
+    background: rgba(255, 59, 48, 0.15); 
     margin-top: -5px;
     margin-bottom: -20px; /* Fait descendre la ligne vers la tuile suivante */
 }
 
 .transport-badge {
     position: absolute;
-    top: 65px; /* Place l'emoji entre deux tuiles */
-    background: #1c1c1e;
-    border: 1px solid var(--glass-border);
+    top: 65px;
+    background: #000000; /* Fond noir pur pour faire ressortir le rouge */
+    border: 1px solid rgba(255, 59, 48, 0.4); /* Contour rouge discret */
     width: 26px;
     height: 26px;
     display: flex;
@@ -113,6 +116,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     border-radius: 50%;
     font-size: 14px;
     z-index: 3;
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.2);
 }
 
 /* --- INFOS DANS LA TUILE --- */
