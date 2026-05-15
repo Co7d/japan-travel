@@ -132,3 +132,19 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 /* --- LEXIQUE --- */
 .lexique-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
 .phrase { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px; }
+/* Positionnement pour deux badges dans le même trajet */
+.transport-badge.pos-1 {
+    top: 45px; /* Plus haut */
+}
+
+.transport-badge.pos-2 {
+    top: 85px; /* Plus bas */
+}
+
+/* On ajuste la ligne pour qu'elle soit bien visible derrière les badges */
+.line {
+    width: 2px;
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.2);
+    margin-bottom: -15px;
+}
