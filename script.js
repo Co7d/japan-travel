@@ -1,5 +1,5 @@
 // CONFIGURATION DU VOYAGE
-const DEPART_AVION = new Date("2025-11-15T10:00:00").getTime(); 
+const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
 const ARRIVEE_TOKYO = new Date("2026-11-16T08:00:00").getTime();
 
 // Liste de messages funs
@@ -8,7 +8,7 @@ const messagesFuns = [
     "✈️ Attache ta ceinture, on décolle !",
     "⛩️ Objectif : Devenir un vrai Ninja.",
     "🍜 Alerte : Niveau de Ramen critique !",
-    "🚅 Shinkansen activé. Destination : Futur."
+    "🚅 Shinkansen activé. Destination : Futur.",
     "🍜 On est là pour la culture... et surtout pour les Ramen."
 
 ];
