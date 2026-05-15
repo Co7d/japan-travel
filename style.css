@@ -38,16 +38,38 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 /* --- WIDGETS --- */
-#timer { font-size: 26px; font-weight: bold; text-align: center; }
-.grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
-.stat-card { display: flex; align-items: center; gap: 10px; padding: 15px !important; }
+#timer { 
+    font-size: 26px; 
+    font-weight: bold; 
+    text-align: center; 
+}
 
-/* --- TIMELINE AVEC COLONNE À DROITE --- */
-.timeline-container {
+.grid-stats { 
+    display: grid; 
+    grid-template-columns: 1fr; /* CHANGÉ : Une seule colonne pour toute la largeur */
+    gap: 12px; 
+    margin-bottom: 25px; 
+}
+
+/* On force la carte à s'étendre et à s'aligner proprement */
+.stat-card.full-width { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 20px !important; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.stat-card i {
+    width: 24px;
+    height: 24px;
+    color: #BC4749; /* Ton rouge japonais */
+}
+
+.stat-info {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-bottom: 30px;
 }
 
 .step-wrapper {
