@@ -2,97 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Hiroshima / Miyajima - Japon 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiroshima - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="detail-page">
 
     <div class="app-container">
-        <!-- Back Button & Header -->
-        <header class="city-header">
-            <a href="index.html" class="back-link"><i data-lucide="chevron-left"></i> Retour</a>
-            <h1>Hiroshima / Miyajima</h1>
+        
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
+
+        <header>
+            <div class="header-meta">
+                <span class="date-badge">JOUR 14 — 15</span>
+                <span class="vibe-badge">MÉMOIRE ET SÉRÉNITÉ</span>
+            </div>
+            <h1 style="color: #8D99AE;">Hiroshima</h1> 
+            <p class="subtitle">Une ville résiliente entre histoire et paysages marins.</p>
         </header>
 
-        <!-- LOGEMENTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="home"></i>
-                <h2>Hébergement</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER HOTEL ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom de l'Hôtel</strong>
-                        <span>Adresse ou quartier</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Nom+Hotel+Japan" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🏨 Hébergement</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Hôtel face au Parc de la Paix</span>
+                    <span class="place-desc">Idéal pour explorer la ville à pied et en tram.</span>
+                    <a href="maps://maps.apple.com/?q=Peace+Memorial+Park+Hiroshima" class="maps-link">📍 Voir sur Plans</a>
                 </div>
-                <!-- FIN AJOUT HOTEL -->
-            </div>
+                </div>
         </section>
 
-        <!-- ACTIVITÉS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="map"></i>
-                <h2>Activités prévues</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER ACTIVITÉ ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Temple / Musée / Spot</strong>
-                        <span>Description rapide</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Lieu+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🕊️ Activités</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Île de Miyajima</span>
+                    <span class="place-desc">Le grand Torii flottant et les daims en liberté.</span>
+                    <a href="maps://maps.apple.com/?q=Itsukushima+Jinja" class="maps-link">📍 Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Expérience</strong>
-                        <span>Détail</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Experience+Japon" class="map-btn">Plans</a>
+                <div class="detail-item">
+                    <span class="place-name">Dôme de la Bombe A</span>
+                    <span class="place-desc">Mémorial pour la paix et musée historique.</span>
+                    <a href="maps://maps.apple.com/?q=Atomic+Bomb+Dome" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT ACTIVITÉ -->
-            </div>
+                </div>
         </section>
 
-        <!-- RESTAURANTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="utensils"></i>
-                <h2>Restaurants</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER RESTO ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom du Restaurant</strong>
-                        <span>Spécialité (ex: Ramen)</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Resto+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🍳 Gastronomie</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Okonomimura</span>
+                    <span class="place-desc">Le "village" de l'Okonomiyaki (style Hiroshima avec nouilles).</span>
+                    <a href="maps://maps.apple.com/?q=Okonomimura+Hiroshima" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT RESTO -->
-            </div>
-        </section>
-
-        <!-- NOTES -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="sticky-note"></i>
-                <h2>Notes</h2>
-            </div>
-            <div class="card glass">
-                <p class="note-text">Ajouter ici des infos importantes, codes d'entrée, ou rappels...</p>
-            </div>
+                </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
