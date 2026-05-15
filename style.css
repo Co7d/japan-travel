@@ -345,3 +345,32 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     text-transform: uppercase;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* --- HEADER DES PAGES DE DÉTAIL --- */
+.detail-page header h1 {
+    font-size: 42px; /* Plus gros et percutant */
+    font-weight: 800;
+    letter-spacing: -1.5px; /* Look iOS très serré */
+    margin: 5px 0; /* Réduit l'espace au dessus et en dessous du titre */
+    line-height: 1;
+}
+
+.detail-page header .subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    margin-bottom: 5px; /* Réduit l'espace sous le sous-titre */
+}
+
+/* --- RÉDUIRE L'ESPACE ENTRE HEADER ET HÉBERGEMENT --- */
+.detail-page section:first-of-type .section-title {
+    margin-top: 15px; /* Espace réduit entre le sous-titre et "Hébergement" */
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 20px 0 10px 5px; /* Marges globales des titres de sections réduites */
+    color: var(--text-main);
+}
