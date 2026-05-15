@@ -243,3 +243,73 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .phrase:last-child {
     border-bottom: none;
 }
+
+/* --- STYLE DES PAGES DE DÉTAIL --- */
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 25px 0 12px 5px;
+    color: var(--text-main);
+}
+
+.section-title i {
+    width: 20px;
+    height: 20px;
+    color: var(--text-dim);
+}
+
+.detail-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.place-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.place-desc {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+
+.maps-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #457B9D; /* Un bleu plus doux pour les liens Maps */
+    text-decoration: none;
+    background: rgba(69, 123, 157, 0.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
