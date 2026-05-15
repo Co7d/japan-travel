@@ -249,11 +249,26 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .back-button {
     display: inline-flex;
     align-items: center;
-    color: var(--accent-color);
+    gap: 4px; /* Espace entre la flèche et le texte */
+    color: #BC4749; /* Ton rouge harmonisé */
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     padding-top: 10px;
+    font-size: 15px;
+    transition: opacity 0.2s;
+}
+
+/* Petit effet au toucher sur iPhone */
+.back-button:active {
+    opacity: 0.5;
+}
+
+/* Si tu as une icône Lucide dans le bouton, on s'assure qu'elle suit la couleur */
+.back-button i {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5px; /* Un peu plus épais pour le look iOS */
 }
 
 .section-title {
