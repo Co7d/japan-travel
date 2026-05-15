@@ -59,7 +59,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 .step-card {
-    flex: 1; /* Réduit la tuile pour laisser la place à la colonne */
+    flex: 1;
     display: flex;
     align-items: center;
     background: var(--card-bg);
@@ -68,8 +68,8 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     padding: 16px;
     text-decoration: none;
     color: white;
-    margin-bottom: 15px; /* Espace entre les tuiles */
-    transition: transform 0.2s;
+    margin-bottom: 20px; /* Espace entre les tuiles */
+    z-index: 2;
 }
 
 .step-card:active { transform: scale(0.97); }
