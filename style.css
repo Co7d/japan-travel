@@ -389,45 +389,39 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin: 20px 0 10px 5px; /* Marges globales des titres de sections réduites */
     color: var(--text-main);
 }
-/* --- STYLE DU LABEL SOUS LE TIMER --- */
-.countdown-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre tout le bloc (Timer + Label) */
-    text-align: center;
-}
-
-#timer {
-    margin-bottom: 8px; /* Espace entre le temps et le label */
-}
-
+/* --- SECTION TIMER HARMONISÉE --- */
 .countdown-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 20px !important; /* On donne de l'air à la carte */
+    /* On aligne le padding sur celui des autres cartes (souvent 20px) */
+    padding: 20px !important; 
+    text-align: center;
 }
 
 #timer {
-    font-size: 28px; /* Un peu plus grand pour l'équilibre */
-    font-weight: 800;
-    margin-bottom: 15px;
+    font-size: 32px; /* Plus grand pour l'impact */
+    font-weight: 850;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
 }
 
 .countdown-section .label {
     display: inline-block;
-    font-size: 14px; /* Plus gros (au lieu de 11px) */
+    font-size: 12px; /* Réduit pour un effet plus élégant */
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #FFFFFF; /* Blanc pur pour le contraste */
+    letter-spacing: 2px;
     
-    /* Fond plus sombre et distinct pour trancher avec la carte glass */
-    background: rgba(0, 0, 0, 0.4); 
-    padding: 8px 20px;
-    border-radius: 30px;
-    font-weight: 700;
+    /* Couleur rouge brique comme le reste de l'app */
+    color: #BC4749; 
     
-    /* Bordure fine pour la définition */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Fond très léger pour ne pas alourdir la carte */
+    background: rgba(188, 71, 73, 0.1); 
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 800;
+    
+    /* Bordure assortie pour la finition */
+    border: 1px solid rgba(188, 71, 73, 0.2);
 }
