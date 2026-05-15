@@ -1,4 +1,4 @@
-/* --- BASE & RESET --- */
+/* --- BASE & MODE SOMBRE --- */
 :root {
     --bg-color: #000000;
     --card-bg: rgba(28, 28, 30, 0.7);
@@ -8,21 +8,14 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     margin: 0;
     padding: 20px;
-    padding-bottom: 60px;
     display: flex;
     justify-content: center;
-    line-height: 1.4;
 }
 
 .app-container {
@@ -30,159 +23,112 @@ body {
     max-width: 420px;
 }
 
-/* --- HEADER --- */
-header {
-    padding: 30px 0 20px 0;
-}
+/* --- HEADERS & CARDS --- */
+header { padding: 20px 0; }
+h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
+.subtitle { color: var(--text-dim); margin-bottom: 20px; }
 
-.date-badge {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent-color);
-    text-transform: uppercase;
-}
-
-h1 {
-    font-size: 34px;
-    margin: 8px 0 4px 0;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.subtitle {
-    color: var(--text-dim);
-    margin: 0;
-    font-size: 15px;
-}
-
-/* --- COMMON GLASS CARDS --- */
 .card.glass {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 22px;
     padding: 20px;
     margin-bottom: 15px;
 }
 
-/* --- COUNTDOWN --- */
-.countdown-section {
-    text-align: center;
-    margin-top: 10px;
-}
+/* --- WIDGETS --- */
+#timer { font-size: 26px; font-weight: bold; text-align: center; }
+.grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
+.stat-card { display: flex; align-items: center; gap: 10px; padding: 15px !important; }
 
-#timer {
-    font-variant-numeric: tabular-nums;
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-main);
-    letter-spacing: 1px;
-}
-
-.label {
-    color: var(--text-dim);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 5px;
-}
-
-/* --- STATS GRID --- */
-.grid-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 15px !important;
-}
-
-.stat-card i {
-    color: var(--accent-color);
-    width: 20px;
-}
-
-.stat-info {
+/* --- TIMELINE AVEC COLONNE À DROITE --- */
+.timeline-container {
     display: flex;
     flex-direction: column;
-}
-
-.stat-label {
-    font-size: 11px;
-    color: var(--text-dim);
-}
-
-.stat-value {
-    font-size: 15px;
-    font-weight: 600;
-}
-
-/* --- TIMELINE NAVIGATION --- */
-.timeline-container {
-    display: flex !important;
-    flex-direction: column !important; /* Force l'alignement vertical */
-    gap: 12px;
+    width: 100%;
     margin-bottom: 30px;
+}
+
+.step-wrapper {
+    display: flex;
+    align-items: stretch; /* Permet à la ligne de s'étirer */
+    gap: 15px;
     width: 100%;
 }
 
 .step-card {
-    display: flex !important;
+    flex: 1; /* Réduit la tuile pour laisser la place à la colonne */
+    display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.05) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 16px;
-    text-decoration: none !important;
-    color: white !important;
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px; /* Espace entre les tuiles */
     transition: transform 0.2s;
 }
 
-/* On rajoute une petite lueur de couleur à gauche pour chaque ville */
-.step-card:nth-child(1) { border-left: 4px solid #FF3B30; } /* Tokyo */
-.step-card:nth-child(2) { border-left: 4px solid #007AFF; } /* Fuji */
-.step-card:nth-child(3) { border-left: 4px solid #34C759; } /* Kiso */
-.step-card:nth-child(4) { border-left: 4px solid #AF52DE; } /* Kyoto */
-.step-card:nth-child(5) { border-left: 4px solid #FF9500; } /* Hiroshima */
-.step-card:nth-child(6) { border-left: 4px solid #FF2D55; } /* Osaka */
+.step-card:active { transform: scale(0.97); }
 
-.step-icon {
-    font-size: 28px; /* Taille de l'emoji */
-    margin-right: 15px;
+/* --- LA COLONNE DE TRAJET (À DROITE) --- */
+.route-column {
     width: 40px;
     display: flex;
-    justify-content: center;
-}
-
-.step-details {
-    display: flex;
     flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    margin-top: 28px; /* Aligne le point avec le milieu de la tuile */
+    z-index: 2;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.line {
+    width: 2px;
     flex-grow: 1;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: -5px;
+    margin-bottom: -20px; /* Fait descendre la ligne vers la tuile suivante */
 }
 
-.step-name {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.step-info {
-    font-size: 13px;
-    color: #8E8E93;
-}
-
-.step-number {
+.transport-badge {
+    position: absolute;
+    top: 65px; /* Place l'emoji entre deux tuiles */
+    background: #1c1c1e;
+    border: 1px solid var(--glass-border);
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     font-size: 14px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.1);
+    z-index: 3;
 }
+
+/* --- INFOS DANS LA TUILE --- */
+.step-icon { font-size: 28px; margin-right: 15px; }
+.step-details { display: flex; flex-direction: column; }
+.step-name { font-size: 18px; font-weight: bold; }
+.step-info { font-size: 13px; color: var(--text-dim); }
+
+/* --- BORDURES COLORÉES --- */
+.step-wrapper:nth-child(1) .step-card { border-left: 4px solid #FF3B30; }
+.step-wrapper:nth-child(2) .step-card { border-left: 4px solid #007AFF; }
+.step-wrapper:nth-child(3) .step-card { border-left: 4px solid #34C759; }
+.step-wrapper:nth-child(4) .step-card { border-left: 4px solid #AF52DE; }
+.step-wrapper:nth-child(5) .step-card { border-left: 4px solid #FF9500; }
+.step-wrapper:nth-child(6) .step-card { border-left: 4px solid #FF2D55; }
+
+/* --- LEXIQUE --- */
+.lexique-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.phrase { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px; }
