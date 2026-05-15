@@ -1,6 +1,6 @@
 // CONFIGURATION DU VOYAGE
-const DEPART_AVION = new Date("2025-11-15T10:00:00").getTime(); 
-const ARRIVEE_TOKYO = new Date("2025-11-16T08:00:00").getTime();
+const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
+const ARRIVEE_TOKYO = new Date("2026-11-16T08:00:00").getTime();
 
 // Liste de messages funs
 const messagesFuns = [
