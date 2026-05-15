@@ -1,89 +1,71 @@
-
-:root {
-    --bg-color: #000000;
-    --card-bg: rgba(28, 28, 30, 0.8);
-    --accent-color: #0A84FF;
-    --text-main: #FFFFFF;
-    --text-dim: #8E8E93;
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --danger: #FF453A;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    margin: 0;
-    padding: 20px;
-    padding-bottom: 50px;
+/* --- NOUVELLE TIMELINE --- */
+.timeline-container {
     display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
+
+.step-card {
+    background: rgba(28, 28, 30, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.step-card:active {
+    transform: scale(0.97);
+    background: rgba(44, 44, 46, 0.8);
+}
+
+.step-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    -webkit-font-smoothing: antialiased;
+    margin-right: 16px;
+    font-size: 24px;
 }
 
-.app-container {
-    width: 100%;
-    max-width: 450px;
+/* Couleurs d'icônes subtiles */
+.tokyo-icon { background: rgba(255, 59, 48, 0.15); color: #FF3B30; }
+.fuji-icon { background: rgba(0, 122, 255, 0.15); color: #007AFF; }
+.kiso-icon { background: rgba(52, 199, 89, 0.15); color: #34C759; }
+.kyoto-icon { background: rgba(175, 82, 222, 0.15); color: #AF52DE; }
+.hiro-icon { background: rgba(255, 149, 0, 0.15); color: #FF9500; }
+.osaka-icon { background: rgba(255, 45, 85, 0.15); color: #FF2D55; }
+
+.step-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-header { padding: 20px 0; }
-h1 { font-size: 34px; margin: 5px 0; font-weight: 800; letter-spacing: -0.5px; }
-h2 { font-size: 20px; margin: 0; font-weight: 600; }
-.subtitle { color: var(--text-dim); margin: 0; }
-
-/* Dashboard Specific */
-.countdown-section { text-align: center; }
-#timer { font-variant-numeric: tabular-nums; font-size: 28px; font-weight: bold; color: var(--accent-color); margin-bottom: 5px; }
-.label { color: var(--text-dim); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
-
-.grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
-.stat-card { display: flex; align-items: center; gap: 12px; padding: 15px !important; }
-.stat-card i { color: var(--accent-color); }
-.stat-label { font-size: 11px; color: var(--text-dim); display: block; }
-.stat-value { font-size: 15px; font-weight: 600; }
-
-.villes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 25px; }
-.city-card {
-    height: 110px; border-radius: 18px; display: flex; align-items: flex-end; padding: 15px;
-    text-decoration: none; color: white; font-weight: bold; background-color: #1c1c1e;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s;
-}
-.city-card:active { transform: scale(0.96); }
-
-/* Common Glass UI */
-.card.glass {
-    background: var(--card-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-    border: 1px solid var(--glass-border); border-radius: 20px; padding: 20px; margin-bottom: 20px;
+.step-name {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
 }
 
-/* City Pages UI */
-.city-header { display: flex; flex-direction: column; gap: 8px; }
-.back-link { color: var(--accent-color); text-decoration: none; display: flex; align-items: center; font-size: 17px; }
-.section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-left: 5px; }
-.section-title i { color: var(--accent-color); width: 20px; }
-
-.item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 0.5px solid var(--glass-border); }
-.item:last-child { border-bottom: none; }
-.item-info { display: flex; flex-direction: column; gap: 2px; }
-.item-info strong { font-size: 16px; }
-.item-info span { font-size: 13px; color: var(--text-dim); }
-
-.map-btn {
-    background: rgba(255,255,255,0.1); color: var(--accent-color); padding: 6px 12px;
-    border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 600;
+.step-info {
+    font-size: 13px;
+    color: #8E8E93;
+    margin-top: 2px;
 }
 
-.note-text { margin: 0; color: var(--text-dim); line-height: 1.5; font-size: 15px; }
-
-/* Colors per City */
-.tokyo { border-left: 5px solid #FF3B30; }
-.fuji { border-left: 5px solid #32ADE6; }
-.kiso { border-left: 5px solid #FF9500; }
-.kyoto { border-left: 5px solid #AF52DE; }
-.hiroshima { border-left: 5px solid #FF2D55; }
-.osaka { border-left: 5px solid #4CD964; }
-
-/* Lexique */
-.lexique-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
-.phrase { display: flex; justify-content: space-between; font-size: 16px; }
-.phrase span { color: var(--text-dim); }
+.step-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.15);
+    font-family: monospace;
+}
