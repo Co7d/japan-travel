@@ -401,15 +401,33 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin-bottom: 8px; /* Espace entre le temps et le label */
 }
 
+.countdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px !important; /* On donne de l'air à la carte */
+}
+
+#timer {
+    font-size: 28px; /* Un peu plus grand pour l'équilibre */
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
 .countdown-section .label {
     display: inline-block;
-    font-size: 11px;
+    font-size: 14px; /* Plus gros (au lieu de 11px) */
     text-transform: uppercase;
-    letter-spacing: 2px; /* Look cinématique */
-    color: var(--text-dim);
-    background: rgba(255, 255, 255, 0.05); /* Petit fond très léger */
-    padding: 4px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    opacity: 0.8;
+    letter-spacing: 1.5px;
+    color: #FFFFFF; /* Blanc pur pour le contraste */
+    
+    /* Fond plus sombre et distinct pour trancher avec la carte glass */
+    background: rgba(0, 0, 0, 0.4); 
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700;
+    
+    /* Bordure fine pour la définition */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
