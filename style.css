@@ -389,3 +389,27 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin: 20px 0 10px 5px; /* Marges globales des titres de sections réduites */
     color: var(--text-main);
 }
+/* --- STYLE DU LABEL SOUS LE TIMER --- */
+.countdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre tout le bloc (Timer + Label) */
+    text-align: center;
+}
+
+#timer {
+    margin-bottom: 8px; /* Espace entre le temps et le label */
+}
+
+.countdown-section .label {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Look cinématique */
+    color: var(--text-dim);
+    background: rgba(255, 255, 255, 0.05); /* Petit fond très léger */
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    opacity: 0.8;
+}
