@@ -1,71 +1,132 @@
-/* --- NOUVELLE TIMELINE --- */
+/* --- BASE & RESET --- */
+:root {
+    --bg-color: #000000;
+    --card-bg: rgba(28, 28, 30, 0.7);
+    --accent-color: #0A84FF;
+    --text-main: #FFFFFF;
+    --text-dim: #8E8E93;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 20px;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.4;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* --- HEADER --- */
+header {
+    padding: 30px 0 20px 0;
+}
+
+.date-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 34px;
+    margin: 8px 0 4px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-dim);
+    margin: 0;
+    font-size: 15px;
+}
+
+/* --- COMMON GLASS CARDS --- */
+.card.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 22px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+/* --- COUNTDOWN --- */
+.countdown-section {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#timer {
+    font-variant-numeric: tabular-nums;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 1px;
+}
+
+.label {
+    color: var(--text-dim);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* --- STATS GRID --- */
+.grid-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px !important;
+}
+
+.stat-card i {
+    color: var(--accent-color);
+    width: 20px;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+}
+
+.stat-value {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* --- TIMELINE NAVIGATION --- */
 .timeline-container {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-    padding-bottom: 40px;
-}
-
-.step-card {
-    background: rgba(28, 28, 30, 0.6);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    text-decoration: none;
-    color: white;
-    transition: all 0.2s ease;
-}
-
-.step-card:active {
-    transform: scale(0.97);
-    background: rgba(44, 44, 46, 0.8);
-}
-
-.step-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 16px;
-    font-size: 24px;
-}
-
-/* Couleurs d'icônes subtiles */
-.tokyo-icon { background: rgba(255, 59, 48, 0.15); color: #FF3B30; }
-.fuji-icon { background: rgba(0, 122, 255, 0.15); color: #007AFF; }
-.kiso-icon { background: rgba(52, 199, 89, 0.15); color: #34C759; }
-.kyoto-icon { background: rgba(175, 82, 222, 0.15); color: #AF52DE; }
-.hiro-icon { background: rgba(255, 149, 0, 0.15); color: #FF9500; }
-.osaka-icon { background: rgba(255, 45, 85, 0.15); color: #FF2D55; }
-
-.step-details {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.step-name {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.4px;
-}
-
-.step-info {
-    font-size: 13px;
-    color: #8E8E93;
-    margin-top: 2px;
-}
-
-.step-number {
-    font-size: 14px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.15);
-    font-family: monospace;
-}
+    flex-
