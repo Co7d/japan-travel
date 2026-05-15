@@ -54,7 +54,8 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     display: flex;
     align-items: stretch; /* Permet à la ligne de s'étirer */
     gap: 15px;
-    width: 100%;
+    position: relative;
+    min-height: 100px; /* Force une hauteur pour laisser de la place aux trajets */
 }
 
 .step-card {
@@ -77,28 +78,31 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .route-column {
     width: 40px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center; /* Centre les éléments horizontalement */
     position: relative;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
-    background: #BC4749; /* Rouge traditionnel mat */
+    width: 12px;
+    height: 12px;
+    background: #BC4749;
     border-radius: 50%;
-    margin-top: 28px;
-    z-index: 2;
-    box-shadow: 0 0 0 3px rgba(188, 71, 73, 0.2); /* Un halo très léger et mat */
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* Devant la ligne */
+    border: 2px solid #000;
 }
 
 .line {
-    width: 2px;
-    flex-grow: 1;
-    background: #3D3D3D; /* Gris-brun chaud très discret */
     position: absolute;
-    top: 35px; /* Part du premier point */
-    bottom: -15px; /* Descend en dessous de la tuile pour toucher la suivante */
+    width: 2px;
+    background: #3D3D3D;
+    top: 35px;    /* Commence au milieu du premier point */
+    bottom: -15px; /* Descend pour rejoindre le point suivant */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
 }
 
@@ -112,19 +116,19 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 
 .transport-badge {
     position: absolute;
-    top: 50%; /* Centre verticalement entre les deux points */
-    transform: translateY(-50%);
-    background: #000000;
+    top: 75px; /* Ajusté pour être entre deux points */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1A1A1A;
     border: 1px solid #3D3D3D;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     font-size: 14px;
-    z-index: 3;
-    opacity: 0.9;
+    z-index: 4; /* Au-dessus de tout */
 }
 
 /* --- INFOS DANS LA TUILE --- */
