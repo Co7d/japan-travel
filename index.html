@@ -1,148 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Japan Express : 20 jours de fun</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Japon 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-zinc-100 text-zinc-900 min-h-screen">
+<body class="dark-mode">
 
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-zinc-200">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-4">
-      <div>
-        <h1 class="text-4xl font-black">🇯🇵 Japan Express : 20 jours de fun</h1>
-        <p class="text-zinc-500 mt-2">Hub central du voyage • Tokyo → Fuji → Kiso → Kyoto → Hiroshima → Osaka</p>
-      </div>
+    <div class="app-container">
+        
+        <header>
+            <span class="date-badge">Automne 2026</span>
+            <h1>Japon 2026</h1>
+            <p class="subtitle">Application personnelle de voyage</p>
+        </header>
 
-      <div class="flex flex-wrap gap-2">
-        <a href="#map" class="bg-black text-white px-4 py-2 rounded-xl">🗾 Carte</a>
-        <a href="#tokyo" class="bg-black text-white px-4 py-2 rounded-xl">🏙️ Tokyo</a>
-        <a href="#fuji" class="bg-black text-white px-4 py-2 rounded-xl">🗻 Fuji</a>
-        <a href="#osaka" class="bg-black text-white px-4 py-2 rounded-xl">🎮 Osaka</a>
-      </div>
+        <section class="card glass countdown-section">
+            <div id="timer">000 : 00 : 00 : 00</div>
+            <p class="label">Avant l'aventure</p>
+        </section>
+
+        <div class="grid-stats">
+            <div class="card glass stat-card">
+                <i data-lucide="map-pin"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Prochaine étape</span>
+                    <span id="next-step" class="stat-value">Tokyo</span>
+                </div>
+            </div>
+            <div class="card glass stat-card">
+                <i data-lucide="cloud-sun"></i>
+                <div class="stat-info">
+                    <span class="stat-label">Météo Tokyo</span>
+                    <span class="stat-value">22°C</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="villes-grid">
+            <a href="tokyo.html" class="city-card tokyo"><span>Tokyo</span></a>
+            <a href="kawaguchiko.html" class="city-card fuji"><span>Kawaguchiko</span></a>
+            <a href="kiso.html" class="city-card kiso"><span>Vallée de Kiso</span></a>
+            <a href="kyoto.html" class="city-card kyoto"><span>Kyoto</span></a>
+            <a href="hiroshima.html" class="city-card hiroshima"><span>Hiroshima</span></a>
+            <a href="osaka.html" class="city-card osaka"><span>Osaka</span></a>
+        </nav>
+
+        <section class="card glass lexique-section">
+            <h3><i data-lucide="languages"></i> Lexique Express</h3>
+            <div class="lexique-grid">
+                <div class="phrase"><span>Bonjour</span> <strong>Kon'nichiwa</strong></div>
+                <div class="phrase"><span>Merci</span> <strong>Arigatō</strong></div>
+                <div class="phrase"><span>L'addition</span> <strong>O-kanjō</strong></div>
+                <div class="phrase"><span>Toilettes</span> <strong>Toire wa?</strong></div>
+            </div>
+        </section>
+
     </div>
-  </header>
 
-  <main class="max-w-7xl mx-auto px-4 py-8 space-y-10">
-
-    <section class="bg-gradient-to-br from-black to-zinc-800 text-white rounded-[2rem] p-8 shadow-2xl">
-      <h2 class="text-5xl font-black mb-4">Japon Automne 2026</h2>
-      <p class="text-zinc-300 text-lg leading-relaxed">
-        Application personnelle du voyage avec itinéraire, logements, restaurants,
-        transports, activités et organisation complète.
-      </p>
-    </section>
-
-    <section id="map" class="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200">
-      <h2 class="text-3xl font-bold mb-6">🗾 Itinéraire du Voyage</h2>
-
-      <div class="bg-zinc-950 text-white rounded-3xl p-8 overflow-x-auto">
-        <div class="space-y-10 min-w-[900px]">
-
-          <div class="flex items-center justify-between gap-4 text-center text-sm font-medium">
-            <div class="flex-1">
-              <div class="bg-red-500 rounded-2xl p-4 mb-2">Tokyo</div>
-              <p>4 jours</p>
-            </div>
-
-            <div class="flex-1 flex flex-col items-center gap-2">
-              <div class="h-2 w-full bg-emerald-400 rounded-full"></div>
-              <span>Train • ~2h</span>
-            </div>
-
-            <div class="flex-1">
-              <div class="bg-red-500 rounded-2xl p-4 mb-2">Fuji</div>
-              <p>2 jours</p>
-            </div>
-
-            <div class="flex-1 flex flex-col items-center gap-2">
-              <div class="h-2 w-full bg-yellow-400 rounded-full"></div>
-              <span>Voiture • ~4h</span>
-            </div>
-
-            <div class="flex-1">
-              <div class="bg-red-500 rounded-2xl p-4 mb-2">Kiso</div>
-              <p>2 jours</p>
-            </div>
-
-            <div class="flex-1 flex flex-col items-center gap-2">
-              <div class="h-2 w-full bg-cyan-400 rounded-full"></div>
-              <span>Shinkansen • ~1h</span>
-            </div>
-
-            <div class="flex-1">
-              <div class="bg-red-500 rounded-2xl p-4 mb-2">Kyoto</div>
-              <p>4 jours</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tokyo" class="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200">
-      <h2 class="text-3xl font-bold mb-2">🏙️ Tokyo</h2>
-      <p class="text-zinc-500 mb-6">4 jours • Métro et trains</p>
-
-      <div class="grid lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 space-y-4">
-          <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Shibuya</div>
-          <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Shinjuku</div>
-          <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Asakusa</div>
-          <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">TeamLab</div>
-        </div>
-
-        <div class="space-y-6">
-          <div class="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
-            <h3 class="text-lg font-semibold mb-3">🏨 Hébergements</h3>
-            <textarea id="tokyo-hotel" class="save-field w-full h-32 rounded-xl border border-zinc-300 p-3 resize-none" placeholder="Ajouter hôtel, adresse, réservation..."></textarea>
-          </div>
-
-          <div class="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
-            <h3 class="text-lg font-semibold mb-3">🍜 Restaurants</h3>
-            <textarea id="tokyo-resto" class="save-field w-full h-32 rounded-xl border border-zinc-300 p-3 resize-none" placeholder="Ajouter restos, cafés, ramen..."></textarea>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="fuji" class="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200">
-      <h2 class="text-3xl font-bold mb-2">🗻 Fuji</h2>
-      <p class="text-zinc-500 mb-6">2 jours • Voiture</p>
-
-      <div class="space-y-4">
-        <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Onsen privé face au Mont Fuji</div>
-        <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Tour des lacs</div>
-      </div>
-    </section>
-
-    <section id="osaka" class="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200">
-      <h2 class="text-3xl font-bold mb-2">🎮 Osaka</h2>
-      <p class="text-zinc-500 mb-6">4 jours • Métro</p>
-
-      <div class="space-y-4">
-        <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Universal Studios Japan</div>
-        <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Super Nintendo World</div>
-        <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200">Dotonbori</div>
-      </div>
-    </section>
-
-  </main>
-
-  <script>
-    const fields = document.querySelectorAll('.save-field');
-
-    fields.forEach(field => {
-      const saved = localStorage.getItem(field.id);
-      if (saved) {
-        field.value = saved;
-      }
-
-      field.addEventListener('input', () => {
-        localStorage.setItem(field.id, field.value);
-      });
-    });
-  </script>
-
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
