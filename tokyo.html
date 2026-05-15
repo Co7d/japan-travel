@@ -2,97 +2,80 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Tokyo - Japon 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Étape - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="detail-page">
 
     <div class="app-container">
-        <!-- Back Button & Header -->
-        <header class="city-header">
-            <a href="index.html" class="back-link"><i data-lucide="chevron-left"></i> Retour</a>
-            <h1>Tokyo</h1>
+        
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
+
+        <header>
+            <span class="date-badge">ÉTAPE 01</span> 
+            <h1>Tokyo</h1> 
+            <p class="subtitle">La capitale électrique et ses contrastes</p>
         </header>
 
-        <!-- LOGEMENTS -->
-        <section class="city-section">
+        <section>
             <div class="section-title">
-                <i data-lucide="home"></i>
-                <h2>Hébergement</h2>
+                <i data-lucide="home"></i> Hébergement
             </div>
-            <div class="card glass">
-                <!-- AJOUTER HOTEL ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom de l'Hôtel</strong>
-                        <span>Adresse ou quartier</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Nom+Hotel+Japan" class="map-btn">Plans</a>
+            <div class="card glass detail-card">
+                <div class="detail-content">
+                    <span class="place-name">Park Hotel Tokyo</span>
+                    <span class="place-desc">Quartier de Shiodome - Vue sur la tour</span>
+                    
+                    <a href="maps://maps.apple.com/?q=Park+Hotel+Tokyo" class="maps-link">
+                        <i data-lucide="map-pin"></i> Ouvrir dans Plans
+                    </a>
                 </div>
-                <!-- FIN AJOUT HOTEL -->
             </div>
         </section>
 
-        <!-- ACTIVITÉS -->
-        <section class="city-section">
+        <section>
             <div class="section-title">
-                <i data-lucide="map"></i>
-                <h2>Activités prévues</h2>
+                <i data-lucide="map"></i> Activités prévues
             </div>
-            <div class="card glass">
-                <!-- AJOUTER ACTIVITÉ ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Temple / Musée / Spot</strong>
-                        <span>Description rapide</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Lieu+Japon" class="map-btn">Plans</a>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Shibuya Crossing & Hachiko</span>
+                    <span class="place-desc">Le passage piéton le plus célèbre du monde.</span>
+                    <a href="maps://maps.apple.com/?q=Shibuya+Crossing" class="maps-link">Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Expérience</strong>
-                        <span>Détail</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Experience+Japon" class="map-btn">Plans</a>
+
+                <div class="detail-item">
+                    <span class="place-name">TeamLab Borderless</span>
+                    <span class="place-desc">Musée d'art numérique immersif.</span>
+                    <a href="maps://maps.apple.com/?q=teamLab+Borderless+Tokyo" class="maps-link">Plans</a>
                 </div>
-                <!-- FIN AJOUT ACTIVITÉ -->
+
             </div>
         </section>
 
-        <!-- RESTAURANTS -->
-        <section class="city-section">
+        <section>
             <div class="section-title">
-                <i data-lucide="utensils"></i>
-                <h2>Restaurants</h2>
+                <i data-lucide="utensils"></i> Restaurants testés
             </div>
-            <div class="card glass">
-                <!-- AJOUTER RESTO ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom du Restaurant</strong>
-                        <span>Spécialité (ex: Ramen)</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Resto+Japon" class="map-btn">Plans</a>
+            <div class="card glass detail-card">
+                <div class="detail-content">
+                    <span class="place-name">Ichiran Ramen</span>
+                    <span class="place-desc">Les meilleurs Ramen Tonkotsu en cabine solo.</span>
+                    <a href="maps://maps.apple.com/?q=Ichiran+Ramen+Shibuya" class="maps-link">Plans</a>
                 </div>
-                <!-- FIN AJOUT RESTO -->
-            </div>
-        </section>
-
-        <!-- NOTES -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="sticky-note"></i>
-                <h2>Notes</h2>
-            </div>
-            <div class="card glass">
-                <p class="note-text">Ajouter ici des infos importantes, codes d'entrée, ou rappels...</p>
             </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        // Active les icônes Lucide sur la page
+        lucide.createIcons();
+    </script>
 </body>
 </html>
