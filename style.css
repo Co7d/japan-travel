@@ -123,12 +123,23 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .step-info { font-size: 13px; color: var(--text-dim); }
 
 /* --- BORDURES COLORÉES --- */
-.step-wrapper:nth-child(1) .step-card { border-left: 3px solid #BC4749; } /* Rouge */
-.step-wrapper:nth-child(2) .step-card { border-left: 3px solid #A7C957; } /* Vert Mousse */
-.step-wrapper:nth-child(3) .step-card { border-left: 3px solid #6A994E; } /* Vert Forêt */
-.step-wrapper:nth-child(4) .step-card { border-left: 3px solid #F2E8CF; } /* Crème/Sable */
-.step-wrapper:nth-child(5) .step-card { border-left: 3px solid #386641; } /* Pin */
-.step-wrapper:nth-child(6) .step-card { border-left: 3px solid #BC4749; }
+/* 01. TOKYO - Rouge Impérial */
+.step-wrapper:nth-child(1) .step-card { border-left: 4px solid #BC4749; } 
+
+/* 02. KAWAGUCHIKO - Bleu Indigo */
+.step-wrapper:nth-child(2) .step-card { border-left: 4px solid #457B9D; } 
+
+/* 03. KISO - Vert Bambou */
+.step-wrapper:nth-child(3) .step-card { border-left: 4px solid #6A994E; } 
+
+/* 04. KYOTO - Or Vieux / Ocre */
+.step-wrapper:nth-child(4) .step-card { border-left: 4px solid #D4A373; } 
+
+/* 05. HIROSHIMA - Gris Pierre / Ardoise */
+.step-wrapper:nth-child(5) .step-card { border-left: 4px solid #8D99AE; } 
+
+/* 06. OSAKA - Rose Sakura Sombre */
+.step-wrapper:nth-child(6) .step-card { border-left: 4px solid #E29578; }
 
 /* --- LEXIQUE --- */
 .lexique-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
