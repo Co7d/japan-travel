@@ -228,8 +228,15 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 .phrase strong {
-    color: var(--text-main);
-    font-family: 'Courier New', Courier, monospace; /* Un petit look "traduction" sympa */
+    color: #BC4749; /* On utilise ton rouge pour le texte japonais aussi ! */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Police standard très lisible */
+    font-weight: 600; /* Un peu gras pour que ça ressorte */
+    background: rgba(188, 71, 73, 0.1); /* Un fond rouge très léger pour le contraste */
+    padding: 4px 10px;
+    border-radius: 8px;
+    text-align: right;
+    font-size: 13px;
+    letter-spacing: 0.3px;
 }
 
 /* On enlève la bordure sur le dernier élément de la liste */
