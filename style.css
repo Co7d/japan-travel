@@ -130,3 +130,60 @@ h1 {
 .timeline-container {
     display: flex;
     flex-
+    /* --- CORRECTION DE L'AFFICHAGE DES VILLES --- */
+.timeline-container {
+    display: flex !important;
+    flex-direction: column !important; /* Force l'empilement vertical */
+    gap: 12px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.step-card {
+    display: flex !important;
+    align-items: center;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 16px;
+    text-decoration: none !important; /* Enlève le souligné bleu */
+    color: white !important;
+    width: 100%;
+}
+
+.step-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px; /* Empêche l'icône de s'écraser */
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.step-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.step-name {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+}
+
+.step-info {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+.step-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    margin-left: 10px;
+}
