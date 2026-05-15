@@ -203,13 +203,15 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 
 /* --- STYLE DU LEXIQUE AMÉLIORÉ --- */
 .lexique-category {
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
-    color: var(--accent-color); /* Ton rouge #FF3B30 */
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
+    color: #BC4749; /* Changé : le rouge des points de la timeline */
+    font-weight: 800;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 1.2px;
+    border-left: 3px solid #BC4749; /* Changé : la petite barre à gauche aussi */
+    padding-left: 8px;
 }
 
 .phrase {
