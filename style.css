@@ -200,3 +200,37 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     background: rgba(255, 255, 255, 0.2);
     margin-bottom: -15px;
 }
+
+/* --- STYLE DU LEXIQUE AMÉLIORÉ --- */
+.lexique-category {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--accent-color); /* Ton rouge #FF3B30 */
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.phrase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+}
+
+.phrase span {
+    color: var(--text-dim);
+}
+
+.phrase strong {
+    color: var(--text-main);
+    font-family: 'Courier New', Courier, monospace; /* Un petit look "traduction" sympa */
+}
+
+/* On enlève la bordure sur le dernier élément de la liste */
+.phrase:last-child {
+    border-bottom: none;
+}
