@@ -1,121 +1,414 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Japan Express 2026</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+export default function JapanExpressTravelCompanion() {
+  const sections = [
+    { id: 'transport', title: '✈️ Transport Aérien' },
+    { id: 'map', title: '🗾 Carte du Voyage' },
+    { id: 'tokyo', title: '🏙️ Tokyo' },
+    { id: 'fuji', title: '🗻 Fuji' },
+    { id: 'kiso', title: '🥾 Vallée de Kiso' },
+    { id: 'kyoto', title: '⛩️ Kyoto & Uji' },
+    { id: 'hiroshima', title: '🕊️ Hiroshima & Miyajima' },
+    { id: 'osaka', title: '🎮 Osaka' },
+    { id: 'return', title: '🚄 Retour Tokyo' },
+    { id: 'driving', title: '🚗 Guide Conduite' },
+    { id: 'checklist', title: '✅ Check-list' },
+    { id: 'lexicon', title: '🗣️ Lexique Couple' },
+  ];
 
-        const AddLocationModal = ({ isOpen, onClose, onAdd, type }) => {
-            const [name, setName] = useState('');
-            const [link, setLink] = useState('');
-            if (!isOpen) return null;
-            return (
-                <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-                    <div className="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl">
-                        <h3 className="text-2xl font-black mb-6 text-zinc-900 italic uppercase">Ajouter {type}</h3>
-                        <div className="space-y-4">
-                            <input autoFocus className="w-full bg-zinc-100 border-none rounded-2xl p-4 outline-none" placeholder="Nom du lieu" value={name} onChange={(e) => setName(e.target.value)} />
-                            <input className="w-full bg-zinc-100 border-none rounded-2xl p-4 outline-none" placeholder="Lien Maps ou Adresse" value={link} onChange={(e) => setLink(e.target.value)} />
-                        </div>
-                        <div className="flex gap-3 mt-8">
-                            <button onClick={onClose} className="flex-1 py-4 font-semibold text-zinc-400">Annuler</button>
-                            <button onClick={() => { if(name) { onAdd(name, link); setName(''); setLink(''); onClose(); } }} className="flex-1 bg-black text-white rounded-2xl py-4 font-bold shadow-lg">Enregistrer</button>
-                        </div>
-                    </div>
+  const cityCard = (id, title, days, transport, activities) => (
+    <section id={id} className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+        <div>
+          <h2 className="text-3xl font-bold text-zinc-900">{title}</h2>
+          <p className="text-zinc-500 mt-1">{days} • {transport}</p>
+        </div>
+        <div className="bg-zinc-100 rounded-2xl px-4 py-2 text-sm text-zinc-700">
+          Japan Express : 20 jours de fun
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <h3 className="text-xl font-semibold mb-4">Activités prévues</h3>
+          <div className="space-y-3">
+            {activities.map((activity, index) => (
+              <div key={index} className="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-semibold">
+                  {index + 1}
                 </div>
-            );
-        };
-
-        function App() {
-            const [userData, setUserData] = useState(() => {
-                const saved = localStorage.getItem('japan_trip_vfinal');
-                return saved ? JSON.parse(saved) : {};
-            });
-            const [modalConfig, setModalConfig] = useState({ open: false, cityId: null, type: null });
-
-            useEffect(() => {
-                localStorage.setItem('japan_trip_vfinal', JSON.stringify(userData));
-            }, [userData]);
-
-            const addEntry = (cityId, category, name, link) => {
-                const cityData = userData[cityId] || {};
-                const categoryData = cityData[category] || [];
-                setUserData({ ...userData, [cityId]: { ...cityData, [category]: [...categoryData, { name, link, id: Date.now() }] } });
-            };
-
-            const deleteEntry = (cityId, category, id) => {
-                const updated = userData[cityId][category].filter(item => item.id !== id);
-                setUserData({ ...userData, [cityId]: { ...userData[cityId], [category]: updated } });
-            };
-
-            const sections = [
-                { id: 'tokyo', title: '🏙️ Tokyo', days: '4 jours', transport: 'Métro', activities: ['Shibuya', 'Shinjuku', 'Asakusa', 'TeamLab'] },
-                { id: 'fuji', title: '🗻 Fuji', days: '2 jours', transport: 'Voiture', activities: ['Onsen privé', 'Tour des lacs'] },
-                { id: 'kiso', title: '🥾 Kiso', days: '2 jours', transport: 'Roadtrip', activities: ['Magome → Tsumago'] },
-                { id: 'kyoto', title: '⛩️ Kyoto', days: '4 jours', transport: 'Shinkansen', activities: ['Fushimi Inari', 'Pavillon d’Or', 'Uji Matcha'] },
-                { id: 'hiroshima', title: '🕊️ Hiroshima', days: '2 jours', transport: 'Ferry', activities: ['Miyajima', 'Mémorial'] },
-                { id: 'osaka', title: '🎮 Osaka', days: '4 jours', transport: 'Métro', activities: ['Nintendo World', 'Dotonbori'] },
-            ];
-
-            return (
-                <div className="min-h-screen bg-zinc-100 text-zinc-900 pb-20">
-                    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-zinc-200">
-                        <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                            <h1 className="text-2xl font-black italic tracking-tighter uppercase">🇯🇵 Japan Express</h1>
-                        </div>
-                    </header>
-                    <main className="max-w-7xl mx-auto px-4 py-8 space-y-12">
-                        <section className="bg-gradient-to-br from-zinc-900 to-black text-white rounded-[3rem] p-10 shadow-2xl">
-                            <p className="uppercase tracking-[0.4em] text-[10px] font-black text-red-500 mb-2">Roadtrip + Shinkansen</p>
-                            <h2 className="text-5xl font-black italic uppercase tracking-tighter">Japon 2026</h2>
-                        </section>
-                        {sections.map(city => (
-                            <section id={city.id} key={city.id} className="bg-white rounded-[2.5rem] p-8 border border-zinc-200 shadow-lg">
-                                <h2 className="text-3xl font-black italic uppercase mb-2 tracking-tighter">{city.title}</h2>
-                                <p className="text-zinc-500 font-bold text-xs uppercase mb-8">{city.days} • {city.transport}</p>
-                                <div className="grid lg:grid-cols-2 gap-6">
-                                    {['Hébergements', 'Restaurants'].map(type => (
-                                        <div key={type} className="bg-zinc-50 rounded-[2rem] p-6 border border-zinc-100">
-                                            <div className="flex justify-between items-center mb-4">
-                                                <h3 className="text-[10px] font-black uppercase tracking-widest text-zinc-400 italic">{type}</h3>
-                                                <button onClick={() => setModalConfig({ open: true, cityId: city.id, type })} className="w-8 h-8 bg-black text-white rounded-full font-bold text-xl">+</button>
-                                            </div>
-                                            {(userData[city.id]?.[type] || []).map(item => (
-                                                <div key={item.id} className="bg-white p-4 rounded-xl border border-zinc-100 shadow-sm flex justify-between items-center mb-2">
-                                                    <div>
-                                                        <div className="font-bold text-sm uppercase italic">{item.name}</div>
-                                                        {item.link && <a href={`maps://?q=${encodeURIComponent(item.name + ' ' + item.link)}`} className="text-[10px] text-emerald-600 font-black">🗺️ PLANS</a>}
-                                                    </div>
-                                                    <button onClick={() => deleteEntry(city.id, type, item.id)} className="text-zinc-300">✕</button>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    ))}
-                                </div>
-                            </section>
-                        ))}
-                    </main>
-                    <AddLocationModal isOpen={modalConfig.open} type={modalConfig.type} onClose={() => setModalConfig({ open: false, cityId: null, type: null })} onAdd={(name, link) => addEntry(modalConfig.cityId, modalConfig.type, name, link)} />
+                <div>
+                  <p className="font-medium text-zinc-900">{activity}</p>
                 </div>
-            );
-        }
+              </div>
+            ))}
+          </div>
+        </div>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+        <div className="space-y-6">
+          <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-3">🏨 Hébergements</h3>
+            <textarea
+              className="w-full h-32 rounded-xl border border-zinc-300 p-3 text-sm resize-none"
+              placeholder="Ajouter hôtel, check-in, adresse, réservation..."
+            />
+          </div>
+
+          <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-3">🍜 Restaurants</h3>
+            <textarea
+              className="w-full h-32 rounded-xl border border-zinc-300 p-3 text-sm resize-none"
+              placeholder="Ajouter restos, cafés, ramen, izakaya..."
+            />
+          </div>
+
+          <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+            <h3 className="text-lg font-semibold mb-3">📝 Notes</h3>
+            <textarea
+              className="w-full h-32 rounded-xl border border-zinc-300 p-3 text-sm resize-none"
+              placeholder="Infos utiles, transports, météo, idées..."
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  return (
+    <div className="min-h-screen bg-zinc-100 text-zinc-900">
+      <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-zinc-200">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-black">Japan Express : 20 jours de fun</h1>
+            <p className="text-zinc-500 mt-1">Hub central du voyage • Tokyo → Fuji → Kiso → Kyoto → Hiroshima → Osaka</p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {sections.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className="bg-black text-white px-3 py-2 rounded-xl text-sm hover:scale-105 transition"
+              >
+                {section.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 py-8 space-y-10">
+        <section className="bg-gradient-to-br from-black to-zinc-800 text-white rounded-[2rem] p-8 shadow-2xl overflow-hidden relative">
+          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,white,transparent_40%)]" />
+
+          <div className="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <p className="uppercase tracking-[0.25em] text-sm text-zinc-300 mb-4">Roadtrip + Shinkansen Adventure</p>
+              <h2 className="text-5xl font-black leading-tight mb-5">
+                Japon Automne 2026
+              </h2>
+              <p className="text-zinc-300 text-lg leading-relaxed">
+                Application personnelle du voyage avec itinéraire, logements, restaurants,
+                transports, activités et organisation complète.
+              </p>
+            </div>
+
+            <div className="bg-white/10 rounded-3xl p-6 border border-white/10 backdrop-blur-sm">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-black/30 rounded-2xl p-4">
+                  <p className="text-zinc-400 text-sm">Durée</p>
+                  <p className="text-2xl font-bold mt-1">20 jours</p>
+                </div>
+
+                <div className="bg-black/30 rounded-2xl p-4">
+                  <p className="text-zinc-400 text-sm">Villes</p>
+                  <p className="text-2xl font-bold mt-1">7 étapes</p>
+                </div>
+
+                <div className="bg-black/30 rounded-2xl p-4">
+                  <p className="text-zinc-400 text-sm">Voiture</p>
+                  <p className="text-2xl font-bold mt-1">4 jours</p>
+                </div>
+
+                <div className="bg-black/30 rounded-2xl p-4">
+                  <p className="text-zinc-400 text-sm">Shinkansen</p>
+                  <p className="text-2xl font-bold mt-1">Longue distance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="transport" className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24">
+          <h2 className="text-3xl font-bold mb-6">✈️ Transport Aérien</h2>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="text-xl font-semibold mb-4">Vol Aller</h3>
+
+              <div className="space-y-4">
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Numéro du vol" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Aéroport de départ" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Aéroport d'arrivée" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Heure départ / arrivée" />
+              </div>
+            </div>
+
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="text-xl font-semibold mb-4">Vol Retour</h3>
+
+              <div className="space-y-4">
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Numéro du vol" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Aéroport de départ" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Aéroport d'arrivée" />
+                <input className="w-full rounded-xl border border-zinc-300 p-3" placeholder="Heure départ / arrivée" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="map" className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24">
+          <h2 className="text-3xl font-bold mb-6">🗾 Itinéraire du Voyage</h2>
+
+          <div className="bg-zinc-950 text-white rounded-3xl p-8 overflow-x-auto">
+            <div className="min-w-[900px]">
+              <div className="flex items-center justify-between gap-4 text-center text-sm font-medium">
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Tokyo</div>
+                  <p>4 jours</p>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-2">
+                  <div className="h-2 w-full bg-emerald-400 rounded-full" />
+                  <span>Train (Fuji Excursion) • ~2h</span>
+                </div>
+
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Kawaguchiko</div>
+                  <p>2 jours</p>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-2">
+                  <div className="h-2 w-full bg-yellow-400 rounded-full" />
+                  <span>Voiture • ~4h</span>
+                </div>
+
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Kiso</div>
+                  <p>2 jours</p>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-2">
+                  <div className="h-2 w-full bg-cyan-400 rounded-full" />
+                  <span>Shinkansen • ~1h</span>
+                </div>
+
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Kyoto</div>
+                  <p>4 jours</p>
+                </div>
+              </div>
+
+              <div className="mt-12 flex items-center justify-between gap-4 text-center text-sm font-medium">
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Hiroshima</div>
+                  <p>2 jours</p>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-2">
+                  <div className="h-2 w-full bg-cyan-400 rounded-full" />
+                  <span>Shinkansen • ~1h30</span>
+                </div>
+
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Osaka</div>
+                  <p>4 jours</p>
+                </div>
+
+                <div className="flex-1 flex flex-col items-center gap-2">
+                  <div className="h-2 w-full bg-cyan-400 rounded-full" />
+                  <span>Shinkansen • ~2h30</span>
+                </div>
+
+                <div className="flex-1">
+                  <div className="bg-red-500 rounded-2xl p-4 mb-2">Tokyo</div>
+                  <p>2 jours</p>
+                </div>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-8 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-2 bg-yellow-400 rounded-full" />
+                  <span>Voiture</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-2 bg-cyan-400 rounded-full" />
+                  <span>Shinkansen</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-2 bg-emerald-400 rounded-full" />
+                  <span>Train</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {cityCard(
+          'tokyo',
+          '🏙️ Tokyo',
+          '4 jours',
+          'Transport urbain / métro',
+          ['Shibuya', 'Shinjuku', 'Asakusa', 'TeamLab']
+        )}
+
+        {cityCard(
+          'fuji',
+          '🗻 Fuji',
+          '2 jours',
+          'Voiture de location',
+          ['Onsen privé face au Mont Fuji', 'Tour des lacs']
+        )}
+
+        {cityCard(
+          'kiso',
+          '🥾 Vallée de Kiso',
+          '2 jours',
+          'Roadtrip montagne',
+          ['Randonnée Magome → Tsumago sur la Nakasendo']
+        )}
+
+        {cityCard(
+          'kyoto',
+          '⛩️ Kyoto & Uji',
+          '4 jours',
+          'Shinkansen + transports locaux',
+          ['Fushimi Inari', 'Pavillon d’Or', 'Dégustation de Matcha à Uji']
+        )}
+
+        {cityCard(
+          'hiroshima',
+          '🕊️ Hiroshima & Miyajima',
+          '2 jours',
+          'Shinkansen + ferry',
+          [
+            'Parc de la Paix & Musée',
+            'Sanctuaire Itsukushima',
+            'Ascension du Mont Misen'
+          ]
+        )}
+
+        {cityCard(
+          'osaka',
+          '🎮 Osaka',
+          '4 jours',
+          'Métro + train local',
+          [
+            'Universal Studios Japan',
+            'Super Nintendo World',
+            'Harry Potter World',
+            'Soirées à Dotonbori'
+          ]
+        )}
+
+        {cityCard(
+          'return',
+          '🚄 Retour Tokyo',
+          '2 jours',
+          'Shinkansen',
+          ['Shopping final', 'Derniers souvenirs', 'Repos avant vol retour']
+        )}
+
+        <section id="driving" className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24">
+          <h2 className="text-3xl font-bold mb-6">🚗 Mini-guide de conduite au Japon</h2>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="font-semibold text-lg mb-3">⛽ Essence</h3>
+              <p className="text-zinc-600 leading-relaxed">
+                Beaucoup de stations fonctionnent en self-service. Regular = essence classique.
+              </p>
+            </div>
+
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="font-semibold text-lg mb-3">🛑 Panneaux</h3>
+              <p className="text-zinc-600 leading-relaxed">
+                Les grands axes sont souvent indiqués en japonais + anglais.
+              </p>
+            </div>
+
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="font-semibold text-lg mb-3">🅿️ Stationnement</h3>
+              <p className="text-zinc-600 leading-relaxed">
+                Les parkings automatiques sont très fréquents en ville.
+              </p>
+            </div>
+
+            <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200">
+              <h3 className="font-semibold text-lg mb-3">🚘 Important</h3>
+              <p className="text-zinc-600 leading-relaxed">
+                Conduite à gauche. Prévoir permis international + ETC card si possible.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="checklist" className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24">
+          <h2 className="text-3xl font-bold mb-6">✅ Check-list Avant Départ</h2>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {[
+              'Passeports',
+              'eSIM / Internet',
+              'Cash Yen',
+              'Assurances voyage',
+              'Vêtements automne',
+              'Chargeurs',
+              'Adaptateurs prise',
+              'Permis international',
+              'Réservations hôtels',
+              'Billets Shinkansen',
+              'Médicaments',
+              'Cartes bancaires'
+            ].map((item, index) => (
+              <label key={index} className="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 flex items-center gap-3 cursor-pointer hover:bg-zinc-100 transition">
+                <input type="checkbox" className="w-5 h-5" />
+                <span>{item}</span>
+              </label>
+            ))}
+          </div>
+        </section>
+
+        <section id="lexicon" className="bg-white rounded-3xl shadow-lg p-6 border border-zinc-200 scroll-mt-24 overflow-x-auto">
+          <h2 className="text-3xl font-bold mb-6">🗣️ Lexique “Mari & Femme”</h2>
+
+          <table className="w-full min-w-[800px] border-collapse overflow-hidden rounded-2xl">
+            <thead>
+              <tr className="bg-black text-white">
+                <th className="text-left p-4">Français</th>
+                <th className="text-left p-4">Japonais</th>
+                <th className="text-left p-4">Prononciation simplifiée</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {[
+                ['Une table pour deux', 'Futari bun no seki o onegaishimasu', 'Fou-ta-ri boun no sé-ki o o-né-ga-i-shi-mass'],
+                ['Merci beaucoup', 'Arigatō gozaimasu', 'A-ri-ga-to go-za-i-mass'],
+                ['Où est la gare ?', 'Eki wa doko desu ka ?', 'É-ki wa do-ko déss ka'],
+                ['L’addition s’il vous plaît', 'Okaikei onegaishimasu', 'O-ka-i-ké o-né-ga-i-shi-mass'],
+                ['C’était délicieux', 'Totemo oishikatta desu', 'To-té-mo o-i-shi-kat-ta déss'],
+              ].map((row, index) => (
+                <tr key={index} className="border-b border-zinc-200 odd:bg-zinc-50">
+                  <td className="p-4 font-medium">{row[0]}</td>
+                  <td className="p-4">{row[1]}</td>
+                  <td className="p-4 text-zinc-600">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  );
+}
