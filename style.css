@@ -96,8 +96,18 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     width: 2px;
     flex-grow: 1;
     background: #3D3D3D; /* Gris-brun chaud très discret */
-    margin-top: -5px;
-    margin-bottom: -20px;
+    position: absolute;
+    top: 35px; /* Part du premier point */
+    bottom: -15px; /* Descend en dessous de la tuile pour toucher la suivante */
+    z-index: 1;
+}
+
+/* On ajoute une règle pour le wrapper pour éviter les coupures */
+.step-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 15px;
+    position: relative; /* Important pour le placement de la ligne */
 }
 
 .transport-badge {
