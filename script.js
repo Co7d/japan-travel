@@ -1,17 +1,37 @@
-// CONFIGURATION DU VOYAGE (Dates précises de Théo)
-const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
+// CONFIGURATION DU VOYAGE
+const DEPART_AVION = new Date("2025-11-15T10:00:00").getTime(); 
 const ARRIVEE_TOKYO = new Date("2026-11-16T08:00:00").getTime();
+
+// Liste de messages funs
+const messagesFuns = [
+    "🍣 Adieu jambon-beurre, bonjour SUSHI !",
+    "✈️ Attache ta ceinture, on décolle !",
+    "⛩️ Objectif : Devenir un vrai Ninja.",
+    "🍜 Alerte : Niveau de Ramen critique !",
+    "🚅 Shinkansen activé. Destination : Futur."
+    "🍜 On est là pour la culture... et surtout pour les Ramen."
+
+];
+
+// Choisir un message au hasard (une seule fois quand ça arrive à zéro)
+let messageChoisi = messagesFuns[Math.floor(Math.random() * messagesFuns.length)];
 
 function updateApp() {
     const now = new Date().getTime();
     const diff = DEPART_AVION - now;
 
-    // 1. GESTION DU TIMER
     const timerElement = document.getElementById("timer");
     if (timerElement) {
         if (diff <= 0) {
-            timerElement.innerHTML = "C'EST LE DÉPART !";
+            // Affiche le message fun avec une petite animation si tu veux
+            timerElement.innerHTML = `<span style="font-size: 20px; color: #BC4749;">${messageChoisi}</span>`;
+            
+            // Optionnel : masquer le label "Avant l'aventure" qui est juste en dessous
+            const label = document.querySelector('.countdown-section .label');
+            if(label) label.style.display = 'none';
+            
         } else {
+            // Le reste de ton code pour le timer (jours, heures, mins...)
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
