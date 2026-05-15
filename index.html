@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Japan Express 2026</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ON COLLE LE CODE REACT ICI
+        const { useState, useEffect } = React;
+
+        function AddLocationModal({ isOpen, onClose, onAdd, type }) {
+            const [name, setName] = useState('');
+            const [link, setLink] = useState('');
+            if (!isOpen) return null;
+            return (
+                <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+                    <div className="bg-white w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl">
+                        <h3 className="text-2xl font-bold mb-6 text-zinc-900 font-black italic text-center uppercase tracking-tighter">Ajouter {type}</h3>
+                        <div className="space-y-4">
+                            <input autoFocus className="w-full bg-zinc-100 border-none rounded-2xl p-4 outline-none" placeholder="Nom du lieu" value={name} onChange={(e) => setName(e.target.value)} />
+                            <input className="w-full bg-zinc-100 border-none rounded-2xl p-4 outline-none" placeholder="Adresse ou lien Maps" value={link} onChange={(e) => setLink(e.target.value)} />
+                        </div>
+                        <div className="flex gap-3 mt-8">
+                            <button onClick={onClose} className="flex-1 py-4 font-semibold text-zinc-400">Annuler</button>
+                            <button onClick={() => { if(name) { onAdd(name, link); setName(''); setLink(''); onClose(); } }} className="flex-1 bg-black text-white rounded-2xl py-4 font-bold shadow-lg">Enregistrer</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            const [userData, setUserData] = useState(() => {
+                const saved = localStorage.getItem('japan_2026_vfinal');
+                return saved ? JSON.parse(saved) : {};
+            });
+            const [modalConfig, setModalConfig] = useState({ open: false, cityId: null, type: null });
+
+            useEffect(() => {
+                localStorage.setItem('japan_2026_vfinal', JSON.stringify(userData));
+            }, [userData]);
+
+            const addEntry = (cityId, category, name, link) => {
+                const cityData = userData[cityId] || {};
+                const categoryData = cityData[category] || [];
+                setUserData({ ...userData, [cityId]: { ...cityData, [category]: [...categoryData, { name, link, id: Date.now() }] } });
+            };
+
+            const deleteEntry = (cityId, category, id) => {
+                const updated = userData[cityId][category].filter(item => item.id !== id);
+                setUserData({ ...userData, [cityId]: { ...userData[cityId], [category]: updated } });
+            };
+
+            const sections = [
+                { id: 'tokyo', title: '🏙️ Tokyo', days: '4j', trans: 'Métro' },
+                { id: 'fuji', title: '🗻 Fuji', days: '2j', trans: 'Voiture' },
+                { id: 'kiso', title: '🥾 Kiso', days: '2j', trans: 'Roadtrip' },
+                { id: 'kyoto', title: '⛩️ Kyoto', days: '4j', trans: 'Train' },
+                { id: 'hiroshima', title: '🕊️ Hiroshima', days: '2j', trans: 'Shinkansen' },
+                { id: 'osaka', title: '🎮 Osaka', days: '4j', trans: 'Métro' },
+            ];
+
+            return (
+                <div className="min-h-screen bg-zinc-50 pb-10">
+                    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-zinc-200 px-6 py-5">
+                        <h1 className="text-2xl font-black italic tracking-tighter uppercase">🇯🇵 Japan Express</h1>
+                    </header>
+                    <main className="max-w-xl mx-auto p-4 space-y-8">
+                        {sections.map((city) => (
+                            <section key={city.id} className="bg-zinc-200/50 rounded-[3rem] p-6 border border-zinc-200 shadow-inner">
+                                <div className="mb-6 ml-2 text-center">
+                                    <h2 className="text-3xl font-black italic uppercase tracking-tighter">{city.title}</h2>
+                                    <p className="text-zinc-500 font-bold text-xs uppercase tracking-widest">{city.days} • {city.trans}</p>
+                                </div>
+                                <div className="space-y-4">
+                                    {['Hébergement', 'Restaurant'].map(type => (
+                                        <div key={type} className="bg-zinc-50/70 rounded-[2rem] p-5 border border-zinc-200 shadow-sm">
+                                            <div className="flex justify-between items-center mb-2">
+                                                <h3 className="font-black text-[10px] tracking-[0.2em] text-zinc-400 uppercase">{type === 'Hébergement' ? '🏨 Logement' : '🍜 Food'}</h3>
+                                                <button onClick={() => setModalConfig({ open: true, cityId: city.id, type })} className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center font-bold text-2xl shadow-lg active:scale-90 transition">+</button>
+                                            </div>
+                                            <div className="space-y-2 mt-4">
+                                                {(userData[city.id]?.[type] || []).map(item => (
+                                                    <div key={item.id} className="flex items-center justify-between bg-white p-4 rounded-2xl border border-zinc-100 shadow-sm">
+                                                        <div className="flex flex-col">
+                                                            <span className="font-bold text-zinc-900 text-sm uppercase italic tracking-tighter">{item.name}</span>
+                                                            {item.link && (
+                                                                <a href={`maps://?q=${encodeURIComponent(item.name + ' ' + item.link)}`} className="text-[10px] text-emerald-600 font-black mt-1 uppercase">🗺️ Voir dans Plans</a>
+                                                            )}
+                                                        </div>
+                                                        <button onClick={() => deleteEntry(city.id, type, item.id)} className="text-zinc-300 px-2">✕</button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+                        ))}
+                    </main>
+                    <AddLocationModal isOpen={modalConfig.open} type={modalConfig.type} onClose={() => setModalConfig({ open: false, cityId: null, type: null })} onAdd={(name, link) => addEntry(modalConfig.cityId, modalConfig.type, name, link)} />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
