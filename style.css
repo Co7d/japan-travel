@@ -1,0 +1,79 @@
+:root {
+    --bg-color: #000000;
+    --card-bg: rgba(28, 28, 30, 0.7);
+    --accent-color: #0A84FF;
+    --text-main: #FFFFFF;
+    --text-dim: #8E8E93;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 400px; /* Largeur iPhone */
+}
+
+header { padding: 20px 0; }
+h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
+.subtitle { color: var(--text-dim); margin: 0; }
+
+.card.glass {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.countdown-section { text-align: center; }
+#timer { font-family: monospace; font-size: 28px; font-weight: bold; color: var(--accent-color); }
+
+.grid-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.villes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.city-card {
+    height: 100px;
+    border-radius: 15px;
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-size: cover;
+    background-color: #1c1c1e;
+}
+
+/* Couleurs pour identifier les villes facilement */
+.tokyo { border-left: 4px solid #FF3B30; }
+.kyoto { border-left: 4px solid #AF52DE; }
+.fuji { border-left: 4px solid #32ADE6; }
+
+.lexique-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+.phrase { display: flex; justify-content: space-between; border-bottom: 0.5px solid var(--glass-border); padding-bottom: 5px; }
