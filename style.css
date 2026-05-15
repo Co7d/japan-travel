@@ -85,38 +85,35 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .dot {
     width: 10px;
     height: 10px;
-    background: #ffffff; /* Cœur blanc pour l'effet néon */
-    border: 2px solid #ff3b30; /* Contour rouge */
+    background: #BC4749; /* Rouge traditionnel mat */
     border-radius: 50%;
     margin-top: 28px;
     z-index: 2;
-    /* Lueur néon : une petite intense et une grande diffuse */
-    box-shadow: 0 0 8px #ff3b30, 0 0 15px rgba(255, 59, 48, 0.6);
+    box-shadow: 0 0 0 3px rgba(188, 71, 73, 0.2); /* Un halo très léger et mat */
 }
 
 .line {
     width: 2px;
     flex-grow: 1;
-    /* Rouge sombre et discret */
-    background: rgba(255, 59, 48, 0.15); 
+    background: #3D3D3D; /* Gris-brun chaud très discret */
     margin-top: -5px;
-    margin-bottom: -20px; /* Fait descendre la ligne vers la tuile suivante */
+    margin-bottom: -20px;
 }
 
 .transport-badge {
     position: absolute;
     top: 65px;
-    background: #000000; /* Fond noir pur pour faire ressortir le rouge */
-    border: 1px solid rgba(255, 59, 48, 0.4); /* Contour rouge discret */
-    width: 26px;
-    height: 26px;
+    background: #1A1A1A; /* Fond noir bois brûlé */
+    border: 1px solid #3D3D3D;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 14px;
+    font-size: 13px;
     z-index: 3;
-    box-shadow: 0 0 10px rgba(255, 59, 48, 0.2);
+    opacity: 0.9;
 }
 
 /* --- INFOS DANS LA TUILE --- */
@@ -126,12 +123,12 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .step-info { font-size: 13px; color: var(--text-dim); }
 
 /* --- BORDURES COLORÉES --- */
-.step-wrapper:nth-child(1) .step-card { border-left: 4px solid #FF3B30; }
-.step-wrapper:nth-child(2) .step-card { border-left: 4px solid #007AFF; }
-.step-wrapper:nth-child(3) .step-card { border-left: 4px solid #34C759; }
-.step-wrapper:nth-child(4) .step-card { border-left: 4px solid #AF52DE; }
-.step-wrapper:nth-child(5) .step-card { border-left: 4px solid #FF9500; }
-.step-wrapper:nth-child(6) .step-card { border-left: 4px solid #FF2D55; }
+.step-wrapper:nth-child(1) .step-card { border-left: 3px solid #BC4749; } /* Rouge */
+.step-wrapper:nth-child(2) .step-card { border-left: 3px solid #A7C957; } /* Vert Mousse */
+.step-wrapper:nth-child(3) .step-card { border-left: 3px solid #6A994E; } /* Vert Forêt */
+.step-wrapper:nth-child(4) .step-card { border-left: 3px solid #F2E8CF; } /* Crème/Sable */
+.step-wrapper:nth-child(5) .step-card { border-left: 3px solid #386641; } /* Pin */
+.step-wrapper:nth-child(6) .step-card { border-left: 3px solid #BC4749; }
 
 /* --- LEXIQUE --- */
 .lexique-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
