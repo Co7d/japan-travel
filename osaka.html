@@ -2,94 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Osaka - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="detail-page">
 
     <div class="app-container">
-        <header class="city-header">
-            <a href="index.html" class="back-link"><i data-lucide="chevron-left"></i> Dashboard</a>
-            <h1>Osaka</h1>
-            <p class="subtitle">La capitale de la street-food</p>
+        
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
+
+        <header>
+            <div class="header-meta">
+                <span class="date-badge">JOUR 16 — 18</span>
+                <span class="vibe-badge">LA CUISINE DU PAYS</span>
+            </div>
+            <h1 style="color: #E29578;">Osaka</h1> 
+            <p class="subtitle">Néons, street-food et folie urbaine.</p>
         </header>
 
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="home"></i>
-                <h2>Hébergement</h2>
-            </div>
-            <div class="card glass">
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Hôtel à Osaka</strong>
-                        <span>Quartier Namba / Umeda</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Hotel+Osaka" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🏨 Hébergement</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Hôtel à Namba ou Shinsaibashi</span>
+                    <span class="place-desc">En plein cœur de l'action et des lumières du soir.</span>
+                    <a href="maps://maps.apple.com/?q=Namba+Station+Osaka" class="maps-link">📍 Voir sur Plans</a>
                 </div>
-            </div>
+                </div>
         </section>
 
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="map"></i>
-                <h2>Activités prévues</h2>
-            </div>
-            <div class="card glass">
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Dotonbori</strong>
-                        <span>Néon Glico Man & Ambiance</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Dotonbori+Osaka" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🎡 Activités</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Dotonbori</span>
+                    <span class="place-desc">Le canal iconique, le Glico Man et les enseignes géantes.</span>
+                    <a href="maps://maps.apple.com/?q=Dotonbori" class="maps-link">📍 Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Universal Studios Japan</strong>
-                        <span>Super Nintendo World</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Universal+Studios+Japan" class="map-btn">Plans</a>
+                <div class="detail-item">
+                    <span class="place-name">Château d'Osaka</span>
+                    <span class="place-desc">Un monument historique au milieu d'un immense parc.</span>
+                    <a href="maps://maps.apple.com/?q=Osaka+Castle" class="maps-link">📍 Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Château d'Osaka</strong>
-                        <span>Parc et histoire</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Osaka+Castle" class="map-btn">Plans</a>
                 </div>
-            </div>
         </section>
 
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="utensils"></i>
-                <h2>Restaurants</h2>
-            </div>
-            <div class="card glass">
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Takoyaki Wanaka</strong>
-                        <span>Spécialité locale</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Takoyaki+Wanaka+Osaka" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🐙 Gastronomie</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Marché Kuromon</span>
+                    <span class="place-desc">Takoyaki, Kushikatsu et tout ce qui se mange !</span>
+                    <a href="maps://maps.apple.com/?q=Kuromon+Market" class="maps-link">📍 Plans</a>
                 </div>
-            </div>
-        </section>
-
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="sticky-note"></i>
-                <h2>Notes</h2>
-            </div>
-            <div class="card glass">
-                <p class="note-text">Penser à prendre la carte IC (Suica/Pasmo) pour le métro d'Osaka.</p>
-            </div>
+                </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
