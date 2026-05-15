@@ -1,44 +1,75 @@
-<section>
-    <div class="section-title">
-        🏨 Hébergement </div>
-    <div class="card glass detail-card">
-        
-        <div class="detail-item">
-            <span class="place-name">Park Hotel Tokyo</span>
-            <span class="place-desc">Quartier de Shiodome - Vue sur la tour</span>
-            
-            <a href="maps://maps.apple.com/?q=Park+Hotel+Tokyo" class="maps-link">
-                📍 Voir sur Plans </a>
-        </div>
-        </div>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails Étape - Japon 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="detail-page">
 
-<section>
-    <div class="section-title">
-        📸 Activités prévues </div>
-    <div class="card glass detail-card">
+    <div class="app-container">
         
-        <div class="detail-item">
-            <span class="place-name">Shibuya Crossing</span>
-            <span class="place-desc">Le passage piéton iconique.</span>
-            <a href="maps://maps.apple.com/?q=Shibuya+Crossing" class="maps-link">
-                📍 Plans
-            </a>
-        </div>
-        </div>
-</section>
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
 
-<section>
-    <div class="section-title">
-        🍜 Restaurants </div>
-    <div class="card glass detail-card">
-        
-        <div class="detail-item">
-            <span class="place-name">Ichiran Ramen</span>
-            <span class="place-desc">Spécialité Tonkotsu en cabine solo.</span>
-            <a href="maps://maps.apple.com/?q=Ichiran+Ramen+Shibuya" class="maps-link">
-                📍 Plans
-            </a>
-        </div>
-        </div>
-</section>
+        <header>
+            <div class="header-meta">
+                <span class="date-badge">JOUR 01 — 05</span>
+                <span class="vibe-badge">IMMERSION URBAINE</span>
+            </div>
+            <h1 style="color: #BC4749;">Tokyo</h1> 
+            <p class="subtitle">L'aventure commence dans le futur.</p>
+        </header>
+
+        <section>
+            <div class="section-title">🏨 Hébergement</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Park Hotel Tokyo</span>
+                    <span class="place-desc">Quartier de Shiodome - Vue sur la tour</span>
+                    <a href="maps://maps.apple.com/?q=Park+Hotel+Tokyo" class="maps-link">📍 Voir sur Plans</a>
+                </div>
+                </div>
+        </section>
+
+        <section>
+            <div class="section-title">📸 Activités prévues</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Shibuya Crossing</span>
+                    <span class="place-desc">Le passage piéton iconique.</span>
+                    <a href="maps://maps.apple.com/?q=Shibuya+Crossing" class="maps-link">📍 Plans</a>
+                </div>
+                <div class="detail-item">
+                    <span class="place-name">TeamLab Borderless</span>
+                    <span class="place-desc">Musée d'art numérique immersif.</span>
+                    <a href="maps://maps.apple.com/?q=teamLab+Borderless+Tokyo" class="maps-link">📍 Plans</a>
+                </div>
+                </div>
+        </section>
+
+        <section>
+            <div class="section-title">🍜 Restaurants</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Ichiran Ramen</span>
+                    <span class="place-desc">Spécialité Tonkotsu en cabine solo.</span>
+                    <a href="maps://maps.apple.com/?q=Ichiran+Ramen+Shibuya" class="maps-link">📍 Plans</a>
+                </div>
+                </div>
+        </section>
+
+    </div>
+
+    <script>
+        // On ne l'utilise plus que pour le bouton retour maintenant !
+        lucide.createIcons();
+    </script>
+</body>
+</html>
