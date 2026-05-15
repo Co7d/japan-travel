@@ -2,97 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kawaguchiko - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="detail-page">
 
     <div class="app-container">
-        <!-- Back Button & Header -->
-        <header class="city-header">
-            <a href="index.html" class="back-link"><i data-lucide="chevron-left"></i> Retour</a>
-            <h1>Kawaguchiko</h1>
+        
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
+
+        <header>
+            <div class="header-meta">
+                <span class="date-badge">JOUR 06 — 07</span>
+                <span class="vibe-badge">REFLETS DU FUJI</span>
+            </div>
+            <h1 style="color: #457B9D;">Kawaguchiko</h1> 
+            <p class="subtitle">Sérénité au bord de l'eau et géant sacré.</p>
         </header>
 
-        <!-- LOGEMENTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="home"></i>
-                <h2>Hébergement</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER HOTEL ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom de l'Hôtel</strong>
-                        <span>Adresse ou quartier</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Nom+Hotel+Japan" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🏨 Hébergement</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Fuji View Hotel</span>
+                    <span class="place-desc">Hôtel historique avec jardin et vue directe.</span>
+                    <a href="maps://maps.apple.com/?q=Fuji+View+Hotel+Kawaguchiko" class="maps-link">📍 Voir sur Plans</a>
                 </div>
-                <!-- FIN AJOUT HOTEL -->
-            </div>
+                </div>
         </section>
 
-        <!-- ACTIVITÉS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="map"></i>
-                <h2>Activités prévues</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER ACTIVITÉ ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Temple / Musée / Spot</strong>
-                        <span>Description rapide</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Lieu+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🗻 Activités</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Pagode Chureito</span>
+                    <span class="place-desc">La vue carte postale : pagode rouge et Mont Fuji.</span>
+                    <a href="maps://maps.apple.com/?q=Chureito+Pagoda" class="maps-link">📍 Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Expérience</strong>
-                        <span>Détail</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Experience+Japon" class="map-btn">Plans</a>
+                <div class="detail-item">
+                    <span class="place-name">Oishi Park</span>
+                    <span class="place-desc">Balade fleurie au bord du lac.</span>
+                    <a href="maps://maps.apple.com/?q=Oishi+Park+Kawaguchiko" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT ACTIVITÉ -->
-            </div>
+                </div>
         </section>
 
-        <!-- RESTAURANTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="utensils"></i>
-                <h2>Restaurants</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER RESTO ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom du Restaurant</strong>
-                        <span>Spécialité (ex: Ramen)</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Resto+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🍲 Restaurants</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Houtou Fudou</span>
+                    <span class="place-desc">Spécialité locale : les nouilles Houtou (bâtiment blanc iconique).</span>
+                    <a href="maps://maps.apple.com/?q=Houtou+Fudou+Kawaguchiko" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT RESTO -->
-            </div>
-        </section>
-
-        <!-- NOTES -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="sticky-note"></i>
-                <h2>Notes</h2>
-            </div>
-            <div class="card glass">
-                <p class="note-text">Ajouter ici des infos importantes, codes d'entrée, ou rappels...</p>
-            </div>
+                </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
