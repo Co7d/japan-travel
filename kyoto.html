@@ -2,97 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyoto - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="dark-mode">
+<body class="detail-page">
 
     <div class="app-container">
-        <!-- Back Button & Header -->
-        <header class="city-header">
-            <a href="index.html" class="back-link"><i data-lucide="chevron-left"></i> Retour</a>
-            <h1>Kyoto</h1>
+        
+        <a href="index.html" class="back-button">
+            <i data-lucide="chevron-left"></i> Retour
+        </a>
+
+        <header>
+            <div class="header-meta">
+                <span class="date-badge">JOUR 10 — 13</span>
+                <span class="vibe-badge">TRADITION ÉTERNELLE</span>
+            </div>
+            <h1 style="color: #A67C00;">Kyoto</h1> 
+            <p class="subtitle">Le cœur battant du Japon ancien et de ses secrets.</p>
         </header>
 
-        <!-- LOGEMENTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="home"></i>
-                <h2>Hébergement</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER HOTEL ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom de l'Hôtel</strong>
-                        <span>Adresse ou quartier</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Nom+Hotel+Japan" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">⛩️ Hébergement</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Ryokan Gion Hatanaka</span>
+                    <span class="place-desc">Immersion totale dans le quartier des Geishas.</span>
+                    <a href="maps://maps.apple.com/?q=Ryokan+Gion+Hatanaka+Kyoto" class="maps-link">📍 Voir sur Plans</a>
                 </div>
-                <!-- FIN AJOUT HOTEL -->
-            </div>
+                </div>
         </section>
 
-        <!-- ACTIVITÉS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="map"></i>
-                <h2>Activités prévues</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER ACTIVITÉ ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Temple / Musée / Spot</strong>
-                        <span>Description rapide</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Lieu+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🎋 Activités</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Fushimi Inari-taisha</span>
+                    <span class="place-desc">Les milles portails Torii rouges à perte de vue.</span>
+                    <a href="maps://maps.apple.com/?q=Fushimi+Inari+Taisha" class="maps-link">📍 Plans</a>
                 </div>
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Expérience</strong>
-                        <span>Détail</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Experience+Japon" class="map-btn">Plans</a>
+                <div class="detail-item">
+                    <span class="place-name">Arashiyama Bamboo Grove</span>
+                    <span class="place-desc">Forêt de bambous géants et temple Tenryu-ji.</span>
+                    <a href="maps://maps.apple.com/?q=Arashiyama+Bamboo+Grove" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT ACTIVITÉ -->
-            </div>
+                </div>
         </section>
 
-        <!-- RESTAURANTS -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="utensils"></i>
-                <h2>Restaurants</h2>
-            </div>
-            <div class="card glass">
-                <!-- AJOUTER RESTO ICI -->
-                <div class="item">
-                    <div class="item-info">
-                        <strong>Nom du Restaurant</strong>
-                        <span>Spécialité (ex: Ramen)</span>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Resto+Japon" class="map-btn">Plans</a>
+        <section>
+            <div class="section-title">🍵 Gastronomie</div>
+            <div class="card glass detail-card">
+                
+                <div class="detail-item">
+                    <span class="place-name">Nishiki Market</span>
+                    <span class="place-desc">Le "garde-manger" de Kyoto pour goûter à tout.</span>
+                    <a href="maps://maps.apple.com/?q=Nishiki+Market+Kyoto" class="maps-link">📍 Plans</a>
                 </div>
-                <!-- FIN AJOUT RESTO -->
-            </div>
-        </section>
-
-        <!-- NOTES -->
-        <section class="city-section">
-            <div class="section-title">
-                <i data-lucide="sticky-note"></i>
-                <h2>Notes</h2>
-            </div>
-            <div class="card glass">
-                <p class="note-text">Ajouter ici des infos importantes, codes d'entrée, ou rappels...</p>
-            </div>
+                </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
