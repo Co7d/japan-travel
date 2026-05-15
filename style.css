@@ -128,12 +128,8 @@ h1 {
 
 /* --- TIMELINE NAVIGATION --- */
 .timeline-container {
-    display: flex;
-    flex-
-    /* --- CORRECTION DE L'AFFICHAGE DES VILLES --- */
-.timeline-container {
     display: flex !important;
-    flex-direction: column !important; /* Force l'empilement vertical */
+    flex-direction: column !important; /* Force l'alignement vertical */
     gap: 12px;
     margin-bottom: 30px;
     width: 100%;
@@ -142,26 +138,31 @@ h1 {
 .step-card {
     display: flex !important;
     align-items: center;
-    background: var(--card-bg);
+    background: rgba(255, 255, 255, 0.05) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 16px;
-    text-decoration: none !important; /* Enlève le souligné bleu */
+    text-decoration: none !important;
     color: white !important;
-    width: 100%;
+    transition: transform 0.2s;
 }
 
+/* On rajoute une petite lueur de couleur à gauche pour chaque ville */
+.step-card:nth-child(1) { border-left: 4px solid #FF3B30; } /* Tokyo */
+.step-card:nth-child(2) { border-left: 4px solid #007AFF; } /* Fuji */
+.step-card:nth-child(3) { border-left: 4px solid #34C759; } /* Kiso */
+.step-card:nth-child(4) { border-left: 4px solid #AF52DE; } /* Kyoto */
+.step-card:nth-child(5) { border-left: 4px solid #FF9500; } /* Hiroshima */
+.step-card:nth-child(6) { border-left: 4px solid #FF2D55; } /* Osaka */
+
 .step-icon {
-    width: 48px;
-    height: 48px;
-    min-width: 48px; /* Empêche l'icône de s'écraser */
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 28px; /* Taille de l'emoji */
     margin-right: 15px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .step-details {
@@ -173,17 +174,15 @@ h1 {
 .step-name {
     font-size: 18px;
     font-weight: 700;
-    display: block;
 }
 
 .step-info {
     font-size: 13px;
-    color: var(--text-dim);
+    color: #8E8E93;
 }
 
 .step-number {
     font-size: 14px;
     font-weight: 800;
     color: rgba(255, 255, 255, 0.1);
-    margin-left: 10px;
 }
