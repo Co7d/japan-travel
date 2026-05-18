@@ -6,6 +6,22 @@
     <title>Japon 2026</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Sécurité pour forcer la timeline à rester verticale et bien espacée */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Ajuste cette valeur si tu veux serrer ou écarter les bulles */
+            width: 100%;
+            margin-top: 10px;
+        }
+        .step-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+    </style>
 </head>
 <body class="dark-mode">
 
@@ -31,8 +47,8 @@
             </div>
         </div>
 
-        <div class="card glass" style="margin: 20px 0; padding: 10px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; min-height: 150px;">
-            <img src="itineraire.png" style="max-width: 100%; height: auto; border-radius: 15px;" alt="Carte Itinéraire">
+        <div class="card glass" style="margin: 15px 0; padding: 10px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;">
+            <img src="itineraire.png" alt="Itinéraire Japon 2026" style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; display: block;">
         </div>
 
         <nav class="timeline-container">
@@ -81,13 +97,11 @@
                         </span>
                     </div>
                 </a>
-                <div class="route-column" style="position: relative;">
+                <div class="route-column">
                     <div class="dot"></div>
                     <div class="line"></div>
-                    <div class="transport-container" style="position: absolute; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 2px; z-index: 2;">
-                        <div class="transport-badge pos-1" style="margin: 0;">🚗</div> 
-                        <div class="transport-badge pos-2" style="margin: 0;">🚄</div>
-                    </div>
+                    <div class="transport-badge pos-1">🚗</div> 
+                    <div class="transport-badge pos-2">🚄</div>
                 </div>
             </div>
 
@@ -184,12 +198,10 @@
     </div>
 
     <script>
-        // --- 1. DATES CLÉS DU VOYAGE (CALIBRÉES 2026) ---
         const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
         const ARRIVEE_TOKYO = new Date("2026-11-16T08:00:00").getTime();
         const FIN_VOYAGE = new Date("2026-12-05T20:00:00").getTime(); 
 
-        // --- 2. MESSAGES FUNS ---
         const messagesFuns = [
             "🍣 Adieu jambon-beurre, bonjour SUSHI !",
             "✈️ Attache ta ceinture, on décolle !",
@@ -200,20 +212,15 @@
         ];
         const messageChoisi = messagesFuns[Math.floor(Math.random() * messagesFuns.length)];
 
-        // --- 3. CACHE DES ÉLÉMENTS DOM ---
         const timerElement = document.getElementById("timer");
         const labelElement = document.querySelector(".countdown-section .label");
         const statusElement = document.getElementById("next-step");
 
-        // --- 4. FONCTION PRINCIPALE DE MISE À JOUR ---
         function updateApp() {
             const now = new Date().getTime();
             const diff = DEPART_AVION - now;
-
-            // Calcul précis du jour de voyage (16 Nov = Jour 1)
             const dayOfVoyage = Math.floor((now - ARRIVEE_TOKYO) / (1000 * 60 * 60 * 24)) + 1;
 
-            // A. GESTION DU TIMER
             if (timerElement) {
                 if (now < DEPART_AVION) {
                     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -239,7 +246,6 @@
                 }
             }
 
-            // B. GESTION DU TEXTE "STATUT DU VOYAGE"
             if (statusElement) {
                 if (now < DEPART_AVION) {
                     statusElement.innerText = "Tokyo (Départ)";
@@ -269,7 +275,6 @@
             }
         }
 
-        // Initialisation de Lucide et du Chrono
         lucide.createIcons();
         updateApp();
         setInterval(updateApp, 1000);
