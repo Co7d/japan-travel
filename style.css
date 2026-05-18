@@ -46,9 +46,9 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 
 .grid-stats { 
     display: grid; 
-    grid-template-columns: 1fr; /* CHANGÉ : Une seule colonne pour toute la largeur */
+    grid-template-columns: 1fr;
     gap: 12px; 
-    margin-bottom: 25px; 
+    margin-bottom: 15px; /* Changé de 25px à 15px pour remonter la carte */
 }
 
 /* On force la carte à s'étendre et à s'aligner proprement */
@@ -425,4 +425,8 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     
     /* Bordure assortie pour la finition */
     border: 1px solid rgba(188, 71, 73, 0.2);
+}
+/* Supprime l'espace excessif sous la carte pour harmoniser avec la timeline */
+.grid-stats + .card.glass {
+    margin-bottom: 5px !important;
 }
