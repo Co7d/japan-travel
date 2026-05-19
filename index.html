@@ -35,133 +35,106 @@
     <img src="itineraire.png" alt="Itinéraire Japon 2026" style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; display: block;">
 </div>
 
-        <nav class="timeline-container">
-            
-            <div class="step-wrapper">
-                <a href="tokyo.html" class="step-card">
-                    <div class="step-icon">🗼</div>
-                    <div class="step-details">
-                        <span class="step-name">Tokyo</span>
-                        <span class="step-info">
-                            16 au 20 Nov • 5 Jours • <span style="color: #BC4749; font-weight: 700;">Immersion</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge">🚄</div>
-                </div>
+        <nav class="timeline-container" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+    
+    <div class="new-step-card border-tokyo">
+        <div class="step-main">
+            <div class="step-icon">🗼</div>
+            <div class="step-details">
+                <span class="step-name">Tokyo</span>
+                <span class="step-info">16 au 20 Nov • 5 Jours • <span class="vibe-tokyo">Immersion</span></span>
             </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <span class="transport-pill">🚄 Shinkansen</span>
+        </div>
+    </div>
 
-            <div class="step-wrapper">
-                <a href="kawaguchiko.html" class="step-card">
-                    <div class="step-icon">🗻</div>
-                    <div class="step-details">
-                        <span class="step-name">Kawaguchiko</span>
-                        <span class="step-info">
-                            20 au 22 Nov • 3 Jours • <span style="color: #457B9D; font-weight: 700;">Nature</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge">🚗</div>
-                </div>
+    <div class="new-step-card border-kawaguchi">
+        <div class="step-main">
+            <div class="step-icon">🗻</div>
+            <div class="step-details">
+                <span class="step-name">Kawaguchiko</span>
+                <span class="step-info">20 au 22 Nov • 3 Jours • <span class="vibe-kawaguchi">Nature</span></span>
             </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <span class="transport-pill">🚗 Voiture</span>
+        </div>
+    </div>
 
-            <div class="step-wrapper">
-                <a href="kiso.html" class="step-card">
-                    <div class="step-icon">🌲</div>
-                    <div class="step-details">
-                        <span class="step-name">Vallée de Kiso</span>
-                        <span class="step-info">
-                            22 au 23 Nov • 2 Jours • <span style="color: #6A994E; font-weight: 700;">Rando</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge pos-1">🚗</div> 
-                    <div class="transport-badge pos-2">🚄</div>
-                </div>
+    <div class="new-step-card border-kiso">
+        <div class="step-main">
+            <div class="step-icon">🌲</div>
+            <div class="step-details">
+                <span class="step-name">Vallée de Kiso</span>
+                <span class="step-info">22 au 23 Nov • 2 Jours • <span class="vibe-kiso">Rando</span></span>
             </div>
-
-            <div class="step-wrapper">
-                <a href="kyoto.html" class="step-card">
-                    <div class="step-icon">⛩️</div>
-                    <div class="step-details">
-                        <span class="step-name">Kyoto</span>
-                        <span class="step-info">
-                            23 au 28 Nov • 6 Jours • <span style="color: #D4A373; font-weight: 700;">Tradition</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge">🚄</div>
-                </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <div style="display: flex; gap: 6px;">
+                <span class="transport-pill">🚗 Voiture</span>
+                <span class="transport-pill">🚄 Train</span>
             </div>
+        </div>
+    </div>
 
-            <div class="step-wrapper">
-                <a href="hiroshima.html" class="step-card">
-                    <div class="step-icon">🕊️</div>
-                    <div class="step-details">
-                        <span class="step-name">Hiroshima</span>
-                        <span class="step-info">
-                            28 au 29 Nov • 2 Jours • <span style="color: #8D99AE; font-weight: 700;">Histoire</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge">🚄</div>
-                </div>
+    <div class="new-step-card border-kyoto">
+        <div class="step-main">
+            <div class="step-icon">⛩️</div>
+            <div class="step-details">
+                <span class="step-name">Kyoto</span>
+                <span class="step-info">23 au 28 Nov • 6 Jours • <span class="vibe-kyoto">Tradition</span></span>
             </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <span class="transport-pill">🚄 Shinkansen</span>
+        </div>
+    </div>
 
-            <div class="step-wrapper">
-                <a href="osaka.html" class="step-card">
-                    <div class="step-icon">🐙</div>
-                    <div class="step-details">
-                        <span class="step-name">Osaka</span>
-                        <span class="step-info">
-                            29 Nov au 02 Dec • 4 Jours • <span style="color: #E29578; font-weight: 700;">Food</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                    <div class="line"></div>
-                    <div class="transport-badge">🚄</div>
-                </div>
+    <div class="new-step-card border-hiroshima">
+        <div class="step-main">
+            <div class="step-icon">🕊️</div>
+            <div class="step-details">
+                <span class="step-name">Hiroshima</span>
+                <span class="step-info">28 au 29 Nov • 2 Jours • <span class="vibe-hiroshima">Histoire</span></span>
             </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <span class="transport-pill">🚄 Shinkansen</span>
+        </div>
+    </div>
 
-            <div class="step-wrapper">
-                <a href="tokyo.html" class="step-card">
-                    <div class="step-icon">🗼</div>
-                    <div class="step-details">
-                        <span class="step-name">Tokyo</span>
-                        <span class="step-info">
-                            02 au 05 Dec • 4 Jours • <span style="color: #BC4749; font-weight: 700;">Sayōnara</span>
-                        </span>
-                    </div>
-                </a>
-                <div class="route-column">
-                    <div class="dot"></div>
-                </div>
+    <div class="new-step-card border-osaka">
+        <div class="step-main">
+            <div class="step-icon">🐙</div>
+            <div class="step-details">
+                <span class="step-name">Osaka</span>
+                <span class="step-info">29 Nov au 02 Dec • 4 Jours • <span class="vibe-osaka">Food</span></span>
             </div>
+        </div>
+        <div class="step-next-transport">
+            <span class="next-label">Prochain trajet :</span>
+            <span class="transport-pill">🚄 Shinkansen</span>
+        </div>
+    </div>
 
-            <div class="step-wrapper" style="min-height: 20px;">
-                <div style="flex:1;"></div>
-                <div class="route-column">
-                </div>
+    <div class="new-step-card border-tokyo" style="margin-bottom: 20px;">
+        <div class="step-main">
+            <div class="step-icon">🗼</div>
+            <div class="step-details">
+                <span class="step-name">Tokyo</span>
+                <span class="step-info">02 au 05 Dec • 4 Jours • <span class="vibe-tokyo">Sayōnara</span></span>
             </div>
+        </div>
+    </div>
 
-        </nav>
+</nav>
 
         <section class="card glass lexique-section">
             <h3><i data-lucide="languages"></i> Lexique de Survie</h3>
