@@ -182,9 +182,10 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 
 .double-transport {
     display: flex;
-    gap: 6px;
-    margin: 2px 0;
-    justify-content: center; /* Aligne le groupe pile sur la ligne centrale */
+    flex-direction: column; /* Aligne les badges verticalement */
+    align-items: center;    /* Les centre parfaitement sur la ligne */
+    gap: 6px;               /* Crée un petit espace entre les deux */
+    margin: 4px 0;
     z-index: 2;
 }
 
