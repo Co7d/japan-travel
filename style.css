@@ -1,6 +1,6 @@
 /* ==========================================================================
    1. VARIABLES & RESET
-   ========================================================================== */
+   ========================================================================= */
 :root {
     --bg-color: #000000;
     --card-bg: rgba(28, 28, 30, 0.4);
@@ -26,15 +26,13 @@ body {
 }
 
 /* ==========================================================================
-   2. EN-TÊTES & CARTES GÉNÉRIQUES (COMPATIBLES TOUTES PAGES)
-   ========================================================================== */
-header { padding: 10px 0 5px 0; }
+   2. STYLES GENERIQUES & STRUCTURES GLASS
+   ========================================================================= */
 h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
-/* Règle globale pour toutes tes bulles/cartes du site */
 .card.glass {
-    background: rgba(28, 28, 30, 0.7); /* Légèrement plus opaque pour les sous-pages */
+    background: rgba(28, 28, 30, 0.7);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
@@ -44,12 +42,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-sizing: border-box;
 }
 
-/* Sécurité pour tes éléments flex de sous-pages (activités, hébergement...) */
-.card.glass > div {
-    width: 100%;
-}
-
-/* Carte Itinéraire Uniforme */
+/* Carte Itinéraire de la Home */
 .card-map {
     padding: 10px !important;
     margin-bottom: 25px !important;
@@ -61,15 +54,94 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     border-radius: 14px;
 }
 
-/* Support pour tes anciens liens/boutons retours globaux s'ils utilisaient des structures spécifiques */
-a {
-    color: inherit;
+/* ==========================================================================
+   3. DESIGN DES PAGES DE DÉTAIL (TOKYO, KYOTO, ETC.)
+   ========================================================================= */
+.detail-page .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.detail-page .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+/* Rétablissement des badges du haut de tes pages de villes */
+.detail-page .date-badge, 
+.detail-page .vibe-badge {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* Style de base pour ta vibe en majuscule blanche d'origine */
+.detail-page .vibe-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.detail-page .section-title {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin: 25px 0 10px 0;
+}
+
+/* Ajustements pour tes listes d'activités intérieures */
+.detail-page .detail-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-page .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-page .place-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.detail-page .place-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+}
+
+.detail-page .maps-link {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 4px;
 }
 
 /* ==========================================================================
-   3. WIDGETS STATS & TIMER
-   ========================================================================== */
+   4. WIDGET HOME : STATS & TIMER
+   ========================================================================= */
 .countdown-section {
     display: flex;
     flex-direction: column;
@@ -108,8 +180,8 @@ a {
 .stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
 
 /* ==========================================================================
-   4. TIMELINE FIL D'ARIANE (ISOLÉE UNIQUEMENT SUR LA HOME)
-   ========================================================================== */
+   5. TIMELINE FIL D'ARIANE (STRICTEMENT RÉSERVÉE À LA HOME)
+   ========================================================================= */
 .modern-timeline {
     display: flex;
     flex-direction: column;
@@ -171,7 +243,7 @@ a {
 }
 
 .modern-timeline .timeline-card {
-    background: var(--card-bg);
+    background: rgba(28, 28, 30, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
@@ -184,7 +256,8 @@ a {
     text-decoration: none;
 }
 
-.modern-timeline .timeline-card:hover, .modern-timeline .timeline-card:active {
+.modern-timeline .timeline-card:hover, 
+.modern-timeline .timeline-card:active {
     transform: scale(0.98);
     background: rgba(255, 255, 255, 0.08);
 }
@@ -206,6 +279,7 @@ a {
 .modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
 .modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
+/* Style du badge vibe EXCLUSIF à la timeline */
 .modern-timeline .vibe-badge {
     font-size: 10px;
     font-weight: 800;
@@ -213,62 +287,8 @@ a {
     letter-spacing: 0.5px;
     padding: 4px 10px;
     border-radius: 12px;
+    border: none;
 }
 .modern-timeline .badge-tokyo { color: #BC4749; background: rgba(188, 71, 73, 0.12); }
 .modern-timeline .badge-kawaguchi { color: #457B9D; background: rgba(69, 123, 157, 0.12); }
-.modern-timeline .badge-kiso { color: #6A994E; background: rgba(106, 153, 78, 0.12); }
-.modern-timeline .badge-kyoto { color: #D4A373; background: rgba(212, 163, 115, 0.12); }
-.modern-timeline .badge-hiroshima { color: #8D99AE; background: rgba(141, 153, 174, 0.12); }
-.modern-timeline .badge-osaka { color: #E29578; background: rgba(226, 149, 120, 0.12); }
-
-.modern-timeline .inline-transport {
-    display: flex;
-    margin-top: 12px;
-    padding-left: 5px;
-}
-
-.modern-timeline .inline-transport.double-stack {
-    flex-direction: column;
-    gap: 6px;
-}
-
-.modern-timeline .transport-badge {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-main);
-    background: #121212;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 4px 12px;
-    border-radius: 30px;
-    width: fit-content;
-}
-
-.modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
-
-/* ==========================================================================
-   5. LEXIQUE DE SURVIE
-   ========================================================================== */
-.lexique-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-.lexique-category {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #BC4749;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 4px;
-}
-.phrase {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    align-items: center;
-}
-.phrase span { color: var(--text-dim); }
-.phrase strong { color: var(--text-main); font-weight: 600; }
+.modern-timeline .badge-kiso { color: #6A994E; background: rgba(106, 153, 78,
