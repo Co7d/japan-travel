@@ -107,37 +107,112 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 /* ==========================================================================
-   4. NOUVELLE TIMELINE GRAPHIQUE CONNECTÉE (SANS LIGNES NI POINTS)
+   4. TIMELINE COMPACTE ALTERNÉE (STYLE APPS DE VOYAGE PREMIUM)
    ========================================================================== */
-.timeline-container {
+.timeline-compact-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    margin: 10px 0 20px 0;
     width: 100%;
 }
 
-.new-step-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 16px;
+/* Conteneur de ligne flex divisé en 3 colonnes symétriques */
+.compact-step {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.2fr;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    min-height: 80px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.compact-step:not(.no-click):active {
+    background: rgba(255, 255, 255, 0.03);
+    transform: scale(0.99);
+}
+
+/* Colonne Gauche : Ville et Dates */
+.compact-left {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    box-sizing: border-box;
-    transition: transform 0.2s;
+    text-align: right;
+    padding-right: 12px;
 }
 
-.new-step-card:active { 
-    transform: scale(0.98); 
+.compact-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
 }
 
-.step-main {
+.compact-meta {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+/* Colonne Centrale : L'axe vertical graphique et coloré */
+.compact-axis {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Crée la ligne verticale continue en arrière-plan */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 100%, transparent 0%);
+    background-position: center;
+    background-size: 2px 100%;
+    background-repeat: repeat-y;
+}
+
+/* Supprime le bout de ligne sous le tout dernier élément */
+.last-axis {
+    background-image: none !important;
+}
+
+/* Le badge central textuel (Vibe) */
+.compact-badge-vibe {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Colonne Droite : Le moyen de transport vers l'étape suivante */
+.compact-right {
     display: flex;
     align-items: center;
+    padding-left: 12px;
+    text-align: left;
 }
 
-.step-icon { 
-    font-size: 28px; 
-    margin-right:
+.compact-transport {
+    font-size: 12px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+/* Couleurs thématiques de l'axe et des badges textuels */
+.bg-tokyo .compact-badge-vibe { background: #BC4749; color: #ffffff; }
+.bg-kawaguchi .compact-badge-vibe { background: #457B9D; color: #ffffff; }
+.bg-kiso .compact-badge-vibe { background: #6A994E; color: #ffffff; }
+.bg-kyoto .compact-badge-vibe { background: #D4A373; color: #000000; }
+.bg-hiroshima .compact-badge-vibe { background: #8D99AE; color: #ffffff; }
+.bg-osaka .compact-badge-vibe { background: #E29578; color: #000000; }
+
+/* Indicateur discret de clic sur les côtés de la carte (Bordure subtile au survol/active) */
+.link-tokyo { border-right: 2px solid rgba(188, 71, 73, 0.1); }
+.link-kawaguchi { border-right: 2px solid rgba(69, 123, 157, 0.1); }
+.link-kiso { border-right: 2px solid rgba(106, 153, 78, 0.1); }
+.link-kyoto { border-right: 2px solid rgba(212, 163, 115, 0.1); }
+.link-hiroshima { border-right: 2px solid rgba(141, 153, 174, 0.1); }
+.link-osaka { border-right: 2px solid rgba(226, 149, 120, 0.1); }
