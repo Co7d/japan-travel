@@ -75,7 +75,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     flex-wrap: wrap;
 }
 
-/* Rétablissement des badges du haut de tes pages de villes */
 .detail-page .date-badge, 
 .detail-page .vibe-badge {
     font-size: 11px;
@@ -87,9 +86,8 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     display: inline-block;
 }
 
-/* Style de base pour ta vibe en majuscule blanche d'origine */
 .detail-page .vibe-badge {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     color: #FFFFFF;
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -103,17 +101,28 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     margin: 25px 0 10px 0;
 }
 
-/* Ajustements pour tes listes d'activités intérieures */
+/* FIX DU CORPS DE LA CARTE */
 .detail-page .detail-card {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: block; /* Annule le flex-direction column qui cassait tout */
+    padding: 0 !important;
 }
 
-.detail-page .detail-item {
+/* FIX DES LIENS INTERNES (HÉBERGEMENT) */
+.detail-page a.detail-item {
+    display: flex !important;
+    flex-direction: row !important; /* Force l'alignement horizontal */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* STRUCTURE EN CAS DE SIMPLE DIV (ACTIVITÉS / RESTOS) */
+.detail-page div.detail-item {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    padding: 12px 20px;
 }
 
 .detail-page .place-name {
