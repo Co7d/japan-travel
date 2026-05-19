@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Japon 2026</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="dark-mode">
@@ -31,129 +31,143 @@
             </div>
         </div>
 
-        <div class="card glass" style="padding: 10px; display: flex; justify-content: center; align-items: center;">
-            <img src="itineraire.png" alt="Itinéraire Japon 2026" style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; display: block;">
+        <div class="card glass card-map">
+            <img src="itineraire.png" alt="Itinéraire Japon 2026">
         </div>
 
-        <nav class="timeline-bubbles-container">
+        <div class="modern-timeline">
             
-            <div class="timeline-bubble border-tokyo">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🗼</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Tokyo</span>
-                        <span class="bubble-vibe vibe-tokyo">Immersion</span>
+            <div class="timeline-item item-tokyo">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🗼</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Tokyo</span>
+                            <span class="vibe-badge badge-tokyo">Immersion</span>
+                        </div>
+                        <span class="city-meta">16 au 20 Nov • 5 Jours</span>
+                    </div>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
-                <span class="bubble-meta">16 au 20 Nov • 5 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-tokyo">
-                <div class="connector-line"></div>
-                <span class="compact-transport">🚄 Shinkansen</span>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-kawaguchi">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🗻</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Kawaguchiko</span>
-                        <span class="bubble-vibe vibe-kawaguchi">Nature</span>
+            <div class="timeline-item item-kawaguchi">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🗻</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Kawaguchiko</span>
+                            <span class="vibe-badge badge-kawaguchi">Nature</span>
+                        </div>
+                        <span class="city-meta">20 au 22 Nov • 3 Jours</span>
+                    </div>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚗 Voiture</span>
                     </div>
                 </div>
-                <span class="bubble-meta">20 au 22 Nov • 3 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-kawaguchi">
-                <div class="connector-line"></div>
-                <span class="compact-transport">🚗 Voiture</span>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-kiso">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🌲</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Vallée de Kiso</span>
-                        <span class="bubble-vibe vibe-kiso">Rando</span>
+            <div class="timeline-item item-kiso">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🌲</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Vallée de Kiso</span>
+                            <span class="vibe-badge badge-kiso">Rando</span>
+                        </div>
+                        <span class="city-meta">22 au 23 Nov • 2 Jours</span>
+                    </div>
+                    <div class="inline-transport double-stack">
+                        <span class="transport-badge">🚗 Voiture</span>
+                        <span class="transport-badge">🚄 Train</span>
                     </div>
                 </div>
-                <span class="bubble-meta">22 au 23 Nov • 2 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-kiso">
-                <div class="connector-line"></div>
-                <div class="double-transport">
-                    <span class="compact-transport">🚗 Voiture</span>
-                    <span class="compact-transport">🚄 Train</span>
+            <div class="timeline-item item-kyoto">
+                <div class="timeline-left">
+                    <div class="timeline-dot">⛩️</div>
+                    <div class="timeline-line"></div>
                 </div>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-kyoto">
-                <div class="bubble-header">
-                    <span class="bubble-icon">⛩️</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Kyoto</span>
-                        <span class="bubble-vibe vibe-kyoto">Tradition</span>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Kyoto</span>
+                            <span class="vibe-badge badge-kyoto">Tradition</span>
+                        </div>
+                        <span class="city-meta">23 au 28 Nov • 6 Jours</span>
+                    </div>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
-                <span class="bubble-meta">23 au 28 Nov • 6 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-kyoto">
-                <div class="connector-line"></div>
-                <span class="compact-transport">🚄 Shinkansen</span>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-hiroshima">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🕊️</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Hiroshima</span>
-                        <span class="bubble-vibe vibe-hiroshima">Histoire</span>
+            <div class="timeline-item item-hiroshima">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🕊️</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Hiroshima</span>
+                            <span class="vibe-badge badge-hiroshima">Histoire</span>
+                        </div>
+                        <span class="city-meta">28 au 29 Nov • 2 Jours</span>
+                    </div>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
-                <span class="bubble-meta">28 au 29 Nov • 2 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-hiroshima">
-                <div class="connector-line"></div>
-                <span class="compact-transport">🚄 Shinkansen</span>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-osaka">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🐙</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Osaka</span>
-                        <span class="bubble-vibe vibe-osaka">Food</span>
+            <div class="timeline-item item-osaka">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🐙</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Osaka</span>
+                            <span class="vibe-badge badge-osaka">Food</span>
+                        </div>
+                        <span class="city-meta">29 Nov au 02 Dec • 4 Jours</span>
+                    </div>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
-                <span class="bubble-meta">29 Nov au 02 Dec • 4 Jours</span>
             </div>
 
-            <div class="timeline-connector bg-osaka">
-                <div class="connector-line"></div>
-                <span class="compact-transport">🚄 Shinkansen</span>
-                <div class="connector-line"></div>
-            </div>
-
-            <div class="timeline-bubble border-tokyo" style="margin-bottom: 20px;">
-                <div class="bubble-header">
-                    <span class="bubble-icon">🗼</span>
-                    <div class="bubble-title-block">
-                        <span class="bubble-name">Tokyo</span>
-                        <span class="bubble-vibe vibe-tokyo">Sayōnara</span>
+            <div class="timeline-item item-tokyo last-item">
+                <div class="timeline-left">
+                    <div class="timeline-dot">🗼</div>
+                </div>
+                <div class="timeline-right">
+                    <div class="timeline-card">
+                        <div class="card-header">
+                            <span class="city-name">Tokyo</span>
+                            <span class="vibe-badge badge-tokyo">Sayōnara</span>
+                        </div>
+                        <span class="city-meta">02 au 05 Dec • 4 Jours</span>
                     </div>
                 </div>
-                <span class="bubble-meta">02 au 05 Dec • 4 Jours</span>
             </div>
 
-        </nav>
+        </div>
 
         <section class="card glass">
             <h3><i data-lucide="languages"></i> Lexique de Survie</h3>
@@ -174,12 +188,8 @@
     </div>
 
     <script>
-        // Initialisation des icônes Lucide
         lucide.createIcons();
-
-        // --- CODE DU TIMER (A completer si besoin) ---
-        const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
-        // Ton script de calcul de décompte ici...
+        // Ton script JavaScript pour le timer vient ici sans problème
     </script>
 </body>
 </html>
