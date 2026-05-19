@@ -193,5 +193,45 @@
             lucide.createIcons();
         });
     </script>
+        <script>
+        function updateCountdown() {
+            // Définis ta date de départ ici (Format: Année, Mois [0-11], Jour, Heure, Minute)
+            // Exemple : 16 Novembre 2026 à 08h00
+            const departureDate = new Date(2026, 10, 16, 8, 0, 0); 
+            const now = new Date();
+            const difference = departureDate - now;
+
+            const timerElement = document.getElementById('timer');
+            const statusElement = document.querySelector('.stat-value'); // Cible le texte du statut
+
+            // Si la date est dépassée
+            if (difference <= 0) {
+                if (timerElement) timerElement.innerText = "000 : 00 : 00 : 00";
+                if (statusElement) statusElement.innerText = "En cours / Immersion Urbaine 🗼";
+                return;
+            }
+
+            // Calcul des jours, heures, minutes, secondes
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Formater avec des zéros au début (ex: 05 au lieu de 5)
+            const formatDays = String(days).padStart(3, '0');
+            const formatHours = String(hours).padStart(2, '0');
+            const formatMinutes = String(minutes).padStart(2, '0');
+            const formatSeconds = String(seconds).padStart(2, '0');
+
+            // Affichage dans le HTML
+            if (timerElement) {
+                timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
+            }
+        }
+
+        // Lancer le compteur immédiatement puis toutes les secondes
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
