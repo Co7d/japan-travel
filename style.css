@@ -138,21 +138,20 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 
 .transport-badge {
     position: absolute;
-    top: 75px; /* Ajusté pour être entre deux points */
+    top: 70px; /* Ajusté pour centrer avec la nouvelle taille */
     left: 50%;
     transform: translateX(-50%);
     background: #1A1A1A;
     border: 1px solid #3D3D3D;
-    width: 28px;
-    height: 28px;
+    width: 36px;  /* Plus grand (anciennement 28px) */
+    height: 36px; /* Plus grand (anciennement 28px) */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-size: 14px;
-    z-index: 4; /* Au-dessus de tout */
+    font-size: 18px; /* Émoji plus grand pour la lisibilité */
+    z-index: 4;
 }
-
 /* --- INFOS DANS LA TUILE --- */
 .step-icon { font-size: 28px; margin-right: 15px; }
 .step-details { display: flex; flex-direction: column; }
@@ -186,19 +185,23 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .phrase { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px; }
 /* Positionnement pour deux badges dans le même trajet */
 .transport-badge.pos-1 {
-    top: 45px; /* Plus haut */
+    top: 45px; /* Position ajustée pour le premier badge */
 }
 
 .transport-badge.pos-2 {
-    top: 85px; /* Plus bas */
+    top: 95px; /* Position ajustée pour le deuxième badge */
 }
 
 /* On ajuste la ligne pour qu'elle soit bien visible derrière les badges */
 .line {
+    position: absolute;
     width: 2px;
-    flex-grow: 1;
     background: rgba(255, 255, 255, 0.2);
-    margin-bottom: -15px;
+    top: 34px;      /* Aligné pile au centre du premier point rouge */
+    bottom: -34px;  /* Descend exactement jusqu'au centre du point suivant */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 /* --- STYLE DU LEXIQUE AMÉLIORÉ --- */
@@ -429,4 +432,8 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 /* Supprime l'espace excessif sous la carte pour harmoniser avec la timeline */
 .grid-stats + .card.glass {
     margin-bottom: 5px !important;
+}
+/* Empêche la ligne de dépasser sous la toute dernière étape */
+.step-wrapper:nth-last-child(2) .line {
+    display: none;
 }
