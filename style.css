@@ -26,14 +26,15 @@ body {
 }
 
 /* ==========================================================================
-   2. EN-TÊTES & CARTES GÉNÉRIQUES
+   2. EN-TÊTES & CARTES GÉNÉRIQUES (COMPATIBLES TOUTES PAGES)
    ========================================================================== */
 header { padding: 10px 0 5px 0; }
 h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
+/* Règle globale pour toutes tes bulles/cartes du site */
 .card.glass {
-    background: var(--card-bg);
+    background: rgba(28, 28, 30, 0.7); /* Légèrement plus opaque pour les sous-pages */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
@@ -41,6 +42,11 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     padding: 20px;
     margin-bottom: 12px;
     box-sizing: border-box;
+}
+
+/* Sécurité pour tes éléments flex de sous-pages (activités, hébergement...) */
+.card.glass > div {
+    width: 100%;
 }
 
 /* Carte Itinéraire Uniforme */
@@ -53,6 +59,12 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: 100%;
     height: auto;
     border-radius: 14px;
+}
+
+/* Support pour tes anciens liens/boutons retours globaux s'ils utilisaient des structures spécifiques */
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* ==========================================================================
@@ -96,7 +108,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
 
 /* ==========================================================================
-   4. TIMELINE FIL D'ARIANE (ASYMÉTRIQUE À GAUCHE)
+   4. TIMELINE FIL D'ARIANE (ISOLÉE UNIQUEMENT SUR LA HOME)
    ========================================================================== */
 .modern-timeline {
     display: flex;
@@ -112,7 +124,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: 100%;
 }
 
-/* Colonne de gauche : Le fil et les points */
 .modern-timeline .timeline-left {
     display: flex;
     flex-direction: column;
@@ -145,7 +156,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     opacity: 0.35;
 }
 
-/* Couleurs des lignes du fil */
 .modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
 .modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
 .modern-timeline .item-kiso .timeline-line { background: #6A994E; }
@@ -153,7 +163,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .item-hiroshima .timeline-line { background: #8D99AE; }
 .modern-timeline .item-osaka .timeline-line { background: #E29578; }
 
-/* Colonne de droite : Les bulles (Liens cliquables) */
 .modern-timeline .timeline-right {
     flex-grow: 1;
     padding-left: 12px;
@@ -175,13 +184,11 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     text-decoration: none;
 }
 
-.modern-timeline .timeline-card:hover, 
-.modern-timeline .timeline-card:active {
+.modern-timeline .timeline-card:hover, .modern-timeline .timeline-card:active {
     transform: scale(0.98);
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Fines bordures gauches colorées */
 .modern-timeline .item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
 .modern-timeline .item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
 .modern-timeline .item-kiso .timeline-card { border-left: 3px solid #6A994E; }
@@ -199,7 +206,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
 .modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
-/* Badges Vibes de la timeline uniquement */
 .modern-timeline .vibe-badge {
     font-size: 10px;
     font-weight: 800;
@@ -215,7 +221,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .badge-hiroshima { color: #8D99AE; background: rgba(141, 153, 174, 0.12); }
 .modern-timeline .badge-osaka { color: #E29578; background: rgba(226, 149, 120, 0.12); }
 
-/* Transports sur le fil */
 .modern-timeline .inline-transport {
     display: flex;
     margin-top: 12px;
@@ -239,3 +244,31 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 }
 
 .modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
+
+/* ==========================================================================
+   5. LEXIQUE DE SURVIE
+   ========================================================================== */
+.lexique-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+.lexique-category {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #BC4749;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+}
+.phrase {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    align-items: center;
+}
+.phrase span { color: var(--text-dim); }
+.phrase strong { color: var(--text-main); font-weight: 600; }
