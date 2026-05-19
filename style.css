@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIABLES & RESET
+   1. VARIABLES & RESET BASIQUE
    ========================================================================= */
 :root {
     --bg-color: #000000;
@@ -25,148 +25,78 @@ body {
     max-width: 420px;
 }
 
-/* ==========================================================================
-   2. STYLES GENERIQUES & STRUCTURES GLASS
-   ========================================================================= */
 h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
+/* Bulles génériques (utilisées pour les widgets de la home et les blocs de détails) */
 .card.glass {
-    background: rgba(28, 28, 30, 0.7);
+    background: rgba(28, 28, 30, 0.4) !important;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--glass-border) !important;
     border-radius: 22px;
     padding: 20px;
     margin-bottom: 12px;
     box-sizing: border-box;
 }
 
-/* Carte Itinéraire de la Home */
-.card-map {
-    padding: 10px !important;
-    margin-bottom: 25px !important;
-}
-.card-map img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-}
+.card-map { padding: 10px !important; margin-bottom: 25px !important; }
+.card-map img { display: block; width: 100%; height: auto; border-radius: 14px; }
+
 
 /* ==========================================================================
-   3. DESIGN DES PAGES DE DÉTAIL (TOKYO, KYOTO, ETC.)
+   2. EXCLUSIF COMPOSANTS HOME (TIMELINE & TRANSPORTS)
    ========================================================================= */
-.detail-page .back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 20px;
-}
-
-.detail-page .header-meta {
+.modern-timeline {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.detail-page .date-badge, 
-.detail-page .vibe-badge {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 6px 12px;
-    border-radius: 12px;
-    display: inline-block;
-}
-
-.detail-page .vibe-badge {
-    background: rgba(255, 255, 255, 0.05);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.detail-page .section-title {
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin: 25px 0 10px 0;
-}
-
-/* FIX DU CORPS DE LA CARTE */
-.detail-page .detail-card {
-    display: block;
-    padding: 0 !important;
-}
-
-/* FIX DES LIENS INTERNES (HÉBERGEMENT) */
-.detail-page a.detail-item {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
+    margin-bottom: 25px;
+    padding-left: 5px;
     box-sizing: border-box;
 }
 
-/* STRUCTURE EN CAS DE SIMPLE DIV (ACTIVITÉS / RESTOS) */
-.detail-page div.detail-item {
+.modern-timeline .timeline-item {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 20px;
+    width: 100%;
+    position: relative;
 }
 
-.detail-page .place-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #FFFFFF;
-}
-
-.detail-page .place-desc {
-    font-size: 14px;
-    color: var(--text-dim);
-}
-
-.detail-page .maps-link {
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    margin-top: 4px;
-}
-
-/* ==========================================================================
-   4. WIDGET HOME : STATS & TIMER
-   ========================================================================= */
-.countdown-section {
+.modern-timeline .timeline-left {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    width: 50px;
+    flex-shrink: 0;
+    position: relative;
 }
-#timer {
-    font-size: 32px;
-    font-weight: 850;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
+
+.modern-timeline .timeline-dot {
+    width: 36px;
+    height: 36px;
+    background: #1C1C1E;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 3;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
-.countdown-section .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #BC4749; 
-    background: rgba(188, 71, 73, 0.1); 
-    padding: 6px 16px
+
+/* Trait continu de la timeline */
+.modern-timeline .timeline-line {
+    width: 3px;
+    position: absolute;
+    top: 36px;
+    bottom: -35px; 
+    z-index: 1;
+    opacity: 0.35;
+}
+
+.modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
+.modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
+.modern-timeline .item-kiso .timeline-line { background: #6A994E; }
+.modern-timeline .item-kyoto .timeline-line { background: #D4A373; }
+.
