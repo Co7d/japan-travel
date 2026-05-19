@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIABLES & RESET BASIQUE
+   1. VARIABLES & RESET GLOBAL
    ========================================================================= */
 :root {
     --bg-color: #000000;
@@ -28,7 +28,7 @@ body {
 h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
-/* Bulles génériques (utilisées pour les widgets de la home et les blocs de détails) */
+/* Les blocs vitrés standards (Compte à rebours, Stats, Lexique, Blocs de détails) */
 .card.glass {
     background: rgba(28, 28, 30, 0.4) !important;
     backdrop-filter: blur(20px);
@@ -45,9 +45,9 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 
 
 /* ==========================================================================
-   2. EXCLUSIF COMPOSANTS HOME (TIMELINE & TRANSPORTS)
+   2. PAGE D'ACCUEIL (HOME / INDEX) : TIMELINE & TRANSPORTS
    ========================================================================= */
-.modern-timeline {
+.index-page .modern-timeline {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -56,13 +56,13 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-sizing: border-box;
 }
 
-.modern-timeline .timeline-item {
+.index-page .timeline-item {
     display: flex;
     width: 100%;
     position: relative;
 }
 
-.modern-timeline .timeline-left {
+.index-page .timeline-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,7 +71,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     position: relative;
 }
 
-.modern-timeline .timeline-dot {
+.index-page .timeline-dot {
     width: 36px;
     height: 36px;
     background: #1C1C1E;
@@ -85,18 +85,48 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* Trait continu de la timeline */
-.modern-timeline .timeline-line {
+/* Trait continu de la ligne temporelle */
+.index-page .timeline-line {
     width: 3px;
     position: absolute;
     top: 36px;
-    bottom: -35px; 
+    bottom: -30px; 
     z-index: 1;
     opacity: 0.35;
 }
 
-.modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
-.modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
-.modern-timeline .item-kiso .timeline-line { background: #6A994E; }
-.modern-timeline .item-kyoto .timeline-line { background: #D4A373; }
-.
+.index-page .item-tokyo .timeline-line { background: #BC4749; }
+.index-page .item-kawaguchi .timeline-line { background: #457B9D; }
+.index-page .item-kiso .timeline-line { background: #6A994E; }
+.index-page .item-kyoto .timeline-line { background: #D4A373; }
+.index-page .item-hiroshima .timeline-line { background: #8D99AE; }
+.index-page .item-osaka .timeline-line { background: #E29578; }
+
+.index-page .timeline-right {
+    flex-grow: 1;
+    padding-left: 12px;
+    padding-bottom: 30px; 
+    box-sizing: border-box;
+}
+
+/* Cartes cliquables de la timeline */
+.index-page .timeline-card {
+    background: rgba(28, 28, 30, 0.4) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 18px;
+    padding: 14px 18px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: block !important;
+    text-decoration: none;
+}
+
+.index-page .timeline-card:hover {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.index-page .item-tokyo .timeline-card { border-left:
