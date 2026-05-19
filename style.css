@@ -107,13 +107,13 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-sizing: border-box;
 }
 
-.timeline-item {
+.modern-timeline .timeline-item {
     display: flex;
     width: 100%;
 }
 
 /* Colonne de gauche : Le fil et les points */
-.timeline-left {
+.modern-timeline .timeline-left {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +122,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     position: relative;
 }
 
-.timeline-dot {
+.modern-timeline .timeline-dot {
     width: 36px;
     height: 36px;
     background: #1C1C1E;
@@ -136,7 +136,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-.timeline-line {
+.modern-timeline .timeline-line {
     width: 3px;
     position: absolute;
     top: 36px;
@@ -145,23 +145,23 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     opacity: 0.35;
 }
 
-/* Couleurs des lignes */
-.item-tokyo .timeline-line { background: #BC4749; }
-.item-kawaguchi .timeline-line { background: #457B9D; }
-.item-kiso .timeline-line { background: #6A994E; }
-.item-kyoto .timeline-line { background: #D4A373; }
-.item-hiroshima .timeline-line { background: #8D99AE; }
-.item-osaka .timeline-line { background: #E29578; }
+/* Couleurs des lignes du fil */
+.modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
+.modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
+.modern-timeline .item-kiso .timeline-line { background: #6A994E; }
+.modern-timeline .item-kyoto .timeline-line { background: #D4A373; }
+.modern-timeline .item-hiroshima .timeline-line { background: #8D99AE; }
+.modern-timeline .item-osaka .timeline-line { background: #E29578; }
 
 /* Colonne de droite : Les bulles (Liens cliquables) */
-.timeline-right {
+.modern-timeline .timeline-right {
     flex-grow: 1;
     padding-left: 12px;
     padding-bottom: 20px; 
     box-sizing: border-box;
 }
 
-.timeline-card {
+.modern-timeline .timeline-card {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -171,38 +171,36 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: 100%;
     box-sizing: border-box;
     transition: transform 0.2s ease, background-color 0.2s ease;
-    
-    /* Config pour les liens cliquables */
     display: block;
     text-decoration: none;
 }
 
-/* Effet Feedback au survol et au clic */
-.timeline-card:hover, .timeline-card:active {
+.modern-timeline .timeline-card:hover, 
+.modern-timeline .timeline-card:active {
     transform: scale(0.98);
     background: rgba(255, 255, 255, 0.08);
 }
 
 /* Fines bordures gauches colorées */
-.item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
-.item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
-.item-kiso .timeline-card { border-left: 3px solid #6A994E; }
-.item-kyoto .timeline-card { border-left: 3px solid #D4A373; }
-.item-hiroshima .timeline-card { border-left: 3px solid #8D99AE; }
-.item-osaka .timeline-card { border-left: 3px solid #E29578; }
+.modern-timeline .item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
+.modern-timeline .item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
+.modern-timeline .item-kiso .timeline-card { border-left: 3px solid #6A994E; }
+.modern-timeline .item-kyoto .timeline-card { border-left: 3px solid #D4A373; }
+.modern-timeline .item-hiroshima .timeline-card { border-left: 3px solid #8D99AE; }
+.modern-timeline .item-osaka .timeline-card { border-left: 3px solid #E29578; }
 
-.card-header {
+.modern-timeline .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 6px;
 }
 
-.city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
-.city-meta { font-size: 13px; color: var(--text-dim); display: block; }
+.modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
+.modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
-/* Badges Vibes */
-.vibe-badge {
+/* Badges Vibes de la timeline uniquement */
+.modern-timeline .vibe-badge {
     font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
@@ -210,26 +208,26 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     padding: 4px 10px;
     border-radius: 12px;
 }
-.badge-tokyo { color: #BC4749; background: rgba(188, 71, 73, 0.12); }
-.badge-kawaguchi { color: #457B9D; background: rgba(69, 123, 157, 0.12); }
-.badge-kiso { color: #6A994E; background: rgba(106, 153, 78, 0.12); }
-.badge-kyoto { color: #D4A373; background: rgba(212, 163, 115, 0.12); }
-.badge-hiroshima { color: #8D99AE; background: rgba(141, 153, 174, 0.12); }
-.badge-osaka { color: #E29578; background: rgba(226, 149, 120, 0.12); }
+.modern-timeline .badge-tokyo { color: #BC4749; background: rgba(188, 71, 73, 0.12); }
+.modern-timeline .badge-kawaguchi { color: #457B9D; background: rgba(69, 123, 157, 0.12); }
+.modern-timeline .badge-kiso { color: #6A994E; background: rgba(106, 153, 78, 0.12); }
+.modern-timeline .badge-kyoto { color: #D4A373; background: rgba(212, 163, 115, 0.12); }
+.modern-timeline .badge-hiroshima { color: #8D99AE; background: rgba(141, 153, 174, 0.12); }
+.modern-timeline .badge-osaka { color: #E29578; background: rgba(226, 149, 120, 0.12); }
 
 /* Transports sur le fil */
-.inline-transport {
+.modern-timeline .inline-transport {
     display: flex;
     margin-top: 12px;
     padding-left: 5px;
 }
 
-.inline-transport.double-stack {
+.modern-timeline .inline-transport.double-stack {
     flex-direction: column;
     gap: 6px;
 }
 
-.transport-badge {
+.modern-timeline .transport-badge {
     font-size: 12px;
     font-weight: 600;
     color: var(--text-main);
@@ -240,32 +238,4 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: fit-content;
 }
 
-.last-item .timeline-right { padding-bottom: 5px; }
-
-/* ==========================================================================
-   5. LEXIQUE DE SURVIE
-   ========================================================================== */
-.lexique-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-.lexique-category {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #BC4749;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 4px;
-}
-.phrase {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    align-items: center;
-}
-.phrase span { color: var(--text-dim); }
-.phrase strong { color: var(--text-main); font-weight: 600; }
+.modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
