@@ -1,382 +1,192 @@
 /* ==========================================================================
-
    1. VARIABLES & RESET
-
    ========================================================================= */
-
 :root {
-
     --bg-color: #000000;
-
     --card-bg: rgba(28, 28, 30, 0.4);
-
     --text-main: #FFFFFF;
-
     --text-dim: #8E8E93;
-
     --glass-border: rgba(255, 255, 255, 0.08);
-
 }
-
-
 
 body {
-
     background-color: var(--bg-color);
-
     color: var(--text-main);
-
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
     margin: 0;
-
     padding: 20px;
-
     display: flex;
-
     justify-content: center;
-
     -webkit-font-smoothing: antialiased;
-
 }
-
-
 
 .app-container {
-
     width: 100%;
-
     max-width: 420px;
-
 }
 
-
-
 /* ==========================================================================
-
    2. STYLES GENERIQUES & STRUCTURES GLASS
-
    ========================================================================= */
-
 h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
-
 .subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
-
-
 .card.glass {
-
     background: rgba(28, 28, 30, 0.7);
-
     backdrop-filter: blur(20px);
-
     -webkit-backdrop-filter: blur(20px);
-
     border: 1px solid var(--glass-border);
-
     border-radius: 22px;
-
     padding: 20px;
-
     margin-bottom: 12px;
-
     box-sizing: border-box;
-
 }
-
-
 
 /* Carte Itinéraire de la Home */
-
 .card-map {
-
     padding: 10px !important;
-
     margin-bottom: 25px !important;
-
 }
-
 .card-map img {
-
     display: block;
-
     width: 100%;
-
     height: auto;
-
     border-radius: 14px;
-
 }
-
-
 
 /* ==========================================================================
-
    3. DESIGN DES PAGES DE DÉTAIL (TOKYO, KYOTO, ETC.)
-
    ========================================================================= */
-
 .detail-page .back-button {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 5px;
-
     font-size: 16px;
-
     font-weight: 600;
-
     text-decoration: none;
-
     margin-bottom: 20px;
-
 }
-
-
 
 .detail-page .header-meta {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-bottom: 10px;
-
     flex-wrap: wrap;
-
 }
-
-
 
 .detail-page .date-badge, 
-
 .detail-page .vibe-badge {
-
     font-size: 11px;
-
     font-weight: 800;
-
     text-transform: uppercase;
-
     letter-spacing: 0.5px;
-
     padding: 6px 12px;
-
     border-radius: 12px;
-
     display: inline-block;
-
 }
-
-
 
 .detail-page .vibe-badge {
-
     background: rgba(255, 255, 255, 0.05);
-
     color: #FFFFFF;
-
     border: 1px solid rgba(255, 255, 255, 0.15);
-
 }
-
-
 
 .detail-page .section-title {
-
     font-size: 14px;
-
     font-weight: 800;
-
     text-transform: uppercase;
-
     color: var(--text-dim);
-
     letter-spacing: 1px;
-
     margin: 25px 0 10px 0;
-
 }
-
-
 
 /* FIX DU CORPS DE LA CARTE */
-
 .detail-page .detail-card {
-
     display: block; /* Annule le flex-direction column qui cassait tout */
-
     padding: 0 !important;
-
 }
-
-
 
 /* FIX DES LIENS INTERNES (HÉBERGEMENT) */
-
 .detail-page a.detail-item {
-
     display: flex !important;
-
     flex-direction: row !important; /* Force l'alignement horizontal */
-
     justify-content: space-between;
-
     align-items: center;
-
     width: 100%;
-
     box-sizing: border-box;
-
 }
-
-
 
 /* STRUCTURE EN CAS DE SIMPLE DIV (ACTIVITÉS / RESTOS) */
-
 .detail-page div.detail-item {
-
     display: flex;
-
     flex-direction: column;
-
     gap: 4px;
-
     padding: 12px 20px;
-
 }
-
-
 
 .detail-page .place-name {
-
     font-size: 17px;
-
     font-weight: 700;
-
     color: #FFFFFF;
-
 }
-
-
 
 .detail-page .place-desc {
-
     font-size: 14px;
-
     color: var(--text-dim);
-
 }
-
-
 
 .detail-page .maps-link {
-
     display: inline-flex;
-
     align-items: center;
-
     width: fit-content;
-
     padding: 6px 14px;
-
     border-radius: 20px;
-
     font-size: 13px;
-
     font-weight: 700;
-
     text-decoration: none;
-
     margin-top: 4px;
-
 }
-
-
 
 /* ==========================================================================
-
    4. WIDGET HOME : STATS & TIMER
-
    ========================================================================= */
-
 .countdown-section {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     text-align: center;
-
 }
-
 #timer {
-
     font-size: 32px;
-
     font-weight: 850;
-
     margin-bottom: 12px;
-
     letter-spacing: -1px;
-
 }
-
 .countdown-section .label {
-
     font-size: 11px;
-
     text-transform: uppercase;
-
     letter-spacing: 2px;
-
     color: #BC4749; 
-
     background: rgba(188, 71, 73, 0.1); 
-
     padding: 6px 16px;
-
     border-radius: 20px;
-
     font-weight: 800;
-
     border: 1px solid rgba(188, 71, 73, 0.2);
-
     margin: 0;
-
 }
-
-
 
 .grid-stats { margin-bottom: 12px; }
-
 .stat-card.full-width { 
-
     display: flex; 
-
     align-items: center; 
-
     gap: 15px; 
-
     padding: 16px 20px !important; 
-
 }
-
 .stat-card i { width: 22px; height: 22px; color: #BC4749; }
-
 .stat-info { display: flex; flex-direction: column; }
-
 .stat-label { font-size: 12px; color: var(--text-dim); }
-
 .stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
-
-
 
 /* ==========================================================================
    5. TIMELINE FIL D'ARIANE (STRICTEMENT RÉSERVÉE À LA HOME)
@@ -393,7 +203,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .timeline-item {
     display: flex;
     width: 100%;
-    position: relative; /* Assure le bon positionnement de la ligne */
+    position: relative; /* Indispensable pour caler la ligne absolue */
 }
 
 .modern-timeline .timeline-left {
@@ -423,7 +233,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: 3px;
     position: absolute;
     top: 36px;
-    bottom: -30px; /* Augmenté de -15px à -30px pour que le trait passe derrière les transports */
+    bottom: -32px; /* Ajusté pour descendre parfaitement jusqu'au point suivant */
     z-index: 1;
     opacity: 0.35;
 }
@@ -438,7 +248,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .timeline-right {
     flex-grow: 1;
     padding-left: 12px;
-    padding-bottom: 35px; /* Augmenté de 20px à 35px pour créer l'espace nécessaire aux transports */
+    padding-bottom: 32px; /* Donne de l'air pour caler les transports en dessous */
     box-sizing: border-box;
 }
 
@@ -453,7 +263,8 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     box-sizing: border-box;
     transition: transform 0.2s ease, background-color 0.2s ease;
     display: block;
-    text-decoration: none;
+    text-decoration: none !important;
+    color: var(--text-main) !important; /* Bloque le bleu natif des liens */
 }
 
 .modern-timeline .timeline-card:hover, 
@@ -476,7 +287,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     margin-bottom: 6px;
 }
 
-.modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
+.modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF !important; text-decoration: none; }
 .modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
 /* FIX GLOBAL DES BADGES VIBES DANS LA TIMELINE */
@@ -487,7 +298,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     letter-spacing: 0.5px;
     padding: 4px 10px;
     border-radius: 12px;
-    display: inline-block; /* Force la forme de bulle */
+    display: inline-block; 
     border: none !important;
 }
 
@@ -500,29 +311,29 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .badge-osaka { color: #E29578 !important; background: rgba(226, 149, 120, 0.12) !important; }
 
 .modern-timeline .inline-transport {
-    display: flex !important; /* Force l'affichage en ligne */
-    flex-direction: row !important;
+    display: flex;
     gap: 8px;
     margin-top: 12px;
     padding-left: 5px;
 }
 
 .modern-timeline .inline-transport.double-stack {
-    flex-direction: column !important; /* Cas Kiso si empilé */
+    flex-direction: column;
     gap: 6px;
 }
 
 .modern-timeline .transport-badge {
     font-size: 12px;
     font-weight: 600;
-    color: var(--text-main);
-    background: #1C1C1E; /* Fond sombre pour la bulle */
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 4px 12px;
+    color: var(--text-main) !important;
+    background: #1C1C1E !important; /* Force le fond sombre en capsule */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    padding: 5px 12px;
     border-radius: 30px;
     width: fit-content;
-    display: inline-flex; /* Force le rendu en bulle */
+    display: inline-flex;
     align-items: center;
+    text-decoration: none !important; /* Supprime le soulignement s'il est dans un lien */
 }
 
 .modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
