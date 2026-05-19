@@ -16,14 +16,14 @@
             <p class="subtitle">Développé par Theo le meilleur</p>
         </header>
 
-        <section class="card glass countdown-section" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <section class="card glass countdown-section">
             <div id="timer">000 : 00 : 00 : 00</div>
-            <p class="label" style="background: none; border: none; padding: 0; color: #BC4749; font-size: 1.25em; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin: 0;">Avant l'aventure</p>
+            <p class="label">Avant l'aventure</p>
         </section>
 
         <div class="grid-stats">
             <div class="card glass stat-card full-width">
-                <i data-lucide="map-pin" style="color: #BC4749;"></i>
+                <i data-lucide="map-pin"></i>
                 <div class="stat-info">
                     <span class="stat-label">Statut du voyage</span>
                     <span id="next-step" class="stat-value">Tokyo (Départ)</span>
@@ -31,112 +31,112 @@
             </div>
         </div>
 
-        <div class="card glass" style="margin: -20px 0 10px 0 !important; padding: 10px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;">
-    <img src="itineraire.png" alt="Itinéraire Japon 2026" style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; display: block;">
-</div>
+        <div class="card glass" style="padding: 10px; display: flex; justify-content: center; align-items: center;">
+            <img src="itineraire.png" alt="Itinéraire Japon 2026" style="width: 100%; max-width: 100%; height: auto; border-radius: 15px; display: block;">
+        </div>
 
-        <nav class="timeline-container" style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-    
-    <div class="new-step-card border-tokyo">
-        <div class="step-main">
-            <div class="step-icon">🗼</div>
-            <div class="step-details">
-                <span class="step-name">Tokyo</span>
-                <span class="step-info">16 au 20 Nov • 5 Jours • <span class="vibe-tokyo">Immersion</span></span>
+        <nav class="timeline-container">
+            
+            <div class="new-step-card border-tokyo">
+                <div class="step-main">
+                    <div class="step-icon">🗼</div>
+                    <div class="step-details">
+                        <span class="step-name">Tokyo</span>
+                        <span class="step-info">16 au 20 Nov • 5 Jours • <span class="vibe-tokyo">Immersion</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <span class="transport-pill">🚄 Shinkansen</span>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <span class="transport-pill">🚄 Shinkansen</span>
-        </div>
-    </div>
 
-    <div class="new-step-card border-kawaguchi">
-        <div class="step-main">
-            <div class="step-icon">🗻</div>
-            <div class="step-details">
-                <span class="step-name">Kawaguchiko</span>
-                <span class="step-info">20 au 22 Nov • 3 Jours • <span class="vibe-kawaguchi">Nature</span></span>
+            <div class="new-step-card border-kawaguchi">
+                <div class="step-main">
+                    <div class="step-icon">🗻</div>
+                    <div class="step-details">
+                        <span class="step-name">Kawaguchiko</span>
+                        <span class="step-info">20 au 22 Nov • 3 Jours • <span class="vibe-kawaguchi">Nature</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <span class="transport-pill">🚗 Voiture</span>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <span class="transport-pill">🚗 Voiture</span>
-        </div>
-    </div>
 
-    <div class="new-step-card border-kiso">
-        <div class="step-main">
-            <div class="step-icon">🌲</div>
-            <div class="step-details">
-                <span class="step-name">Vallée de Kiso</span>
-                <span class="step-info">22 au 23 Nov • 2 Jours • <span class="vibe-kiso">Rando</span></span>
+            <div class="new-step-card border-kiso">
+                <div class="step-main">
+                    <div class="step-icon">🌲</div>
+                    <div class="step-details">
+                        <span class="step-name">Vallée de Kiso</span>
+                        <span class="step-info">22 au 23 Nov • 2 Jours • <span class="vibe-kiso">Rando</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <div style="display: flex; gap: 6px;">
+                        <span class="transport-pill">🚗 Voiture</span>
+                        <span class="transport-pill">🚄 Train</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <div style="display: flex; gap: 6px;">
-                <span class="transport-pill">🚗 Voiture</span>
-                <span class="transport-pill">🚄 Train</span>
+
+            <div class="new-step-card border-kyoto">
+                <div class="step-main">
+                    <div class="step-icon">⛩️</div>
+                    <div class="step-details">
+                        <span class="step-name">Kyoto</span>
+                        <span class="step-info">23 au 28 Nov • 6 Jours • <span class="vibe-kyoto">Tradition</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <span class="transport-pill">🚄 Shinkansen</span>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="new-step-card border-kyoto">
-        <div class="step-main">
-            <div class="step-icon">⛩️</div>
-            <div class="step-details">
-                <span class="step-name">Kyoto</span>
-                <span class="step-info">23 au 28 Nov • 6 Jours • <span class="vibe-kyoto">Tradition</span></span>
+            <div class="new-step-card border-hiroshima">
+                <div class="step-main">
+                    <div class="step-icon">🕊️</div>
+                    <div class="step-details">
+                        <span class="step-name">Hiroshima</span>
+                        <span class="step-info">28 au 29 Nov • 2 Jours • <span class="vibe-hiroshima">Histoire</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <span class="transport-pill">🚄 Shinkansen</span>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <span class="transport-pill">🚄 Shinkansen</span>
-        </div>
-    </div>
 
-    <div class="new-step-card border-hiroshima">
-        <div class="step-main">
-            <div class="step-icon">🕊️</div>
-            <div class="step-details">
-                <span class="step-name">Hiroshima</span>
-                <span class="step-info">28 au 29 Nov • 2 Jours • <span class="vibe-hiroshima">Histoire</span></span>
+            <div class="new-step-card border-osaka">
+                <div class="step-main">
+                    <div class="step-icon">🐙</div>
+                    <div class="step-details">
+                        <span class="step-name">Osaka</span>
+                        <span class="step-info">29 Nov au 02 Dec • 4 Jours • <span class="vibe-osaka">Food</span></span>
+                    </div>
+                </div>
+                <div class="step-next-transport">
+                    <span class="next-label">Prochain trajet :</span>
+                    <span class="transport-pill">🚄 Shinkansen</span>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <span class="transport-pill">🚄 Shinkansen</span>
-        </div>
-    </div>
 
-    <div class="new-step-card border-osaka">
-        <div class="step-main">
-            <div class="step-icon">🐙</div>
-            <div class="step-details">
-                <span class="step-name">Osaka</span>
-                <span class="step-info">29 Nov au 02 Dec • 4 Jours • <span class="vibe-osaka">Food</span></span>
+            <div class="new-step-card border-tokyo" style="margin-bottom: 20px;">
+                <div class="step-main">
+                    <div class="step-icon">🗼</div>
+                    <div class="step-details">
+                        <span class="step-name">Tokyo</span>
+                        <span class="step-info">02 au 05 Dec • 4 Jours • <span class="vibe-tokyo">Sayōnara</span></span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="step-next-transport">
-            <span class="next-label">Prochain trajet :</span>
-            <span class="transport-pill">🚄 Shinkansen</span>
-        </div>
-    </div>
 
-    <div class="new-step-card border-tokyo" style="margin-bottom: 20px;">
-        <div class="step-main">
-            <div class="step-icon">🗼</div>
-            <div class="step-details">
-                <span class="step-name">Tokyo</span>
-                <span class="step-info">02 au 05 Dec • 4 Jours • <span class="vibe-tokyo">Sayōnara</span></span>
-            </div>
-        </div>
-    </div>
+        </nav>
 
-</nav>
-
-        <section class="card glass lexique-section">
+        <section class="card glass">
             <h3><i data-lucide="languages"></i> Lexique de Survie</h3>
             <div class="lexique-grid">
                 <div class="lexique-category">Politesse</div>
@@ -157,93 +157,4 @@
     <script>
         // --- 1. DATES CLÉS DU VOYAGE (CALIBRÉES 2026) ---
         const DEPART_AVION = new Date("2026-11-15T10:00:00").getTime(); 
-        const ARRIVEE_TOKYO = new Date("2026-11-16T08:00:00").getTime();
-        const FIN_VOYAGE = new Date("2026-12-05T20:00:00").getTime(); 
-
-        // --- 2. MESSAGES FUNS ---
-        const messagesFuns = [
-            "🍣 Adieu jambon-beurre, bonjour SUSHI !",
-            "✈️ Attache ta ceinture, on décolle !",
-            "⛩️ Objectif : Devenir un vrai Ninja.",
-            "🍜 Alerte : Niveau de Ramen critique !",
-            "🚅 Shinkansen activé. Destination : Futur.",
-            "🍜 On est là pour la culture... et surtout pour les Ramen."
-        ];
-        const messageChoisi = messagesFuns[Math.floor(Math.random() * messagesFuns.length)];
-
-        // --- 3. CACHE DES ÉLÉMENTS DOM ---
-        const timerElement = document.getElementById("timer");
-        const labelElement = document.querySelector(".countdown-section .label");
-        const statusElement = document.getElementById("next-step");
-
-        // --- 4. FONCTION PRINCIPALE DE MISE À JOUR ---
-        function updateApp() {
-            const now = new Date().getTime();
-            const diff = DEPART_AVION - now;
-
-            // Calcul précis du jour de voyage (16 Nov = Jour 1)
-            const dayOfVoyage = Math.floor((now - ARRIVEE_TOKYO) / (1000 * 60 * 60 * 24)) + 1;
-
-            // A. GESTION DU TIMER
-            if (timerElement) {
-                if (now < DEPART_AVION) {
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                    timerElement.innerHTML = `${days.toString().padStart(3, '0')} : ${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
-                    if (labelElement) labelElement.innerHTML = "AVANT L'AVENTURE";
-
-                } else if (now >= DEPART_AVION && now <= FIN_VOYAGE) {
-                    timerElement.innerHTML = `<span style="font-size: 20px; color: #ffffff; line-height: 1.4; font-weight: 700;">${messageChoisi}</span>`;
-                    if (labelElement) {
-                        if (now < ARRIVEE_TOKYO) {
-                            labelElement.innerHTML = "DANS L'AVION ✈️";
-                        } else {
-                            labelElement.innerHTML = `JOUR ${dayOfVoyage} DU PÉRIPLE`; 
-                        }
-                    }
-                } else {
-                    timerElement.innerHTML = "MATANÉ ! 🌸";
-                    if (labelElement) labelElement.innerHTML = "SOUVENIRS ÉTERNELS";
-                }
-            }
-
-            // B. GESTION DU TEXTE "STATUT DU VOYAGE"
-            if (statusElement) {
-                if (now < DEPART_AVION) {
-                    statusElement.innerText = "Tokyo (Départ)";
-                } else if (now >= DEPART_AVION && now < ARRIVEE_TOKYO) {
-                    statusElement.innerText = "Dans l'avion ✈️";
-                } else if (now > FIN_VOYAGE) {
-                    statusElement.innerText = "Voyage terminé ❤️";
-                } else {
-                    if (dayOfVoyage >= 1 && dayOfVoyage <= 5) {
-                        statusElement.innerText = "Actuellement : Tokyo (Aller) 🗼";
-                    } else if (dayOfVoyage >= 5 && dayOfVoyage <= 7) {
-                        statusElement.innerText = "Actuellement : Kawaguchiko 🗻";
-                    } else if (dayOfVoyage >= 7 && dayOfVoyage <= 8) {
-                        statusElement.innerText = "Actuellement : Vallée de Kiso 🌲";
-                    } else if (dayOfVoyage >= 8 && dayOfVoyage <= 13) {
-                        statusElement.innerText = "Actuellement : Kyoto ⛩️";
-                    } else if (dayOfVoyage >= 13 && dayOfVoyage <= 14) {
-                        statusElement.innerText = "Actuellement : Hiroshima 🕊️";
-                    } else if (dayOfVoyage >= 14 && dayOfVoyage <= 17) {
-                        statusElement.innerText = "Actuellement : Osaka 🐙";
-                    } else if (dayOfVoyage >= 17 && dayOfVoyage <= 20) {
-                        statusElement.innerText = "Actuellement : Tokyo (Retour) 🗼";
-                    } else {
-                        statusElement.innerText = "Profitez bien ! ✨";
-                    }
-                }
-            }
-        }
-
-        // Initialisation de Lucide et du Chrono
-        lucide.createIcons();
-        updateApp();
-        setInterval(updateApp, 1000);
-    </script>
-</body>
-</html>
+        const ARRIVEE_TOKYO = new
