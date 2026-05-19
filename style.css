@@ -1,4 +1,6 @@
-/* --- BASE & MODE SOMBRE --- */
+/* ==========================================================================
+   1. BASE & VARIABLES (MODE SOMBRE SYSTEM)
+   ========================================================================== */
 :root {
     --bg-color: #000000;
     --card-bg: rgba(28, 28, 30, 0.7);
@@ -6,6 +8,7 @@
     --text-main: #FFFFFF;
     --text-dim: #8E8E93;
     --glass-border: rgba(255, 255, 255, 0.1);
+    --jp-red: #BC4749; /* Ton rouge japonais harmonisé */
 }
 
 body {
@@ -23,7 +26,9 @@ body {
     max-width: 420px;
 }
 
-/* --- HEADERS & CARDS --- */
+/* ==========================================================================
+   2. EN-TÊTES & STRUCTURE DES CARTES GLASS
+   ========================================================================== */
 header { padding: 20px 0; }
 h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .subtitle { color: var(--text-dim); margin-bottom: 20px; }
@@ -37,21 +42,50 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin-bottom: 15px;
 }
 
-/* --- WIDGETS --- */
-#timer { 
-    font-size: 26px; 
-    font-weight: bold; 
-    text-align: center; 
+/* Supprime l'espace excessif sous la carte itinéraire pour coller au design */
+.grid-stats + .card.glass {
+    margin-bottom: 5px !important;
+}
+
+/* ==========================================================================
+   3. WIDGETS (TIMER & STATUT DU VOYAGE)
+   ========================================================================== */
+.countdown-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px !important; 
+    text-align: center;
+}
+
+#timer {
+    font-size: 32px;
+    font-weight: 850;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.countdown-section .label {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--jp-red); 
+    background: rgba(188, 71, 73, 0.1); 
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 800;
+    border: 1px solid rgba(188, 71, 73, 0.2);
 }
 
 .grid-stats { 
     display: grid; 
     grid-template-columns: 1fr;
     gap: 12px; 
-    margin-bottom: 15px; /* Changé de 25px à 15px pour remonter la carte */
+    margin-bottom: 15px;
 }
 
-/* On force la carte à s'étendre et à s'aligner proprement */
 .stat-card.full-width { 
     display: flex; 
     align-items: center; 
@@ -64,7 +98,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .stat-card i {
     width: 24px;
     height: 24px;
-    color: #BC4749; /* Ton rouge japonais */
+    color: var(--jp-red);
 }
 
 .stat-info {
@@ -72,368 +106,38 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     flex-direction: column;
 }
 
-.step-wrapper {
+/* ==========================================================================
+   4. NOUVELLE TIMELINE GRAPHIQUE CONNECTÉE (SANS LIGNES NI POINTS)
+   ========================================================================== */
+.timeline-container {
     display: flex;
-    align-items: stretch; /* Permet à la ligne de s'étirer */
-    gap: 15px;
-    position: relative;
-    min-height: 100px; /* Force une hauteur pour laisser de la place aux trajets */
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
 }
 
-.step-card {
-    flex: 1;
-    display: flex;
-    align-items: center;
+.new-step-card {
     background: var(--card-bg);
+    backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 16px;
-    text-decoration: none;
-    color: white;
-    margin-bottom: 20px; /* Espace entre les tuiles */
-    z-index: 2;
-}
-
-.step-card:active { transform: scale(0.97); }
-
-/* --- LA COLONNE DE TRAJET (À DROITE) --- */
-.route-column {
-    width: 40px;
-    display: flex;
-    justify-content: center; /* Centre les éléments horizontalement */
-    position: relative;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background: #BC4749;
-    border-radius: 50%;
-    position: absolute;
-    top: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3; /* Devant la ligne */
-    border: 2px solid #000;
-}
-
-.line {
-    position: absolute;
-    width: 2px;
-    background: #3D3D3D;
-    top: 35px;    /* Commence au milieu du premier point */
-    bottom: -15px; /* Descend pour rejoindre le point suivant */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-/* On ajoute une règle pour le wrapper pour éviter les coupures */
-.step-wrapper {
-    display: flex;
-    align-items: stretch;
-    gap: 15px;
-    position: relative; /* Important pour le placement de la ligne */
-}
-
-.transport-badge {
-    position: absolute;
-    top: 70px; /* Ajusté pour centrer avec la nouvelle taille */
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1A1A1A;
-    border: 1px solid #3D3D3D;
-    width: 36px;  /* Plus grand (anciennement 28px) */
-    height: 36px; /* Plus grand (anciennement 28px) */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 18px; /* Émoji plus grand pour la lisibilité */
-    z-index: 4;
-}
-/* --- INFOS DANS LA TUILE --- */
-.step-icon { font-size: 28px; margin-right: 15px; }
-.step-details { display: flex; flex-direction: column; }
-.step-name { font-size: 18px; font-weight: bold; }
-.step-info { font-size: 13px; color: var(--text-dim); }
-
-/* --- BORDURES COLORÉES --- */
-/* 01. TOKYO - Rouge Impérial */
-.step-wrapper:nth-child(1) .step-card { border-left: 4px solid #BC4749; } 
-
-/* 02. KAWAGUCHIKO - Bleu Indigo */
-.step-wrapper:nth-child(2) .step-card { border-left: 4px solid #457B9D; } 
-
-/* 03. KISO - Vert Bambou */
-.step-wrapper:nth-child(3) .step-card { border-left: 4px solid #6A994E; } 
-
-/* 04. KYOTO - Or Vieux / Ocre */
-.step-wrapper:nth-child(4) .step-card { border-left: 4px solid #D4A373; } 
-
-/* 05. HIROSHIMA - Gris Pierre / Ardoise */
-.step-wrapper:nth-child(5) .step-card { border-left: 4px solid #8D99AE; } 
-
-/* 06. OSAKA - Rose Sakura Sombre */
-.step-wrapper:nth-child(6) .step-card { border-left: 4px solid #E29578; }
-
-/* 07. TOKYO RETOUR - Même rouge que le départ */
-.step-wrapper:nth-child(7) .step-card { border-left: 4px solid #BC4749; }
-
-/* --- LEXIQUE --- */
-.lexique-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-.phrase { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px; }
-/* Positionnement pour deux badges dans le même trajet */
-.transport-badge.pos-1 {
-    top: 45px; /* Position ajustée pour le premier badge */
-}
-
-.transport-badge.pos-2 {
-    top: 95px; /* Position ajustée pour le deuxième badge */
-}
-
-/* On ajuste la ligne pour qu'elle soit bien visible derrière les badges */
-.line {
-    position: absolute;
-    width: 2px;
-    background: rgba(255, 255, 255, 0.2);
-    top: 34px;      /* Aligné pile au centre du premier point rouge */
-    bottom: -34px;  /* Descend exactement jusqu'au centre du point suivant */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-}
-
-/* --- STYLE DU LEXIQUE AMÉLIORÉ --- */
-.lexique-category {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: #BC4749; /* Changé : le rouge des points de la timeline */
-    font-weight: 800;
-    margin-top: 20px;
-    margin-bottom: 8px;
-    letter-spacing: 1.2px;
-    border-left: 3px solid #BC4749; /* Changé : la petite barre à gauche aussi */
-    padding-left: 8px;
-}
-
-.phrase {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    font-size: 14px;
-}
-
-.phrase span {
-    color: var(--text-dim);
-}
-
-.phrase strong {
-    color: #BC4749; /* On utilise ton rouge pour le texte japonais aussi ! */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; /* Police standard très lisible */
-    font-weight: 600; /* Un peu gras pour que ça ressorte */
-    background: rgba(188, 71, 73, 0.1); /* Un fond rouge très léger pour le contraste */
-    padding: 4px 10px;
-    border-radius: 8px;
-    text-align: right;
-    font-size: 13px;
-    letter-spacing: 0.3px;
-}
-
-/* On enlève la bordure sur le dernier élément de la liste */
-.phrase:last-child {
-    border-bottom: none;
-}
-
-/* --- STYLE DES PAGES DE DÉTAIL --- */
-
-.back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px; /* Espace entre la flèche et le texte */
-    color: #BC4749; /* Ton rouge harmonisé */
-    text-decoration: none;
-    font-weight: 600;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    font-size: 15px;
-    transition: opacity 0.2s;
-}
-
-/* Petit effet au toucher sur iPhone */
-.back-button:active {
-    opacity: 0.5;
-}
-
-/* Si tu as une icône Lucide dans le bouton, on s'assure qu'elle suit la couleur */
-.back-button i {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5px; /* Un peu plus épais pour le look iOS */
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px; /* Un peu plus grand pour que l'emoji ressorte bien */
-    font-weight: 700;
-    margin: 20px 0 10px 5px;
-    color: var(--text-main);
-}
-
-.section-title i {
-    width: 20px;
-    height: 20px;
-    color: var(--text-dim);
-}
-
-.detail-card {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
 }
 
-.detail-item {
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+.new-step-card:active { 
+    transform: scale(0.98); 
 }
 
-.detail-item:last-child {
-    border-bottom: none;
-}
-
-.place-name {
-    display: block;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.place-desc {
-    display: block;
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 8px;
-}
-
-.maps-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #457B9D;
-    text-decoration: none;
-    background: rgba(69, 123, 157, 0.1);
-    padding: 6px 12px;
-    border-radius: 12px;
-    margin-top: 8px;
-}
-
-/* --- STYLE DES BADGES DU HEADER --- */
-.header-meta {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-/* Le badge Jour (Rouge Japonais) */
-.date-badge {
-    background: rgba(188, 71, 73, 0.15); 
-    color: #BC4749;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    border: 1px solid rgba(188, 71, 73, 0.3);
-}
-
-/* Le badge Ambiance (Gris élégant) */
-.vibe-badge {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-dim);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-/* --- HEADER DES PAGES DE DÉTAIL --- */
-.detail-page header h1 {
-    font-size: 42px; /* Plus gros et percutant */
-    font-weight: 800;
-    letter-spacing: -1.5px; /* Look iOS très serré */
-    margin: 5px 0; /* Réduit l'espace au dessus et en dessous du titre */
-    line-height: 1;
-}
-
-.detail-page header .subtitle {
-    font-size: 15px;
-    color: var(--text-dim);
-    margin-bottom: 5px; /* Réduit l'espace sous le sous-titre */
-}
-
-/* --- RÉDUIRE L'ESPACE ENTRE HEADER ET HÉBERGEMENT --- */
-.detail-page section:first-of-type .section-title {
-    margin-top: 15px; /* Espace réduit entre le sous-titre et "Hébergement" */
-}
-
-.section-title {
+.step-main {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 17px;
-    font-weight: 700;
-    margin: 20px 0 10px 5px; /* Marges globales des titres de sections réduites */
-    color: var(--text-main);
-}
-/* --- SECTION TIMER HARMONISÉE --- */
-.countdown-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* On aligne le padding sur celui des autres cartes (souvent 20px) */
-    padding: 20px !important; 
-    text-align: center;
 }
 
-#timer {
-    font-size: 32px; /* Plus grand pour l'impact */
-    font-weight: 850;
-    color: var(--text-main);
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-}
-
-.countdown-section .label {
-    display: inline-block;
-    font-size: 12px; /* Réduit pour un effet plus élégant */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    /* Couleur rouge brique comme le reste de l'app */
-    color: #BC4749; 
-    
-    /* Fond très léger pour ne pas alourdir la carte */
-    background: rgba(188, 71, 73, 0.1); 
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 800;
-    
-    /* Bordure assortie pour la finition */
-    border: 1px solid rgba(188, 71, 73, 0.2);
-}
-/* Supprime l'espace excessif sous la carte pour harmoniser avec la timeline */
-.grid-stats + .card.glass {
-    margin-bottom: 5px !important;
-}
-/* Empêche la ligne de dépasser sous la toute dernière étape */
-.step-wrapper:nth-last-child(2) .line {
-    display: none;
-}
+.step-icon { 
+    font-size: 28px; 
+    margin-right:
