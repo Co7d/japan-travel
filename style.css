@@ -1,132 +1,666 @@
 /* ==========================================================================
-   1. VARIABLES & RESET GLOBAL
+
+   1. VARIABLES & RESET
+
    ========================================================================= */
+
 :root {
+
     --bg-color: #000000;
+
     --card-bg: rgba(28, 28, 30, 0.4);
+
     --text-main: #FFFFFF;
+
     --text-dim: #8E8E93;
+
     --glass-border: rgba(255, 255, 255, 0.08);
+
 }
+
+
 
 body {
+
     background-color: var(--bg-color);
+
     color: var(--text-main);
+
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
     margin: 0;
+
     padding: 20px;
+
     display: flex;
+
     justify-content: center;
+
     -webkit-font-smoothing: antialiased;
+
 }
+
+
 
 .app-container {
+
     width: 100%;
+
     max-width: 420px;
+
 }
 
-h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
-.subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
-
-/* Les blocs vitrés standards (Compte à rebours, Stats, Lexique, Blocs de détails) */
-.card.glass {
-    background: rgba(28, 28, 30, 0.4) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 22px;
-    padding: 20px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-}
-
-.card-map { padding: 10px !important; margin-bottom: 25px !important; }
-.card-map img { display: block; width: 100%; height: auto; border-radius: 14px; }
 
 
 /* ==========================================================================
-   2. PAGE D'ACCUEIL (HOME / INDEX) : TIMELINE & TRANSPORTS
+
+   2. STYLES GENERIQUES & STRUCTURES GLASS
+
    ========================================================================= */
-.index-page .modern-timeline {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-bottom: 25px;
-    padding-left: 5px;
-    box-sizing: border-box;
-}
 
-.index-page .timeline-item {
-    display: flex;
-    width: 100%;
-    position: relative;
-}
+h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 
-.index-page .timeline-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50px;
-    flex-shrink: 0;
-    position: relative;
-}
+.subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
-.index-page .timeline-dot {
-    width: 36px;
-    height: 36px;
-    background: #1C1C1E;
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    z-index: 3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
 
-/* Trait continu de la ligne temporelle */
-.index-page .timeline-line {
-    width: 3px;
-    position: absolute;
-    top: 36px;
-    bottom: -30px; 
-    z-index: 1;
-    opacity: 0.35;
-}
 
-.index-page .item-tokyo .timeline-line { background: #BC4749; }
-.index-page .item-kawaguchi .timeline-line { background: #457B9D; }
-.index-page .item-kiso .timeline-line { background: #6A994E; }
-.index-page .item-kyoto .timeline-line { background: #D4A373; }
-.index-page .item-hiroshima .timeline-line { background: #8D99AE; }
-.index-page .item-osaka .timeline-line { background: #E29578; }
+.card.glass {
 
-.index-page .timeline-right {
-    flex-grow: 1;
-    padding-left: 12px;
-    padding-bottom: 30px; 
-    box-sizing: border-box;
-}
+    background: rgba(28, 28, 30, 0.7);
 
-/* Cartes cliquables de la timeline */
-.index-page .timeline-card {
-    background: rgba(28, 28, 30, 0.4) !important;
     backdrop-filter: blur(20px);
+
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border) !important;
-    border-radius: 18px;
-    padding: 14px 18px;
-    width: 100%;
+
+    border: 1px solid var(--glass-border);
+
+    border-radius: 22px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+
     box-sizing: border-box;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    display: block !important;
+
+}
+
+
+
+/* Carte Itinéraire de la Home */
+
+.card-map {
+
+    padding: 10px !important;
+
+    margin-bottom: 25px !important;
+
+}
+
+.card-map img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    border-radius: 14px;
+
+}
+
+
+
+/* ==========================================================================
+
+   3. DESIGN DES PAGES DE DÉTAIL (TOKYO, KYOTO, ETC.)
+
+   ========================================================================= */
+
+.detail-page .back-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
     text-decoration: none;
+
+    margin-bottom: 20px;
+
 }
 
-.index-page .timeline-card:hover {
+
+
+.detail-page .header-meta {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+
+.detail-page .date-badge, 
+
+.detail-page .vibe-badge {
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    padding: 6px 12px;
+
+    border-radius: 12px;
+
+    display: inline-block;
+
+}
+
+
+
+.detail-page .vibe-badge {
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #FFFFFF;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+}
+
+
+
+.detail-page .section-title {
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    color: var(--text-dim);
+
+    letter-spacing: 1px;
+
+    margin: 25px 0 10px 0;
+
+}
+
+
+
+/* FIX DU CORPS DE LA CARTE */
+
+.detail-page .detail-card {
+
+    display: block; /* Annule le flex-direction column qui cassait tout */
+
+    padding: 0 !important;
+
+}
+
+
+
+/* FIX DES LIENS INTERNES (HÉBERGEMENT) */
+
+.detail-page a.detail-item {
+
+    display: flex !important;
+
+    flex-direction: row !important; /* Force l'alignement horizontal */
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* STRUCTURE EN CAS DE SIMPLE DIV (ACTIVITÉS / RESTOS) */
+
+.detail-page div.detail-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 12px 20px;
+
+}
+
+
+
+.detail-page .place-name {
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #FFFFFF;
+
+}
+
+
+
+.detail-page .place-desc {
+
+    font-size: 14px;
+
+    color: var(--text-dim);
+
+}
+
+
+
+.detail-page .maps-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    margin-top: 4px;
+
+}
+
+
+
+/* ==========================================================================
+
+   4. WIDGET HOME : STATS & TIMER
+
+   ========================================================================= */
+
+.countdown-section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+#timer {
+
+    font-size: 32px;
+
+    font-weight: 850;
+
+    margin-bottom: 12px;
+
+    letter-spacing: -1px;
+
+}
+
+.countdown-section .label {
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #BC4749; 
+
+    background: rgba(188, 71, 73, 0.1); 
+
+    padding: 6px 16px;
+
+    border-radius: 20px;
+
+    font-weight: 800;
+
+    border: 1px solid rgba(188, 71, 73, 0.2);
+
+    margin: 0;
+
+}
+
+
+
+.grid-stats { margin-bottom: 12px; }
+
+.stat-card.full-width { 
+
+    display: flex; 
+
+    align-items: center; 
+
+    gap: 15px; 
+
+    padding: 16px 20px !important; 
+
+}
+
+.stat-card i { width: 22px; height: 22px; color: #BC4749; }
+
+.stat-info { display: flex; flex-direction: column; }
+
+.stat-label { font-size: 12px; color: var(--text-dim); }
+
+.stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
+
+
+
+/* ==========================================================================
+
+   5. TIMELINE FIL D'ARIANE (STRICTEMENT RÉSERVÉE À LA HOME)
+
+   ========================================================================= */
+
+.modern-timeline {
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    padding-left: 5px;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.modern-timeline .timeline-item {
+
+    display: flex;
+
+    width: 100%;
+
+}
+
+
+
+.modern-timeline .timeline-left {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 50px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+}
+
+
+
+.modern-timeline .timeline-dot {
+
+    width: 36px;
+
+    height: 36px;
+
+    background: #1C1C1E;
+
+    border: 1px solid var(--glass-border);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    z-index: 3;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+
+}
+
+
+
+.modern-timeline .timeline-line {
+
+    width: 3px;
+
+    position: absolute;
+
+    top: 36px;
+
+    bottom: -15px; 
+
+    z-index: 1;
+
+    opacity: 0.35;
+
+}
+
+
+
+.modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
+
+.modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
+
+.modern-timeline .item-kiso .timeline-line { background: #6A994E; }
+
+.modern-timeline .item-kyoto .timeline-line { background: #D4A373; }
+
+.modern-timeline .item-hiroshima .timeline-line { background: #8D99AE; }
+
+.modern-timeline .item-osaka .timeline-line { background: #E29578; }
+
+
+
+.modern-timeline .timeline-right {
+
+    flex-grow: 1;
+
+    padding-left: 12px;
+
+    padding-bottom: 20px; 
+
+    box-sizing: border-box;
+
+}
+
+
+
+.modern-timeline .timeline-card {
+
+    background: rgba(28, 28, 30, 0.4);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid var(--glass-border);
+
+    border-radius: 18px;
+
+    padding: 14px 18px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
+
+    display: block;
+
+    text-decoration: none;
+
+}
+
+
+
+.modern-timeline .timeline-card:hover, 
+
+.modern-timeline .timeline-card:active {
+
     transform: scale(0.98);
-    background: rgba(255, 255, 255, 0.08) !important;
+
+    background: rgba(255, 255, 255, 0.08);
+
 }
 
-.index-page .item-tokyo .timeline-card { border-left:
+
+
+.modern-timeline .item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
+
+.modern-timeline .item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
+
+.modern-timeline .item-kiso .timeline-card { border-left: 3px solid #6A994E; }
+
+.modern-timeline .item-kyoto .timeline-card { border-left: 3px solid #D4A373; }
+
+.modern-timeline .item-hiroshima .timeline-card { border-left: 3px solid #8D99AE; }
+
+.modern-timeline .item-osaka .timeline-card { border-left: 3px solid #E29578; }
+
+
+
+.modern-timeline .card-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 6px;
+
+}
+
+
+
+.modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
+
+.modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
+
+
+
+/* FIX GLOBAL DES BADGES VIBES DANS LA TIMELINE */
+
+.modern-timeline .vibe-badge {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    padding: 4px 10px;
+
+    border-radius: 12px;
+
+    display: inline-block; /* Force la forme de bulle */
+
+    border: none !important;
+
+}
+
+
+
+/* COULEURS INDIVIDUELLES DES BULLES DE LA TIMELINE */
+
+.modern-timeline .badge-tokyo { color: #BC4749 !important; background: rgba(188, 71, 73, 0.12) !important; }
+
+.modern-timeline .badge-kawaguchi { color: #457B9D !important; background: rgba(69, 123, 157, 0.12) !important; }
+
+.modern-timeline .badge-kiso { color: #6A994E !important; background: rgba(106, 153, 78, 0.12) !important; }
+
+.modern-timeline .badge-kyoto { color: #D4A373 !important; background: rgba(212, 163, 115, 0.12) !important; }
+
+.modern-timeline .badge-hiroshima { color: #8D99AE !important; background: rgba(141, 153, 174, 0.12) !important; }
+
+.modern-timeline .badge-osaka { color: #E29578 !important; background: rgba(226, 149, 120, 0.12) !important; }
+
+
+
+.modern-timeline .inline-transport {
+
+    display: flex;
+
+    margin-top: 12px;
+
+    padding-left: 5px;
+
+}
+
+
+
+.modern-timeline .inline-transport.double-stack {
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+
+
+.modern-timeline .transport-badge {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: var(--text-main);
+
+    background: #121212;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding: 4px 12px;
+
+    border-radius: 30px;
+
+    width: fit-content;
+
+}
+
+
+
+.modern-timeline .last-item .timeline-right { padding-bottom: 5px; } 
+
