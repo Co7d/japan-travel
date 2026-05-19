@@ -140,12 +140,12 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: 3px;
     position: absolute;
     top: 36px;
-    bottom: -15px; /* Fait descendre le fil jusqu'à l'étape d'après */
+    bottom: -15px; 
     z-index: 1;
     opacity: 0.35;
 }
 
-/* Attribution des couleurs aux lignes du fil */
+/* Couleurs des lignes */
 .item-tokyo .timeline-line { background: #BC4749; }
 .item-kawaguchi .timeline-line { background: #457B9D; }
 .item-kiso .timeline-line { background: #6A994E; }
@@ -153,11 +153,11 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .item-hiroshima .timeline-line { background: #8D99AE; }
 .item-osaka .timeline-line { background: #E29578; }
 
-/* Colonne de droite : Les bulles d'informations */
+/* Colonne de droite : Les bulles (Liens cliquables) */
 .timeline-right {
     flex-grow: 1;
     padding-left: 12px;
-    padding-bottom: 20px; /* Espace pour le transport en dessous */
+    padding-bottom: 20px; 
     box-sizing: border-box;
 }
 
@@ -170,10 +170,20 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     padding: 14px 18px;
     width: 100%;
     box-sizing: border-box;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    
+    /* Config pour les liens cliquables */
+    display: block;
+    text-decoration: none;
 }
 
-/* Fines bordures gauches colorées sur les cartes */
+/* Effet Feedback au survol et au clic */
+.timeline-card:hover, .timeline-card:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Fines bordures gauches colorées */
 .item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
 .item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
 .item-kiso .timeline-card { border-left: 3px solid #6A994E; }
@@ -188,10 +198,10 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     margin-bottom: 6px;
 }
 
-.city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; }
-.city-meta { font-size: 13px; color: var(--text-dim); }
+.city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
+.city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
-/* Badges Thématiques Néon (Vibes) */
+/* Badges Vibes */
 .vibe-badge {
     font-size: 10px;
     font-weight: 800;
@@ -207,7 +217,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .badge-hiroshima { color: #8D99AE; background: rgba(141, 153, 174, 0.12); }
 .badge-osaka { color: #E29578; background: rgba(226, 149, 120, 0.12); }
 
-/* Badges Transports Discrets sur le fil */
+/* Transports sur le fil */
 .inline-transport {
     display: flex;
     margin-top: 12px;
@@ -230,7 +240,6 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     width: fit-content;
 }
 
-/* Supprime le fil sous la dernière étape */
 .last-item .timeline-right { padding-bottom: 5px; }
 
 /* ==========================================================================
