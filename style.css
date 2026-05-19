@@ -288,7 +288,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 .modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
 .modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
-/* Style du badge vibe EXCLUSIF à la timeline */
+/* FIX GLOBAL DES BADGES VIBES DANS LA TIMELINE */
 .modern-timeline .vibe-badge {
     font-size: 10px;
     font-weight: 800;
@@ -296,8 +296,38 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     letter-spacing: 0.5px;
     padding: 4px 10px;
     border-radius: 12px;
-    border: none;
+    display: inline-block; /* Force la forme de bulle */
+    border: none !important;
 }
-.modern-timeline .badge-tokyo { color: #BC4749; background: rgba(188, 71, 73, 0.12); }
-.modern-timeline .badge-kawaguchi { color: #457B9D; background: rgba(69, 123, 157, 0.12); }
-.modern-timeline .badge-kiso { color: #6A994E; background: rgba(106, 153, 78,
+
+/* COULEURS INDIVIDUELLES DES BULLES DE LA TIMELINE */
+.modern-timeline .badge-tokyo { color: #BC4749 !important; background: rgba(188, 71, 73, 0.12) !important; }
+.modern-timeline .badge-kawaguchi { color: #457B9D !important; background: rgba(69, 123, 157, 0.12) !important; }
+.modern-timeline .badge-kiso { color: #6A994E !important; background: rgba(106, 153, 78, 0.12) !important; }
+.modern-timeline .badge-kyoto { color: #D4A373 !important; background: rgba(212, 163, 115, 0.12) !important; }
+.modern-timeline .badge-hiroshima { color: #8D99AE !important; background: rgba(141, 153, 174, 0.12) !important; }
+.modern-timeline .badge-osaka { color: #E29578 !important; background: rgba(226, 149, 120, 0.12) !important; }
+
+.modern-timeline .inline-transport {
+    display: flex;
+    margin-top: 12px;
+    padding-left: 5px;
+}
+
+.modern-timeline .inline-transport.double-stack {
+    flex-direction: column;
+    gap: 6px;
+}
+
+.modern-timeline .transport-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 4px 12px;
+    border-radius: 30px;
+    width: fit-content;
+}
+
+.modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
