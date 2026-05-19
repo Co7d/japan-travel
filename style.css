@@ -28,13 +28,14 @@ body {
 /* ==========================================================================
    2. EN-TÊTES & STRUCTURE DES CARTES GLASS
    ========================================================================== */
-header { padding: 20px 0; }
-h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
-.subtitle { color: var(--text-dim); margin-bottom: 20px; }
+header { padding: 15px 0; }
+h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
+.subtitle { color: var(--text-dim); margin-bottom: 20px; font-size: 14px; margin-top: 0; }
 
 .card.glass {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 22px;
     padding: 20px;
@@ -62,7 +63,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 
 .countdown-section .label {
     display: inline-block;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: #BC4749; 
@@ -71,6 +72,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     border-radius: 20px;
     font-weight: 800;
     border: 1px solid rgba(188, 71, 73, 0.2);
+    margin: 0;
 }
 
 .grid-stats { 
@@ -84,14 +86,14 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     display: flex; 
     align-items: center; 
     gap: 15px; 
-    padding: 20px !important; 
+    padding: 16px 20px !important; 
     width: 100%;
     box-sizing: border-box;
 }
 
 .stat-card i {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     color: #BC4749;
 }
 
@@ -99,6 +101,8 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     display: flex;
     flex-direction: column;
 }
+.stat-label { font-size: 12px; color: var(--text-dim); }
+.stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
 
 /* ==========================================================================
    4. TIMELINE EN "BULLES" AVEC AXE CENTRAL CONNECTEUR
@@ -109,13 +113,14 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     align-items: center;
     width: 100%;
     margin-top: 10px;
+    box-sizing: border-box;
 }
 
-/* La grosse bulle de la ville style Glass */
 .timeline-bubble {
     width: 100%;
     background: var(--card-bg);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 16px 20px;
@@ -128,26 +133,16 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     gap: 15px;
 }
 
-.bubble-icon {
-    font-size: 26px;
-}
-
-.bubble-title-block {
-    display: flex;
-    flex-direction: column;
-}
-
-.bubble-name {
-    font-size: 18px;
-    font-weight: 700;
-}
+.bubble-icon { font-size: 26px; }
+.bubble-title-block { display: flex; flex-direction: column; }
+.bubble-name { font-size: 18px; font-weight: 700; }
 
 .bubble-vibe {
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .bubble-meta {
@@ -155,46 +150,43 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     font-size: 13px;
     color: var(--text-dim);
     margin-top: 8px;
-    padding-left: 41px; /* Aligné proprement sous le texte de la ville */
+    padding-left: 41px;
 }
 
-/* L'axe central de transition entre deux bulles */
+/* L'axe central vertical */
 .timeline-connector {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 70px; /* Espace fixe parfait entre les bulles */
+    height: 60px; 
 }
 
 .connector-line {
     flex: 1;
     width: 3px;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
-/* Le badge de transport au milieu de la ligne */
 .compact-transport {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
-    background: #1A1A1A;
+    background: #121212;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 30px;
     white-space: nowrap;
-    margin: 4px 0;
+    margin: 2px 0;
     z-index: 2;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Pour le cas spécial de Kiso avec deux transports */
 .double-transport {
     display: flex;
     gap: 6px;
-    margin: 4px 0;
+    margin: 2px 0;
 }
 
-/* Couleurs des bordures gauches spécifiques aux bulles de villes */
+/* Thèmes couleur des bulles */
 .border-tokyo { border-left: 4px solid #BC4749; }
 .border-kawaguchi { border-left: 4px solid #457B9D; }
 .border-kiso { border-left: 4px solid #6A994E; }
@@ -202,7 +194,6 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .border-hiroshima { border-left: 4px solid #8D99AE; }
 .border-osaka { border-left: 4px solid #E29578; }
 
-/* Couleurs des Vibes (Textes thématiques) */
 .vibe-tokyo { color: #BC4749; }
 .vibe-kawaguchi { color: #457B9D; }
 .vibe-kiso { color: #6A994E; }
@@ -210,10 +201,40 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .vibe-hiroshima { color: #8D99AE; }
 .vibe-osaka { color: #E29578; }
 
-/* Couleurs des lignes connectrices */
 .bg-tokyo .connector-line { background: #BC4749; }
 .bg-kawaguchi .connector-line { background: #457B9D; }
 .bg-kiso .connector-line { background: #6A994E; }
 .bg-kyoto .connector-line { background: #D4A373; }
 .bg-hiroshima .connector-line { background: #8D99AE; }
 .bg-osaka .connector-line { background: #E29578; }
+
+/* ==========================================================================
+   5. LEXIQUE DE SURVIE
+   ========================================================================== */
+.lexique-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.lexique-category {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #BC4749;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+}
+
+.phrase {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    align-items: center;
+}
+
+.phrase span { color: var(--text-dim); }
+.phrase log { color: var(--text-main); font-weight: 600; }
