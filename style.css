@@ -44,11 +44,21 @@ body {
     max-width: 420px;
 }
 
+/* Titre principal sur la page d'accueil (Grand et centré) */
 h1 {
-    font-size: 32px;
-    margin: 5px 0;
+    font-size: 38px;
+    margin: 15px 0;
     font-weight: 800;
-    color: var(--city-tokyo); /* Force le titre principal en rouge */
+    color: var(--city-tokyo);
+    text-align: center;
+}
+
+/* Titre sur les pages de détails (Garde l'alignement à gauche d'origine) */
+.detail-page h1 {
+    font-size: 32px;
+    margin: 10px 0 5px 0;
+    text-align: left;
+    color: var(--page-theme);
 }
 
 .subtitle {
