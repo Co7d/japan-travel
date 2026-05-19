@@ -379,288 +379,151 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 
 
 /* ==========================================================================
-
    5. TIMELINE FIL D'ARIANE (STRICTEMENT RÉSERVÉE À LA HOME)
-
    ========================================================================= */
-
 .modern-timeline {
-
     display: flex;
-
     flex-direction: column;
-
     width: 100%;
-
     margin-bottom: 25px;
-
     padding-left: 5px;
-
     box-sizing: border-box;
-
 }
-
-
 
 .modern-timeline .timeline-item {
-
     display: flex;
-
     width: 100%;
-
+    position: relative; /* Assure le bon positionnement de la ligne */
 }
-
-
 
 .modern-timeline .timeline-left {
-
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     width: 50px;
-
     flex-shrink: 0;
-
     position: relative;
-
 }
-
-
 
 .modern-timeline .timeline-dot {
-
     width: 36px;
-
     height: 36px;
-
     background: #1C1C1E;
-
     border: 1px solid var(--glass-border);
-
     border-radius: 50%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     font-size: 18px;
-
     z-index: 3;
-
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-
 }
-
-
 
 .modern-timeline .timeline-line {
-
     width: 3px;
-
     position: absolute;
-
     top: 36px;
-
-    bottom: -15px; 
-
+    bottom: -30px; /* Augmenté de -15px à -30px pour que le trait passe derrière les transports */
     z-index: 1;
-
     opacity: 0.35;
-
 }
-
-
 
 .modern-timeline .item-tokyo .timeline-line { background: #BC4749; }
-
 .modern-timeline .item-kawaguchi .timeline-line { background: #457B9D; }
-
 .modern-timeline .item-kiso .timeline-line { background: #6A994E; }
-
 .modern-timeline .item-kyoto .timeline-line { background: #D4A373; }
-
 .modern-timeline .item-hiroshima .timeline-line { background: #8D99AE; }
-
 .modern-timeline .item-osaka .timeline-line { background: #E29578; }
 
-
-
 .modern-timeline .timeline-right {
-
     flex-grow: 1;
-
     padding-left: 12px;
-
-    padding-bottom: 20px; 
-
+    padding-bottom: 35px; /* Augmenté de 20px à 35px pour créer l'espace nécessaire aux transports */
     box-sizing: border-box;
-
 }
-
-
 
 .modern-timeline .timeline-card {
-
     background: rgba(28, 28, 30, 0.4);
-
     backdrop-filter: blur(20px);
-
     -webkit-backdrop-filter: blur(20px);
-
     border: 1px solid var(--glass-border);
-
     border-radius: 18px;
-
     padding: 14px 18px;
-
     width: 100%;
-
     box-sizing: border-box;
-
     transition: transform 0.2s ease, background-color 0.2s ease;
-
     display: block;
-
     text-decoration: none;
-
 }
-
-
 
 .modern-timeline .timeline-card:hover, 
-
 .modern-timeline .timeline-card:active {
-
     transform: scale(0.98);
-
     background: rgba(255, 255, 255, 0.08);
-
 }
-
-
 
 .modern-timeline .item-tokyo .timeline-card { border-left: 3px solid #BC4749; }
-
 .modern-timeline .item-kawaguchi .timeline-card { border-left: 3px solid #457B9D; }
-
 .modern-timeline .item-kiso .timeline-card { border-left: 3px solid #6A994E; }
-
 .modern-timeline .item-kyoto .timeline-card { border-left: 3px solid #D4A373; }
-
 .modern-timeline .item-hiroshima .timeline-card { border-left: 3px solid #8D99AE; }
-
 .modern-timeline .item-osaka .timeline-card { border-left: 3px solid #E29578; }
 
-
-
 .modern-timeline .card-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     margin-bottom: 6px;
-
 }
-
-
 
 .modern-timeline .city-name { font-size: 17px; font-weight: 700; color: #FFFFFF; text-decoration: none; }
-
 .modern-timeline .city-meta { font-size: 13px; color: var(--text-dim); display: block; }
 
-
-
 /* FIX GLOBAL DES BADGES VIBES DANS LA TIMELINE */
-
 .modern-timeline .vibe-badge {
-
     font-size: 10px;
-
     font-weight: 800;
-
     text-transform: uppercase;
-
     letter-spacing: 0.5px;
-
     padding: 4px 10px;
-
     border-radius: 12px;
-
     display: inline-block; /* Force la forme de bulle */
-
     border: none !important;
-
 }
-
-
 
 /* COULEURS INDIVIDUELLES DES BULLES DE LA TIMELINE */
-
 .modern-timeline .badge-tokyo { color: #BC4749 !important; background: rgba(188, 71, 73, 0.12) !important; }
-
 .modern-timeline .badge-kawaguchi { color: #457B9D !important; background: rgba(69, 123, 157, 0.12) !important; }
-
 .modern-timeline .badge-kiso { color: #6A994E !important; background: rgba(106, 153, 78, 0.12) !important; }
-
 .modern-timeline .badge-kyoto { color: #D4A373 !important; background: rgba(212, 163, 115, 0.12) !important; }
-
 .modern-timeline .badge-hiroshima { color: #8D99AE !important; background: rgba(141, 153, 174, 0.12) !important; }
-
 .modern-timeline .badge-osaka { color: #E29578 !important; background: rgba(226, 149, 120, 0.12) !important; }
 
-
-
 .modern-timeline .inline-transport {
-
-    display: flex;
-
+    display: flex !important; /* Force l'affichage en ligne */
+    flex-direction: row !important;
+    gap: 8px;
     margin-top: 12px;
-
     padding-left: 5px;
-
 }
-
-
 
 .modern-timeline .inline-transport.double-stack {
-
-    flex-direction: column;
-
+    flex-direction: column !important; /* Cas Kiso si empilé */
     gap: 6px;
-
 }
-
-
 
 .modern-timeline .transport-badge {
-
     font-size: 12px;
-
     font-weight: 600;
-
     color: var(--text-main);
-
-    background: #121212;
-
+    background: #1C1C1E; /* Fond sombre pour la bulle */
     border: 1px solid rgba(255, 255, 255, 0.12);
-
     padding: 4px 12px;
-
     border-radius: 30px;
-
     width: fit-content;
-
+    display: inline-flex; /* Force le rendu en bulle */
+    align-items: center;
 }
 
-
-
-.modern-timeline .last-item .timeline-right { padding-bottom: 5px; } 
-
+.modern-timeline .last-item .timeline-right { padding-bottom: 5px; }
+.modern-timeline .last-item .timeline-line { display: none !important; }
