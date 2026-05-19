@@ -107,112 +107,118 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 /* ==========================================================================
-   4. TIMELINE COMPACTE ALTERNÉE (STYLE APPS DE VOYAGE PREMIUM)
+   4. TIMELINE COMPACTE ALTERNÉE AVEC BULLES (AXE CENTRAL CONNECTEUR)
    ========================================================================== */
-.timeline-compact-container {
+.timeline-bubbles-container {
     display: flex;
     flex-direction: column;
-    margin: 10px 0 20px 0;
+    align-items: center;
     width: 100%;
+    margin-top: 10px;
 }
 
-/* Conteneur de ligne flex divisé en 3 colonnes symétriques */
-.compact-step {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1.2fr;
+/* La grosse bulle de la ville style Glass */
+.timeline-bubble {
+    width: 100%;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+}
+
+.bubble-header {
+    display: flex;
     align-items: center;
-    text-decoration: none;
-    color: inherit;
-    min-height: 80px;
-    transition: background 0.2s, transform 0.2s;
+    gap: 15px;
 }
 
-.compact-step:not(.no-click):active {
-    background: rgba(255, 255, 255, 0.03);
-    transform: scale(0.99);
+.bubble-icon {
+    font-size: 26px;
 }
 
-/* Colonne Gauche : Ville et Dates */
-.compact-left {
+.bubble-title-block {
     display: flex;
     flex-direction: column;
-    text-align: right;
-    padding-right: 12px;
 }
 
-.compact-name {
-    font-size: 16px;
+.bubble-name {
+    font-size: 18px;
     font-weight: 700;
-    color: var(--text-main);
 }
 
-.compact-meta {
+.bubble-vibe {
     font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 2px;
-}
-
-/* Colonne Centrale : L'axe vertical graphique et coloré */
-.compact-axis {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    /* Crée la ligne verticale continue en arrière-plan */
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 100%, transparent 0%);
-    background-position: center;
-    background-size: 2px 100%;
-    background-repeat: repeat-y;
-}
-
-/* Supprime le bout de ligne sous le tout dernier élément */
-.last-axis {
-    background-image: none !important;
-}
-
-/* Le badge central textuel (Vibe) */
-.compact-badge-vibe {
-    font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
-    padding: 4px 8px;
-    border-radius: 12px;
-    letter-spacing: 0.3px;
-    z-index: 2;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+    margin-top: 1px;
 }
 
-/* Colonne Droite : Le moyen de transport vers l'étape suivante */
-.compact-right {
+.bubble-meta {
+    display: block;
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    padding-left: 41px; /* Aligné proprement sous le texte de la ville */
+}
+
+/* L'axe central de transition entre deux bulles */
+.timeline-connector {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding-left: 12px;
-    text-align: left;
+    width: 100%;
+    height: 70px; /* Espace fixe parfait entre les bulles */
 }
 
+.connector-line {
+    flex: 1;
+    width: 3px;
+    opacity: 0.3;
+}
+
+/* Le badge de transport au milieu de la ligne */
 .compact-transport {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 4px 8px;
-    border-radius: 8px;
+    background: #1A1A1A;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 14px;
+    border-radius: 30px;
     white-space: nowrap;
+    margin: 4px 0;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Couleurs thématiques de l'axe et des badges textuels */
-.bg-tokyo .compact-badge-vibe { background: #BC4749; color: #ffffff; }
-.bg-kawaguchi .compact-badge-vibe { background: #457B9D; color: #ffffff; }
-.bg-kiso .compact-badge-vibe { background: #6A994E; color: #ffffff; }
-.bg-kyoto .compact-badge-vibe { background: #D4A373; color: #000000; }
-.bg-hiroshima .compact-badge-vibe { background: #8D99AE; color: #ffffff; }
-.bg-osaka .compact-badge-vibe { background: #E29578; color: #000000; }
+/* Pour le cas spécial de Kiso avec deux transports */
+.double-transport {
+    display: flex;
+    gap: 6px;
+    margin: 4px 0;
+}
 
-/* Indicateur discret de clic sur les côtés de la carte (Bordure subtile au survol/active) */
-.link-tokyo { border-right: 2px solid rgba(188, 71, 73, 0.1); }
-.link-kawaguchi { border-right: 2px solid rgba(69, 123, 157, 0.1); }
-.link-kiso { border-right: 2px solid rgba(106, 153, 78, 0.1); }
-.link-kyoto { border-right: 2px solid rgba(212, 163, 115, 0.1); }
-.link-hiroshima { border-right: 2px solid rgba(141, 153, 174, 0.1); }
-.link-osaka { border-right: 2px solid rgba(226, 149, 120, 0.1); }
+/* Couleurs des bordures et des lignes selon la ville précédente */
+.border-tokyo { border-left: 4px solid #BC4749; }
+.border-kawaguchi { border-left: 4px solid #457B9D; }
+.border-kiso { border-left: 4px solid #6A994E; }
+.border-kyoto { border-left: 4px solid #D4A373; }
+.border-hiroshima { border-left: 4px solid #8D99AE; }
+.border-osaka { border-left: 4px solid #E29578; }
+
+.bg-tokyo .connector-line { background: #BC4749; }
+.bg-kawaguchi .connector-line { background: #457B9D; }
+.bg-kiso .connector-line { background: #6A994E; }
+.bg-kyoto .connector-line { background: #D4A373; }
+.bg-hiroshima .connector-line { background: #8D99AE; }
+.bg-osaka .connector-line { background: #E29578; }
+
+/* Couleurs de texte pour les Vibes */
+.vibe-tokyo { color: #BC4749; }
+.vibe-kawaguchi { color: #457B9D; }
+.vibe-kiso { color: #6A994E; }
+.vibe-kyoto { color: #D4A373; }
+.vibe-hiroshima { color: #8D99AE; }
+.vibe-osaka { color: #E29578; }
