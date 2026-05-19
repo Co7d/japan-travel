@@ -16,7 +16,7 @@
     --text-dim: #8E8E93;
     --glass-border: rgba(255, 255, 255, 0.08);
 
-    /* Couleurs thématiques des étapes (DRY) */
+    /* Couleurs thématiques des étapes */
     --city-tokyo: #BC4749;
     --city-kawaguchiko: #457B9D;
     --city-kiso: #6A994E;
@@ -58,7 +58,7 @@ h1 {
 }
 
 /* ==========================================================================
-   3. COMPOSANTS GLASS & CARTES
+   3. COMPOSANTS GLASS & CARTES GLOBAL
    ========================================================================= */
 .card.glass {
     background: var(--card-bg-high-opacity);
@@ -70,7 +70,6 @@ h1 {
     margin-bottom: 12px;
 }
 
-/* Carte Itinéraire (Home) - Spécificité augmentée sans !important */
 .card.glass.card-map {
     padding: 10px;
     margin-bottom: 25px;
@@ -84,37 +83,83 @@ h1 {
 }
 
 /* ==========================================================================
-   4. DESIGN DES PAGES DE DÉTAIL (CORRIGÉ)
+   4. DESIGN DES PAGES DE DÉTAIL (CORRIGÉ & PASTILLES ALIGNÉES)
    ========================================================================= */
 .detail-page {
     --page-theme: var(--city-tokyo); /* Rouge Tokyo par défaut */
 }
 
-/* Forcer la couleur du titre et du bouton retour */
 .detail-page h1 {
     color: var(--page-theme);
+    margin-top: 10px;
 }
+
 .detail-page .back-button {
     color: var(--page-theme);
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
-/* Badge de date en haut */
+/* Gestion de l'alignement des badges du haut */
+.detail-page .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+/* Base commune pour transformer les deux badges en vraies bulles/pastilles */
+.detail-page .date-badge, 
+.detail-page .vibe-badge {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Style de la pastille Rouge (Date) */
 .detail-page .date-badge {
     background: rgba(188, 71, 73, 0.15);
     color: var(--page-theme);
     border: 1px solid rgba(188, 71, 73, 0.3);
 }
 
-/* FIX DU CONTENEUR DE CARTE */
+/* Style de la pastille Grise (Vibe) */
+.detail-page .vibe-badge {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-dim);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.detail-page .section-title {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin: 25px 0 10px 0;
+}
+
+/* Conteneur de carte des rubriques de détails */
 .detail-page .card.glass.detail-card {
     display: flex;
     flex-direction: column;
-    padding: 0; /* Important pour que l'effet de hover touche les bords */
+    padding: 0;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
-/* STRUCTURE EN LIGNE (Hébergement) */
+/* Structure en ligne (Hébergement) */
 .detail-page .detail-item--row {
     display: flex;
     flex-direction: row;
@@ -123,36 +168,36 @@ h1 {
     width: 100%;
     padding: 16px 20px;
     text-decoration: none;
-    color: var(--text-main); /* Tue le bleu par défaut */
+    color: var(--text-main);
+    transition: background 0.2s;
 }
 
 .detail-page .detail-item--row:hover {
     background: rgba(255, 255, 255, 0.04);
 }
 
-/* Les petits chevrons à droite */
 .detail-page .detail-item--row .chevron {
     font-size: 22px;
     color: var(--text-main);
     opacity: 0.3;
-    font-weight: 300;
 }
 
-/* STRUCTURE EN PILE (Activités & Restos) */
+/* Structure en pile (Activités & Restos) */
 .detail-page .detail-item--stack {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 6px;
-    padding: 18px 20px; /* Donne de l'air à tes textes */
+    padding: 20px;
     width: 100%;
 }
 
-/* Les textes internes */
+/* Typographies internes */
 .detail-page .place-date {
     display: block;
     font-size: 11px;
     font-weight: 900;
-    color: var(--page-theme); /* Applique le rouge sur la date de l'hôtel */
+    color: var(--page-theme);
     letter-spacing: 0.5px;
     margin-bottom: 4px;
 }
@@ -168,32 +213,34 @@ h1 {
     color: var(--text-dim);
 }
 
-/* SÉPARATEUR ENTRE LES BLOCS */
+/* Séparateur horizontal discret */
 .detail-card-separator {
     height: 1px;
     background-color: rgba(255, 255, 255, 0.08);
-    margin: 0 20px; /* Aligné avec le padding du texte */
+    margin: 0 20px;
 }
 
-/* LE LIEN PLANS (TUE LE BLEU FLUIDE) */
+/* Boutons Plans (sans bleu fluide) */
 .detail-page .maps-link {
     display: inline-flex;
     align-items: center;
-    width: fit-content;
+    gap: 6px;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
-    margin-top: 6px;
-    color: var(--page-theme) !important; /* Force le rouge Tokyo */
+    margin-top: 8px;
+    color: var(--page-theme) !important;
     background: rgba(188, 71, 73, 0.1) !important;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.1s;
 }
 
 .detail-page .maps-link:hover {
     background: rgba(188, 71, 73, 0.2) !important;
+    transform: translateY(-1px);
 }
+
 /* ==========================================================================
    5. WIDGET HOME : STATS & TIMER
    ========================================================================= */
@@ -206,7 +253,7 @@ h1 {
 
 #timer {
     font-size: 32px;
-    font-weight: 800; /* Correction de la valeur non-standard 850 */
+    font-weight: 800;
     margin-bottom: 12px;
     letter-spacing: -1px;
 }
@@ -258,7 +305,7 @@ h1 {
 }
 
 /* ==========================================================================
-   6. TIMELINE FIL D'ARIANE (STRICTEMENT RÉSERVÉE À LA HOME)
+   6. TIMELINE FIL D'ARIANE (ACCUEIL)
    ========================================================================= */
 .modern-timeline {
     display: flex;
@@ -306,7 +353,6 @@ h1 {
     opacity: 0.35;
 }
 
-/* Application des variables thématiques pour les lignes */
 .modern-timeline .item-tokyo .timeline-line       { background: var(--city-tokyo); }
 .modern-timeline .item-kawaguchiko .timeline-line { background: var(--city-kawaguchiko); }
 .modern-timeline .item-kiso .timeline-line        { background: var(--city-kiso); }
@@ -340,7 +386,6 @@ h1 {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Application des variables thématiques pour les bordures de cartes */
 .modern-timeline .item-tokyo .timeline-card       { border-left: 3px solid var(--city-tokyo); }
 .modern-timeline .item-kawaguchiko .timeline-card { border-left: 3px solid var(--city-kawaguchiko); }
 .modern-timeline .item-kiso .timeline-card        { border-left: 3px solid var(--city-kiso); }
@@ -359,7 +404,6 @@ h1 {
     font-size: 17px; 
     font-weight: 700; 
     color: var(--text-main); 
-    text-decoration: none; 
 }
 
 .modern-timeline .city-meta { 
@@ -368,7 +412,6 @@ h1 {
     display: block; 
 }
 
-/* Nettoyage des badges de la timeline */
 .modern-timeline .vibe-badge {
     font-size: 10px;
     font-weight: 800;
@@ -380,7 +423,6 @@ h1 {
     border: none;
 }
 
-/* Couleurs des badges gérées via variables (DRY et sans !important) */
 .modern-timeline .badge-tokyo       { color: var(--city-tokyo);       background: rgba(188, 71, 73, 0.12); }
 .modern-timeline .badge-kawaguchiko { color: var(--city-kawaguchiko); background: rgba(69, 123, 157, 0.12); }
 .modern-timeline .badge-kiso        { color: var(--city-kiso);        background: rgba(106, 153, 78, 0.12); }
@@ -411,7 +453,6 @@ h1 {
     width: fit-content;
     display: inline-flex;
     align-items: center;
-    text-decoration: none; 
 }
 
 .modern-timeline .last-item .timeline-right { 
@@ -420,4 +461,45 @@ h1 {
 
 .modern-timeline .last-item .timeline-line { 
     display: none; 
+}
+
+/* ==========================================================================
+   7. LEXIQUE DE SURVIE (ACCUEIL)
+   ========================================================================= */
+.lexique-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lexique-category {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--city-tokyo);
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.lexique-category:first-child {
+    margin-top: 0;
+}
+
+.phrase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 6px;
+}
+
+.phrase span {
+    color: var(--text-dim);
+}
+
+.phrase strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
