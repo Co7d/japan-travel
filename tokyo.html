@@ -16,7 +16,7 @@
                 <i data-lucide="chevron-left" aria-hidden="true"></i> Retour
             </a>
             <div class="header-meta">
-                <span class="date-badge">JOUR 01 — 05  &amp;  17 — 20</span>
+                <span class="date-badge">JOUR 01 — 05  &  17 — 20</span>
                 <span class="vibe-badge">IMMERSION URBAINE</span>
             </div>
             <h1>Tokyo</h1> 
@@ -25,13 +25,15 @@
 
         <section aria-label="Hébergements à Tokyo">
             <h2 class="section-title">🏨 Hébergement</h2>
-            <div class="card glass detail-card" style="overflow: hidden;"> <a href="https://maps.apple.com/?q=Shinjuku+Washington+Hotel+Main" class="detail-item detail-item--row" aria-label="Hôtel Shinjuku Washington, du 16 au 20 novembre. Voir sur la carte.">
+            <div class="card glass detail-card">
+                
+                <a href="https://maps.apple.com/?q=Shinjuku+Washington+Hotel+Main" class="detail-item detail-item--row" aria-label="Hôtel Shinjuku Washington, du 16 au 20 novembre. Voir sur la carte.">
                     <div>
                         <span class="place-date">DU 16 AU 20 NOVEMBRE</span>
                         <div class="place-name">SHINJUKU WASHINGTON HOTEL</div>
                         <span class="place-desc">Quartier de Shinjuku - Proche de la mairie</span>
                     </div>
-                    <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                    <span class="chevron" aria-hidden="true">›</span>
                 </a>
 
                 <div class="detail-card-separator"></div>
@@ -42,7 +44,7 @@
                         <div class="place-name">OIMACHI TRACKS TOKYO</div>
                         <span class="place-desc">Quartier d'Oimachi - Nouvel hôtel moderne</span>
                     </div>
-                    <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                    <span class="chevron" aria-hidden="true">›</span>
                 </a>
 
             </div>
@@ -85,6 +87,7 @@
     </div>
 
     <script>
+        // Initialisation propre de Lucide une fois le DOM prêt
         document.addEventListener("DOMContentLoaded", function() {
             lucide.createIcons();
         });
