@@ -39,7 +39,20 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     border: 1px solid var(--glass-border);
     border-radius: 22px;
     padding: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 12px; /* Uniformisé à 12px */
+}
+
+/* Ajustement spécifique pour la bulle qui contient l'image de la carte */
+.card.glass:has(img) {
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.card.glass img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
 }
 
 /* ==========================================================================
@@ -63,181 +76,4 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
 
 .countdown-section .label {
     display: inline-block;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #BC4749; 
-    background: rgba(188, 71, 73, 0.1); 
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 800;
-    border: 1px solid rgba(188, 71, 73, 0.2);
-    margin: 0;
-}
-
-.grid-stats { 
-    display: grid; 
-    grid-template-columns: 1fr;
-    gap: 12px; 
-    margin-bottom: 15px;
-}
-
-.stat-card.full-width { 
-    display: flex; 
-    align-items: center; 
-    gap: 15px; 
-    padding: 16px 20px !important; 
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.stat-card i {
-    width: 22px;
-    height: 22px;
-    color: #BC4749;
-}
-
-.stat-info {
-    display: flex;
-    flex-direction: column;
-}
-.stat-label { font-size: 12px; color: var(--text-dim); }
-.stat-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
-
-/* ==========================================================================
-   4. TIMELINE EN "BULLES" AVEC AXE CENTRAL CONNECTEUR
-   ========================================================================== */
-.timeline-bubbles-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-top: 10px;
-    box-sizing: border-box;
-}
-
-.timeline-bubble {
-    width: 100%;
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 16px 20px;
-    box-sizing: border-box;
-}
-
-.bubble-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.bubble-icon { font-size: 26px; }
-.bubble-title-block { display: flex; flex-direction: column; }
-.bubble-name { font-size: 18px; font-weight: 700; }
-
-.bubble-vibe {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 2px;
-}
-
-.bubble-meta {
-    display: block;
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-top: 8px;
-    padding-left: 41px;
-}
-
-/* L'axe central vertical */
-.timeline-connector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 85px; /* Passé de 60px à 85px pour donner de l'air aux deux badges */
-}
-
-.connector-line {
-    flex: 1;
-    width: 3px;
-    opacity: 0.4;
-}
-
-.compact-transport {
-    font-size: 12px;
-    font-weight: 600;
-    background: #121212;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 5px 12px;
-    border-radius: 30px;
-    white-space: nowrap;
-    margin: 2px 0;
-    z-index: 2;
-}
-
-.double-transport {
-    display: flex;
-    flex-direction: column; /* Aligne les badges verticalement */
-    align-items: center;    /* Les centre parfaitement sur la ligne */
-    gap: 6px;               /* Crée un petit espace entre les deux */
-    margin: 4px 0;
-    z-index: 2;
-}
-
-/* Thèmes couleur des bulles */
-.border-tokyo { border-left: 4px solid #BC4749; }
-.border-kawaguchi { border-left: 4px solid #457B9D; }
-.border-kiso { border-left: 4px solid #6A994E; }
-.border-kyoto { border-left: 4px solid #D4A373; }
-.border-hiroshima { border-left: 4px solid #8D99AE; }
-.border-osaka { border-left: 4px solid #E29578; }
-
-.vibe-tokyo { color: #BC4749; }
-.vibe-kawaguchi { color: #457B9D; }
-.vibe-kiso { color: #6A994E; }
-.vibe-kyoto { color: #D4A373; }
-.vibe-hiroshima { color: #8D99AE; }
-.vibe-osaka { color: #E29578; }
-
-.bg-tokyo .connector-line { background: #BC4749; }
-.bg-kawaguchi .connector-line { background: #457B9D; }
-.bg-kiso .connector-line { background: #6A994E; }
-.bg-kyoto .connector-line { background: #D4A373; }
-.bg-hiroshima .connector-line { background: #8D99AE; }
-.bg-osaka .connector-line { background: #E29578; }
-
-/* ==========================================================================
-   5. LEXIQUE DE SURVIE
-   ========================================================================== */
-.lexique-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.lexique-category {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #BC4749;
-    letter-spacing: 1px;
-    margin-top: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 4px;
-}
-
-.phrase {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    align-items: center;
-}
-
-.phrase span { color: var(--text-dim); }
-.phrase log { color: var(--text-main); font-weight: 600; }
+    font-
