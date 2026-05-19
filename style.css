@@ -84,84 +84,83 @@ h1 {
 }
 
 /* ==========================================================================
-   4. DESIGN DES PAGES DE DÉTAIL (TOKYO, KYOTO, ETC.)
+   4. DESIGN DES PAGES DE DÉTAIL (CORRIGÉ)
    ========================================================================= */
+.detail-page {
+    --page-theme: var(--city-tokyo); /* Rouge Tokyo par défaut */
+}
+
+/* Forcer la couleur du titre et du bouton retour */
+.detail-page h1 {
+    color: var(--page-theme);
+}
 .detail-page .back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
-    font-weight: 600;
+    color: var(--page-theme);
     text-decoration: none;
-    color: var(--text-main);
-    margin-bottom: 20px;
 }
 
-.detail-page .header-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
+/* Badge de date en haut */
+.detail-page .date-badge {
+    background: rgba(188, 71, 73, 0.15);
+    color: var(--page-theme);
+    border: 1px solid rgba(188, 71, 73, 0.3);
 }
 
-.detail-page .date-badge, 
-.detail-page .vibe-badge {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 6px 12px;
-    border-radius: 12px;
-    display: inline-block;
-}
-
-.detail-page .vibe-badge {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.detail-page .section-title {
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin: 25px 0 10px 0;
-}
-
+/* FIX DU CONTENEUR DE CARTE */
 .detail-page .card.glass.detail-card {
-    display: block;
-    padding: 0;
-}
-
-/* Remplacement de la schizophrénie de classe par des modificateurs BEM clairs */
-.detail-item {
     display: flex;
-    box-sizing: border-box;
+    flex-direction: column;
+    padding: 0; /* Important pour que l'effet de hover touche les bords */
+    overflow: hidden;
 }
 
-/* Modificateur Ligne (ex: Hébergement avec balise <a>) */
-.detail-item--row {
+/* STRUCTURE EN LIGNE (Hébergement) */
+.detail-page .detail-item--row {
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 16px 20px;
     text-decoration: none;
+    color: var(--text-main); /* Tue le bleu par défaut */
 }
 
-/* Modificateur Colonne / Stack (ex: Activités / Restos avec balise <div>) */
-.detail-item--stack {
+.detail-page .detail-item--row:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* Les petits chevrons à droite */
+.detail-page .detail-item--row .chevron {
+    font-size: 22px;
+    color: var(--text-main);
+    opacity: 0.3;
+    font-weight: 300;
+}
+
+/* STRUCTURE EN PILE (Activités & Restos) */
+.detail-page .detail-item--stack {
+    display: flex;
     flex-direction: column;
-    gap: 4px;
-    padding: 12px 20px;
+    gap: 6px;
+    padding: 18px 20px; /* Donne de l'air à tes textes */
+    width: 100%;
+}
+
+/* Les textes internes */
+.detail-page .place-date {
+    display: block;
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--page-theme); /* Applique le rouge sur la date de l'hôtel */
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
 }
 
 .detail-page .place-name {
     font-size: 17px;
     font-weight: 700;
-    color: var(--text-main);
+    color: #FFFFFF;
 }
 
 .detail-page .place-desc {
@@ -169,6 +168,14 @@ h1 {
     color: var(--text-dim);
 }
 
+/* SÉPARATEUR ENTRE LES BLOCS */
+.detail-card-separator {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 0 20px; /* Aligné avec le padding du texte */
+}
+
+/* LE LIEN PLANS (TUE LE BLEU FLUIDE) */
 .detail-page .maps-link {
     display: inline-flex;
     align-items: center;
@@ -178,9 +185,15 @@ h1 {
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
-    margin-top: 4px;
+    margin-top: 6px;
+    color: var(--page-theme) !important; /* Force le rouge Tokyo */
+    background: rgba(188, 71, 73, 0.1) !important;
+    transition: background 0.2s;
 }
 
+.detail-page .maps-link:hover {
+    background: rgba(188, 71, 73, 0.2) !important;
+}
 /* ==========================================================================
    5. WIDGET HOME : STATS & TIMER
    ========================================================================= */
