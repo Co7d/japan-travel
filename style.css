@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. BASE & VARIABLES (MODE SOMBRE SYSTEM)
+   1. VARIABLES & RESET (MODE SOMBRE SYSTEM)
    ========================================================================== */
 :root {
     --bg-color: #000000;
@@ -8,7 +8,6 @@
     --text-main: #FFFFFF;
     --text-dim: #8E8E93;
     --glass-border: rgba(255, 255, 255, 0.1);
-    --jp-red: #BC4749; /* Ton rouge japonais harmonisé */
 }
 
 body {
@@ -42,11 +41,6 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin-bottom: 15px;
 }
 
-/* Supprime l'espace excessif sous la carte itinéraire pour coller au design */
-.grid-stats + .card.glass {
-    margin-bottom: 5px !important;
-}
-
 /* ==========================================================================
    3. WIDGETS (TIMER & STATUT DU VOYAGE)
    ========================================================================== */
@@ -71,7 +65,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--jp-red); 
+    color: #BC4749; 
     background: rgba(188, 71, 73, 0.1); 
     padding: 6px 16px;
     border-radius: 20px;
@@ -98,7 +92,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .stat-card i {
     width: 24px;
     height: 24px;
-    color: var(--jp-red);
+    color: #BC4749;
 }
 
 .stat-info {
@@ -107,7 +101,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 }
 
 /* ==========================================================================
-   4. TIMELINE COMPACTE ALTERNÉE AVEC BULLES (AXE CENTRAL CONNECTEUR)
+   4. TIMELINE EN "BULLES" AVEC AXE CENTRAL CONNECTEUR
    ========================================================================== */
 .timeline-bubbles-container {
     display: flex;
@@ -200,7 +194,7 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
     margin: 4px 0;
 }
 
-/* Couleurs des bordures et des lignes selon la ville précédente */
+/* Couleurs des bordures gauches spécifiques aux bulles de villes */
 .border-tokyo { border-left: 4px solid #BC4749; }
 .border-kawaguchi { border-left: 4px solid #457B9D; }
 .border-kiso { border-left: 4px solid #6A994E; }
@@ -208,17 +202,18 @@ h1 { font-size: 34px; margin: 5px 0; font-weight: 800; }
 .border-hiroshima { border-left: 4px solid #8D99AE; }
 .border-osaka { border-left: 4px solid #E29578; }
 
-.bg-tokyo .connector-line { background: #BC4749; }
-.bg-kawaguchi .connector-line { background: #457B9D; }
-.bg-kiso .connector-line { background: #6A994E; }
-.bg-kyoto .connector-line { background: #D4A373; }
-.bg-hiroshima .connector-line { background: #8D99AE; }
-.bg-osaka .connector-line { background: #E29578; }
-
-/* Couleurs de texte pour les Vibes */
+/* Couleurs des Vibes (Textes thématiques) */
 .vibe-tokyo { color: #BC4749; }
 .vibe-kawaguchi { color: #457B9D; }
 .vibe-kiso { color: #6A994E; }
 .vibe-kyoto { color: #D4A373; }
 .vibe-hiroshima { color: #8D99AE; }
 .vibe-osaka { color: #E29578; }
+
+/* Couleurs des lignes connectrices */
+.bg-tokyo .connector-line { background: #BC4749; }
+.bg-kawaguchi .connector-line { background: #457B9D; }
+.bg-kiso .connector-line { background: #6A994E; }
+.bg-kyoto .connector-line { background: #D4A373; }
+.bg-hiroshima .connector-line { background: #8D99AE; }
+.bg-osaka .connector-line { background: #E29578; }
