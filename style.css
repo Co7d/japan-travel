@@ -184,6 +184,8 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     display: flex;
     gap: 6px;
     margin: 2px 0;
+    justify-content: center; /* Aligne le groupe pile sur la ligne centrale */
+    z-index: 2;
 }
 
 /* Thèmes couleur des bulles */
