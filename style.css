@@ -159,7 +159,7 @@ h1 { font-size: 32px; margin: 5px 0; font-weight: 800; }
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 60px; 
+    height: 85px; /* Passé de 60px à 85px pour donner de l'air aux deux badges */
 }
 
 .connector-line {
