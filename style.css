@@ -92,14 +92,14 @@ h1 {
     display: flex; 
     align-items: center; 
     padding: 16px 20px; 
-    container-type: inline-size;
+    width: 100%;
 }
 
 .stat-info { 
     display: flex; 
     flex-direction: column;
-    width: 100%;
-    min-width: 0; /* Empêche les ruptures de flexbox */
+    flex: 1;
+    min-width: 0;
 }
 
 .stat-label { 
@@ -111,12 +111,12 @@ h1 {
 .stat-value { 
     color: #FFFFFF !important; 
     font-weight: 600;
-    font-size: clamp(0.75rem, 5.2cqw, 1.1rem); 
+    font-size: clamp(0.7rem, 3.5vw, 1.05rem); 
     white-space: nowrap;     
     overflow: hidden;        
     display: block;
     width: 100%;
-    padding-right: 8px;      
+    padding-right: 15px;      
 }
 
 /* Le badge JOUR rouge (sans tiret requis à la suite) */
