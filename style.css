@@ -59,7 +59,7 @@ h1 {
     margin-top: 0;
 }
 
-/* Global Reset pour les liens */
+/* Reset de base pour les liens */
 a {
     text-decoration: none;
     color: inherit;
@@ -381,27 +381,14 @@ a {
 }
 
 /* ==========================================================================
-   8. PAGES DE DÉTAILS DES VILLES (CIBLAGE GLOBAL DES SOUS-LIENS)
+   8. INTERIEUR DES CARTES DE DETAILS (HEBERGEMENT, ACTIVITES, RESTOS)
    ========================================================================= */
-.card.glass a {
-    color: var(--text-main);
-    display: inline-block;
+/* Cible uniquement les liens situés DANS tes boites de contenu de la page Tokyo */
+.card.glass a[href] {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
 }
 
-.card.glass a:hover {
-    text-decoration: underline;
-}
-
-.card.glass h4, 
-.card.glass p, 
-.card.glass span, 
-.card.glass div {
-    color: var(--text-main);
-}
-
-/* Forcer les descriptions secondaires à garder leur teinte estompée */
-.card.glass p + p, 
-.card.glass .activity-desc,
-.card.glass span:last-child {
-    color: var(--text-dim);
+.card.glass a[href]:hover {
+    text-decoration: underline !important;
 }
