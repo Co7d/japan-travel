@@ -384,8 +384,8 @@ h1 {
 .detail-page header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     margin-bottom: 25px;
 }
 
@@ -394,33 +394,56 @@ h1 {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--text-dim);
+    color: var(--city-tokyo);
     text-decoration: none;
     font-size: 14px;
-    font-weight: 500;
-    transition: color 0.2s ease;
-    margin-bottom: 15px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+    margin-bottom: 20px;
 }
 
 .detail-page .back-button:hover {
-    color: var(--text-main);
+    opacity: 0.8;
 }
 
 .detail-page .header-meta {
     display: flex;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .detail-page .date-badge {
     font-size: 11px;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(188, 71, 73, 0.15);
+    color: var(--city-tokyo);
+    border: 1px solid rgba(188, 71, 73, 0.25);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.detail-page .vibe-badge {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     background: rgba(255, 255, 255, 0.08);
+    color: var(--text-dim);
     border: 1px solid rgba(255, 255, 255, 0.12);
     padding: 4px 10px;
     border-radius: 12px;
-    color: var(--text-main);
-    letter-spacing: 0.5px;
+}
+
+.detail-page h1 {
+    text-align: left;
+    margin: 5px 0;
+}
+
+.detail-page .subtitle {
+    text-align: left;
+    margin-bottom: 15px;
 }
 
 .detail-page .section-title {
