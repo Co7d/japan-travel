@@ -378,10 +378,60 @@ h1 {
     font-weight: 600;
 }
 /* ==========================================================================
-   9. DESIGN EXCLUSIF AUX PAGES DE DÉTAILS (ZÉRO !IMPORTANT)
+   9. DESIGN EXCLUSIF AUX PAGES DE DÉTAILS
    ========================================================================= */
 
-/* Structure de la ligne cliquable */
+.detail-page header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.detail-page .back-button {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    margin-bottom: 15px;
+}
+
+.detail-page .back-button:hover {
+    color: var(--text-main);
+}
+
+.detail-page .header-meta {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.detail-page .date-badge {
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 4px 10px;
+    border-radius: 12px;
+    color: var(--text-main);
+    letter-spacing: 0.5px;
+}
+
+.detail-page .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 24px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+}
+
 .detail-page .detail-item--row {
     display: flex;
     justify-content: space-between;
@@ -390,34 +440,34 @@ h1 {
     padding: 14px 0;
 }
 
-/* Retire la bordure sur le dernier lien de la carte */
-.detail-page .detail-card a:last-of-type {
-    border-bottom: none;
+.detail-page .detail-card a:first-of-type {
+    padding-top: 4px;
 }
 
-/* Séparateur horizontal entre deux blocs d'une même carte */
+.detail-page .detail-card a:last-of-type {
+    padding-bottom: 4px;
+}
+
 .detail-page .detail-card-separator {
     height: 1px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     width: 100%;
 }
 
-/* La Bulle de Date (Badge Capsule) */
 .detail-page .place-date {
     display: inline-block;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    background: rgba(188, 71, 73, 0.15); /* Rouge Tokyo transparent */
-    color: var(--city-tokyo);            /* Écrit en rouge Tokyo */
+    background: rgba(188, 71, 73, 0.15);
+    color: var(--city-tokyo);
     border: 1px solid rgba(188, 71, 73, 0.25);
     padding: 4px 10px;
     border-radius: 12px;
     margin-bottom: 6px;
 }
 
-/* Nom de l'hôtel, de l'activité ou du restaurant */
 .detail-page .place-name {
     font-size: 16px;
     font-weight: 700;
@@ -425,7 +475,6 @@ h1 {
     margin-bottom: 2px;
 }
 
-/* Description ou Quartier en grisé */
 .detail-page .place-desc {
     font-size: 13px;
     color: var(--text-dim);
@@ -433,16 +482,14 @@ h1 {
     line-height: 1.4;
 }
 
-/* Le petit chevron à droite */
 .detail-page .chevron {
     font-size: 20px;
     color: var(--text-dim);
     font-weight: 300;
     padding-left: 10px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* Effet au survol de la ligne */
 .detail-page .detail-item--row:hover .chevron {
     transform: translateX(3px);
     color: var(--text-main);
