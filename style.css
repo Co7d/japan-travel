@@ -377,3 +377,73 @@ h1 {
     color: var(--text-main);
     font-weight: 600;
 }
+/* ==========================================================================
+   9. DESIGN EXCLUSIF AUX PAGES DE DÉTAILS (ZÉRO !IMPORTANT)
+   ========================================================================= */
+
+/* Structure de la ligne cliquable */
+.detail-page .detail-item--row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    padding: 14px 0;
+}
+
+/* Retire la bordure sur le dernier lien de la carte */
+.detail-page .detail-card a:last-of-type {
+    border-bottom: none;
+}
+
+/* Séparateur horizontal entre deux blocs d'une même carte */
+.detail-page .detail-card-separator {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 100%;
+}
+
+/* La Bulle de Date (Badge Capsule) */
+.detail-page .place-date {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(188, 71, 73, 0.15); /* Rouge Tokyo transparent */
+    color: var(--city-tokyo);            /* Écrit en rouge Tokyo */
+    border: 1px solid rgba(188, 71, 73, 0.25);
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+}
+
+/* Nom de l'hôtel, de l'activité ou du restaurant */
+.detail-page .place-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 2px;
+}
+
+/* Description ou Quartier en grisé */
+.detail-page .place-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    display: block;
+    line-height: 1.4;
+}
+
+/* Le petit chevron à droite */
+.detail-page .chevron {
+    font-size: 20px;
+    color: var(--text-dim);
+    font-weight: 300;
+    padding-left: 10px;
+    transition: transform 0.2s ease;
+}
+
+/* Effet au survol de la ligne */
+.detail-page .detail-item--row:hover .chevron {
+    transform: translateX(3px);
+    color: var(--text-main);
+}
