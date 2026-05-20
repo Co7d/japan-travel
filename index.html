@@ -15,176 +15,174 @@
             <h1><span aria-hidden="true">🇯🇵</span> Japon 2026</h1>
         </header>
 
-        <main>
-            <section class="card glass countdown-section" aria-label="Compte à rebours et progression">
-                <div id="timer" aria-live="polite">000 : 00 : 00 : 00</div>
-                <div id="trip-day" class="trip-day-badge" style="display: none;">JOUR 01</div> 
-                <p class="label">Avant l'aventure</p>
-            </section>
+        <section class="card glass countdown-section" aria-label="Compte à rebours et progression">
+            <div id="timer" aria-live="polite">000 : 00 : 00 : 00</div>
+            <div id="trip-day" class="trip-day-badge" style="display: none;">JOUR 01</div> 
+            <p class="label">Avant l'aventure</p>
+        </section>
 
-            <div class="grid-stats">
-                <div class="card glass stat-card full-width">
-                    <div class="stat-info">
-                        <span class="stat-label">Statut du voyage</span>
-                        <span id="next-step" class="stat-value">Tokyo (Départ)</span>
+        <div class="grid-stats">
+            <div class="card glass stat-card full-width">
+                <div class="stat-info">
+                    <span class="stat-label">Statut du voyage</span>
+                    <span id="next-step" class="stat-value">Tokyo (Départ)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card glass card-map">
+            <img src="itineraire.png" alt="Carte de l'itinéraire du voyage au Japon 2026">
+        </div>
+
+        <main class="modern-timeline" aria-label="Étapes de l'itinéraire">
+             
+            <div class="timeline-item item-tokyo">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🗼</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="tokyo.html" class="timeline-card" aria-label="Tokyo, Immersion. Du 16 au 20 Novembre, 5 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Tokyo</span>
+                            <span class="vibe-badge badge-tokyo">Immersion</span>
+                        </div>
+                        <span class="city-meta">16 au 20 Nov • 5 Jours</span>
+                    </a>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
             </div>
 
-            <div class="card glass card-map">
-                <img src="itineraire.png" alt="Carte de l'itinéraire du voyage au Japon 2026">
+            <div class="timeline-item item-kawaguchiko">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🗻</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="kawaguchiko.html" class="timeline-card" aria-label="Kawaguchiko, Nature. Du 20 au 22 Novembre, 3 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Kawaguchiko</span>
+                            <span class="vibe-badge badge-kawaguchiko">Nature</span>
+                        </div>
+                        <span class="city-meta">20 au 22 Nov • 3 Jours</span>
+                    </a>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚗 Voiture</span>
+                    </div>
+                </div>
             </div>
 
-            <section class="modern-timeline" aria-label="Étapes de l'itinéraire">
-                 
-                <div class="timeline-item item-tokyo">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🗼</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="tokyo.html" class="timeline-card" aria-label="Tokyo, Immersion. Du 16 au 20 Novembre, 5 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Tokyo</span>
-                                <span class="vibe-badge badge-tokyo">Immersion</span>
-                            </div>
-                            <span class="city-meta">16 au 20 Nov • 5 Jours</span>
-                        </a>
-                        <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+            <div class="timeline-item item-kiso">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🌲</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="kiso.html" class="timeline-card" aria-label="Vallée de Kiso, Rando. Du 22 au 23 Novembre, 2 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Vallée de Kiso</span>
+                            <span class="vibe-badge badge-kiso">Rando</span>
                         </div>
+                        <span class="city-meta">22 au 23 Nov • 2 Jours</span>
+                    </a>
+                    <div class="inline-transport double-stack">
+                        <span class="transport-badge">🚗 Voiture</span>
+                        <span class="transport-badge">🚄 Train</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="timeline-item item-kawaguchiko">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🗻</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="kawaguchiko.html" class="timeline-card" aria-label="Kawaguchiko, Nature. Du 20 au 22 Novembre, 3 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Kawaguchiko</span>
-                                <span class="vibe-badge badge-kawaguchiko">Nature</span>
-                            </div>
-                            <span class="city-meta">20 au 22 Nov • 3 Jours</span>
-                        </a>
-                        <div class="inline-transport">
-                            <span class="transport-badge">🚗 Voiture</span>
+            <div class="timeline-item item-kyoto">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">⛩️</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="kyoto.html" class="timeline-card" aria-label="Kyoto, Tradition. Du 23 au 28 Novembre, 6 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Kyoto</span>
+                            <span class="vibe-badge badge-kyoto">Tradition</span>
                         </div>
+                        <span class="city-meta">23 au 28 Nov • 6 Jours</span>
+                    </a>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="timeline-item item-kiso">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🌲</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="kiso.html" class="timeline-card" aria-label="Vallée de Kiso, Rando. Du 22 au 23 Novembre, 2 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Vallée de Kiso</span>
-                                <span class="vibe-badge badge-kiso">Rando</span>
-                            </div>
-                            <span class="city-meta">22 au 23 Nov • 2 Jours</span>
-                        </a>
-                        <div class="inline-transport double-stack">
-                            <span class="transport-badge">🚗 Voiture</span>
-                            <span class="transport-badge">🚄 Train</span>
+            <div class="timeline-item item-hiroshima">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🕊️</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="hiroshima.html" class="timeline-card" aria-label="Hiroshima, Histoire. Du 28 au 29 Novembre, 2 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Hiroshima</span>
+                            <span class="vibe-badge badge-hiroshima">Histoire</span>
                         </div>
+                        <span class="city-meta">28 au 29 Nov • 2 Jours</span>
+                    </a>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="timeline-item item-kyoto">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">⛩️</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="kyoto.html" class="timeline-card" aria-label="Kyoto, Tradition. Du 23 au 28 Novembre, 6 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Kyoto</span>
-                                <span class="vibe-badge badge-kyoto">Tradition</span>
-                            </div>
-                            <span class="city-meta">23 au 28 Nov • 6 Jours</span>
-                        </a>
-                        <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+            <div class="timeline-item item-osaka">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🐙</div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-right">
+                    <a href="osaka.html" class="timeline-card" aria-label="Osaka, Food. Du 29 Novembre au 2 Décembre, 4 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Osaka</span>
+                            <span class="vibe-badge badge-osaka">Food</span>
                         </div>
+                        <span class="city-meta">29 Nov au 02 Dec • 4 Jours</span>
+                    </a>
+                    <div class="inline-transport">
+                        <span class="transport-badge">🚄 Shinkansen</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="timeline-item item-hiroshima">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🕊️</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="hiroshima.html" class="timeline-card" aria-label="Hiroshima, Histoire. Du 28 au 29 Novembre, 2 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Hiroshima</span>
-                                <span class="vibe-badge badge-hiroshima">Histoire</span>
-                            </div>
-                            <span class="city-meta">28 au 29 Nov • 2 Jours</span>
-                        </a>
-                        <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+            <div class="timeline-item item-tokyo last-item">
+                <div class="timeline-left">
+                    <div class="timeline-dot" aria-hidden="true">🗼</div>
+                </div>
+                <div class="timeline-right">
+                    <a href="tokyo.html" class="timeline-card" aria-label="Retour à Tokyo, Sayōnara. Du 2 au 5 Décembre, 4 Jours. Cliquez pour voir le détail.">
+                        <div class="card-header">
+                            <span class="city-name">Tokyo</span>
+                            <span class="vibe-badge badge-tokyo">Sayōnara</span>
                         </div>
-                    </div>
+                        <span class="city-meta">02 au 05 Dec • 4 Jours</span>
+                    </a>
                 </div>
+            </div>
 
-                <div class="timeline-item item-osaka">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🐙</div>
-                        <div class="timeline-line"></div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="osaka.html" class="timeline-card" aria-label="Osaka, Food. Du 29 Novembre au 2 Décembre, 4 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Osaka</span>
-                                <span class="vibe-badge badge-osaka">Food</span>
-                            </div>
-                            <span class="city-meta">29 Nov au 02 Dec • 4 Jours</span>
-                        </a>
-                        <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item item-tokyo last-item">
-                    <div class="timeline-left">
-                        <div class="timeline-dot" aria-hidden="true">🗼</div>
-                    </div>
-                    <div class="timeline-right">
-                        <a href="tokyo.html" class="timeline-card" aria-label="Retour à Tokyo, Sayōnara. Du 2 au 5 Décembre, 4 Jours. Cliquez pour voir le détail.">
-                            <div class="card-header">
-                                <span class="city-name">Tokyo</span>
-                                <span class="vibe-badge badge-tokyo">Sayōnara</span>
-                            </div>
-                            <span class="city-meta">02 au 05 Dec • 4 Jours</span>
-                        </a>
-                    </div>
-                </div>
-
-            </section>
-
-            <section class="card glass" aria-labelledby="lexique-title">
-                <h2 id="lexique-title"><i data-lucide="languages" aria-hidden="true"></i> Lexique de Survie</h2>
-                <div class="lexique-grid">
-                    <div class="lexique-category">Politesse</div>
-                    <div class="phrase"><span>Bonjour / Salut</span> <strong>Ohayō / Kon'nichiwa</strong></div>
-                    <div class="phrase"><span>Excusez-moi / Pardon</span> <strong>Sumimasen</strong></div>
-                    <div class="phrase"><span>S'il vous plaît</span> <strong>Onegaishimasu</strong></div>
-                     
-                    <div class="lexique-category">Manger & Acheter</div>
-                    <div class="phrase"><span>C'est délicieux !</span> <strong>Oishii desu!</strong></div>
-                    <div class="phrase"><span>L'addition, SVP</span> <strong>O-kanjō o-negai shimasu</strong></div>
-                    <div class="phrase"><span>Combien ça coûte ?</span> <strong>Ikura desu ka?</strong></div>
-                    <div class="phrase"><span>Je recommande / Le menu ?</span> <strong>Osusume wa?</strong></div>
-                </div>
-            </section>
         </main>
+
+        <section class="card glass" aria-labelledby="lexique-title">
+            <h2 id="lexique-title"><i data-lucide="languages" aria-hidden="true"></i> Lexique de Survie</h2>
+            <div class="lexique-grid">
+                <div class="lexique-category">Politesse</div>
+                <div class="phrase"><span>Bonjour / Salut</span> <strong>Ohayō / Kon'nichiwa</strong></div>
+                <div class="phrase"><span>Excusez-moi / Pardon</span> <strong>Sumimasen</strong></div>
+                <div class="phrase"><span>S'il vous plaît</span> <strong>Onegaishimasu</strong></div>
+                 
+                <div class="lexique-category">Manger & Acheter</div>
+                <div class="phrase"><span>C'est délicieux !</span> <strong>Oishii desu!</strong></div>
+                <div class="phrase"><span>L'addition, SVP</span> <strong>O-kanjō o-negai shimasu</strong></div>
+                <div class="phrase"><span>Combien ça coûte ?</span> <strong>Ikura desu ka?</strong></div>
+                <div class="phrase"><span>Je recommande / Le menu ?</span> <strong>Osusume wa?</strong></div>
+            </div>
+        </section>
 
     </div>
 
@@ -195,7 +193,7 @@
             function updateTripStatus() {
                 const now = new Date();
                 
-                // Configuration des dates (Mois de 0 à 11 : 10 = Novembre, 11 = Décembre)
+                // Configuration des dates (Mois : 10 = Novembre, 11 = Décembre)
                 const dateDepartMarseille = new Date(2026, 10, 15, 8, 0, 0);
                 const dateArriveeMunich    = new Date(2026, 10, 15, 9, 35, 0);
                 const dateDepartMunich     = new Date(2026, 10, 15, 12, 35, 0);
@@ -206,4 +204,101 @@
                 const dateKyoto            = new Date(2026, 10, 23, 0, 0, 0);
                 const dateHiroshima        = new Date(2026, 10, 28, 0, 0, 0);
                 const dateOsaka            = new Date(2026, 10, 29, 0, 0, 0);
-                const dateTokyoRetour      = new Date(2026, 11, 2, 0, 0, 0
+                const dateTokyoRetour      = new Date(2026, 11, 2, 0, 0, 0);
+                const dateVolRetour        = new Date(2026, 11, 5, 2, 25, 0);
+
+                const countdownSection     = document.querySelector('.countdown-section');
+                const timerElement         = document.getElementById('timer');
+                const tripDayElement       = document.getElementById('trip-day');
+                const statusElement        = document.getElementById('next-step');
+                const labelElement         = document.querySelector('.countdown-section .label');
+
+                // Calcul du jour actuel
+                const msParJour            = 1000 * 60 * 60 * 24;
+                const debutVoyageMinuit    = new Date(2026, 10, 15, 0, 0, 0);
+                const aujourdhuiMinuit     = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const diffMs               = aujourdhuiMinuit - debutVoyageMinuit;
+                const J                    = Math.floor(diffMs / msParJour) + 1;
+                const prefixJour           = `JOUR ${String(J).padStart(2, '0')}`;
+
+                if (now < dateDepartMarseille) {
+                    // --- 1. AVANT LE DÉPART ---
+                    if (countdownSection) countdownSection.style.display = "block";
+                    if (timerElement) timerElement.style.display = "block";
+                    if (tripDayElement) tripDayElement.style.display = "none";
+                    
+                    if (statusElement) statusElement.innerText = "Marseille (Départ imminent)";
+                    if (labelElement) labelElement.innerText = "Avant l'aventure";
+                    
+                    const difference = dateDepartMarseille - now;
+                    const days       = Math.floor(difference / (1000 * 60 * 60 * 24));
+                    const hours      = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes    = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds    = Math.floor((difference % (1000 * 60)) / 1000);
+
+                    const formatDays    = String(days).padStart(3, '0');
+                    const formatHours   = String(hours).padStart(2, '0');
+                    const formatMinutes = String(minutes).padStart(2, '0');
+                    const formatSeconds = String(seconds).padStart(2, '0');
+
+                    if (timerElement) {
+                        timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
+                    }
+
+                } else {
+                    // --- 2. PENDANT LES VOLS ALLER ---
+                    if (countdownSection) countdownSection.style.display = "block";
+                    if (timerElement) timerElement.style.display = "none";
+                    
+                    if (tripDayElement) {
+                        tripDayElement.style.display = "block";
+                        tripDayElement.innerText = prefixJour;
+                    }
+                    if (labelElement) labelElement.innerText = "Voyage en cours 🇯🇵";
+
+                    if (now >= dateDepartMarseille && now < dateArriveeMunich) {
+                        if (statusElement) statusElement.innerText = "✈️ En vol : Marseille (MRS) ➔ Munich (MUC)";
+                    } else if (now >= dateArriveeMunich && now < dateDepartMunich) {
+                        if (statusElement) statusElement.innerText = "🇩🇪 Escale à l'aéroport de Munich";
+                    } else if (now >= dateDepartMunich && now < dateArriveeTokyo) {
+                        if (statusElement) statusElement.innerText = "✈️ Grand Courrier : Munich (MUC) ➔ Tokyo (HND/NRT)";
+                    
+                    // --- 3. SUR PLACE AU JAPON ---
+                    } else if (now >= dateArriveeTokyo && now < dateVolRetour) {
+                        if (countdownSection) countdownSection.style.display = "none";
+
+                        if (now >= dateArriveeTokyo && now < dateKawaguchiko) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Tokyo (Immersion Urbaine) 🗼`;
+                        } else if (now >= dateKawaguchiko && now < dateKiso) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Kawaguchiko (Nature & Mont Fuji) 🗻`;
+                        } else if (now >= dateKiso && now < dateKyoto) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Vallée de Kiso (Rando Historique) 🌲`;
+                        } else if (now >= dateKyoto && now < dateHiroshima) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Kyoto (Tradition & Temples) ⛩️`;
+                        } else if (now >= dateHiroshima && now < dateOsaka) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Hiroshima (Histoire & Culture) 🕊️`;
+                        } else if (now >= dateOsaka && now < dateTokyoRetour) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Osaka (Street Food & Ambiance) 🐙`;
+                        } else if (now >= dateTokyoRetour && now < dateVolRetour) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Tokyo (Derniers souvenirs) 🗼`;
+                        }
+
+                    // --- 4. LE VOL RETOUR ET LA FIN ---
+                    } else if (now >= dateVolRetour) {
+                        if (countdownSection) countdownSection.style.display = "block";
+                        if (tripDayElement) {
+                            tripDayElement.style.display = "block";
+                            tripDayElement.innerText = "FIN";
+                        }
+                        if (statusElement) statusElement.innerText = "Sayōnara / Vol retour vers la France 🛫";
+                        if (labelElement) labelElement.innerText = "Fin de l'aventure";
+                    }
+                }
+            }
+
+            updateTripStatus();
+            setInterval(updateTripStatus, 1000);
+        });
+    </script>
+</body>
+</html>
