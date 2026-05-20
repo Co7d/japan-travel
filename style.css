@@ -6,7 +6,7 @@
 }
 
 /* ==========================================================================
-   1. VARIABLES
+   1. VARIABLES DE THÈMES ET COULEURS
    ========================================================================= */
 :root {
     --bg-color: #000000;
@@ -26,7 +26,7 @@
 }
 
 /* ==========================================================================
-   2. STYLES DE BASE & LAYOUT
+   2. STYLES DE BASE & LAYOUT MOBILE-FIRST
    ========================================================================= */
 body {
     background-color: var(--bg-color);
@@ -44,21 +44,12 @@ body {
     max-width: 420px;
 }
 
-/* Titre principal sur la page d'accueil */
 h1 {
     font-size: 38px;
-    margin: 15px 0;
+    margin: 15px 0 5px 0;
     font-weight: 800;
     color: var(--city-tokyo);
     text-align: center;
-}
-
-/* Titre sur les pages de détails */
-.detail-page h1 {
-    font-size: 32px;
-    margin: 10px 0 5px 0;
-    text-align: left;
-    color: var(--page-theme);
 }
 
 .subtitle {
@@ -69,7 +60,7 @@ h1 {
 }
 
 /* ==========================================================================
-   3. COMPOSANTS GLASS & CARTES GLOBAL
+   3. COMPOSANTS GLASSMORPHISM GLOBAL
    ========================================================================= */
 .card.glass {
     background: var(--card-bg-high-opacity);
@@ -79,7 +70,7 @@ h1 {
     border-radius: 22px;
     padding: 20px;
     margin-bottom: 12px;
-    transform: translateZ(0); /* Sécurité anti-saccade iOS */
+    transform: translateZ(0); /* Anti-saccade iOS */
 }
 
 .card.glass.card-map {
@@ -95,156 +86,48 @@ h1 {
 }
 
 /* ==========================================================================
-   4. DESIGN DES PAGES DE DÉTAIL
+   4. STRUCTURE DE LA BULLE DE STATUT EN LIGNE UNIQUE (CORRIGÉE)
    ========================================================================= */
-.detail-page {
-    --page-theme: var(--city-tokyo);
+.card.glass.stat-card.full-width { 
+    display: flex; 
+    align-items: center; 
+    padding: 16px 20px; 
 }
 
-.detail-page h1 {
-    color: var(--page-theme);
-    margin-top: 10px;
-}
-
-.detail-page .back-button {
-    color: var(--page-theme);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.detail-page .header-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.detail-page .date-badge, 
-.detail-page .vibe-badge {
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 6px 16px;
-    border-radius: 30px;
-    display: inline-block;
-    line-height: 1;
-}
-
-.detail-page .date-badge {
-    background: rgba(188, 71, 73, 0.15);
-    color: var(--page-theme);
-    border: 1px solid rgba(188, 71, 73, 0.3);
-}
-
-.detail-page .vibe-badge {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-dim);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.detail-page .section-title {
-    font-size: 14px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin: 25px 0 10px 0;
-}
-
-.detail-page .card.glass.detail-card {
-    display: flex;
+.stat-info { 
+    display: flex; 
     flex-direction: column;
-    padding: 0;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.detail-page .detail-item--row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding: 16px 20px;
-    text-decoration: none;
-    color: var(--text-main);
-    transition: background 0.2s;
+    min-width: 0; /* Empêche les ruptures de flexbox */
 }
 
-.detail-page .detail-item--row:hover {
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.detail-page .detail-item--row .chevron {
-    font-size: 22px;
-    color: var(--text-main);
-    opacity: 0.3;
-}
-
-.detail-page .detail-item--stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 20px;
-    width: 100%;
-}
-
-.detail-page .place-date {
-    display: block;
-    font-size: 11px;
-    font-weight: 900;
-    color: var(--page-theme);
-    letter-spacing: 0.5px;
+.stat-label { 
+    font-size: 12px; 
+    color: var(--text-dim); 
     margin-bottom: 4px;
 }
 
-.detail-page .place-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #FFFFFF;
+/* Valeur globale du statut bloquée de force sur une seule ligne adaptative */
+.stat-value { 
+    color: #FFFFFF !important; 
+    font-weight: 600;
+    font-size: 1.1rem; 
+    white-space: nowrap;     /* Interdit le retour à la ligne */
+    overflow: hidden;        /* Masque le surplus */
+    text-overflow: ellipsis; /* Ajoute les "..." si trop long */
+    display: block;
+    width: 100%;
 }
 
-.detail-page .place-desc {
-    font-size: 14px;
-    color: var(--text-dim);
-}
-
-.detail-card-separator {
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.08);
-    margin: 0 20px;
-}
-
-.detail-page .maps-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    margin-top: 8px;
-    color: var(--page-theme) !important;
-    background: rgba(188, 71, 73, 0.1) !important;
-    transition: background 0.2s, transform 0.1s;
-}
-
-.detail-page .maps-link:hover {
-    background: rgba(188, 71, 73, 0.2) !important;
-    transform: translateY(-1px);
+/* Le badge JOUR rouge (sans tiret requis à la suite) */
+.red-day {
+    color: #BC4747 !important; /* Rouge Tokyo éclatant */
+    font-weight: 800;
+    margin-right: 8px;         /* Espacement automatique propre */
 }
 
 /* ==========================================================================
-   5. WIDGET HOME : STATS & TIMER
+   5. TIMER DU COMPTE À REBOURS
    ========================================================================= */
 .countdown-section {
     display: flex;
@@ -260,16 +143,6 @@ h1 {
     letter-spacing: -1px;
 }
 
-.trip-day-badge {
-    font-size: 38px;
-    font-weight: 900;
-    color: #BC4747;
-    letter-spacing: 2px;
-    margin-bottom: 5px;
-    text-shadow: 0 2px 10px rgba(188, 71, 73, 0.15);
-    white-space: nowrap;
-}
-
 .countdown-section .label {
     font-size: 11px;
     text-transform: uppercase;
@@ -283,49 +156,8 @@ h1 {
     margin: 0;
 }
 
-.grid-stats { 
-    margin-bottom: 12px; 
-}
-
-.card.glass.stat-card.full-width { 
-    display: flex; 
-    align-items: center; 
-    padding: 16px 20px; 
-}
-
-.stat-info { 
-    display: flex; 
-    flex-direction: column;
-    width: 100%;
-    min-width: 0; /* Sécurité indispensable pour text-overflow: ellipsis */
-}
-
-.stat-label { 
-    font-size: 12px; 
-    color: var(--text-dim); 
-}
-
-/* Valeur globale du statut (Blanche, fluide et bloquée sur une ligne) */
-.stat-value { 
-    color: #FFFFFF !important; 
-    font-weight: 600;
-    font-size: 1.1rem; 
-    margin-top: 2px; 
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    display: block;
-}
-
-/* Uniquement le badge JOUR à l'intérieur du statut */
-.red-day {
-    color: #BC4747 !important;
-    font-weight: 800;
-    margin-right: 8px;
-}
-
 /* ==========================================================================
-   6. TIMELINE FIL D'ARIANE (ACCUEIL)
+   6. TIMELINE FIL D'ARIANE (PAGE D'ACCUEIL)
    ========================================================================= */
 .modern-timeline {
     display: flex;
@@ -389,7 +221,7 @@ h1 {
 .modern-timeline .timeline-card {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px); /* Indispensable pour Safari/iPhone */
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 18px;
     padding: 14px 18px;
@@ -398,7 +230,7 @@ h1 {
     display: block;
     text-decoration: none;
     color: var(--text-main);
-    transform: translateZ(0); /* Sécurité anti-saccade iOS */
+    transform: translateZ(0);
 }
 
 .modern-timeline .timeline-card:hover, 
@@ -407,7 +239,6 @@ h1 {
     background: rgba(255, 255, 255, 0.08);
 }
 
-/* Bordures de gauche colorées pour chaque ville */
 .modern-timeline .item-tokyo .timeline-card       { border-left: 3px solid var(--city-tokyo); }
 .modern-timeline .item-kawaguchiko .timeline-card { border-left: 3px solid var(--city-kawaguchiko); }
 .modern-timeline .item-kiso .timeline-card        { border-left: 3px solid var(--city-kiso); }
@@ -415,7 +246,6 @@ h1 {
 .modern-timeline .item-hiroshima .timeline-card   { border-left: 3px solid var(--city-hiroshima); }
 .modern-timeline .item-osaka .timeline-card       { border-left: 3px solid var(--city-osaka); }
 
-/* Éléments internes des cartes d'itinéraires */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -434,7 +264,7 @@ h1 {
     color: var(--text-dim);
 }
 
-/* Badges de style de voyage (Vibe Badges) */
+/* Vibe Badges de couleurs */
 .vibe-badge {
     font-size: 11px;
     font-weight: 800;
@@ -451,17 +281,11 @@ h1 {
 .badge-hiroshima { background: rgba(141, 153, 174, 0.15); color: var(--city-hiroshima); border: 1px solid rgba(141, 153, 174, 0.25); }
 .badge-osaka { background: rgba(226, 149, 120, 0.15); color: var(--city-osaka); border: 1px solid rgba(226, 149, 120, 0.25); }
 
-/* Badges de transports */
 .inline-transport {
     display: flex;
     gap: 6px;
     margin-top: 10px;
     flex-wrap: wrap;
-}
-.inline-transport.double-stack {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
 }
 .transport-badge {
     font-size: 11px;
@@ -474,7 +298,7 @@ h1 {
 }
 
 /* ==========================================================================
-   7. DESIGN DU LEXIQUE DE SURVIE (RÉPARÉ ET SÉCURISÉ)
+   7. DESIGN DU LEXIQUE DE SURVIE
    ========================================================================= */
 #lexique-title {
     font-size: 18px;
@@ -488,17 +312,17 @@ h1 {
 
 .lexique-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Structure propre sur 2 colonnes */
+    grid-template-columns: 1fr 1fr;
     column-gap: 16px;
     row-gap: 4px;
 }
 
 .lexique-category {
-    grid-column: 1 / -1; /* Occupe toute la largeur pour séparer proprement */
+    grid-column: 1 / -1;
     font-size: 13px;
     font-weight: 800;
     text-transform: uppercase;
-    color: var(--city-tokyo); /* Rappel élégant du rouge Japon */
+    color: var(--city-tokyo);
     letter-spacing: 1px;
     margin-top: 16px;
     margin-bottom: 8px;
