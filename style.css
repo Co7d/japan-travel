@@ -107,14 +107,17 @@ h1 {
     margin-bottom: 4px;
 }
 
-/* Valeur globale du statut bloquée de force sur une seule ligne adaptative */
+/* Valeur globale du statut adaptative qui ajuste sa taille automatiquement */
 .stat-value { 
     color: #FFFFFF !important; 
     font-weight: 600;
-    font-size: 1.1rem; 
-    white-space: nowrap;     /* Interdit le retour à la ligne */
-    overflow: hidden;        /* Masque le surplus */
-    text-overflow: ellipsis; /* Ajoute les "..." si trop long */
+    
+    /* TAILLE AJUSTABLE DYNAMIQUE : */
+    /* Minimale : 0.85rem (si texte long), Idéale : 4vw, Maximale : 1.1rem (si texte court) */
+    font-size: clamp(0.85rem, 4vw, 1.1rem); 
+    
+    white-space: nowrap;     /* Verrouille sur une seule ligne */
+    overflow: hidden;        /* Sécurité anti-débordement */
     display: block;
     width: 100%;
 }
