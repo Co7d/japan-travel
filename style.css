@@ -92,6 +92,7 @@ h1 {
     display: flex; 
     align-items: center; 
     padding: 16px 20px; 
+    container-type: inline-size;
 }
 
 .stat-info { 
@@ -107,19 +108,15 @@ h1 {
     margin-bottom: 4px;
 }
 
-/* Valeur globale du statut adaptative (Sécurité émoji incluse) */
 .stat-value { 
     color: #FFFFFF !important; 
     font-weight: 600;
-    
-    /* On passe le taux intermédiaire de 4vw à 3.7vw pour miniaturiser juste ce qu'il faut */
-    font-size: clamp(0.8rem, 3.7vw, 1.1rem); 
-    
-    white-space: nowrap;     /* Verrouille sur une seule ligne */
-    overflow: hidden;        /* Masque le surplus si l'écran est minuscule */
+    font-size: clamp(0.75rem, 5.2cqw, 1.1rem); 
+    white-space: nowrap;     
+    overflow: hidden;        
     display: block;
     width: 100%;
-    padding-right: 4px;      /* Zone tampon pour éviter que l'émoji ne colle au bord */
+    padding-right: 8px;      
 }
 
 /* Le badge JOUR rouge (sans tiret requis à la suite) */
