@@ -49,11 +49,14 @@
                         </div>
                         <div class="city-meta">16 Nov — 20 Nov • 4 nuits</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">✈️ Vol Aller</span>
-                            <span class="transport-badge">🚇 Suica</span>
+                            <span class="transport-badge">🚇 Métro</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚂 Train Limited Express "Fuji Excursion"</span>
             </div>
 
             <div class="timeline-item item-kawaguchiko">
@@ -69,10 +72,14 @@
                         </div>
                         <div class="city-meta">20 Nov — 22 Nov • 2 nuits</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚌 Bus Express</span>
+                            <span class="transport-badge">🚗 Voiture</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚗 Voiture</span>
             </div>
 
             <div class="timeline-item item-kiso">
@@ -88,11 +95,14 @@
                         </div>
                         <div class="city-meta">22 Nov — 23 Nov • 1 nuit</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
-                            <span class="transport-badge">🚂 Train Local</span>
+                            <span class="transport-badge">🚗 Voiture</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚗 Voiture puis 🚄 Shinkansen</span>
             </div>
 
             <div class="timeline-item item-kyoto">
@@ -108,10 +118,16 @@
                         </div>
                         <div class="city-meta">23 Nov — 28 Nov • 5 nuits</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+                            <span class="transport-badge">🚌 Bus</span>
+                            <span class="transport-badge">🚇 Métro</span>
+                            <span class="transport-badge">🚶 Marche</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚄 Shinkansen</span>
             </div>
 
             <div class="timeline-item item-hiroshima">
@@ -127,11 +143,17 @@
                         </div>
                         <div class="city-meta">28 Nov — 29 Nov • 1 nuit</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+                            <span class="transport-badge">🚃 Hiroden</span>
+                            <span class="transport-badge">🚂 Train</span>
                             <span class="transport-badge">🚢 Ferry</span>
+                            <span class="transport-badge">🚶 Marche</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚄 Shinkansen</span>
             </div>
 
             <div class="timeline-item item-osaka">
@@ -147,10 +169,14 @@
                         </div>
                         <div class="city-meta">29 Nov — 02 Déc • 3 nuits</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
+                            <span class="transport-badge">🚇 Métro</span>
                         </div>
                     </a>
                 </div>
+            </div>
+
+            <div class="timeline-transition">
+                <span class="transition-badge">🚄 Shinkansen</span>
             </div>
 
             <div class="timeline-item item-tokyo">
@@ -166,14 +192,15 @@
                         </div>
                         <div class="city-meta">02 Déc — 05 Déc • 3 nuits</div>
                         <div class="inline-transport">
-                            <span class="transport-badge">🚄 Shinkansen</span>
-                            <span class="transport-badge">✈️ Vol Retour</span>
+                            <span class="transport-badge">🚇 Métro</span>
                         </div>
                     </a>
                 </div>
             </div>
 
-        </div> <div class="card glass">
+        </div> 
+        
+        <div class="card glass">
             <h3 id="lexique-title"><i data-lucide="languages" style="color: var(--city-tokyo);"></i> Lexique de Survie</h3>
             <div class="lexique-grid">
                 <div class="lexique-category">Général</div>
@@ -193,102 +220,7 @@
             </div>
         </div>
 
-    </div> <script>
+    </div> 
+
+    <script>
         document.addEventListener("DOMContentLoaded", function() {
-            lucide.createIcons();
-            
-            function updateTripStatus() {
-                // Heure courante réelle
-                const now = new Date(); 
-
-                // Configuration des dates limites
-                const dateDepartMarseille = new Date(2026, 10, 15, 8, 0, 0);
-                const dateArriveeMunich    = new Date(2026, 10, 15, 9, 35, 0);
-                const dateDepartMunich     = new Date(2026, 10, 15, 12, 35, 0);
-                const dateArriveeTokyo     = new Date(2026, 10, 16, 0, 55, 0); 
-                
-                const dateKawaguchiko      = new Date(2026, 10, 20, 0, 0, 0);
-                const dateKiso             = new Date(2026, 10, 22, 0, 0, 0);
-                const dateKyoto            = new Date(2026, 10, 23, 0, 0, 0);
-                const dateHiroshima        = new Date(2026, 10, 28, 0, 0, 0);
-                const dateOsaka            = new Date(2026, 10, 29, 0, 0, 0);
-                const dateTokyoRetour      = new Date(2026, 11, 2, 0, 0, 0);
-                const dateVolRetour        = new Date(2026, 11, 5, 2, 25, 0);
-
-                const countdownSection     = document.querySelector('.countdown-section');
-                const timerElement         = document.getElementById('timer');
-                const statusElement        = document.getElementById('next-step');
-                const labelElement         = document.querySelector('.countdown-section .label');
-
-                // Fonction utilitaire pour générer le badge rouge HTML injecté
-                function structureStatus(jourNum, textEtape) {
-                    return `<span class="red-day">JOUR ${String(jourNum).padStart(2, '0')}</span> ${textEtape}`;
-                }
-
-                // Calcul mathématique précis du Jour Actuel (J-XX)
-                const msParJour            = 1000 * 60 * 60 * 24;
-                const debutVoyageMinuit    = new Date(2026, 10, 15, 0, 0, 0);
-                const aujourdhuiMinuit     = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                const diffMs               = aujourdhuiMinuit - debutVoyageMinuit;
-                const currentDay           = Math.floor(diffMs / msParJour) + 1;
-
-                if (now < dateDepartMarseille) {
-                    // --- AVANT LE DÉPART (Timer actif) ---
-                    if (countdownSection) countdownSection.style.display = "block";
-                    if (timerElement) timerElement.style.display = "block";
-                    if (statusElement) statusElement.innerText = "Marseille (Départ imminent)";
-                    
-                    const difference = dateDepartMarseille - now;
-                    const days       = Math.floor(difference / (1000 * 60 * 60 * 24));
-                    const hours      = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes    = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds    = Math.floor((difference % (1000 * 60)) / 1000);
-
-                    if (timerElement) {
-                        timerElement.innerText = `${String(days).padStart(3, '0')} : ${String(hours).padStart(2, '0')} : ${String(minutes).padStart(2, '0')} : ${String(seconds).padStart(2, '0')}`;
-                    }
-                } else {
-                    // --- PENDANT LE VOYAGE ---
-                    if (countdownSection) countdownSection.style.display = "none";
-
-                    if (now >= dateDepartMarseille && now < dateArriveeMunich) {
-                        statusElement.innerHTML = structureStatus(currentDay, "✈️ En vol : MRS ➔ MUC");
-                    } else if (now >= dateArriveeMunich && now < dateDepartMunich) {
-                        statusElement.innerHTML = structureStatus(currentDay, "🇩🇪 Escale à Munich");
-                    } else if (now >= dateDepartMunich && now < dateArriveeTokyo) {
-                        statusElement.innerHTML = structureStatus(currentDay, "✈️ Grand Courrier : MUC ➔ Tokyo");
-                    
-                    // --- SUR PLACE AU JAPON (APPLICATION DE LA STRUCTURE STRICTE DEMANDÉE) ---
-                    } else if (now >= dateArriveeTokyo && now < dateVolRetour) {
-                        if (now >= dateArriveeTokyo && now < dateKawaguchiko) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Tokyo (Immersion Urbaine) 🗼");
-                        } else if (now >= dateKawaguchiko && now < dateKiso) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Kawaguchiko (Nature & Mont Fuji) 🗻");
-                        } else if (now >= dateKiso && now < dateKyoto) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Vallée de Kiso (Rando Historique) 🌲");
-                        } else if (now >= dateKyoto && now < dateHiroshima) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Kyoto (Tradition & Temples) ⛩️");
-                        } else if (now >= dateHiroshima && now < dateOsaka) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Hiroshima (Histoire & Culture) 🕊️");
-                        } else if (now >= dateOsaka && now < dateTokyoRetour) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Osaka (Street Food & Ambiance) 🐙");
-                        } else if (now >= dateTokyoRetour && now < dateVolRetour) {
-                            statusElement.innerHTML = structureStatus(currentDay, "Tokyo (Derniers souvenirs) 🗼");
-                        }
-                    
-                    // --- APRÈS LE VOL RETOUR ---
-                    } else if (now >= dateVolRetour) {
-                        if (countdownSection) countdownSection.style.display = "block";
-                        if (labelElement) labelElement.innerText = "Fin de l'aventure";
-                        statusElement.innerText = "Sayōnara ! Retour en France 🛫";
-                    }
-                }
-            }
-
-            // Rafraîchissement automatique toutes les secondes
-            setInterval(updateTripStatus, 1000);
-            updateTripStatus();
-        });
-    </script>
-</body>
-</html>
