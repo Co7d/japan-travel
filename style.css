@@ -215,7 +215,7 @@ h1 {
 .modern-timeline .timeline-right {
     flex-grow: 1;
     padding-left: 12px;
-    padding-bottom: 32px;
+    padding-bottom: 0;
 }
 
 .modern-timeline .timeline-card {
@@ -231,6 +231,7 @@ h1 {
     text-decoration: none;
     color: var(--text-main);
     transform: translateZ(0);
+    margin-bottom: 32px;
 }
 
 .modern-timeline .timeline-card:hover, 
