@@ -15,10 +15,11 @@
             <h1><span aria-hidden="true">🇯🇵</span> Japon 2026</h1>
         </header>
 
-        <section class="card glass countdown-section" aria-label="Compte à rebours">
-            <div id="timer" aria-live="polite">000 : 00 : 00 : 00</div>
-            <p class="label">Avant l'aventure</p>
-        </section>
+        <section class="card glass countdown-section" aria-label="Compte à rebours et progression">
+    <div id="timer" aria-live="polite">000 : 00 : 00 : 00</div>
+    <div id="trip-day" class="trip-day-badge" style="display: none;">JOUR 01</div> 
+    <p class="label">Avant l'aventure</p>
+</section>
 
         <div class="grid-stats">
             <div class="card glass stat-card full-width">
@@ -187,44 +188,122 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Initialisation des icônes Lucide
-            lucide.createIcons();
+       document.addEventListener("DOMContentLoaded", function() {
+    // Initialisation des icônes Lucide
+    lucide.createIcons();
+    
+    function updateTripStatus() {
+        const now = new Date();
+        
+        // --- CONFIGURATION DES DATES CLÉS (Fuseaux Horaires Inclus) ---
+        // Départ de Marseille (MRS) : 15 Nov 2026 à 08h00
+        const dateDepartMarseille = new Date(2026, 10, 15, 8, 0, 0);
+        // Arrivée Munich (MUC) : 15 Nov 2026 à 09h35
+        const dateArriveeMunich = new Date(2026, 10, 15, 9, 35, 0);
+        // Départ Munich (MUC) : 15 Nov 2026 à 12h35
+        const dateDepartMunich = new Date(2026, 10, 15, 12, 35, 0);
+        
+        // Arrivée Tokyo (HND/NRT) : 16 Nov 2026 à 08h55 (Heure Japon). 08h55 Japon = 00h55 France
+        const dateArriveeTokyo = new Date(2026, 10, 16, 0, 55, 0); 
+        
+        // --- ÉTAPES DU SÉJOUR AU JAPON ---
+        const dateKawaguchiko = new Date(2026, 10, 20, 0, 0, 0); // 20 Novembre
+        const dateKiso = new Date(2026, 10, 22, 0, 0, 0);        // 22 Novembre
+        const dateKyoto = new Date(2026, 10, 23, 0, 0, 0);       // 23 Novembre
+        const dateHiroshima = new Date(2026, 10, 28, 0, 0, 0);   // 28 Novembre
+        const dateOsaka = new Date(2026, 10, 29, 0, 0, 0);       // 29 Novembre
+        const dateTokyoRetour = new Date(2026, 11, 2, 0, 0, 0);  // 02 Décembre
+        
+        // Vol Retour de Tokyo : 05 Décembre 2026 à 10h25 (Heure Japon). 10h25 Japon = 02h25 France
+        const dateVolRetour = new Date(2026, 11, 5, 2, 25, 0);
+
+        const timerElement = document.getElementById('timer');
+        const tripDayElement = document.getElementById('trip-day');
+        const statusElement = document.getElementById('next-step');
+        const labelElement = document.querySelector('.countdown-section .label');
+
+        // --- AUTOMATISATION DU TIMER & DES STATUTS ---
+        
+        if (now < dateDepartMarseille) {
+            // 1. AVANT LE DÉPART (On affiche le Timer)
+            if (timerElement) timerElement.style.display = "block";
+            if (tripDayElement) tripDayElement.style.display = "none";
+            if (statusElement) statusElement.innerText = "Marseille (Départ imminent)";
+            if (labelElement) labelElement.innerText = "Avant l'aventure";
             
-            // 2. Gestion du compte à rebours dynamique
-            function updateCountdown() {
-                const departureDate = new Date(2026, 10, 16, 8, 0, 0); // 16 Novembre 2026 à 08h00
-                const now = new Date();
-                const difference = departureDate - now;
+            // Calcul du compte à rebours
+            const difference = dateDepartMarseille - now;
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                const timerElement = document.getElementById('timer');
-                const statusElement = document.getElementById('next-step'); // Ciblage précis par ID
+            const formatDays = String(days).padStart(3, '0');
+            const formatHours = String(hours).padStart(2, '0');
+            const formatMinutes = String(minutes).padStart(2, '0');
+            const formatSeconds = String(seconds).padStart(2, '0');
 
-                if (difference <= 0) {
-                    if (timerElement) timerElement.innerText = "000 : 00 : 00 : 00";
-                    if (statusElement) statusElement.innerText = "En cours / Immersion Urbaine 🗼";
-                    return;
-                }
+            if (timerElement) timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
 
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                const formatDays = String(days).padStart(3, '0');
-                const formatHours = String(hours).padStart(2, '0');
-                const formatMinutes = String(minutes).padStart(2, '0');
-                const formatSeconds = String(seconds).padStart(2, '0');
-
-                if (timerElement) {
-                    timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
-                }
+        } else {
+            // 2. PENDANT LE VOYAGE (On masque le Timer et on montre le JOUR XX)
+            if (timerElement) timerElement.style.display = "none";
+            if (tripDayElement) {
+                tripDayElement.style.display = "block";
+                
+                // Calcul du jour actuel (Jour 1 = 15 Novembre, Jour 2 = 16 Novembre, etc.)
+                const msParJour = 1000 * 60 * 60 * 24;
+                // On remet la date du jour à minuit pour un calcul propre des journées
+                const debutVoyageMinuit = new Date(2026, 10, 15, 0, 0, 0);
+                const aujourdhuiMinuit = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const diffMs = aujourdhuiMinuit - debutVoyageMinuit;
+                const numeroJour = Math.floor(diffMs / msParJour) + 1;
+                
+                tripDayElement.innerText = `JOUR ${String(numeroJour).padStart(2, '0')}`;
             }
+            
+            if (labelElement) labelElement.innerText = "Voyage en cours 🇯🇵";
 
-            // Lancement du compteur immédiat et boucle de rafraîchissement
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
-</body>
-</html>
+            // GESTION DU STATUT SELON L'ÉTAPE DU CALENDRIER
+            if (now >= dateDepartMarseille && now < dateArriveeMunich) {
+                if (statusElement) statusElement.innerText = "✈️ En vol : Marseille (MRS) ➔ Munich (MUC)";
+                
+            } else if (now >= dateArriveeMunich && now < dateDepartMunich) {
+                if (statusElement) statusElement.innerText = "🇩🇪 Escale à l'aéroport de Munich";
+                
+            } else if (now >= dateDepartMunich && now < dateArriveeTokyo) {
+                if (statusElement) statusElement.innerText = "✈️ Grand Courrier : Munich (MUC) ➔ Tokyo (HND/NRT)";
+                
+            } else if (now >= dateArriveeTokyo && now < dateKawaguchiko) {
+                if (statusElement) statusElement.innerText = "🗼 Étape 1 : Tokyo (Immersion Urbaine)";
+                
+            } else if (now >= dateKawaguchiko && now < dateKiso) {
+                if (statusElement) statusElement.innerText = "🗻 Étape 2 : Kawaguchiko (Nature & Mont Fuji)";
+                
+            } else if (now >= dateKiso && now < dateKyoto) {
+                if (statusElement) statusElement.innerText = "🌲 Étape 3 : Vallée de Kiso (Randonnée Historique)";
+                
+            } else if (now >= dateKyoto && now < dateHiroshima) {
+                if (statusElement) statusElement.innerText = "⛩️ Étape 4 : Kyoto (Tradition & Temples)";
+                
+            } else if (now >= dateHiroshima && now < dateOsaka) {
+                if (statusElement) statusElement.innerText = "🕊️ Étape 5 : Hiroshima (Histoire & Culture)";
+                
+            } else if (now >= dateOsaka && now < dateTokyoRetour) {
+                if (statusElement) statusElement.innerText = "🐙 Étape 6 : Osaka (Street Food & Ambiance)";
+                
+            } else if (now >= dateTokyoRetour && now < dateVolRetour) {
+                if (statusElement) statusElement.innerText = "🗼 Étape 7 : Tokyo (Derniers souvenirs)";
+                
+            } else if (now >= dateVolRetour) {
+                if (statusElement) statusElement.innerText = "Sayōnara / Vol retour vers la France 🛫";
+                if (labelElement) labelElement.innerText = "Fin de l'aventure";
+                if (tripDayElement) tripDayElement.innerText = "FIN";
+            }
+        }
+    }
+
+    // Lancement immédiat et actualisation en arrière-plan
+    updateTripStatus();
+    setInterval(updateTripStatus, 1000);
+});
