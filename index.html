@@ -189,14 +189,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Initialisation des icônes
             lucide.createIcons();
             
-            // 2. Fonction du tableau de bord de voyage
             function updateTripStatus() {
                 const now = new Date();
                 
-                // Dates clés
+                // Configurations des dates réelles
                 const dateDepartMarseille = new Date(2026, 10, 15, 8, 0, 0);
                 const dateArriveeMunich = new Date(2026, 10, 15, 9, 35, 0);
                 const dateDepartMunich = new Date(2026, 10, 15, 12, 35, 0);
@@ -210,15 +208,26 @@
                 const dateTokyoRetour = new Date(2026, 11, 2, 0, 0, 0);
                 const dateVolRetour = new Date(2026, 11, 5, 2, 25, 0);
 
+                const countdownSection = document.querySelector('.countdown-section');
                 const timerElement = document.getElementById('timer');
                 const tripDayElement = document.getElementById('trip-day');
                 const statusElement = document.getElementById('next-step');
                 const labelElement = document.querySelector('.countdown-section .label');
 
+                // Calcul automatique du jour actuel du voyage (Base 1 le 15 Novembre)
+                const msParJour = 1000 * 60 * 60 * 24;
+                const debutVoyageMinuit = new Date(2026, 10, 15, 0, 0, 0);
+                const aujourdhuiMinuit = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                const diffMs = aujourdhuiMinuit - debutVoyageMinuit;
+                const J = Math.floor(diffMs / msParJour) + 1;
+                const prefixJour = `JOUR ${String(J).padStart(2, '0')}`;
+
                 if (now < dateDepartMarseille) {
-                    // --- AVANT LE DÉPART : On calcule et affiche le timer ---
+                    // --- 1. AVANT LE DÉPART (Timer visible) ---
+                    if (countdownSection) countdownSection.style.display = "block";
                     if (timerElement) timerElement.style.display = "block";
                     if (tripDayElement) tripDayElement.style.display = "none";
+                    
                     if (statusElement) statusElement.innerText = "Marseille (Départ imminent)";
                     if (labelElement) labelElement.innerText = "Avant l'aventure";
                     
@@ -238,50 +247,59 @@
                     }
 
                 } else {
-                    // --- PENDANT LE VOYAGE : On cache le timer, on montre le Jour ---
+                    // --- 2. PENDANT LES VOLS ALLER (On garde la case du haut active mais en mode JOUR 01) ---
+                    if (countdownSection) countdownSection.style.display = "block";
                     if (timerElement) timerElement.style.display = "none";
+                    
                     if (tripDayElement) {
                         tripDayElement.style.display = "block";
-                        const msParJour = 1000 * 60 * 60 * 24;
-                        const debutVoyageMinuit = new Date(2026, 10, 15, 0, 0, 0);
-                        const aujourdhuiMinuit = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                        const diffMs = aujourdhuiMinuit - debutVoyageMinuit;
-                        const numeroJour = Math.floor(diffMs / msParJour) + 1;
-                        tripDayElement.innerText = `JOUR ${String(numeroJour).padStart(2, '0')}`;
+                        tripDayElement.innerText = prefixJour;
                     }
-                    
                     if (labelElement) labelElement.innerText = "Voyage en cours 🇯🇵";
 
-                    // Changement d'étape automatique
+                    // Statuts spécifiques aux transports du Jour 1 & Jour 2
                     if (now >= dateDepartMarseille && now < dateArriveeMunich) {
                         if (statusElement) statusElement.innerText = "✈️ En vol : Marseille (MRS) ➔ Munich (MUC)";
                     } else if (now >= dateArriveeMunich && now < dateDepartMunich) {
                         if (statusElement) statusElement.innerText = "🇩🇪 Escale à l'aéroport de Munich";
                     } else if (now >= dateDepartMunich && now < dateArriveeTokyo) {
                         if (statusElement) statusElement.innerText = "✈️ Grand Courrier : Munich (MUC) ➔ Tokyo (HND/NRT)";
-                    } else if (now >= dateArriveeTokyo && now < dateKawaguchiko) {
-                        if (statusElement) statusElement.innerText = "🗼 Étape 1 : Tokyo (Immersion Urbaine)";
-                    } else if (now >= dateKawaguchiko && now < dateKiso) {
-                        if (statusElement) statusElement.innerText = "🗻 Étape 2 : Kawaguchiko (Nature & Mont Fuji)";
-                    } else if (now >= dateKiso && now < dateKyoto) {
-                        if (statusElement) statusElement.innerText = "🌲 Étape 3 : Vallée de Kiso (Randonnée Historique)";
-                    } else if (now >= dateKyoto && now < dateHiroshima) {
-                        if (statusElement) statusElement.innerText = "⛩️ Étape 4 : Kyoto (Tradition & Temples)";
-                    } else if (now >= dateHiroshima && now < dateOsaka) {
-                        if (statusElement) statusElement.innerText = "🕊️ Étape 5 : Hiroshima (Histoire & Culture)";
-                    } else if (now >= dateOsaka && now < dateTokyoRetour) {
-                        if (statusElement) statusElement.innerText = "🐙 Étape 6 : Osaka (Street Food & Ambiance)";
-                    } else if (now >= dateTokyoRetour && now < dateVolRetour) {
-                        if (statusElement) statusElement.innerText = "🗼 Étape 7 : Tokyo (Derniers souvenirs)";
+                    
+                    // --- 3. SUR PLACE AU JAPON : On cache complètement le bloc du haut (Timer/Jour), le statut se suffit à lui-même ---
+                    } else if (now >= dateArriveeTokyo && now < dateVolRetour) {
+                        
+                        if (countdownSection) countdownSection.style.display = "none"; // MASQUAGE TOTAL DU COMPTEUR
+
+                        // Actualisation du Statut du Voyage avec le "JOUR XX — Ville (Vibe)"
+                        if (now >= dateArriveeTokyo && now < dateKawaguchiko) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Tokyo (Immersion Urbaine) 🗼`;
+                        } else if (now >= dateKawaguchiko && now < dateKiso) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Kawaguchiko (Nature & Mont Fuji) 🗻`;
+                        } else if (now >= dateKiso && now < dateKyoto) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Vallée de Kiso (Rando Historique) 🌲`;
+                        } else if (now >= dateKyoto && now < dateHiroshima) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Kyoto (Tradition & Temples) ⛩️`;
+                        } else if (now >= dateHiroshima && now < dateOsaka) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Hiroshima (Histoire & Culture) 🕊️`;
+                        } else if (now >= dateOsaka && now < dateTokyoRetour) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Osaka (Street Food & Ambiance) 🐙`;
+                        } else if (now >= dateTokyoRetour && now < dateVolRetour) {
+                            if (statusElement) statusElement.innerText = `${prefixJour} — Tokyo (Derniers souvenirs) 🗼`;
+                        }
+
+                    // --- 4. LE VOL RETOUR ET LA FIN ---
                     } else if (now >= dateVolRetour) {
+                        if (countdownSection) countdownSection.style.display = "block";
+                        if (tripDayElement) {
+                            tripDayElement.style.display = "block";
+                            tripDayElement.innerText = "FIN";
+                        }
                         if (statusElement) statusElement.innerText = "Sayōnara / Vol retour vers la France 🛫";
                         if (labelElement) labelElement.innerText = "Fin de l'aventure";
-                        if (tripDayElement) tripDayElement.innerText = "FIN";
                     }
                 }
             }
 
-            // Exécution immédiate et boucle
             updateTripStatus();
             setInterval(updateTripStatus, 1000);
         });
