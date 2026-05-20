@@ -352,3 +352,26 @@ h1 {
     color: var(--text-main);
     font-weight: 600;
 }
+
+.timeline-transition {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 75px; /* Aligne la bulle parfaitement à droite de la ligne verticale */
+    margin: 10px 0;
+}
+
+.transition-badge {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
