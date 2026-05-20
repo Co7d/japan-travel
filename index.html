@@ -10,7 +10,7 @@
 <body>
 
     <div class="app-container">
-        
+         
         <header>
             <h1><span aria-hidden="true">🇯🇵</span> Japon 2026</h1>
         </header>
@@ -35,7 +35,7 @@
         </div>
 
         <main class="modern-timeline" aria-label="Étapes de l'itinéraire">
-            
+             
             <div class="timeline-item item-tokyo">
                 <div class="timeline-left">
                     <div class="timeline-dot" aria-hidden="true">🗼</div>
@@ -175,7 +175,7 @@
                 <div class="phrase"><span>Bonjour / Salut</span> <strong>Ohayō / Kon'nichiwa</strong></div>
                 <div class="phrase"><span>Excusez-moi / Pardon</span> <strong>Sumimasen</strong></div>
                 <div class="phrase"><span>S'il vous plaît</span> <strong>Onegaishimasu</strong></div>
-                
+                 
                 <div class="lexique-category">Manger & Acheter</div>
                 <div class="phrase"><span>C'est délicieux !</span> <strong>Oishii desu!</strong></div>
                 <div class="phrase"><span>L'addition, SVP</span> <strong>O-kanjō o-negai shimasu</strong></div>
@@ -187,50 +187,44 @@
     </div>
 
     <script>
-        // Le script Lucide s'exécute une fois le DOM chargé grâce à l'attribut "defer" au head
         document.addEventListener("DOMContentLoaded", function() {
+            // 1. Initialisation des icônes Lucide
             lucide.createIcons();
+            
+            // 2. Gestion du compte à rebours dynamique
+            function updateCountdown() {
+                const departureDate = new Date(2026, 10, 16, 8, 0, 0); // 16 Novembre 2026 à 08h00
+                const now = new Date();
+                const difference = departureDate - now;
+
+                const timerElement = document.getElementById('timer');
+                const statusElement = document.getElementById('next-step'); // Ciblage précis par ID
+
+                if (difference <= 0) {
+                    if (timerElement) timerElement.innerText = "000 : 00 : 00 : 00";
+                    if (statusElement) statusElement.innerText = "En cours / Immersion Urbaine 🗼";
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                const formatDays = String(days).padStart(3, '0');
+                const formatHours = String(hours).padStart(2, '0');
+                const formatMinutes = String(minutes).padStart(2, '0');
+                const formatSeconds = String(seconds).padStart(2, '0');
+
+                if (timerElement) {
+                    timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
+                }
+            }
+
+            // Lancement du compteur immédiat et boucle de rafraîchissement
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         });
-    </script>
-        <script>
-        function updateCountdown() {
-            // Définis ta date de départ ici (Format: Année, Mois [0-11], Jour, Heure, Minute)
-            // Exemple : 16 Novembre 2026 à 08h00
-            const departureDate = new Date(2026, 10, 16, 8, 0, 0); 
-            const now = new Date();
-            const difference = departureDate - now;
-
-            const timerElement = document.getElementById('timer');
-            const statusElement = document.querySelector('.stat-value'); // Cible le texte du statut
-
-            // Si la date est dépassée
-            if (difference <= 0) {
-                if (timerElement) timerElement.innerText = "000 : 00 : 00 : 00";
-                if (statusElement) statusElement.innerText = "En cours / Immersion Urbaine 🗼";
-                return;
-            }
-
-            // Calcul des jours, heures, minutes, secondes
-            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-            // Formater avec des zéros au début (ex: 05 au lieu de 5)
-            const formatDays = String(days).padStart(3, '0');
-            const formatHours = String(hours).padStart(2, '0');
-            const formatMinutes = String(minutes).padStart(2, '0');
-            const formatSeconds = String(seconds).padStart(2, '0');
-
-            // Affichage dans le HTML
-            if (timerElement) {
-                timerElement.innerText = `${formatDays} : ${formatHours} : ${formatMinutes} : ${formatSeconds}`;
-            }
-        }
-
-        // Lancer le compteur immédiatement puis toutes les secondes
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
