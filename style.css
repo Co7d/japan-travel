@@ -515,11 +515,20 @@ h1 {
     font-weight: 600;
 }
 /* Style du numéro de jour qui remplace le timer pendant le voyage */
+/* Style du numéro de jour qui remplace le timer pendant le voyage */
 .trip-day-badge {
-    font-size: 42px;
+    font-size: 38px; /* Légèrement réduit pour garantir que ça passe sur un écran de smartphone */
     font-weight: 900;
-    color: var(--city-tokyo); /* Rouge Tokyo comme le titre */
+    color: #bc4747; /* Ton rouge Tokyo personnalisé */
     letter-spacing: 2px;
     margin-bottom: 5px;
-    text-shadow: 0 2px 10px rgba(188, 71, 73, 0.2);
+    text-shadow: 0 2px 10px rgba(188, 71, 73, 0.15);
+    white-space: nowrap; /* Force le texte à rester sur une seule ligne quoi qu'il arrive */
+}
+
+/* Optionnel : Ajustement du texte de statut pour qu'il reste aussi compact et lisible */
+.stat-value {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ajoute trois petits points si le nom de l'étape est vraiment trop long sur un tout petit écran */
 }
