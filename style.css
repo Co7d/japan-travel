@@ -356,8 +356,9 @@ h1 {
 .timeline-transition {
     display: flex;
     justify-content: flex-start;
-    padding-left: 55px;
-    margin: 5px 0;
+    margin-left: 60px; 
+    margin-top: -10px;  
+    margin-bottom: 25px; 
 }
 
 .transition-badge {
