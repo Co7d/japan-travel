@@ -79,6 +79,7 @@ h1 {
     border-radius: 22px;
     padding: 20px;
     margin-bottom: 12px;
+    transform: translateZ(0); /* Sécurité anti-saccade iOS */
 }
 
 .card.glass.card-map {
@@ -296,6 +297,7 @@ h1 {
     display: flex; 
     flex-direction: column;
     width: 100%;
+    min-width: 0; /* Sécurité indispensable pour text-overflow: ellipsis */
 }
 
 .stat-label { 
@@ -319,7 +321,7 @@ h1 {
 .red-day {
     color: #BC4747 !important;
     font-weight: 800;
-    margin-right: 8px; /* Crée l'espace propre sans besoin de tiret */
+    margin-right: 8px;
 }
 
 /* ==========================================================================
@@ -387,7 +389,7 @@ h1 {
 .modern-timeline .timeline-card {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Indispensable pour Safari/iPhone */
     border: 1px solid var(--glass-border);
     border-radius: 18px;
     padding: 14px 18px;
@@ -396,6 +398,7 @@ h1 {
     display: block;
     text-decoration: none;
     color: var(--text-main);
+    transform: translateZ(0); /* Sécurité anti-saccade iOS */
 }
 
 .modern-timeline .timeline-card:hover, 
@@ -404,6 +407,7 @@ h1 {
     background: rgba(255, 255, 255, 0.08);
 }
 
+/* Bordures de gauche colorées pour chaque ville */
 .modern-timeline .item-tokyo .timeline-card       { border-left: 3px solid var(--city-tokyo); }
 .modern-timeline .item-kawaguchiko .timeline-card { border-left: 3px solid var(--city-kawaguchiko); }
 .modern-timeline .item-kiso .timeline-card        { border-left: 3px solid var(--city-kiso); }
@@ -411,113 +415,116 @@ h1 {
 .modern-timeline .item-hiroshima .timeline-card   { border-left: 3px solid var(--city-hiroshima); }
 .modern-timeline .item-osaka .timeline-card       { border-left: 3px solid var(--city-osaka); }
 
-.modern-timeline .card-header {
+/* Éléments internes des cartes d'itinéraires */
+.card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
-.modern-timeline .city-name { 
-    font-size: 17px; 
-    font-weight: 700; 
-    color: var(--text-main); 
+.city-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
 }
 
-.modern-timeline .city-meta { 
-    font-size: 13px; 
-    color: var(--text-dim); 
-    display: block; 
+.city-meta {
+    font-size: 13px;
+    color: var(--text-dim);
 }
 
-.modern-timeline .vibe-badge {
-    font-size: 10px;
+/* Badges de style de voyage (Vibe Badges) */
+.vibe-badge {
+    font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     padding: 4px 10px;
     border-radius: 12px;
-    display: inline-block; 
-    border: none;
+    line-height: 1;
 }
+.badge-tokyo { background: rgba(188, 71, 73, 0.15); color: var(--city-tokyo); border: 1px solid rgba(188, 71, 73, 0.25); }
+.badge-kawaguchiko { background: rgba(69, 123, 157, 0.15); color: var(--city-kawaguchiko); border: 1px solid rgba(69, 123, 157, 0.25); }
+.badge-kiso { background: rgba(106, 153, 78, 0.15); color: var(--city-kiso); border: 1px solid rgba(106, 153, 78, 0.25); }
+.badge-kyoto { background: rgba(212, 163, 115, 0.15); color: var(--city-kyoto); border: 1px solid rgba(212, 163, 115, 0.25); }
+.badge-hiroshima { background: rgba(141, 153, 174, 0.15); color: var(--city-hiroshima); border: 1px solid rgba(141, 153, 174, 0.25); }
+.badge-osaka { background: rgba(226, 149, 120, 0.15); color: var(--city-osaka); border: 1px solid rgba(226, 149, 120, 0.25); }
 
-.modern-timeline .badge-tokyo       { color: var(--city-tokyo);       background: rgba(188, 71, 73, 0.12); }
-.modern-timeline .badge-kawaguchiko { color: var(--city-kawaguchiko); background: rgba(69, 123, 157, 0.12); }
-.modern-timeline .badge-kiso        { color: var(--city-kiso);        background: rgba(106, 153, 78, 0.12); }
-.modern-timeline .badge-kyoto       { color: var(--city-kyoto);       background: rgba(212, 163, 115, 0.12); }
-.modern-timeline .badge-hiroshima   { color: var(--city-hiroshima);   background: rgba(141, 153, 174, 0.12); }
-.modern-timeline .badge-osaka       { color: var(--city-osaka);       background: rgba(226, 149, 120, 0.12); }
-
-.modern-timeline .inline-transport {
+/* Badges de transports */
+.inline-transport {
     display: flex;
-    gap: 8px;
-    margin-top: 12px;
-    padding-left: 5px;
-}
-
-.modern-timeline .inline-transport.double-stack {
-    flex-direction: column;
     gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
-
-.modern-timeline .transport-badge {
-    font-size: 12px;
+.inline-transport.double-stack {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+.transport-badge {
+    font-size: 11px;
     font-weight: 600;
-    color: var(--text-main);
-    background: #1C1C1E; 
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 5px 12px;
-    border-radius: 30px;
-    width: fit-content;
-    display: inline-flex;
-    align-items: center;
-}
-
-.modern-timeline .last-item .timeline-right { 
-    padding-bottom: 5px; 
-}
-
-.modern-timeline .last-item .timeline-line { 
-    display: none; 
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: var(--text-dim);
 }
 
 /* ==========================================================================
-   7. LEXIQUE DE SURVIE (ACCUEIL)
+   7. DESIGN DU LEXIQUE DE SURVIE (RÉPARÉ ET SÉCURISÉ)
    ========================================================================= */
-.lexique-grid {
+#lexique-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 16px;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 8px;
 }
 
-.lexique-category {
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--city-tokyo);
-    letter-spacing: 0.5px;
-    margin-top: 12px;
-    margin-bottom: 4px;
+.lexique-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Structure propre sur 2 colonnes */
+    column-gap: 16px;
+    row-gap: 4px;
 }
 
-.lexique-category:first-child {
+.lexique-category {
+    grid-column: 1 / -1; /* Occupe toute la largeur pour séparer proprement */
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--city-tokyo); /* Rappel élégant du rouge Japon */
+    letter-spacing: 1px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lexique-grid .lexique-category:first-child {
     margin-top: 0;
 }
 
 .phrase {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 6px;
+    flex-direction: column;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .phrase span {
+    font-size: 12px;
     color: var(--text-dim);
+    margin-bottom: 2px;
 }
 
 .phrase strong {
+    font-size: 14px;
     color: var(--text-main);
     font-weight: 600;
 }
