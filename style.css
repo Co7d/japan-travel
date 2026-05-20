@@ -1,7 +1,13 @@
+/* ==========================================================================
+   0. RESET GLOBAL & BOX-SIZING
+   ========================================================================= */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* ==========================================================================
+   1. VARIABLES DE THÈMES ET COULEURS
+   ========================================================================= */
 :root {
     --bg-color: #000000;
     --card-bg: rgba(28, 28, 30, 0.4);
@@ -10,6 +16,7 @@
     --text-dim: #8E8E93;
     --glass-border: rgba(255, 255, 255, 0.08);
 
+    /* Couleurs thématiques des étapes */
     --city-tokyo: #BC4749;
     --city-kawaguchiko: #457B9D;
     --city-kiso: #6A994E;
@@ -18,6 +25,9 @@
     --city-osaka: #E29578;
 }
 
+/* ==========================================================================
+   2. STYLES DE BASE & LAYOUT MOBILE-FIRST
+   ========================================================================= */
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -49,11 +59,9 @@ h1 {
     margin-top: 0;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
+/* ==========================================================================
+   3. COMPOSANTS GLASSMORPHISM GLOBAL
+   ========================================================================= */
 .card.glass {
     background: var(--card-bg-high-opacity);
     backdrop-filter: blur(20px);
@@ -77,6 +85,9 @@ a {
     border-radius: 14px;
 }
 
+/* ==========================================================================
+   4. STRUCTURE DE LA BULLE DE STATUT EN LIGNE UNIQUE (CORRIGÉE)
+   ========================================================================= */
 .card.glass.stat-card.full-width { 
     display: flex; 
     align-items: center; 
@@ -108,12 +119,16 @@ a {
     padding-right: 15px;      
 }
 
+/* Le badge JOUR rouge (sans tiret requis à la suite) */
 .red-day {
-    color: #BC4747 !important; 
+    color: #BC4747 !important; /* Rouge Tokyo éclatant */
     font-weight: 800;
-    margin-right: 8px;         
+    margin-right: 8px;         /* Espacement automatique propre */
 }
 
+/* ==========================================================================
+   5. TIMER DU COMPTE À REBOURS
+   ========================================================================= */
 .countdown-section {
     display: flex;
     flex-direction: column;
@@ -141,6 +156,9 @@ a {
     margin: 0;
 }
 
+/* ==========================================================================
+   6. TIMELINE FIL D'ARIANE (PAGE D'ACCUEIL)
+   ========================================================================= */
 .modern-timeline {
     display: flex;
     flex-direction: column;
@@ -210,6 +228,8 @@ a {
     width: 100%;
     transition: transform 0.2s ease, background-color 0.2s ease;
     display: block;
+    text-decoration: none;
+    color: var(--text-main);
     transform: translateZ(0);
     margin-bottom: 32px;
 }
@@ -256,174 +276,4 @@ a {
 }
 .badge-tokyo { background: rgba(188, 71, 73, 0.15); color: var(--city-tokyo); border: 1px solid rgba(188, 71, 73, 0.25); }
 .badge-kawaguchiko { background: rgba(69, 123, 157, 0.15); color: var(--city-kawaguchiko); border: 1px solid rgba(69, 123, 157, 0.25); }
-.badge-kiso { background: rgba(106, 153, 78, 0.15); color: var(--city-kiso); border: 1px solid rgba(106, 153, 78, 0.25); }
-.badge-kyoto { background: rgba(212, 163, 115, 0.15); color: var(--city-kyoto); border: 1px solid rgba(212, 163, 115, 0.25); }
-.badge-hiroshima { background: rgba(141, 153, 174, 0.15); color: var(--city-hiroshima); border: 1px solid rgba(141, 153, 174, 0.25); }
-.badge-osaka { background: rgba(226, 149, 120, 0.15); color: var(--city-osaka); border: 1px solid rgba(226, 149, 120, 0.25); }
-
-.inline-transport {
-    display: flex;
-    gap: 6px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-}
-.transport-badge {
-    font-size: 11px;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 4px 8px;
-    border-radius: 8px;
-    color: var(--text-dim);
-}
-
-.timeline-transition {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 62px; 
-    margin-top: -16px;  
-    margin-bottom: 20px; 
-}
-
-.transition-badge {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: rgba(255, 255, 255, 0.85);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-#lexique-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-top: 0;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.lexique-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 16px;
-    row-gap: 4px;
-}
-
-.lexique-category {
-    grid-column: 1 / -1;
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--city-tokyo);
-    letter-spacing: 1px;
-    margin-top: 16px;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.lexique-grid .lexique-category:first-child {
-    margin-top: 0;
-}
-
-.phrase {
-    display: flex;
-    flex-direction: column;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.phrase span {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 2px;
-}
-
-.phrase strong {
-    font-size: 14px;
-    color: var(--text-main);
-    font-weight: 600;
-}
-
-.page-tokyo { --page-theme: var(--city-tokyo); }
-.page-kawaguchiko { --page-theme: var(--city-kawaguchiko); }
-.page-kiso { --page-theme: var(--city-kiso); }
-.page-kyoto { --page-theme: var(--city-kyoto); }
-.page-hiroshima { --page-theme: var(--city-hiroshima); }
-.page-osaka { --page-theme: var(--city-osaka); }
-
-.page-tokyo h1 { color: var(--city-tokyo) !important; }
-.page-kawaguchiko h1 { color: var(--city-kawaguchiko) !important; }
-.page-kiso h1 { color: var(--city-kiso) !important; }
-.page-kyoto h1 { color: var(--city-kyoto) !important; }
-.page-hiroshima h1 { color: var(--city-hiroshima) !important; }
-.page-osaka h1 { color: var(--city-osaka) !important; }
-
-.card.glass h2, .card.glass h3 {
-    color: #FFFFFF !important;
-}
-
-.card.glass a {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-.card.glass a:hover {
-    text-decoration: none;
-}
-
-.card.glass a strong, 
-.card.glass strong {
-    color: var(--page-theme, var(--city-tokyo)) !important;
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 4px;
-    margin-bottom: 2px;
-}
-
-.card.glass a br + br {
-    display: none;
-}
-
-.card.glass a:contains("DU"),
-.card.glass a[href*="nov"],
-.card.glass a[href*="dec"],
-.card.glass span:first-child {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.9) !important;
-    padding: 4px 10px;
-    border-radius: 12px;
-    margin-top: 14px;
-    margin-bottom: 4px;
-}
-
-.card.glass p, 
-.card.glass span:nth-child(3) {
-    font-size: 13px;
-    color: var(--text-dim) !important;
-    margin-top: 2px;
-    margin-bottom: 6px;
-    display: block;
-}
-
-.card.glass a[href]:last-child,
-.card.glass span:last-child {
-    color: var(--page-theme, var(--city-tokyo)) !important;
-    font-weight: bold;
-}
+.badge-kiso { background: rgba(106,
