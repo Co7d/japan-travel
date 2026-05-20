@@ -484,43 +484,4 @@ h1 {
     width: 100%;
 }
 
-.detail-page .place-date {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: color-mix(in srgb, var(--city-color, var(--city-tokyo)) 15%, transparent);
-    color: var(--city-color, var(--city-tokyo));
-    border: 1px solid color-mix(in srgb, var(--city-color, var(--city-tokyo)) 25%, transparent);
-    padding: 4px 10px;
-    border-radius: 12px;
-    margin-bottom: 6px;
-}
-
-.detail-page .place-name {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 2px;
-}
-
-.detail-page .place-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    display: block;
-    line-height: 1.4;
-}
-
-.detail-page .chevron {
-    font-size: 20px;
-    color: var(--text-dim);
-    font-weight: 300;
-    padding-left: 10px;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.detail-page .detail-item--row:hover .chevron {
-    transform: translateX(3px);
-    color: var(--text-main);
-}
+.detail-page .place-
