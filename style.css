@@ -1,12 +1,12 @@
 /* ==========================================================================
-   0. RESET GLOBAL & BOX-SIZING
+   1. RESET & BOX-SIZING
    ========================================================================= */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
 /* ==========================================================================
-   1. VARIABLES DE THÈMES ET COULEURS
+   2. VARIABLES DE CONFIGURATION (COULEURS & THÈMES)
    ========================================================================= */
 :root {
     --bg-color: #000000;
@@ -16,7 +16,7 @@
     --text-dim: #8E8E93;
     --glass-border: rgba(255, 255, 255, 0.08);
 
-    /* Couleurs thématiques des étapes */
+    /* Couleurs thématiques par ville */
     --city-tokyo: #BC4749;
     --city-kawaguchiko: #457B9D;
     --city-kiso: #6A994E;
@@ -26,7 +26,7 @@
 }
 
 /* ==========================================================================
-   2. STYLES DE BASE & LAYOUT MOBILE-FIRST
+   3. LAYOUT GLOBAL & CONTENEUR
    ========================================================================= */
 body {
     background-color: var(--bg-color);
@@ -60,7 +60,7 @@ h1 {
 }
 
 /* ==========================================================================
-   3. COMPOSANTS GLASSMORPHISM GLOBAL
+   4. COMPOSANTS GLASSMORPHISM REUTILISABLES
    ========================================================================= */
 .card.glass {
     background: var(--card-bg-high-opacity);
@@ -86,7 +86,7 @@ h1 {
 }
 
 /* ==========================================================================
-   4. STRUCTURE DE LA BULLE DE STATUT EN LIGNE UNIQUE (CORRIGÉE)
+   5. BARRE DE STATUT (ALIGNÉE SUR UNE SEULE LIGNE)
    ========================================================================= */
 .card.glass.stat-card.full-width { 
     display: flex; 
@@ -119,15 +119,14 @@ h1 {
     padding-right: 15px;      
 }
 
-/* Le badge JOUR rouge (sans tiret requis à la suite) */
 .red-day {
-    color: #BC4747 !important; /* Rouge Tokyo éclatant */
+    color: #BC4747 !important; 
     font-weight: 800;
-    margin-right: 8px;         /* Espacement automatique propre */
+    margin-right: 8px;         
 }
 
 /* ==========================================================================
-   5. TIMER DU COMPTE À REBOURS
+   6. TIMER DU COMPTE À REBOURS
    ========================================================================= */
 .countdown-section {
     display: flex;
@@ -157,7 +156,7 @@ h1 {
 }
 
 /* ==========================================================================
-   6. TIMELINE FIL D'ARIANE (PAGE D'ACCUEIL)
+   7. TIMELINE & COMPOSANTS EN LIGNE (TRANSPORTS ALIGNÉS)
    ========================================================================= */
 .modern-timeline {
     display: flex;
@@ -276,4 +275,105 @@ h1 {
 }
 .badge-tokyo { background: rgba(188, 71, 73, 0.15); color: var(--city-tokyo); border: 1px solid rgba(188, 71, 73, 0.25); }
 .badge-kawaguchiko { background: rgba(69, 123, 157, 0.15); color: var(--city-kawaguchiko); border: 1px solid rgba(69, 123, 157, 0.25); }
-.badge-kiso { background: rgba(106,
+.badge-kiso { background: rgba(106, 153, 78, 0.15); color: var(--city-kiso); border: 1px solid rgba(106, 153, 78, 0.25); }
+.badge-kyoto { background: rgba(212, 163, 115, 0.15); color: var(--city-kyoto); border: 1px solid rgba(212, 163, 115, 0.25); }
+.badge-hiroshima { background: rgba(141, 153, 174, 0.15); color: var(--city-hiroshima); border: 1px solid rgba(141, 153, 174, 0.25); }
+.badge-osaka { background: rgba(226, 149, 120, 0.15); color: var(--city-osaka); border: 1px solid rgba(226, 149, 120, 0.25); }
+
+/* Zone des moyens de transport en ligne */
+.inline-transport {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.transport-badge {
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 8px;
+    color: var(--text-dim);
+}
+
+/* Badges de transition entre escales */
+.timeline-transition {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 62px; 
+    margin-top: -16px;  
+    margin-bottom: 20px; 
+}
+
+.transition-badge {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   8. BLOC LEXIQUE DE SURVIE
+   ========================================================================= */
+#lexique-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lexique-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 4px;
+}
+
+.lexique-category {
+    grid-column: 1 / -1;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--city-tokyo);
+    letter-spacing: 1px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lexique-grid .lexique-category:first-child {
+    margin-top: 0;
+}
+
+.phrase {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.phrase span {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 2px;
+}
+
+.phrase strong {
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 600;
+}
