@@ -356,8 +356,8 @@ h1 {
 .timeline-transition {
     display: flex;
     justify-content: flex-start;
-    padding-left: 75px; /* Aligne la bulle parfaitement à droite de la ligne verticale */
-    margin: 10px 0;
+    padding-left: 55px;
+    margin: 5px 0;
 }
 
 .transition-badge {
