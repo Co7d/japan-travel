@@ -526,3 +526,19 @@ h1 {
     transform: translateX(3px);
     color: var(--text-main);
 }
+/* Liaison des variables de couleur par ville pour les pages de détails */
+.theme-tokyo { --city-color: var(--city-tokyo); }
+.theme-kawaguchiko { --city-color: var(--city-kawaguchiko); }
+.theme-kiso { --city-color: var(--city-kiso); }
+.theme-kyoto { --city-color: var(--city-kyoto); }
+.theme-hiroshima { --city-color: var(--city-hiroshima); }
+.theme-osaka { --city-color: var(--city-osaka); }
+
+/* Remplacement de var(--city-tokyo) par var(--city-color) sur les éléments clés */
+.detail-page .back-button { color: var(--city-color, var(--city-tokyo)); }
+.detail-page .date-badge { 
+    background: color-mix(in srgb, var(--city-color, var(--city-tokyo)) 15%, transparent);
+    color: var(--city-color, var(--city-tokyo));
+    border: 1px solid color-mix(in srgb, var(--city-color, var(--city-tokyo)) 25%, transparent);
+}
+.detail-page .place-date { color: var(--city-color, var(--city-tokyo)); }
