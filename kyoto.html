@@ -2,73 +2,73 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Kyoto - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
-<body class="detail-page">
+<body class="detail-page theme-kyoto">
 
     <div class="app-container">
         
-        <a href="index.html" class="back-button" style="color: #D4A373;">
-            <i data-lucide="chevron-left"></i> Retour
-        </a>
-
         <header>
+            <a href="index.html" class="back-button" aria-label="Retour à l'accueil">
+                <i data-lucide="chevron-left" aria-hidden="true"></i> Retour
+            </a>
             <div class="header-meta">
-                <span class="date-badge" style="background: rgba(212, 163, 115, 0.15); color: #D4A373; border: 1px solid rgba(212, 163, 115, 0.3);">JOUR 8 — 13</span>
+                <span class="date-badge">JOUR 8 — 13</span>
                 <span class="vibe-badge">TRADITION ÉTERNELLE</span>
             </div>
-            <h1 style="color: #D4A373;">Kyoto</h1> 
+            <h1>Kyoto</h1> 
             <p class="subtitle">Le cœur battant du Japon ancien et de ses secrets.</p>
         </header>
 
-        <section>
-            <div class="section-title">🏨 Hébergement</div>
-            <div class="card glass detail-card" style="padding: 0; overflow: hidden;">
+        <section aria-label="Hébergements à Kyoto">
+            <h2 class="section-title">🏨 Hébergement</h2>
+            <div class="card glass detail-card">
                 
-                <a href="maps://?q=Agora+Place+Kyoto+Nijo" class="detail-item" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; padding: 12px 20px; transition: background 0.2s; border: none !important; margin: 0;" onmouseenter="this.style.background='rgba(255,255,255,0.03)'" onmouseleave="this.style.background='transparent'">
-                    <div style="flex: 1; padding-right: 15px;">
-                        <span class="place-date" style="display: block; font-size: 0.75em; font-weight: 900; color: #D4A373; letter-spacing: 0.05em; margin-bottom: 2px;">DU 23 AU 28 NOVEMBRE</span>
-                        <div class="place-name" style="color: #ffffff; font-size: 1.1em; font-weight: 700; margin-bottom: 2px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">AGORA PLACE KYOTO NIJO</div>
-                        <span class="place-desc" style="opacity: 0.7; display: block;">Proche du château de Nijo - Pratique et moderne</span>
+                <a href="maps://?q=Agora+Place+Kyoto+Nijo" class="detail-item detail-item--row" aria-label="Agora Place Kyoto Nijo, du 23 au 28 novembre. Voir sur la carte.">
+                    <div>
+                        <span class="place-date">DU 23 AU 28 NOVEMBRE</span>
+                        <div class="place-name">AGORA PLACE KYOTO NIJO</div>
+                        <span class="place-desc">Proche du château de Nijo - Pratique et moderne</span>
                     </div>
-                    <div style="font-size: 1.5em; opacity: 0.3; color: #ffffff; font-weight: 300; padding-left: 5px;">&rsaquo;</div>
+                    <span class="chevron" aria-hidden="true">›</span>
                 </a>
 
             </div>
         </section>
 
-        <section>
-            <div class="section-title">🎋 Activités</div>
+        <section aria-label="Activités prévues à Kyoto">
+            <h2 class="section-title">🎋 Activités</h2>
             <div class="card glass detail-card">
-                <div class="detail-item">
-                    <span class="place-name">Fushimi Inari-taisha</span>
-                    <span class="place-desc">Les milles portails Torii rouges à perte de vue.</span>
-                    <a href="maps://apple.com/?q=Fushimi+Inari+Taisha" class="maps-link" style="color: #D4A373; background: rgba(212, 163, 115, 0.1);">📍 Plans</a>
-                </div>
-                <div class="detail-item">
-                    <span class="place-name">Arashiyama Bamboo Grove</span>
-                    <span class="place-desc">Forêt de bambous géants et temple Tenryu-ji.</span>
-                    <a href="maps://apple.com/?q=Arashiyama+Bamboo+Grove" class="maps-link" style="color: #D4A373; background: rgba(212, 163, 115, 0.1);">📍 Plans</a>
-                </div>
+                
+                <a href="maps://apple.com/?q=Fushimi+Inari+Taisha" class="detail-item detail-item--row" aria-label="Fushimi Inari-taisha. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Fushimi Inari-taisha</div>
+                        <span class="place-desc">Les milles portails Torii rouges à perte de vue.</span>
+                    </div>
+                    <span class="chevron" aria-hidden="true">›</span>
+                </a>
+
+                <div class="detail-card-separator"></div>
+
+                <a href="maps://apple.com/?q=Arashiyama+Bamboo+Grove" class="detail-item detail-item--row" aria-label="Arashiyama Bamboo Grove. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Arashiyama Bamboo Grove</div>
+                        <span class="place-desc">Forêt de bambous géants et temple Tenryu-ji.</span>
+                    </div>
+                    <span class="chevron" aria-hidden="true">›</span>
+                </a>
+
             </div>
         </section>
 
-        <section>
-            <div class="section-title">🍵 Gastronomie</div>
+        <section aria-label="Gastronomie à Kyoto">
+            <h2 class="section-title">🍵 Gastronomie</h2>
             <div class="card glass detail-card">
-                <div class="detail-item">
-                    <span class="place-name">Nishiki Market</span>
-                    <span class="place-desc">Le "garde-manger" de Kyoto pour goûter à tout.</span>
-                    <a href="maps://apple.com/?q=Nishiki+Market+Kyoto" class="maps-link" style="color: #D4A373; background: rgba(212, 163, 115, 0.1);">📍 Plans</a>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+                
+                <a href="maps://apple.com/?q=Nishiki+Market+Kyoto" class="detail-item detail-item--row" aria-label="Nishiki Market. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Nishiki Market</div>
+                        <span class="place-desc">Le "garde-manger" de Kyoto pour goûter à tout
