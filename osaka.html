@@ -2,73 +2,89 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Osaka - Japon 2026</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
 </head>
-<body class="detail-page">
+<body class="detail-page theme-osaka">
 
     <div class="app-container">
         
-        <a href="index.html" class="back-button" style="color: #E29578;">
-            <i data-lucide="chevron-left"></i> Retour
-        </a>
-
         <header>
+            <a href="index.html" class="back-button" aria-label="Retour à l'accueil">
+                <i data-lucide="chevron-left" aria-hidden="true"></i> Retour
+            </a>
             <div class="header-meta">
-                <span class="date-badge" style="background: rgba(226, 149, 120, 0.15); color: #E29578; border: 1px solid rgba(226, 149, 120, 0.3);">JOUR 14 — 17</span>
+                <span class="date-badge">JOUR 14 — 17</span>
                 <span class="vibe-badge">LA CUISINE DU PAYS</span>
             </div>
-            <h1 style="color: #E29578;">Osaka</h1> 
+            <h1>Osaka</h1> 
             <p class="subtitle">Néons, street-food et folie urbaine.</p>
         </header>
 
-        <section>
-            <div class="section-title">🏨 Hébergement</div>
-            <div class="card glass detail-card" style="padding: 0; overflow: hidden;">
+        <section aria-label="Hébergements à Osaka">
+            <h2 class="section-title">🏨 Hébergement</h2>
+            <div class="card glass detail-card">
                 
-                <a href="maps://?q=Ruka+Hotel+Tennoji" class="detail-item" style="display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; padding: 12px 20px; transition: background 0.2s; border: none !important; margin: 0;" onmouseenter="this.style.background='rgba(255,255,255,0.03)'" onmouseleave="this.style.background='transparent'">
-                    <div style="flex: 1; padding-right: 15px;">
-                        <span class="place-date" style="display: block; font-size: 0.75em; font-weight: 900; color: #E29578; letter-spacing: 0.05em; margin-bottom: 2px;">DU 29 NOVEMBRE AU 02 DÉCEMBRE</span>
-                        <div class="place-name" style="color: #ffffff; font-size: 1.1em; font-weight: 700; margin-bottom: 2px; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">RUKA HOTEL TENNOJI</div>
-                        <span class="place-desc" style="opacity: 0.7; display: block;">Quartier de Tennoji - Proche de la tour Tsutenkaku</span>
+                <a href="maps://?q=Ruka+Hotel+Tennoji" class="detail-item detail-item--row" aria-label="Ruka Hotel Tennoji, du 29 novembre au 2 décembre. Voir sur la carte.">
+                    <div>
+                        <span class="place-date">DU 29 NOVEMBRE AU 02 DÉCEMBRE</span>
+                        <div class="place-name">RUKA HOTEL TENNOJI</div>
+                        <span class="place-desc">Quartier de Tennoji - Proche de la tour Tsutenkaku</span>
                     </div>
-                    <div style="font-size: 1.5em; opacity: 0.3; color: #ffffff; font-weight: 300; padding-left: 5px;">&rsaquo;</div>
+                    <span class="chevron" aria-hidden="true">›</span>
                 </a>
 
             </div>
         </section>
 
-        <section>
-            <div class="section-title">🎡 Activités</div>
+        <section aria-label="Activités prévues à Osaka">
+            <h2 class="section-title">🎡 Activités</h2>
             <div class="card glass detail-card">
-                <div class="detail-item">
-                    <span class="place-name">Dotonbori</span>
-                    <span class="place-desc">Le canal iconique, le Glico Man et les enseignes géantes.</span>
-                    <a href="maps://maps.apple.com/?q=Dotonbori" class="maps-link" style="color: #E29578; background: rgba(226, 149, 120, 0.1);">📍 Plans</a>
-                </div>
-                <div class="detail-item">
-                    <span class="place-name">Château d'Osaka</span>
-                    <span class="place-desc">Un monument historique au milieu d'un immense parc.</span>
-                    <a href="maps://maps.apple.com/?q=Osaka+Castle" class="maps-link" style="color: #E29578; background: rgba(226, 149, 120, 0.1);">📍 Plans</a>
-                </div>
+                
+                <a href="maps://maps.apple.com/?q=Dotonbori" class="detail-item detail-item--row" aria-label="Dotonbori. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Dotonbori</div>
+                        <span class="place-desc">Le canal iconique, le Glico Man et les enseignes géantes.</span>
+                    </div>
+                    <span class="chevron" aria-hidden="true">›</span>
+                </a>
+
+                <div class="detail-card-separator"></div>
+
+                <a href="maps://maps.apple.com/?q=Osaka+Castle" class="detail-item detail-item--row" aria-label="Château d'Osaka. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Château d'Osaka</div>
+                        <span class="place-desc">Un monument historique au milieu d'un immense parc.</span>
+                    </div>
+                    <span class="chevron" aria-hidden="true">›</span>
+                </a>
+
             </div>
         </section>
 
-        <section>
-            <div class="section-title">🐙 Gastronomie</div>
+        <section aria-label="Gastronomie à Osaka">
+            <h2 class="section-title">🐙 Gastronomie</h2>
             <div class="card glass detail-card">
-                <div class="detail-item">
-                    <span class="place-name">Marché Kuromon</span>
-                    <span class="place-desc">Takoyaki, Kushikatsu et tout ce qui se mange !</span>
-                    <a href="maps://maps.apple.com/?q=Kuromon+Market" class="maps-link" style="color: #E29578; background: rgba(226, 149, 120, 0.1);">📍 Plans</a>
-                </div>
+                
+                <a href="maps://maps.apple.com/?q=Kuromon+Market" class="detail-item detail-item--row" aria-label="Marché Kuromon. Voir sur la carte.">
+                    <div>
+                        <div class="place-name">Marché Kuromon</div>
+                        <span class="place-desc">Takoyaki, Kushikatsu et tout ce qui se mange !</span>
+                    </div>
+                    <span class="chevron" aria-hidden="true">›</span>
+                </a>
+
             </div>
         </section>
 
     </div>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
 </body>
 </html>
