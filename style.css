@@ -381,6 +381,14 @@ h1 {
    9. DESIGN EXCLUSIF AUX PAGES DE DÉTAILS
    ========================================================================= */
 
+/* Activation des thèmes par classe de body */
+.theme-tokyo { --city-color: var(--city-tokyo); }
+.theme-kawaguchiko { --city-color: var(--city-kawaguchiko); }
+.theme-kiso { --city-color: var(--city-kiso); }
+.theme-kyoto { --city-color: var(--city-kyoto); }
+.theme-hiroshima { --city-color: var(--city-hiroshima); }
+.theme-osaka { --city-color: var(--city-osaka); }
+
 .detail-page header {
     display: flex;
     flex-direction: column;
@@ -394,7 +402,7 @@ h1 {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: var(--city-tokyo);
+    color: var(--city-color);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -417,9 +425,9 @@ h1 {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    background: rgba(188, 71, 73, 0.15);
-    color: var(--city-tokyo);
-    border: 1px solid rgba(188, 71, 73, 0.25);
+    background: color-mix(in srgb, var(--city-color) 15%, transparent);
+    color: var(--city-color);
+    border: 1px solid color-mix(in srgb, var(--city-color) 25%, transparent);
     padding: 4px 10px;
     border-radius: 12px;
 }
@@ -463,7 +471,6 @@ h1 {
     padding: 14px 0;
 }
 
-/* Force l'alignement à gauche du bloc de texte interne */
 .detail-page .detail-item--row > div {
     display: flex;
     flex-direction: column;
@@ -485,14 +492,13 @@ h1 {
     width: 100%;
 }
 
-/* TEXTE SEUL ET EN COULEUR POUR LA DATE DE L'HÔTEL */
 .detail-page .place-date {
     display: inline-block;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--city-tokyo);
+    color: var(--city-color);
     margin-bottom: 4px;
     background: none !important;
     border: none !important;
@@ -526,19 +532,3 @@ h1 {
     transform: translateX(3px);
     color: var(--text-main);
 }
-/* Liaison des variables de couleur par ville pour les pages de détails */
-.theme-tokyo { --city-color: var(--city-tokyo); }
-.theme-kawaguchiko { --city-color: var(--city-kawaguchiko); }
-.theme-kiso { --city-color: var(--city-kiso); }
-.theme-kyoto { --city-color: var(--city-kyoto); }
-.theme-hiroshima { --city-color: var(--city-hiroshima); }
-.theme-osaka { --city-color: var(--city-osaka); }
-
-/* Remplacement de var(--city-tokyo) par var(--city-color) sur les éléments clés */
-.detail-page .back-button { color: var(--city-color, var(--city-tokyo)); }
-.detail-page .date-badge { 
-    background: color-mix(in srgb, var(--city-color, var(--city-tokyo)) 15%, transparent);
-    color: var(--city-color, var(--city-tokyo));
-    border: 1px solid color-mix(in srgb, var(--city-color, var(--city-tokyo)) 25%, transparent);
-}
-.detail-page .place-date { color: var(--city-color, var(--city-tokyo)); }
