@@ -1,11 +1,10 @@
-const CACHE_NAME = "japan-2026-v1";
+const CACHE_NAME = "japan-2026-v2";
 const ASSETS = [
     "./",
     "./index.html",
     "./style.css",
     "./script.js",
-    "./manifest.json",
-    "./itineraire.png"
+    "./manifest.json"
 ];
 
 self.addEventListener("install", (e) => {
