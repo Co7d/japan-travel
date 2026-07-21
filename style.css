@@ -1,0 +1,540 @@
+/* ==========================================================================
+   1. RESET & NATIVE iOS FEEL
+   ========================================================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --bg-color: #000000;
+    --card-bg: #1C1C1E;
+    --card-border: #2C2C2E;
+    --text-main: #FFFFFF;
+    --text-dim: #8E8E93;
+
+    /* Couleurs des villes */
+    --city-tokyo: #BC4749;
+    --city-kawaguchiko: #457B9D;
+    --city-kiso: #6A994E;
+    --city-kyoto: #D4A373;
+    --city-hiroshima: #8D99AE;
+    --city-osaka: #E29578;
+
+    --active-color: var(--city-tokyo);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Empêche le scroll vertical du body, géré par onglets */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. INDICATEUR DE PAGINATION (DOTS iOS)
+   ========================================================================= */
+.dots-indicator {
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 100;
+    background: rgba(28, 28, 30, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #FFFFFF;
+    width: 16px;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   3. STRUCTURE DU SWIPE HORIZONTAL (SPA)
+   ========================================================================= */
+.app-swipe-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Masquer la barre de scroll */
+.app-swipe-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-page {
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow-y: auto;
+    padding: calc(50px + env(safe-area-inset-top)) 16px calc(30px + env(safe-area-inset-bottom)) 16px;
+}
+
+.content-wrapper {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 10px 0 4px 0;
+    color: var(--active-color);
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   4. CARTES & GLASSMORPHISM ÉPURÉ
+   ========================================================================= */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 4px;
+}
+
+.countdown-card {
+    text-align: center;
+    padding: 22px 16px;
+}
+
+#timer {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--active-color);
+    background: color-mix(in srgb, var(--active-color) 15%, transparent);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.card-map img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+/* ==========================================================================
+   5. TIMELINE
+   ========================================================================= */
+.modern-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #FFFFFF;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.timeline-item:active {
+    transform: scale(0.98);
+}
+
+.timeline-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.timeline-icon {
+    font-size: 24px;
+}
+
+.timeline-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.city-title {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.city-dates {
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+.vibe-badge {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-dim);
+}
+
+/* ==========================================================================
+   6. DÉTAILS VILLE & SÉLECTEUR (PILLS)
+   ========================================================================= */
+.city-selector-pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.city-selector-pills::-webkit-scrollbar { display: none; }
+
+.pill {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-dim);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.pill.active {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #FFFFFF;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    text-decoration: none;
+    color: inherit;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.place-name {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.place-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.btn-taxi-trigger {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 10px;
+    margin-top: 6px;
+    align-self: flex-start;
+}
+
+/* Bouton Flottant (+) */
+.fab-btn {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    right: 20px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--active-color);
+    color: #FFFFFF;
+    font-size: 28px;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+}
+
+/* ==========================================================================
+   7. OUTILS & CONVERTISSEUR
+   ========================================================================= */
+.converter-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+}
+
+.input-group input {
+    background: #000000;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    width: 100%;
+}
+
+.converter-arrow {
+    font-size: 18px;
+    color: var(--text-dim);
+    margin-top: 14px;
+}
+
+.rate-info {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.emergency-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.emergency-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #000000;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.emergency-item strong {
+    color: var(--city-tokyo);
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.btn {
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-primary { background: var(--active-color); color: #FFFFFF; }
+.btn-secondary { background: rgba(255, 255, 255, 0.08); color: #FFFFFF; }
+.btn-full { width: 100%; margin-top: 10px; }
+
+/* ==========================================================================
+   8. LEXIQUE & SEARCH
+   ========================================================================= */
+.search-box input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 12px 16px;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+.lexicon-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lexicon-item:last-child { border-bottom: none; }
+
+.lex-fr { font-size: 13px; color: var(--text-dim); }
+.lex-jp { font-size: 16px; font-weight: 700; color: #FFFFFF; margin-top: 2px; }
+
+/* ==========================================================================
+   9. MODALS
+   ========================================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: flex-end;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border-top: 1px solid var(--card-border);
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom)) 20px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h3 { margin: 0; font-size: 18px; }
+
+.close-modal {
+    background: none; border: none; color: var(--text-dim); font-size: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    font-size: 12px; color: var(--text-dim); margin-bottom: 4px; font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    background: #000000;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+/* Modal Taxi */
+.modal-taxi { text-align: center; padding: 40px 20px; }
+.taxi-badge { font-size: 12px; font-weight: 800; color: var(--city-tokyo); letter-spacing: 1px; }
+.jp-address-box {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 20px 0;
+    line-height: 1.4;
+    background: #000000;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    user-select: all;
+}
+.taxi-hint { font-size: 13px; color: var(--text-dim); margin: 0; }
