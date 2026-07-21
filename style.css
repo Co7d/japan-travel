@@ -194,7 +194,6 @@ h1 {
 .thread-card {
     background: color-mix(in srgb, var(--node-color) 7%, #121214);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-left: 4px solid var(--node-color);
     border-radius: 16px;
     padding: 14px 16px;
     cursor: pointer;
@@ -222,16 +221,15 @@ h1 {
     color: var(--text-dim);
 }
 
-/* DESIGN TICKET (Option B) */
 .ticket-date-box {
-    background: rgba(0, 0, 0, 0.3);
-    border-left: 3px solid var(--accent-color, var(--active-color));
-    border-radius: 0 10px 10px 0;
-    padding: 8px 12px;
-    margin-top: 6px;
+    background: color-mix(in srgb, var(--accent-color, var(--active-color)) 12%, #121214);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .ticket-step {
