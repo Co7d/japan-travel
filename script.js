@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const DEFAULT_DATA = {
-        tokyo1: {
-            name: "Tokyo 1", vibe: "URBAIN", dates: "16 Nov — 20 Nov • 4 nuits",
+        tokyo: {
+            name: "Tokyo", vibe: "URBAIN", dates: "16 Nov — 20 Nov & 02 Déc — 05 Déc • 7 nuits",
             color: "var(--c-tokyo1)", icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"",
             hotels: [{ name: "Hôtel Shibuya", desc: "Proche gare", taxi: "東京都渋谷区宇田川町1-1" }],
             activities: [{ name: "Shibuya Sky", desc: "Vue 360° au coucher du soleil", query: "Shibuya Sky Tokyo" }],
@@ -40,12 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         osaka: {
             name: "Osaka", vibe: "FOOD", dates: "29 Nov — 02 Déc • 3 nuits",
-            color: "var(--c-osaka)", icon: "🐙", interTransport: "🚅 Shinkansen",
-            hotels: [], activities: [], food: []
-        },
-        tokyo2: {
-            name: "Tokyo 2", vibe: "SHOPPING", dates: "02 Déc — 05 Déc • 3 nuits",
-            color: "var(--c-tokyo2)", icon: "🛍️", interTransport: null,
+            color: "var(--c-osaka)", icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)",
             hotels: [], activities: [], food: []
         }
     };
@@ -77,7 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let appData = JSON.parse(localStorage.getItem("japan_app_data")) || DEFAULT_DATA;
-    let currentSelectedCity = "tokyo1";
+    if (appData.tokyo1 || appData.tokyo2) {
+        appData = DEFAULT_DATA;
+        localStorage.setItem("japan_app_data", JSON.stringify(appData));
+    }
+
+    let currentSelectedCity = "tokyo";
     let pendingMapQuery = null;
 
     const DEPART_MARSEILLE = new Date("2026-11-15T08:00:00+01:00").getTime();
@@ -403,6 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
     lexiconSearch.addEventListener("input", (e) => renderLexicon(e.target.value));
 
     renderTimeline();
-    renderCityDetails("tokyo1");
+    renderCityDetails("tokyo");
     renderLexicon();
 });
