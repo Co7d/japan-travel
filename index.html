@@ -14,46 +14,33 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-tokyo">
-
-    <!-- Indicateur à points épuré style iOS -->
-    <div class="dots-indicator" id="dots-container">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
+<body class="theme-tokyo1">
 
     <!-- Conteneur principal Swipe Horizontal -->
     <main class="app-swipe-container" id="swipe-container">
 
         <!-- ==========================================
-             ONGLET 1 : TIMELINE & ITINÉRAIRE (ACCUEIL)
+             ONGLET 1 : JOURNEY THREAD (TIMELINE)
              ========================================== -->
         <section class="tab-page" id="page-timeline">
             <div class="content-wrapper">
                 <h1>🇯🇵 JAPON 2026</h1>
                 
-                <!-- Carte Statut Actuel -->
+                <!-- Statut Actuel -->
                 <div class="card stat-card">
                     <span class="stat-label">STATUT ACTUEL</span>
                     <span class="stat-value" id="next-step">Calcul en cours...</span>
                 </div>
 
-                <!-- Section Compte à rebours / Focus Jour -->
+                <!-- Compte à rebours / Focus Jour -->
                 <div class="card countdown-card">
                     <div id="timer">000 : 00 : 00 : 00</div>
                     <div class="countdown-label" id="countdown-label">AVANT L'AVENTURE</div>
                 </div>
 
-                <!-- Carte Carte du Japon -->
-                <div class="card card-map">
-                    <img src="itineraire.png" alt="Carte du Japon" id="map-img">
-                </div>
-
-                <!-- Timeline de l'Itinéraire -->
-                <div class="modern-timeline" id="timeline-list">
-                    <!-- Généré dynamiquement via JS -->
+                <!-- Fil de Voyage (Journey Thread) -->
+                <div class="journey-thread" id="timeline-list">
+                    <!-- Généré dynamiquement en JS -->
                 </div>
             </div>
         </section>
@@ -67,12 +54,13 @@
                 
                 <!-- Sélecteur rapide de ville -->
                 <div class="city-selector-pills" id="city-pills">
-                    <button class="pill active" data-city="tokyo">Tokyo</button>
+                    <button class="pill active" data-city="tokyo1">Tokyo 1</button>
                     <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
                     <button class="pill" data-city="kiso">Kiso</button>
                     <button class="pill" data-city="kyoto">Kyoto</button>
                     <button class="pill" data-city="hiroshima">Hiroshima</button>
                     <button class="pill" data-city="osaka">Osaka</button>
+                    <button class="pill" data-city="tokyo2">Tokyo 2</button>
                 </div>
 
                 <div class="city-header">
@@ -81,17 +69,17 @@
                     <p class="subtitle" id="current-city-dates">16 Nov — 20 Nov • 4 nuits</p>
                 </div>
 
-                <!-- Section Hôtels -->
+                <!-- Hébergements -->
                 <h3 class="section-title">🏨 Hébergement</h3>
-                <div class="card details-card" id="hotels-list"></div>
+                <div class="places-stack" id="hotels-list"></div>
 
-                <!-- Section Activités -->
+                <!-- Visites & Activités -->
                 <h3 class="section-title">⛩️ À visiter & Activités</h3>
-                <div class="card details-card" id="activities-list"></div>
+                <div class="places-stack" id="activities-list"></div>
 
-                <!-- Section Restaurants -->
+                <!-- Restaurants & Food -->
                 <h3 class="section-title">🍜 Restaurants & Food</h3>
-                <div class="card details-card" id="food-list"></div>
+                <div class="places-stack" id="food-list"></div>
 
             </div>
 
@@ -106,7 +94,7 @@
         <section class="tab-page" id="page-tools">
             <div class="content-wrapper">
                 <h1>🛠️ Utiles</h1>
-                <p class="subtitle">Convertisseur & Urgences</p>
+                <p class="subtitle">Convertisseur, Cartes & Urgences</p>
 
                 <!-- Convertisseur Yen / Euro -->
                 <div class="card tool-card">
@@ -125,29 +113,31 @@
                     <p class="rate-info" id="rate-info-text">Taux : 1 € = 165.00 ¥ (Mode hors-ligne)</p>
                 </div>
 
-                <!-- Numéros d'urgence -->
+                <!-- Réglage Application de Cartes -->
+                <div class="card tool-card">
+                    <h3>🗺️ Application de Cartes</h3>
+                    <p class="desc-text">Choisissez votre application GPS préférée par défaut.</p>
+                    <select id="maps-preference-select" class="form-select">
+                        <option value="ask">Toujours me demander</option>
+                        <option value="apple">🍎 Apple Maps</option>
+                        <option value="google">🗺️ Google Maps</option>
+                    </select>
+                </div>
+
+                <!-- Urgences -->
                 <div class="card tool-card">
                     <h3>🚨 Urgences au Japon</h3>
                     <div class="emergency-list">
-                        <a href="tel:110" class="emergency-item">
-                            <span>Police</span>
-                            <strong>110</strong>
-                        </a>
-                        <a href="tel:119" class="emergency-item">
-                            <span>Ambulance / Pompiers</span>
-                            <strong>119</strong>
-                        </a>
-                        <a href="tel:0357986000" class="emergency-item">
-                            <span>Ambassade de France (Tokyo)</span>
-                            <strong>03-5798-6000</strong>
-                        </a>
+                        <a href="tel:110" class="emergency-item"><span>Police</span><strong>110</strong></a>
+                        <a href="tel:119" class="emergency-item"><span>Ambulance / Pompiers</span><strong>119</strong></a>
+                        <a href="tel:0357986000" class="emergency-item"><span>Ambassade de France (Tokyo)</span><strong>03-5798-6000</strong></a>
                     </div>
                 </div>
 
-                <!-- Gestion des données (Export/Import JSON) -->
+                <!-- Gestion Données JSON -->
                 <div class="card tool-card">
-                    <h3>💾 Gestion de vos adresses</h3>
-                    <p class="desc-text">Exportez facilement vos adresses ajoutées via le bouton "+" sous forme de texte JSON.</p>
+                    <h3>💾 Transfert des données</h3>
+                    <p class="desc-text">Exportez vos lieux ajoutés sous forme de code JSON pour les coller sur l'autre iPhone.</p>
                     <div class="btn-group">
                         <button class="btn btn-primary" id="btn-export-json">Copier les données JSON 📋</button>
                         <button class="btn btn-secondary" id="btn-import-json">Importer du JSON 📥</button>
@@ -164,14 +154,12 @@
         <section class="tab-page" id="page-lexicon">
             <div class="content-wrapper">
                 <h1>🗣️ Lexique</h1>
-                <p class="subtitle">Mots essentiels au Japon</p>
+                <p class="subtitle">Phrases & mots indispensables</p>
 
-                <!-- Barre de Recherche -->
                 <div class="search-box">
-                    <input type="text" id="lexicon-search" placeholder="Rechercher une phrase ou un mot...">
+                    <input type="text" id="lexicon-search" placeholder="Rechercher un mot (ex: eau, merci)...">
                 </div>
 
-                <!-- Liste du lexique -->
                 <div class="card lexicon-card" id="lexicon-container">
                     <!-- Généré dynamiquement -->
                 </div>
@@ -180,9 +168,15 @@
 
     </main>
 
-    <!-- ==========================================
-         MODAL 1 : AJOUTER UN LIEU (+)
-         ========================================== -->
+    <!-- Indicateur à points placé EN BAS de l'écran -->
+    <div class="dots-indicator" id="dots-container">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <!-- MODAL AJOUT LIEU (+) -->
     <div class="modal-overlay" id="add-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -193,12 +187,13 @@
                 <div class="form-group">
                     <label>Ville</label>
                     <select id="form-city" required>
-                        <option value="tokyo">Tokyo</option>
+                        <option value="tokyo1">Tokyo 1 (Urbain)</option>
                         <option value="kawaguchiko">Kawaguchiko</option>
                         <option value="kiso">Vallée de Kiso</option>
                         <option value="kyoto">Kyoto</option>
                         <option value="hiroshima">Hiroshima</option>
                         <option value="osaka">Osaka</option>
+                        <option value="tokyo2">Tokyo 2 (Shopping)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -214,33 +209,44 @@
                     <input type="text" id="form-title" placeholder="Ex: Ichiran Ramen" required>
                 </div>
                 <div class="form-group">
-                    <label>Description / Note</label>
-                    <input type="text" id="form-desc" placeholder="Ex: Ramen sur-mesure en cabine solo">
+                    <label>Notes / Infos</label>
+                    <input type="text" id="form-desc" placeholder="Ex: Payer en liquide au distributeur">
                 </div>
                 <div class="form-group">
-                    <label>Lien Google Maps (Optionnel)</label>
-                    <input type="url" id="form-map" placeholder="https://maps.app.goo.gl/...">
+                    <label>Recherche Google Maps / Adresse</label>
+                    <input type="text" id="form-map" placeholder="Ex: Shibuya Crossing Tokyo">
                 </div>
                 <div class="form-group" id="taxi-address-group">
                     <label>Adresse en Japonais (Pour Taxi)</label>
-                    <input type="text" id="form-taxi" placeholder="Ex: 東京都渋谷区...">
+                    <input type="text" id="form-taxi" placeholder="Ex: 東京都渋谷区宇田川町1-1">
                 </div>
                 <button type="submit" class="btn btn-primary btn-full">Enregistrer le lieu</button>
             </form>
         </div>
     </div>
 
-    <!-- ==========================================
-         MODAL 2 : ADRESSE TAXI JAPONAIS
-         ========================================== -->
+    <!-- MODAL ADRESSE TAXI -->
     <div class="modal-overlay" id="taxi-modal">
         <div class="modal-content modal-taxi">
             <button class="close-modal" id="close-taxi-modal">&times;</button>
             <span class="taxi-badge">🚕 POUR LE CHAUFFEUR DE TAXI</span>
-            <div class="jp-address-box" id="taxi-modal-address">
-                東京都渋谷区...
-            </div>
+            <div class="jp-address-box" id="taxi-modal-address">---</div>
             <p class="taxi-hint">Montrez cet écran directement au chauffeur.</p>
+        </div>
+    </div>
+
+    <!-- MODAL CHOIX GPS (ACTION SHEET iOS) -->
+    <div class="modal-overlay" id="maps-modal">
+        <div class="modal-content modal-action-sheet">
+            <h3>Ouvrir dans quel GPS ?</h3>
+            <div class="action-sheet-buttons">
+                <button class="btn btn-secondary btn-full" id="btn-open-apple">🍎 Apple Maps</button>
+                <button class="btn btn-secondary btn-full" id="btn-open-google">🗺️ Google Maps</button>
+                <label class="remember-checkbox">
+                    <input type="checkbox" id="remember-maps-choice"> Mémoriser mon choix
+                </label>
+                <button class="btn btn-full btn-close-sheet" id="close-maps-modal">Annuler</button>
+            </div>
         </div>
     </div>
 
