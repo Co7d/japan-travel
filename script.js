@@ -69,16 +69,57 @@ document.addEventListener("DOMContentLoaded", () => {
         { cat: "🚨 Survie", fr: "Pardon / SVP / Merci (Le mot magique)", jp: "Sumimasen" },
         { cat: "🚨 Survie", fr: "Donnez-moi ceci SVP (en montrant)", jp: "Kore kudasai" },
         { cat: "🚨 Survie", fr: "Merci beaucoup (Polis/Commerçants)", jp: "Arigatō gozaimasu" },
+        { cat: "🚨 Survie", fr: "Merci (rapide)", jp: "Dōmo" },
         { cat: "🚨 Survie", fr: "Où sont les toilettes ?", jp: "Toire wa doko desu ka ?" },
         { cat: "🚨 Survie", fr: "Où est la gare ?", jp: "Eki wa doko desu ka ?" },
         { cat: "🚨 Survie", fr: "C'est OK / Non merci (Ça ira)", jp: "Daijōbu desu" },
         { cat: "🚨 Survie", fr: "Combien ça coûte ?", jp: "Kore wa ikura desu ka ?" },
         { cat: "🚨 Survie", fr: "Je ne comprends pas", jp: "Wakarimasen" },
-        { cat: "🚨 Survie", fr: "Anglais OK ?", jp: "Eigo OK desu ka ?" },
-        { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
+        { cat: "🚨 Survie", fr: "Parlez-vous anglais ?", jp: "Eigo ga hanasemasu ka ?" },
+        { cat: "🚨 Survie", fr: "Avez-vous un menu en anglais ?", jp: "Eigo no menyū wa arimasu ka ?" },
+        { cat: "🚨 Survie", fr: "Désolé / Pardon", jp: "Gomen nasai" },
+
+        { cat: "👋 Politesse", fr: "Bonjour (Journée)", jp: "Konnichiwa" },
+        { cat: "👋 Politesse", fr: "Bonjour (Matin)", jp: "Ohayō gozaimasu" },
+        { cat: "👋 Politesse", fr: "Bonsoir", jp: "Konbanwa" },
+        { cat: "👋 Politesse", fr: "Enchanté / Ravi de vous rencontrer", jp: "Yoroshiku onegai shimasu" },
+        { cat: "👋 Politesse", fr: "Au revoir / À bientôt", jp: "Mata ne / Sayōnara" },
+
+        { cat: "🍜 Resto", fr: "Avant de manger (Bon appétit)", jp: "Itadakimasu" },
         { cat: "🍜 Resto", fr: "C'était délicieux (Au chef en partant)", jp: "Gochisōsama deshita" },
+        { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
+        { cat: "🍜 Resto", fr: "De l'eau s'il vous plaît", jp: "O-mizu kudasai" },
         { cat: "🍜 Resto", fr: "Payer séparément", jp: "Betsu-betsu de" },
-        { cat: "🚕 Taxi", fr: "Aller à [Lieu] s'il vous plaît", jp: "... made onegashimasu" }
+        { cat: "🍜 Resto", fr: "Qu'est-ce que vous recommandez ?", jp: "Osusume wa nan desu ka ?" },
+        { cat: "🍜 Resto", fr: "Sans viande s'il vous plaît", jp: "Niku nashi de" },
+        { cat: "🍜 Resto", fr: "C'est très bon !", jp: "Oishii desu !" },
+
+        { cat: "🚆 Transport", fr: "Aller à [Lieu] s'il vous plaît (Taxi/Bus)", jp: "... made onegashimasu" },
+        { cat: "🚆 Transport", fr: "Où se trouve ... ?", jp: "... wa doko desu ka ?" },
+        { cat: "🚆 Transport", fr: "Acheter un ticket", jp: "Kippu" },
+        { cat: "🚆 Transport", fr: "À droite", jp: "Migi" },
+        { cat: "🚆 Transport", fr: "À gauche", jp: "Hidari" },
+        { cat: "🚆 Transport", fr: "Tout droit", jp: "Massugu" },
+        { cat: "🚆 Transport", fr: "Arrêt de bus", jp: "Basu-tei" },
+
+        { cat: "🛍️ Shopping", fr: "Acceptez-vous la carte bancaire ?", jp: "Kādo wa tsukaemasu ka ?" },
+        { cat: "🛍️ Shopping", fr: "Paiement en espèces / Liquide", jp: "Genkin" },
+        { cat: "🛍️ Shopping", fr: "Pas besoin de sac plastifié", jp: "Fukuro wa irimasen" },
+        { cat: "🛍️ Shopping", fr: "Détaxe (Tax Free)", jp: "Menzei" },
+        { cat: "🛍️ Shopping", fr: "C'est trop cher", jp: "Takai desu" },
+
+        { cat: "🏨 Hôtel", fr: "J'ai une réservation", jp: "Yoyaku shite imasu" },
+        { cat: "🏨 Hôtel", fr: "Puis-je laisser mes bagages ici ?", jp: "Luggage o预kete ii desu ka ?" },
+        { cat: "🏨 Hôtel", fr: "Quel est le code Wi-Fi ?", jp: "Wi-Fi no pasuwādo wa nan desu ka ?" },
+
+        { cat: "🚨 Urgence", fr: "Aidez-moi !", jp: "Tasukete !" },
+        { cat: "🚨 Urgence", fr: "Appelez une ambulance !", jp: "Kyūkyūsha o yonde kudasai !" },
+        { cat: "🚨 Urgence", fr: "Où est la pharmacie ?", jp: "Yakkyoku wa doko desu ka ?" },
+        { cat: "🚨 Urgence", fr: "J'ai mal ici", jp: "Koko ga itai desu" },
+
+        { cat: "🔢 Chiffres", fr: "1, 2, 3, 4, 5", jp: "Ichi, Ni, San, Yon, Go" },
+        { cat: "🔢 Chiffres", fr: "6, 7, 8, 9, 10", jp: "Roku, Nana, Hachi, Kyū, Jū" },
+        { cat: "🔢 Chiffres", fr: "100 / 1 000 / 10 000", jp: "Hyaku / Sen / Man" }
     ];
 
     let appData = JSON.parse(localStorage.getItem("japan_app_data"));
@@ -414,7 +455,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderLexicon(filter = "") {
         const filtered = LEXICON_DATA.filter(item =>
             item.fr.toLowerCase().includes(filter.toLowerCase()) ||
-            item.jp.toLowerCase().includes(filter.toLowerCase())
+            item.jp.toLowerCase().includes(filter.toLowerCase()) ||
+            item.cat.toLowerCase().includes(filter.toLowerCase())
         );
 
         lexiconContainer.innerHTML = filtered.map(item => `
