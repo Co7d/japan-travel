@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // NOUVELLE STRUCTURE DE DONNÉES (Avec la clé "steps")
     const DEFAULT_DATA = {
         tokyo: {
             name: "Tokyo", vibe: "URBAIN",
@@ -25,36 +26,37 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         kawaguchiko: {
             name: "Kawaguchiko", vibe: "NATURE",
-            color: "var(--c-kawaguchiko)", icon: "🗻", interTransport: "🚗 Voiture",
+            color: "var(--c-kawaguchiko)", icon: "🗻",
             steps: [{ label: "Séjour", dates: "20 Nov ➔ 22 Nov", nights: "2 nuits" }],
             hotels: [], activities: [], food: []
         },
         kiso: {
             name: "Vallée de Kiso", vibe: "HISTOIRE",
-            color: "var(--c-kiso)", icon: "🌲", interTransport: "🚗 Voiture puis 🚅 Shinkansen",
+            color: "var(--c-kiso)", icon: "🌲",
             steps: [{ label: "Séjour", dates: "22 Nov ➔ 23 Nov", nights: "1 nuit" }],
             hotels: [], activities: [], food: []
         },
         kyoto: {
             name: "Kyoto", vibe: "TRADITION",
-            color: "var(--c-kyoto)", icon: "⛩️", interTransport: "🚅 Shinkansen",
+            color: "var(--c-kyoto)", icon: "⛩️",
             steps: [{ label: "Séjour", dates: "23 Nov ➔ 28 Nov", nights: "5 nuits" }],
             hotels: [], activities: [], food: []
         },
         hiroshima: {
             name: "Hiroshima", vibe: "CULTURE",
-            color: "var(--c-hiroshima)", icon: "🕊️", interTransport: "🚅 Shinkansen",
+            color: "var(--c-hiroshima)", icon: "🕊️",
             steps: [{ label: "Séjour", dates: "28 Nov ➔ 29 Nov", nights: "1 nuit" }],
             hotels: [], activities: [], food: []
         },
         osaka: {
             name: "Osaka", vibe: "FOOD",
-            color: "var(--c-osaka)", icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)",
+            color: "var(--c-osaka)", icon: "🐙",
             steps: [{ label: "Séjour", dates: "29 Nov ➔ 02 Déc", nights: "3 nuits" }],
             hotels: [], activities: [], food: []
         }
     };
 
+    // LOGIQUE DE LA TIMELINE
     const TIMELINE_NODES = [
         { cityKey: "tokyo", stepIdx: 0, icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"" },
         { cityKey: "kawaguchiko", stepIdx: 0, icon: "🗻", interTransport: "🚗 Voiture" },
@@ -62,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { cityKey: "kyoto", stepIdx: 0, icon: "⛩️", interTransport: "🚅 Shinkansen" },
         { cityKey: "hiroshima", stepIdx: 0, icon: "🕊️", interTransport: "🚅 Shinkansen" },
         { cityKey: "osaka", stepIdx: 0, icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)" },
-        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null }
+        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null } // La fameuse lanterne pour Tokyo 2
     ];
 
     const LEXICON_DATA = [
@@ -77,22 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
         { cat: "🚨 Survie", fr: "Anglais OK ?", jp: "Eigo OK desu ka ?" },
         { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
         { cat: "🍜 Resto", fr: "C'était délicieux (Au chef en partant)", jp: "Gochisōsama deshita" },
-        { cat: "🍜 Resto", fr: "Avez-vous une carte en anglais ?", jp: "Eigo no menū wa arimasu ka ?" },
-        { cat: "🍜 Resto", fr: "Votre recommandation ?", jp: "O-susume wa dore desu ka ?" },
-        { cat: "🍜 Resto", fr: "De l'eau gratuite SVP", jp: "O-mizu kudasai" },
-        { cat: "🍜 Resto", fr: "Une bière pression SVP !", jp: "Nama bīru onegashimasu" },
-        { cat: "🍜 Resto", fr: "Carte bancaire acceptée ?", jp: "Kādo wa tsukaemasu ka ?" },
         { cat: "🍜 Resto", fr: "Payer séparément", jp: "Betsu-betsu de" },
-        { cat: "🛍️ Shopping", fr: "Pas besoin de sac (Konbini)", jp: "Fukuro wa irimasen" },
-        { cat: "🛍️ Shopping", fr: "Chauffer le plat SVP (Konbini)", jp: "Atatame onegashimasu" },
-        { cat: "🛍️ Shopping", fr: "Puis-je essayer ? (Cabine)", jp: "Shitakushitsu OK desu ka ?" },
-        { cat: "🚕 Taxi", fr: "Aller à [Lieu] s'il vous plaît", jp: "... made onegashimasu" },
-        { cat: "🚆 Train", fr: "Ce train va-t-il à [Ville] ?", jp: "Kore wa ... ni ikimasu ka ?" },
-        { cat: "🏨 Hôtel", fr: "Garder mes bagages SVP", jp: "Luggage keep onegashimasu" }
+        { cat: "🚕 Taxi", fr: "Aller à [Lieu] s'il vous plaît", jp: "... made onegashimasu" }
     ];
 
-    let appData = JSON.parse(localStorage.getItem("japan_app_data")) || DEFAULT_DATA;
-    if (appData.tokyo1 || !appData.tokyo.steps) {
+    // --- CORRECTION DU CRASH ICI ---
+    // On force la réinitialisation si les données locales n'ont pas la nouvelle structure "steps"
+    let appData = JSON.parse(localStorage.getItem("japan_app_data"));
+    if (!appData || !appData.tokyo || !appData.tokyo.steps) {
         appData = DEFAULT_DATA;
         localStorage.setItem("japan_app_data", JSON.stringify(appData));
     }
@@ -109,8 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "✈️ Attache ta ceinture, on décolle !",
         "⛩️ Objectif : Devenir un vrai Ninja.",
         "🍜 Alerte : Niveau de Ramen critique !",
-        "🚅 Shinkansen activé. Destination : Futur.",
-        "🍡 Un petit Dango pour la route ?"
+        "🚅 Shinkansen activé. Destination : Futur."
     ];
     let funMsgIndex = 0;
 
@@ -158,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, idx) => dot.classList.toggle("active", idx === pageIndex));
     });
 
+    // GENERATEUR HTML POUR LE DESIGN TICKET (Option B)
     function generateTicketHTML(steps, totalNights = null, accentColor = "var(--active-color)") {
         return `
             <div class="ticket-date-box" style="--accent-color: ${accentColor}">
@@ -172,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
+    // RENDU DE LA TIMELINE AVEC DESIGN TICKET INTÉGRÉ
     function renderTimeline() {
         const timelineList = document.getElementById("timeline-list");
         timelineList.innerHTML = TIMELINE_NODES.map(node => {
@@ -207,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const pills = document.querySelectorAll(".pill");
 
+    // RENDU DE LA PAGE VILLE AVEC TICKET COMPLET
     function renderCityDetails(cityKey) {
         currentSelectedCity = cityKey;
         const cityData = appData[cityKey];
@@ -216,13 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("current-city-title").textContent = cityData.name;
         document.getElementById("current-city-vibe").textContent = cityData.vibe;
         
-        document.getElementById("current-city-dates-box").outerHTML = generateTicketHTML(
-            cityData.steps, 
-            cityData.totalNights, 
-            cityData.color
-        );
-        const dateBox = document.querySelector(".ticket-date-box");
-        if (dateBox) dateBox.id = "current-city-dates-box";
+        // Remplacement dynamique du bloc de date par le composant Ticket
+        document.getElementById("current-city-dates-box").outerHTML = `<div class="ticket-date-box" id="current-city-dates-box">${generateTicketHTML(cityData.steps, cityData.totalNights, cityData.color)}</div>`;
 
         pills.forEach(p => p.classList.toggle("active", p.dataset.city === cityKey));
 
@@ -444,6 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lexiconSearch.addEventListener("input", (e) => renderLexicon(e.target.value));
 
+    // Lancement de l'application
     renderTimeline();
     renderCityDetails("tokyo");
     renderLexicon();
