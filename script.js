@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("current-city-title").textContent = cityData.name;
         document.getElementById("current-city-vibe").textContent = cityData.vibe;
         
-        document.getElementById("current-city-dates-box").outerHTML = `<div class="ticket-date-box" id="current-city-dates-box">${generateTicketHTML(cityData.steps, cityData.totalNights, cityData.color)}</div>`;
+        document.getElementById("current-city-dates-container").innerHTML = generateTicketHTML(cityData.steps, cityData.totalNights, cityData.color);
 
         pills.forEach(p => p.classList.toggle("active", p.dataset.city === cityKey));
 
