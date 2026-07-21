@@ -44,15 +44,34 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const LEXICON_DATA = [
-        { cat: "Général", fr: "Bonjour", jp: "Konnichiwa" },
-        { cat: "Général", fr: "Merci", jp: "Arigatō gozaimasu" },
-        { cat: "Général", fr: "S'il vous plaît", jp: "Onegashimasu" },
-        { cat: "Général", fr: "Excusez-moi / SVP", jp: "Sumimasen" },
-        { cat: "Restaurant", fr: "L'addition SVP", jp: "O-kaikei onegashimasu" },
-        { cat: "Restaurant", fr: "C'était délicieux", jp: "Gochisōsama deshita" },
-        { cat: "Restaurant", fr: "De l'eau SVP", jp: "Mizu o onegashimasu" },
-        { cat: "Orientation", fr: "Où sont les toilettes ?", jp: "Toire wa doko desu ka ?" },
-        { cat: "Orientation", fr: "Où est la gare ?", jp: "Eki wa doko desu ka ?" }
+        // --- NIVEAU 1 : SURVIE ABSOLUE ---
+        { cat: "🚨 Survie", fr: "Pardon / SVP / Merci (Le mot magique)", jp: "Sumimasen" },
+        { cat: "🚨 Survie", fr: "Donnez-moi ceci SVP (en montrant)", jp: "Kore kudasai" },
+        { cat: "🚨 Survie", fr: "Merci beaucoup (Polis/Commerçants)", jp: "Arigatō gozaimasu" },
+        { cat: "🚨 Survie", fr: "Où sont les toilettes ?", jp: "Toire wa doko desu ka ?" },
+        { cat: "🚨 Survie", fr: "Où est la gare ?", jp: "Eki wa doko desu ka ?" },
+        { cat: "🚨 Survie", fr: "C'est OK / Non merci (Ça ira)", jp: "Daijōbu desu" },
+        { cat: "🚨 Survie", fr: "Combien ça coûte ?", jp: "Kore wa ikura desu ka ?" },
+        { cat: "🚨 Survie", fr: "Je ne comprends pas", jp: "Wakarimasen" },
+        { cat: "🚨 Survie", fr: "Anglais OK ?", jp: "Eigo OK desu ka ?" },
+
+        // --- NIVEAU 2 : RESTAURANT & IZAKAYA ---
+        { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
+        { cat: "🍜 Resto", fr: "C'était délicieux (Au chef en partant)", jp: "Gochisōsama deshita" },
+        { cat: "🍜 Resto", fr: "Avez-vous une carte en anglais ?", jp: "Eigo no menū wa arimasu ka ?" },
+        { cat: "🍜 Resto", fr: "Votre recommandation ?", jp: "O-susume wa dore desu ka ?" },
+        { cat: "🍜 Resto", fr: "De l'eau gratuite SVP", jp: "O-mizu kudasai" },
+        { cat: "🍜 Resto", fr: "Une bière pression SVP !", jp: "Nama bīru onegashimasu" },
+        { cat: "🍜 Resto", fr: "Carte bancaire acceptée ?", jp: "Kādo wa tsukaemasu ka ?" },
+        { cat: "🍜 Resto", fr: "Payer séparément", jp: "Betsu-betsu de" },
+
+        // --- NIVEAU 3 : KONBINI, TAXI & TRANSPORTS ---
+        { cat: "🛍️ Shopping", fr: "Pas besoin de sac (Konbini)", jp: "Fukuro wa irimasen" },
+        { cat: "🛍️ Shopping", fr: "Chauffer le plat SVP (Konbini)", jp: "Atatame onegashimasu" },
+        { cat: "🛍️ Shopping", fr: "Puis-je essayer ? (Cabine)", jp: "Shitakushitsu OK desu ka ?" },
+        { cat: "🚕 Taxi", fr: "Aller à [Lieu] s'il vous plaît", jp: "... made onegashimasu" },
+        { cat: "🚆 Train", fr: "Ce train va-t-il à [Ville] ?", jp: "Kore wa ... ni ikimasu ka ?" },
+        { cat: "🏨 Hôtel", fr: "Garder mes bagages SVP", jp: "Luggage keep onegashimasu" }
     ];
 
     let appData = JSON.parse(localStorage.getItem("japan_app_data")) || DEFAULT_DATA;
