@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <span class="ticket-nights">🌙 ${step.nights}</span>
                     </div>
                 `).join("")}
-                ${totalNights ? `<div class="ticket-total">🏆 ${totalNights}</div>` : ''}
+                ${totalNights ? `<div class="ticket-total">🌕 ${totalNights}</div>` : ''}
             </div>
         `;
     }
