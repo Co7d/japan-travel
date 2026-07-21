@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Japon 2026</title>
     
-    <!-- PWA iOS Metas -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Japon 2026">
@@ -16,43 +15,29 @@
 </head>
 <body class="theme-tokyo1">
 
-    <!-- Conteneur principal Swipe Horizontal -->
     <main class="app-swipe-container" id="swipe-container">
 
-        <!-- ==========================================
-             ONGLET 1 : JOURNEY THREAD (TIMELINE)
-             ========================================== -->
         <section class="tab-page" id="page-timeline">
             <div class="content-wrapper">
                 <h1>🇯🇵 JAPON 2026</h1>
                 
-                <!-- Statut Actuel -->
                 <div class="card stat-card">
                     <span class="stat-label">STATUT ACTUEL</span>
                     <span class="stat-value" id="next-step">Calcul en cours...</span>
                 </div>
 
-                <!-- Compte à rebours / Focus Jour -->
                 <div class="card countdown-card">
                     <div id="timer">000 : 00 : 00 : 00</div>
                     <div class="countdown-label" id="countdown-label">AVANT L'AVENTURE</div>
                 </div>
 
-                <!-- Fil de Voyage (Journey Thread) -->
-                <div class="journey-thread" id="timeline-list">
-                    <!-- Généré dynamiquement en JS -->
-                </div>
+                <div class="journey-thread" id="timeline-list"></div>
             </div>
         </section>
 
-
-        <!-- ==========================================
-             ONGLET 2 : DÉTAILS VILLE / AUJOURD'HUI
-             ========================================== -->
         <section class="tab-page" id="page-city">
             <div class="content-wrapper">
                 
-                <!-- Sélecteur rapide de ville -->
                 <div class="city-selector-pills" id="city-pills">
                     <button class="pill active" data-city="tokyo1">Tokyo 1</button>
                     <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
@@ -69,34 +54,25 @@
                     <p class="subtitle" id="current-city-dates">16 Nov — 20 Nov • 4 nuits</p>
                 </div>
 
-                <!-- Hébergements -->
                 <h3 class="section-title">🏨 Hébergement</h3>
                 <div class="places-stack" id="hotels-list"></div>
 
-                <!-- Visites & Activités -->
                 <h3 class="section-title">⛩️ À visiter & Activités</h3>
                 <div class="places-stack" id="activities-list"></div>
 
-                <!-- Restaurants & Food -->
                 <h3 class="section-title">🍜 Restaurants & Food</h3>
                 <div class="places-stack" id="food-list"></div>
 
             </div>
 
-            <!-- Bouton Flottant + Add Place -->
             <button class="fab-btn" id="open-add-modal" aria-label="Ajouter un lieu">+</button>
         </section>
 
-
-        <!-- ==========================================
-             ONGLET 3 : OUTILS UTILES & CONVERTISSEUR
-             ========================================== -->
         <section class="tab-page" id="page-tools">
             <div class="content-wrapper">
                 <h1>🛠️ Utiles</h1>
                 <p class="subtitle">Convertisseur, Cartes & Urgences</p>
 
-                <!-- Convertisseur Yen / Euro -->
                 <div class="card tool-card">
                     <h3>💴 Convertisseur Yens ↔ Euros</h3>
                     <div class="converter-box">
@@ -113,7 +89,6 @@
                     <p class="rate-info" id="rate-info-text">Taux : 1 € = 165.00 ¥ (Mode hors-ligne)</p>
                 </div>
 
-                <!-- Réglage Application de Cartes -->
                 <div class="card tool-card">
                     <h3>🗺️ Application de Cartes</h3>
                     <p class="desc-text">Choisissez votre application GPS préférée par défaut.</p>
@@ -124,7 +99,6 @@
                     </select>
                 </div>
 
-                <!-- Urgences -->
                 <div class="card tool-card">
                     <h3>🚨 Urgences au Japon</h3>
                     <div class="emergency-list">
@@ -134,10 +108,9 @@
                     </div>
                 </div>
 
-                <!-- Gestion Données JSON -->
                 <div class="card tool-card">
                     <h3>💾 Transfert des données</h3>
-                    <p class="desc-text">Exportez vos lieux ajoutés sous forme de code JSON pour les coller sur l'autre iPhone.</p>
+                    <p class="desc-text">Exportez vos lieux ajoutés sous forme de code JSON pour les coller sur un autre appareil.</p>
                     <div class="btn-group">
                         <button class="btn btn-primary" id="btn-export-json">Copier les données JSON 📋</button>
                         <button class="btn btn-secondary" id="btn-import-json">Importer du JSON 📥</button>
@@ -147,10 +120,6 @@
             </div>
         </section>
 
-
-        <!-- ==========================================
-             ONGLET 4 : LEXIQUE DE SURVIE
-             ========================================== -->
         <section class="tab-page" id="page-lexicon">
             <div class="content-wrapper">
                 <h1>🗣️ Lexique</h1>
@@ -160,15 +129,12 @@
                     <input type="text" id="lexicon-search" placeholder="Rechercher un mot (ex: eau, merci)...">
                 </div>
 
-                <div class="card lexicon-card" id="lexicon-container">
-                    <!-- Généré dynamiquement -->
-                </div>
+                <div class="card lexicon-card" id="lexicon-container"></div>
             </div>
         </section>
 
     </main>
 
-    <!-- Indicateur à points placé EN BAS de l'écran -->
     <div class="dots-indicator" id="dots-container">
         <span class="dot active"></span>
         <span class="dot"></span>
@@ -176,7 +142,6 @@
         <span class="dot"></span>
     </div>
 
-    <!-- MODAL AJOUT LIEU (+) -->
     <div class="modal-overlay" id="add-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -225,7 +190,6 @@
         </div>
     </div>
 
-    <!-- MODAL ADRESSE TAXI -->
     <div class="modal-overlay" id="taxi-modal">
         <div class="modal-content modal-taxi">
             <button class="close-modal" id="close-taxi-modal">&times;</button>
@@ -235,7 +199,6 @@
         </div>
     </div>
 
-    <!-- MODAL CHOIX GPS (ACTION SHEET iOS) -->
     <div class="modal-overlay" id="maps-modal">
         <div class="modal-content modal-action-sheet">
             <h3>Ouvrir dans quel GPS ?</h3>
