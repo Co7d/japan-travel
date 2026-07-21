@@ -14,7 +14,6 @@
     --c-kyoto: #D4A373;
     --c-hiroshima: #8D99AE;
     --c-osaka: #E29578;
-    --c-tokyo2: #E63946;
 
     --active-color: var(--c-tokyo1);
 }
@@ -166,7 +165,7 @@ h1 {
     top: 15px;
     bottom: 20px;
     width: 2px;
-    background: linear-gradient(180deg, var(--c-tokyo1), var(--c-kyoto), var(--c-tokyo2));
+    background: linear-gradient(180deg, var(--c-tokyo1), var(--c-kyoto), var(--c-tokyo1));
     opacity: 0.4;
 }
 
@@ -197,7 +196,7 @@ h1 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-left: 4px solid var(--node-color);
     border-radius: 16px;
-    padding: 16px;
+    padding: 14px 16px;
     cursor: pointer;
 }
 
@@ -205,17 +204,12 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
 }
 
 .thread-title {
     font-size: 18px;
     font-weight: 800;
-}
-
-.thread-dates {
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-top: 4px;
 }
 
 .vibe-badge {
@@ -226,6 +220,63 @@ h1 {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.08);
     color: var(--text-dim);
+}
+
+.ticket-date-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 3px solid var(--accent-color, var(--active-color));
+    border-radius: 0 10px 10px 0;
+    padding: 8px 12px;
+    margin-top: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ticket-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.ticket-step-label {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+}
+
+.ticket-dates {
+    color: #FFFFFF;
+}
+
+.ticket-nights {
+    color: var(--accent-color, var(--active-color));
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.ticket-total {
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    padding-top: 4px;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent-color, var(--active-color));
+    letter-spacing: 0.5px;
+}
+
+.city-header {
+    margin-bottom: 20px;
+}
+
+.city-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .inter-transport {
