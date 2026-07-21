@@ -9,11 +9,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Japon 2026">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='110' fill='%23121214'/><circle cx='256' cy='220' r='140' fill='%23BC4749'/><path d='M256 160 L140 380 L372 380 Z' fill='%231D3557'/><path d='M256 160 L220 220 L240 210 L256 230 L272 210 L292 220 Z' fill='%23FFFFFF'/></svg>">
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-tokyo1">
+<body class="theme-tokyo">
 
     <main class="app-swipe-container" id="swipe-container">
 
@@ -39,19 +39,18 @@
             <div class="content-wrapper">
                 
                 <div class="city-selector-pills" id="city-pills">
-                    <button class="pill active" data-city="tokyo1">Tokyo 1</button>
+                    <button class="pill active" data-city="tokyo">Tokyo</button>
                     <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
                     <button class="pill" data-city="kiso">Kiso</button>
                     <button class="pill" data-city="kyoto">Kyoto</button>
                     <button class="pill" data-city="hiroshima">Hiroshima</button>
                     <button class="pill" data-city="osaka">Osaka</button>
-                    <button class="pill" data-city="tokyo2">Tokyo 2</button>
                 </div>
 
                 <div class="city-header">
                     <span class="vibe-badge" id="current-city-vibe">Urbain</span>
                     <h1 id="current-city-title">Tokyo</h1>
-                    <p class="subtitle" id="current-city-dates">16 Nov — 20 Nov • 4 nuits</p>
+                    <p class="subtitle" id="current-city-dates">16 Nov — 20 Nov & 02 Déc — 05 Déc • 7 nuits</p>
                 </div>
 
                 <h3 class="section-title">🏨 Hébergement</h3>
@@ -152,13 +151,12 @@
                 <div class="form-group">
                     <label>Ville</label>
                     <select id="form-city" required>
-                        <option value="tokyo1">Tokyo 1 (Urbain)</option>
+                        <option value="tokyo">Tokyo</option>
                         <option value="kawaguchiko">Kawaguchiko</option>
                         <option value="kiso">Vallée de Kiso</option>
                         <option value="kyoto">Kyoto</option>
                         <option value="hiroshima">Hiroshima</option>
                         <option value="osaka">Osaka</option>
-                        <option value="tokyo2">Tokyo 2 (Shopping)</option>
                     </select>
                 </div>
                 <div class="form-group">
