@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // NOUVELLE STRUCTURE DE DONNÉES (Avec la clé "steps")
     const DEFAULT_DATA = {
         tokyo: {
             name: "Tokyo", vibe: "URBAIN",
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // LOGIQUE DE LA TIMELINE
     const TIMELINE_NODES = [
         { cityKey: "tokyo", stepIdx: 0, icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"" },
         { cityKey: "kawaguchiko", stepIdx: 0, icon: "🗻", interTransport: "🚗 Voiture" },
@@ -64,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { cityKey: "kyoto", stepIdx: 0, icon: "⛩️", interTransport: "🚅 Shinkansen" },
         { cityKey: "hiroshima", stepIdx: 0, icon: "🕊️", interTransport: "🚅 Shinkansen" },
         { cityKey: "osaka", stepIdx: 0, icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)" },
-        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null } // La fameuse lanterne pour Tokyo 2
+        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null }
     ];
 
     const LEXICON_DATA = [
@@ -83,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { cat: "🚕 Taxi", fr: "Aller à [Lieu] s'il vous plaît", jp: "... made onegashimasu" }
     ];
 
-    // --- CORRECTION DU CRASH ICI ---
-    // On force la réinitialisation si les données locales n'ont pas la nouvelle structure "steps"
     let appData = JSON.parse(localStorage.getItem("japan_app_data"));
     if (!appData || !appData.tokyo || !appData.tokyo.steps) {
         appData = DEFAULT_DATA;
@@ -151,7 +147,6 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, idx) => dot.classList.toggle("active", idx === pageIndex));
     });
 
-    // GENERATEUR HTML POUR LE DESIGN TICKET (Option B)
     function generateTicketHTML(steps, totalNights = null, accentColor = "var(--active-color)") {
         return `
             <div class="ticket-date-box" style="--accent-color: ${accentColor}">
@@ -166,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // RENDU DE LA TIMELINE AVEC DESIGN TICKET INTÉGRÉ
     function renderTimeline() {
         const timelineList = document.getElementById("timeline-list");
         timelineList.innerHTML = TIMELINE_NODES.map(node => {
@@ -202,7 +196,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const pills = document.querySelectorAll(".pill");
 
-    // RENDU DE LA PAGE VILLE AVEC TICKET COMPLET
     function renderCityDetails(cityKey) {
         currentSelectedCity = cityKey;
         const cityData = appData[cityKey];
@@ -212,7 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("current-city-title").textContent = cityData.name;
         document.getElementById("current-city-vibe").textContent = cityData.vibe;
         
-        // Remplacement dynamique du bloc de date par le composant Ticket
         document.getElementById("current-city-dates-box").outerHTML = `<div class="ticket-date-box" id="current-city-dates-box">${generateTicketHTML(cityData.steps, cityData.totalNights, cityData.color)}</div>`;
 
         pills.forEach(p => p.classList.toggle("active", p.dataset.city === cityKey));
@@ -435,7 +427,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lexiconSearch.addEventListener("input", (e) => renderLexicon(e.target.value));
 
-    // Lancement de l'application
     renderTimeline();
     renderCityDetails("tokyo");
     renderLexicon();
