@@ -1,8 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ==========================================================================
-    // 1. DONNÉES ET ITINÉRAIRE COMPLET (INCLUANT TOKYO 2 SHOPPING)
-    // ==========================================================================
+    document.addEventListener("touchstart", () => {}, { passive: true });
+
+    function hapticFeedback() {
+        if ("vibrate" in navigator) {
+            try {
+                navigator.vibrate(15);
+            } catch (e) {}
+        }
+    }
+
     const DEFAULT_DATA = {
         tokyo1: {
             name: "Tokyo 1", vibe: "URBAIN", dates: "16 Nov — 20 Nov • 4 nuits",
@@ -44,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const LEXICON_DATA = [
-        // --- NIVEAU 1 : SURVIE ABSOLUE ---
         { cat: "🚨 Survie", fr: "Pardon / SVP / Merci (Le mot magique)", jp: "Sumimasen" },
         { cat: "🚨 Survie", fr: "Donnez-moi ceci SVP (en montrant)", jp: "Kore kudasai" },
         { cat: "🚨 Survie", fr: "Merci beaucoup (Polis/Commerçants)", jp: "Arigatō gozaimasu" },
@@ -54,8 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { cat: "🚨 Survie", fr: "Combien ça coûte ?", jp: "Kore wa ikura desu ka ?" },
         { cat: "🚨 Survie", fr: "Je ne comprends pas", jp: "Wakarimasen" },
         { cat: "🚨 Survie", fr: "Anglais OK ?", jp: "Eigo OK desu ka ?" },
-
-        // --- NIVEAU 2 : RESTAURANT & IZAKAYA ---
         { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
         { cat: "🍜 Resto", fr: "C'était délicieux (Au chef en partant)", jp: "Gochisōsama deshita" },
         { cat: "🍜 Resto", fr: "Avez-vous une carte en anglais ?", jp: "Eigo no menū wa arimasu ka ?" },
@@ -64,8 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { cat: "🍜 Resto", fr: "Une bière pression SVP !", jp: "Nama bīru onegashimasu" },
         { cat: "🍜 Resto", fr: "Carte bancaire acceptée ?", jp: "Kādo wa tsukaemasu ka ?" },
         { cat: "🍜 Resto", fr: "Payer séparément", jp: "Betsu-betsu de" },
-
-        // --- NIVEAU 3 : KONBINI, TAXI & TRANSPORTS ---
         { cat: "🛍️ Shopping", fr: "Pas besoin de sac (Konbini)", jp: "Fukuro wa irimasen" },
         { cat: "🛍️ Shopping", fr: "Chauffer le plat SVP (Konbini)", jp: "Atatame onegashimasu" },
         { cat: "🛍️ Shopping", fr: "Puis-je essayer ? (Cabine)", jp: "Shitakushitsu OK desu ka ?" },
@@ -78,14 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentSelectedCity = "tokyo1";
     let pendingMapQuery = null;
 
-    // Trigger Retour Haptique si dispo
-    function hapticFeedback() {
-        if ("vibrate" in navigator) { navigator.vibrate(10); }
-    }
-
-    // ==========================================================================
-    // 2. TIMINGS PRÉCIS DES VOLS
-    // ==========================================================================
     const DEPART_MARSEILLE = new Date("2026-11-15T08:00:00+01:00").getTime();
     const ARRIVEE_TOKYO = new Date("2026-11-16T08:55:00+09:00").getTime();
     const FIN_VOYAGE = new Date("2026-12-05T23:15:00+01:00").getTime();
@@ -136,9 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // ==========================================================================
-    // 3. SWIPE & DOTS EN BAS
-    // ==========================================================================
     const swipeContainer = document.getElementById("swipe-container");
     const dots = document.querySelectorAll("#dots-container .dot");
 
@@ -147,9 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, idx) => dot.classList.toggle("active", idx === pageIndex));
     });
 
-    // ==========================================================================
-    // 4. RENDU JOURNEY THREAD (TIMELINE)
-    // ==========================================================================
     function renderTimeline() {
         const timelineList = document.getElementById("timeline-list");
         timelineList.innerHTML = Object.keys(appData).map(key => {
@@ -182,9 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==========================================================================
-    // 5. RENDU CARTES DE LIEUX (SPLIT 3/4 — 1/4)
-    // ==========================================================================
     const pills = document.querySelectorAll(".pill");
 
     function renderCityDetails(cityKey) {
@@ -211,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        container.innerHTML = items.map((item, idx) => `
+        container.innerHTML = items.map((item) => `
             <div class="place-card">
                 <div class="place-info">
                     <div class="place-header-line">
@@ -248,9 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ==========================================================================
-    // 6. GESTION GPS & ACTION SHEET
-    // ==========================================================================
     const mapsModal = document.getElementById("maps-modal");
     const mapsSelect = document.getElementById("maps-preference-select");
 
@@ -315,9 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("close-maps-modal").addEventListener("click", () => mapsModal.classList.remove("active"));
     document.getElementById("close-taxi-modal").addEventListener("click", () => document.getElementById("taxi-modal").classList.remove("active"));
 
-    // ==========================================================================
-    // 7. CONVERTISSEUR YEN ↔ EURO
-    // ==========================================================================
     let exchangeRate = 165.0;
     const jpyInput = document.getElementById("jpy-input");
     const eurInput = document.getElementById("eur-input");
@@ -346,9 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
         jpyInput.value = isNaN(val) ? "" : Math.round(val * exchangeRate);
     });
 
-    // ==========================================================================
-    // 8. FORMULAIRE AJOUT LIEU (+) & EXPORT/IMPORT JSON
-    // ==========================================================================
     const addModal = document.getElementById("add-modal");
 
     document.getElementById("open-add-modal").addEventListener("click", () => {
@@ -407,9 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // ==========================================================================
-    // 9. LEXIQUE
-    // ==========================================================================
     const lexiconContainer = document.getElementById("lexicon-container");
     const lexiconSearch = document.getElementById("lexicon-search");
 
@@ -429,7 +402,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lexiconSearch.addEventListener("input", (e) => renderLexicon(e.target.value));
 
-    // INIT
     renderTimeline();
     renderCityDetails("tokyo1");
     renderLexicon();
