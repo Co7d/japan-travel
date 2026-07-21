@@ -222,6 +222,7 @@ h1 {
     color: var(--text-dim);
 }
 
+/* DESIGN TICKET (Option B) */
 .ticket-date-box {
     background: rgba(0, 0, 0, 0.3);
     border-left: 3px solid var(--accent-color, var(--active-color));
@@ -241,14 +242,6 @@ h1 {
     font-weight: 600;
 }
 
-.ticket-step-label {
-    font-size: 10px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-dim);
-}
-
 .ticket-dates {
     color: #FFFFFF;
 }
@@ -261,8 +254,8 @@ h1 {
 
 .ticket-total {
     border-top: 1px dashed rgba(255, 255, 255, 0.1);
-    padding-top: 4px;
-    margin-top: 2px;
+    padding-top: 6px;
+    margin-top: 4px;
     font-size: 11px;
     font-weight: 800;
     color: var(--accent-color, var(--active-color));
@@ -277,6 +270,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 6px;
 }
 
 .inter-transport {
@@ -385,7 +379,6 @@ h1 {
     gap: 2px;
     cursor: pointer;
     color: #FFFFFF;
-    text-decoration: none;
 }
 
 .action-icon { font-size: 20px; }
