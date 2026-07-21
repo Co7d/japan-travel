@@ -12,38 +12,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const DEFAULT_DATA = {
         tokyo: {
-            name: "Tokyo", vibe: "URBAIN", dates: "16 Nov — 20 Nov & 02 Déc — 05 Déc • 7 nuits",
-            color: "var(--c-tokyo1)", icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"",
+            name: "Tokyo", vibe: "URBAIN",
+            color: "var(--c-tokyo1)", icon: "🗼",
+            steps: [
+                { label: "Partie 1", dates: "16 Nov ➔ 20 Nov", nights: "4 nuits" },
+                { label: "Partie 2", dates: "02 Déc ➔ 05 Déc", nights: "3 nuits" }
+            ],
+            totalNights: "7 nuits au total",
             hotels: [{ name: "Hôtel Shibuya", desc: "Proche gare", taxi: "東京都渋谷区宇田川町1-1" }],
             activities: [{ name: "Shibuya Sky", desc: "Vue 360° au coucher du soleil", query: "Shibuya Sky Tokyo" }],
             food: [{ name: "Ichiran Ramen", desc: "Tonkotsu extra épicé", query: "Ichiran Ramen Shibuya Tokyo" }]
         },
         kawaguchiko: {
-            name: "Kawaguchiko", vibe: "NATURE", dates: "20 Nov — 22 Nov • 2 nuits",
+            name: "Kawaguchiko", vibe: "NATURE",
             color: "var(--c-kawaguchiko)", icon: "🗻", interTransport: "🚗 Voiture",
+            steps: [{ label: "Séjour", dates: "20 Nov ➔ 22 Nov", nights: "2 nuits" }],
             hotels: [], activities: [], food: []
         },
         kiso: {
-            name: "Vallée de Kiso", vibe: "HISTOIRE", dates: "22 Nov — 23 Nov • 1 nuit",
+            name: "Vallée de Kiso", vibe: "HISTOIRE",
             color: "var(--c-kiso)", icon: "🌲", interTransport: "🚗 Voiture puis 🚅 Shinkansen",
+            steps: [{ label: "Séjour", dates: "22 Nov ➔ 23 Nov", nights: "1 nuit" }],
             hotels: [], activities: [], food: []
         },
         kyoto: {
-            name: "Kyoto", vibe: "TRADITION", dates: "23 Nov — 28 Nov • 5 nuits",
+            name: "Kyoto", vibe: "TRADITION",
             color: "var(--c-kyoto)", icon: "⛩️", interTransport: "🚅 Shinkansen",
+            steps: [{ label: "Séjour", dates: "23 Nov ➔ 28 Nov", nights: "5 nuits" }],
             hotels: [], activities: [], food: []
         },
         hiroshima: {
-            name: "Hiroshima", vibe: "CULTURE", dates: "28 Nov — 29 Nov • 1 nuit",
+            name: "Hiroshima", vibe: "CULTURE",
             color: "var(--c-hiroshima)", icon: "🕊️", interTransport: "🚅 Shinkansen",
+            steps: [{ label: "Séjour", dates: "28 Nov ➔ 29 Nov", nights: "1 nuit" }],
             hotels: [], activities: [], food: []
         },
         osaka: {
-            name: "Osaka", vibe: "FOOD", dates: "29 Nov — 02 Déc • 3 nuits",
+            name: "Osaka", vibe: "FOOD",
             color: "var(--c-osaka)", icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)",
+            steps: [{ label: "Séjour", dates: "29 Nov ➔ 02 Déc", nights: "3 nuits" }],
             hotels: [], activities: [], food: []
         }
     };
+
+    const TIMELINE_NODES = [
+        { cityKey: "tokyo", stepIdx: 0, icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"" },
+        { cityKey: "kawaguchiko", stepIdx: 0, icon: "🗻", interTransport: "🚗 Voiture" },
+        { cityKey: "kiso", stepIdx: 0, icon: "🌲", interTransport: "🚗 Voiture puis 🚅 Shinkansen" },
+        { cityKey: "kyoto", stepIdx: 0, icon: "⛩️", interTransport: "🚅 Shinkansen" },
+        { cityKey: "hiroshima", stepIdx: 0, icon: "🕊️", interTransport: "🚅 Shinkansen" },
+        { cityKey: "osaka", stepIdx: 0, icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)" },
+        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null }
+    ];
 
     const LEXICON_DATA = [
         { cat: "🚨 Survie", fr: "Pardon / SVP / Merci (Le mot magique)", jp: "Sumimasen" },
@@ -72,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     let appData = JSON.parse(localStorage.getItem("japan_app_data")) || DEFAULT_DATA;
-    if (appData.tokyo1 || appData.tokyo2) {
+    if (appData.tokyo1 || !appData.tokyo.steps) {
         appData = DEFAULT_DATA;
         localStorage.setItem("japan_app_data", JSON.stringify(appData));
     }
@@ -138,23 +158,38 @@ document.addEventListener("DOMContentLoaded", () => {
         dots.forEach((dot, idx) => dot.classList.toggle("active", idx === pageIndex));
     });
 
+    function generateTicketHTML(steps, totalNights = null, accentColor = "var(--active-color)") {
+        return `
+            <div class="ticket-date-box" style="--accent-color: ${accentColor}">
+                ${steps.map(step => `
+                    <div class="ticket-step">
+                        <span class="ticket-dates">📅 ${step.dates}</span>
+                        <span class="ticket-nights">🌙 ${step.nights}</span>
+                    </div>
+                `).join("")}
+                ${totalNights ? `<div class="ticket-total">🏆 ${totalNights}</div>` : ''}
+            </div>
+        `;
+    }
+
     function renderTimeline() {
         const timelineList = document.getElementById("timeline-list");
-        timelineList.innerHTML = Object.keys(appData).map(key => {
-            const city = appData[key];
+        timelineList.innerHTML = TIMELINE_NODES.map(node => {
+            const city = appData[node.cityKey];
+            const currentStep = city.steps[node.stepIdx];
             return `
                 <div class="thread-node" style="--node-color: ${city.color}">
-                    <div class="node-bullet">${city.icon}</div>
-                    <div class="thread-card" data-city="${key}">
+                    <div class="node-bullet">${node.icon}</div>
+                    <div class="thread-card" data-city="${node.cityKey}">
                         <div class="thread-header">
                             <span class="thread-title">${city.name}</span>
                             <span class="vibe-badge">${city.vibe}</span>
                         </div>
-                        <div class="thread-dates">${city.dates}</div>
+                        ${generateTicketHTML([currentStep], null, city.color)}
                     </div>
-                    ${city.interTransport ? `
+                    ${node.interTransport ? `
                         <div class="inter-transport">
-                            <span>${city.interTransport}</span>
+                            <span>${node.interTransport}</span>
                         </div>
                     ` : ''}
                 </div>
@@ -180,7 +215,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("current-city-title").textContent = cityData.name;
         document.getElementById("current-city-vibe").textContent = cityData.vibe;
-        document.getElementById("current-city-dates").textContent = cityData.dates;
+        
+        document.getElementById("current-city-dates-box").outerHTML = generateTicketHTML(
+            cityData.steps, 
+            cityData.totalNights, 
+            cityData.color
+        );
+        const dateBox = document.querySelector(".ticket-date-box");
+        if (dateBox) dateBox.id = "current-city-dates-box";
 
         pills.forEach(p => p.classList.toggle("active", p.dataset.city === cityKey));
 
