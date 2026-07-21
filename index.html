@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Japon 2026</title>
+    
+    <!-- PWA iOS Metas -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Japon 2026">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-tokyo">
+
+    <!-- Indicateur à points épuré style iOS -->
+    <div class="dots-indicator" id="dots-container">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <!-- Conteneur principal Swipe Horizontal -->
+    <main class="app-swipe-container" id="swipe-container">
+
+        <!-- ==========================================
+             ONGLET 1 : TIMELINE & ITINÉRAIRE (ACCUEIL)
+             ========================================== -->
+        <section class="tab-page" id="page-timeline">
+            <div class="content-wrapper">
+                <h1>🇯🇵 JAPON 2026</h1>
+                
+                <!-- Carte Statut Actuel -->
+                <div class="card stat-card">
+                    <span class="stat-label">STATUT ACTUEL</span>
+                    <span class="stat-value" id="next-step">Calcul en cours...</span>
+                </div>
+
+                <!-- Section Compte à rebours / Focus Jour -->
+                <div class="card countdown-card">
+                    <div id="timer">000 : 00 : 00 : 00</div>
+                    <div class="countdown-label" id="countdown-label">AVANT L'AVENTURE</div>
+                </div>
+
+                <!-- Carte Carte du Japon -->
+                <div class="card card-map">
+                    <img src="itineraire.png" alt="Carte du Japon" id="map-img">
+                </div>
+
+                <!-- Timeline de l'Itinéraire -->
+                <div class="modern-timeline" id="timeline-list">
+                    <!-- Généré dynamiquement via JS -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             ONGLET 2 : DÉTAILS VILLE / AUJOURD'HUI
+             ========================================== -->
+        <section class="tab-page" id="page-city">
+            <div class="content-wrapper">
+                
+                <!-- Sélecteur rapide de ville -->
+                <div class="city-selector-pills" id="city-pills">
+                    <button class="pill active" data-city="tokyo">Tokyo</button>
+                    <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
+                    <button class="pill" data-city="kiso">Kiso</button>
+                    <button class="pill" data-city="kyoto">Kyoto</button>
+                    <button class="pill" data-city="hiroshima">Hiroshima</button>
+                    <button class="pill" data-city="osaka">Osaka</button>
+                </div>
+
+                <div class="city-header">
+                    <span class="vibe-badge" id="current-city-vibe">Urbain</span>
+                    <h1 id="current-city-title">Tokyo</h1>
+                    <p class="subtitle" id="current-city-dates">16 Nov — 20 Nov • 4 nuits</p>
+                </div>
+
+                <!-- Section Hôtels -->
+                <h3 class="section-title">🏨 Hébergement</h3>
+                <div class="card details-card" id="hotels-list"></div>
+
+                <!-- Section Activités -->
+                <h3 class="section-title">⛩️ À visiter & Activités</h3>
+                <div class="card details-card" id="activities-list"></div>
+
+                <!-- Section Restaurants -->
+                <h3 class="section-title">🍜 Restaurants & Food</h3>
+                <div class="card details-card" id="food-list"></div>
+
+            </div>
+
+            <!-- Bouton Flottant + Add Place -->
+            <button class="fab-btn" id="open-add-modal" aria-label="Ajouter un lieu">+</button>
+        </section>
+
+
+        <!-- ==========================================
+             ONGLET 3 : OUTILS UTILES & CONVERTISSEUR
+             ========================================== -->
+        <section class="tab-page" id="page-tools">
+            <div class="content-wrapper">
+                <h1>🛠️ Utiles</h1>
+                <p class="subtitle">Convertisseur & Urgences</p>
+
+                <!-- Convertisseur Yen / Euro -->
+                <div class="card tool-card">
+                    <h3>💴 Convertisseur Yens ↔ Euros</h3>
+                    <div class="converter-box">
+                        <div class="input-group">
+                            <label for="jpy-input">JPY (¥)</label>
+                            <input type="number" id="jpy-input" placeholder="1000" pattern="[0-9]*">
+                        </div>
+                        <div class="converter-arrow">⇆</div>
+                        <div class="input-group">
+                            <label for="eur-input">EUR (€)</label>
+                            <input type="number" id="eur-input" placeholder="6.50" step="0.01">
+                        </div>
+                    </div>
+                    <p class="rate-info" id="rate-info-text">Taux : 1 € = 165.00 ¥ (Mode hors-ligne)</p>
+                </div>
+
+                <!-- Numéros d'urgence -->
+                <div class="card tool-card">
+                    <h3>🚨 Urgences au Japon</h3>
+                    <div class="emergency-list">
+                        <a href="tel:110" class="emergency-item">
+                            <span>Police</span>
+                            <strong>110</strong>
+                        </a>
+                        <a href="tel:119" class="emergency-item">
+                            <span>Ambulance / Pompiers</span>
+                            <strong>119</strong>
+                        </a>
+                        <a href="tel:0357986000" class="emergency-item">
+                            <span>Ambassade de France (Tokyo)</span>
+                            <strong>03-5798-6000</strong>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gestion des données (Export/Import JSON) -->
+                <div class="card tool-card">
+                    <h3>💾 Gestion de vos adresses</h3>
+                    <p class="desc-text">Exportez facilement vos adresses ajoutées via le bouton "+" sous forme de texte JSON.</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="btn-export-json">Copier les données JSON 📋</button>
+                        <button class="btn btn-secondary" id="btn-import-json">Importer du JSON 📥</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             ONGLET 4 : LEXIQUE DE SURVIE
+             ========================================== -->
+        <section class="tab-page" id="page-lexicon">
+            <div class="content-wrapper">
+                <h1>🗣️ Lexique</h1>
+                <p class="subtitle">Mots essentiels au Japon</p>
+
+                <!-- Barre de Recherche -->
+                <div class="search-box">
+                    <input type="text" id="lexicon-search" placeholder="Rechercher une phrase ou un mot...">
+                </div>
+
+                <!-- Liste du lexique -->
+                <div class="card lexicon-card" id="lexicon-container">
+                    <!-- Généré dynamiquement -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+         MODAL 1 : AJOUTER UN LIEU (+)
+         ========================================== -->
+    <div class="modal-overlay" id="add-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Ajouter un lieu</h3>
+                <button class="close-modal" id="close-add-modal">&times;</button>
+            </div>
+            <form id="add-place-form">
+                <div class="form-group">
+                    <label>Ville</label>
+                    <select id="form-city" required>
+                        <option value="tokyo">Tokyo</option>
+                        <option value="kawaguchiko">Kawaguchiko</option>
+                        <option value="kiso">Vallée de Kiso</option>
+                        <option value="kyoto">Kyoto</option>
+                        <option value="hiroshima">Hiroshima</option>
+                        <option value="osaka">Osaka</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Catégorie</label>
+                    <select id="form-category" required>
+                        <option value="hotels">Hôtel</option>
+                        <option value="activities">Activité / Visite</option>
+                        <option value="food">Restaurant / Food</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nom du lieu</label>
+                    <input type="text" id="form-title" placeholder="Ex: Ichiran Ramen" required>
+                </div>
+                <div class="form-group">
+                    <label>Description / Note</label>
+                    <input type="text" id="form-desc" placeholder="Ex: Ramen sur-mesure en cabine solo">
+                </div>
+                <div class="form-group">
+                    <label>Lien Google Maps (Optionnel)</label>
+                    <input type="url" id="form-map" placeholder="https://maps.app.goo.gl/...">
+                </div>
+                <div class="form-group" id="taxi-address-group">
+                    <label>Adresse en Japonais (Pour Taxi)</label>
+                    <input type="text" id="form-taxi" placeholder="Ex: 東京都渋谷区...">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Enregistrer le lieu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 2 : ADRESSE TAXI JAPONAIS
+         ========================================== -->
+    <div class="modal-overlay" id="taxi-modal">
+        <div class="modal-content modal-taxi">
+            <button class="close-modal" id="close-taxi-modal">&times;</button>
+            <span class="taxi-badge">🚕 POUR LE CHAUFFEUR DE TAXI</span>
+            <div class="jp-address-box" id="taxi-modal-address">
+                東京都渋谷区...
+            </div>
+            <p class="taxi-hint">Montrez cet écran directement au chauffeur.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
