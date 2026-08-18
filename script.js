@@ -69,31 +69,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
     }
 
-    function renderTimeline() {
-        const container = document.getElementById("timeline-list");
-        container.innerHTML = Object.keys(appData.cities).map(key => {
-            const city = appData.cities[key];
-            return `
-                <div class="timeline-item" data-city="${key}">
-                    <div class="timeline-left">
-                        <span class="timeline-icon">⛩️</span>
-                        <div class="timeline-info">
-                            <span class="city-title">${escapeHtml(city.name)}</span>
-                            <span class="city-dates">${escapeHtml(city.dates)}</span>
-                        </div>
+    // Section ciblée : Remplacement dans renderTimeline()
+function renderTimeline() {
+    const container = document.getElementById("timeline-list");
+    container.innerHTML = Object.keys(appData.cities).map(key => {
+        const city = appData.cities[key];
+        return `
+            <div class="timeline-item" data-city="${key}">
+                <div class="timeline-left">
+                    <span class="timeline-icon">${escapeHtml(city.icon)}</span>
+                    <div class="timeline-info">
+                        <span class="city-title">${escapeHtml(city.name)}</span>
+                        <span class="city-dates">${escapeHtml(city.dates)}</span>
                     </div>
-                    <span class="vibe-badge">${escapeHtml(city.vibe.split("/")[0])}</span>
                 </div>
-            `;
-        }).join("");
+                <span class="vibe-badge">${escapeHtml(city.vibe.split("/")[0])}</span>
+            </div>
+        `;
+    }).join("");
 
-        container.querySelectorAll(".timeline-item").forEach(item => {
-            item.addEventListener("click", () => {
-                renderCityDetails(item.dataset.city);
-                swipeContainer.scrollTo({ left: window.innerWidth * 3, behavior: 'smooth' });
-            });
+    container.querySelectorAll(".timeline-item").forEach(item => {
+        item.addEventListener("click", () => {
+            renderCityDetails(item.dataset.city);
+            swipeContainer.scrollTo({ left: window.innerWidth * 3, behavior: 'smooth' });
         });
-    }
+    });
+}
 
     function renderCityDetails(cityKey) {
         currentCityKey = cityKey;
