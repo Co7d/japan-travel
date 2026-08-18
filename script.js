@@ -1,474 +1,188 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    let appData = null;
+    let currentCityKey = "tokyo";
+    const EXCHANGE_RATE = 165.0;
 
-    document.addEventListener("touchstart", () => {}, { passive: true });
-
-    function hapticFeedback() {
-        if ("vibrate" in navigator) {
-            try {
-                navigator.vibrate(15);
-            } catch (e) {}
-        }
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(err => console.error(err));
     }
 
-    const DEFAULT_DATA = {
-        tokyo: {
-            name: "Tokyo", vibe: "URBAIN",
-            color: "var(--c-tokyo1)", icon: "🗼",
-            steps: [
-                { label: "Partie 1", dates: "16 Nov ➔ 20 Nov", nights: "4 nuits" },
-                { label: "Partie 2", dates: "02 Déc ➔ 05 Déc", nights: "3 nuits" }
-            ],
-            totalNights: "7 nuits au total",
-            hotels: [{ name: "Hôtel Shibuya", desc: "Proche gare", taxi: "東京都渋谷区宇田川町1-1" }],
-            activities: [{ name: "Shibuya Sky", desc: "Vue 360° au coucher du soleil", query: "Shibuya Sky Tokyo" }],
-            food: [{ name: "Ichiran Ramen", desc: "Tonkotsu extra épicé", query: "Ichiran Ramen Shibuya Tokyo" }]
-        },
-        kawaguchiko: {
-            name: "Kawaguchiko", vibe: "NATURE",
-            color: "var(--c-kawaguchiko)", icon: "🗻",
-            steps: [{ label: "Séjour", dates: "20 Nov ➔ 22 Nov", nights: "2 nuits" }],
-            hotels: [], activities: [], food: []
-        },
-        kiso: {
-            name: "Vallée de Kiso", vibe: "HISTOIRE",
-            color: "var(--c-kiso)", icon: "🌲",
-            steps: [{ label: "Séjour", dates: "22 Nov ➔ 23 Nov", nights: "1 nuit" }],
-            hotels: [], activities: [], food: []
-        },
-        kyoto: {
-            name: "Kyoto", vibe: "TRADITION",
-            color: "var(--c-kyoto)", icon: "⛩️",
-            steps: [{ label: "Séjour", dates: "23 Nov ➔ 28 Nov", nights: "5 nuits" }],
-            hotels: [], activities: [], food: []
-        },
-        hiroshima: {
-            name: "Hiroshima", vibe: "CULTURE",
-            color: "var(--c-hiroshima)", icon: "🕊️",
-            steps: [{ label: "Séjour", dates: "28 Nov ➔ 29 Nov", nights: "1 nuit" }],
-            hotels: [], activities: [], food: []
-        },
-        osaka: {
-            name: "Osaka", vibe: "FOOD",
-            color: "var(--c-osaka)", icon: "🐙",
-            steps: [{ label: "Séjour", dates: "29 Nov ➔ 02 Déc", nights: "3 nuits" }],
-            hotels: [], activities: [], food: []
-        }
-    };
-
-    const TIMELINE_NODES = [
-        { cityKey: "tokyo", stepIdx: 0, icon: "🗼", interTransport: "🚆 Train Limited Express \"Fuji Excursion\"" },
-        { cityKey: "kawaguchiko", stepIdx: 0, icon: "🗻", interTransport: "🚗 Voiture" },
-        { cityKey: "kiso", stepIdx: 0, icon: "🌲", interTransport: "🚗 Voiture puis 🚅 Shinkansen" },
-        { cityKey: "kyoto", stepIdx: 0, icon: "⛩️", interTransport: "🚅 Shinkansen" },
-        { cityKey: "hiroshima", stepIdx: 0, icon: "🕊️", interTransport: "🚅 Shinkansen" },
-        { cityKey: "osaka", stepIdx: 0, icon: "🐙", interTransport: "🚅 Shinkansen (Retour Tokyo)" },
-        { cityKey: "tokyo", stepIdx: 1, icon: "🏮", interTransport: null }
-    ];
-
-    const LEXICON_DATA = [
-        { cat: "🚨 Survie", fr: "Pardon / SVP / Merci (Le mot magique)", jp: "Sumimasen" },
-        { cat: "🚨 Survie", fr: "Donnez-moi ceci SVP (en montrant)", jp: "Kore kudasai" },
-        { cat: "🚨 Survie", fr: "Merci beaucoup (Polis/Commerçants)", jp: "Arigatō gozaimasu" },
-        { cat: "🚨 Survie", fr: "Merci (rapide)", jp: "Dōmo" },
-        { cat: "🚨 Survie", fr: "Où sont les toilettes ?", jp: "Toire wa doko desu ka ?" },
-        { cat: "🚨 Survie", fr: "Où est la gare ?", jp: "Eki wa doko desu ka ?" },
-        { cat: "🚨 Survie", fr: "C'est OK / Non merci (Ça ira)", jp: "Daijōbu desu" },
-        { cat: "🚨 Survie", fr: "Combien ça coûte ?", jp: "Kore wa ikura desu ka ?" },
-        { cat: "🚨 Survie", fr: "Je ne comprends pas", jp: "Wakarimasen" },
-        { cat: "🚨 Survie", fr: "Parlez-vous anglais ?", jp: "Eigo ga hanasemasu ka ?" },
-        { cat: "🚨 Survie", fr: "Avez-vous un menu en anglais ?", jp: "Eigo no menyū wa arimasu ka ?" },
-        { cat: "🚨 Survie", fr: "Désolé / Pardon", jp: "Gomen nasai" },
-
-        { cat: "👋 Politesse", fr: "Bonjour (Journée)", jp: "Konnichiwa" },
-        { cat: "👋 Politesse", fr: "Bonjour (Matin)", jp: "Ohayō gozaimasu" },
-        { cat: "👋 Politesse", fr: "Bonsoir", jp: "Konbanwa" },
-        { cat: "👋 Politesse", fr: "Enchanté / Ravi de vous rencontrer", jp: "Yoroshiku onegai shimasu" },
-        { cat: "👋 Politesse", fr: "Au revoir / À bientôt", jp: "Mata ne / Sayōnara" },
-
-        { cat: "🍜 Resto", fr: "Avant de manger (Bon appétit)", jp: "Itadakimasu" },
-        { cat: "🍜 Resto", fr: "C'était délicieux (Au chef en partant)", jp: "Gochisōsama deshita" },
-        { cat: "🍜 Resto", fr: "L'addition s'il vous plaît", jp: "O-kaikei onegashimasu" },
-        { cat: "🍜 Resto", fr: "De l'eau s'il vous plaît", jp: "O-mizu kudasai" },
-        { cat: "🍜 Resto", fr: "Payer séparément", jp: "Betsu-betsu de" },
-        { cat: "🍜 Resto", fr: "Qu'est-ce que vous recommandez ?", jp: "Osusume wa nan desu ka ?" },
-        { cat: "🍜 Resto", fr: "Sans viande s'il vous plaît", jp: "Niku nashi de" },
-        { cat: "🍜 Resto", fr: "C'est très bon !", jp: "Oishii desu !" },
-
-        { cat: "🚆 Transport", fr: "Aller à [Lieu] s'il vous plaît (Taxi/Bus)", jp: "... made onegashimasu" },
-        { cat: "🚆 Transport", fr: "Où se trouve ... ?", jp: "... wa doko desu ka ?" },
-        { cat: "🚆 Transport", fr: "Acheter un ticket", jp: "Kippu" },
-        { cat: "🚆 Transport", fr: "À droite", jp: "Migi" },
-        { cat: "🚆 Transport", fr: "À gauche", jp: "Hidari" },
-        { cat: "🚆 Transport", fr: "Tout droit", jp: "Massugu" },
-        { cat: "🚆 Transport", fr: "Arrêt de bus", jp: "Basu-tei" },
-
-        { cat: "🛍️ Shopping", fr: "Acceptez-vous la carte bancaire ?", jp: "Kādo wa tsukaemasu ka ?" },
-        { cat: "🛍️ Shopping", fr: "Paiement en espèces / Liquide", jp: "Genkin" },
-        { cat: "🛍️ Shopping", fr: "Pas besoin de sac plastifié", jp: "Fukuro wa irimasen" },
-        { cat: "🛍️ Shopping", fr: "Détaxe (Tax Free)", jp: "Menzei" },
-        { cat: "🛍️ Shopping", fr: "C'est trop cher", jp: "Takai desu" },
-
-        { cat: "🏨 Hôtel", fr: "J'ai une réservation", jp: "Yoyaku shite imasu" },
-        { cat: "🏨 Hôtel", fr: "Puis-je laisser mes bagages ici ?", jp: "Luggage o预kete ii desu ka ?" },
-        { cat: "🏨 Hôtel", fr: "Quel est le code Wi-Fi ?", jp: "Wi-Fi no pasuwādo wa nan desu ka ?" },
-
-        { cat: "🚨 Urgence", fr: "Aidez-moi !", jp: "Tasukete !" },
-        { cat: "🚨 Urgence", fr: "Appelez une ambulance !", jp: "Kyūkyūsha o yonde kudasai !" },
-        { cat: "🚨 Urgence", fr: "Où est la pharmacie ?", jp: "Yakkyoku wa doko desu ka ?" },
-        { cat: "🚨 Urgence", fr: "J'ai mal ici", jp: "Koko ga itai desu" },
-
-        { cat: "🔢 Chiffres", fr: "1, 2, 3, 4, 5", jp: "Ichi, Ni, San, Yon, Go" },
-        { cat: "🔢 Chiffres", fr: "6, 7, 8, 9, 10", jp: "Roku, Nana, Hachi, Kyū, Jū" },
-        { cat: "🔢 Chiffres", fr: "100 / 1 000 / 10 000", jp: "Hyaku / Sen / Man" }
-    ];
-
-    let appData = JSON.parse(localStorage.getItem("japan_app_data"));
-    if (!appData || !appData.tokyo || !appData.tokyo.steps) {
-        appData = DEFAULT_DATA;
-        localStorage.setItem("japan_app_data", JSON.stringify(appData));
+    try {
+        const response = await fetch("./data.json");
+        appData = await response.json();
+    } catch (e) {
+        console.error("Erreur de chargement des données JSON", e);
+        return;
     }
-
-    let currentSelectedCity = "tokyo";
-    let pendingMapQuery = null;
-
-    const DEPART_MARSEILLE = new Date("2026-11-15T08:00:00+01:00").getTime();
-    const ARRIVEE_TOKYO = new Date("2026-11-16T08:55:00+09:00").getTime();
-    const FIN_VOYAGE = new Date("2026-12-05T23:15:00+01:00").getTime();
-
-    const FUN_MESSAGES = [
-        "🍣 Adieu jambon-beurre, bonjour SUSHI !",
-        "✈️ Attache ta ceinture, on décolle !",
-        "⛩️ Objectif : Devenir un vrai Ninja.",
-        "🍜 Alerte : Niveau de Ramen critique !",
-        "🚅 Shinkansen activé. Destination : Futur."
-    ];
-    let funMsgIndex = 0;
-
-    function updateTimer() {
-        const now = new Date().getTime();
-        const timerElement = document.getElementById("timer");
-        const labelElement = document.getElementById("countdown-label");
-        const statusElement = document.getElementById("next-step");
-
-        if (now < DEPART_MARSEILLE) {
-            const diff = DEPART_MARSEILLE - now;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-            timerElement.textContent = `${days.toString().padStart(3, '0')} : ${hours.toString().padStart(2, '0')} : ${mins.toString().padStart(2, '0')} : ${secs.toString().padStart(2, '0')}`;
-            labelElement.textContent = "AVANT L'AVENTURE";
-            statusElement.textContent = "Tokyo (Départ Marseille 08:00)";
-        } else if (now >= DEPART_MARSEILLE && now < ARRIVEE_TOKYO) {
-            timerElement.textContent = FUN_MESSAGES[funMsgIndex];
-            labelElement.textContent = "EN VOL ✈️";
-            statusElement.textContent = "Vol Marseille ➔ Munich ➔ Tokyo";
-        } else if (now >= ARRIVEE_TOKYO && now <= FIN_VOYAGE) {
-            const dayOfVoyage = Math.floor((now - ARRIVEE_TOKYO) / (1000 * 60 * 60 * 24)) + 1;
-            timerElement.textContent = FUN_MESSAGES[funMsgIndex];
-            labelElement.textContent = `JOUR ${dayOfVoyage} DU PÉRIPLE 🇯🇵`;
-            statusElement.textContent = `Au Japon - Jour ${dayOfVoyage}`;
-        } else {
-            timerElement.textContent = "MATANÉ ! 🌸";
-            labelElement.textContent = "SOUVENIRS ÉTERNELS";
-            statusElement.textContent = "Voyage terminé ❤️";
-        }
-    }
-
-    setInterval(() => { funMsgIndex = (funMsgIndex + 1) % FUN_MESSAGES.length; }, 10000);
-    setInterval(updateTimer, 1000);
-    updateTimer();
 
     const swipeContainer = document.getElementById("swipe-container");
     const dots = document.querySelectorAll("#dots-container .dot");
 
+    function initDefaultTab() {
+        swipeContainer.scrollLeft = window.innerWidth * 2;
+    }
+    initDefaultTab();
+
     swipeContainer.addEventListener("scroll", () => {
         const pageIndex = Math.round(swipeContainer.scrollLeft / window.innerWidth);
-        dots.forEach((dot, idx) => dot.classList.toggle("active", idx === pageIndex));
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle("active", idx === pageIndex);
+        });
     });
 
-    function generateTicketHTML(steps, totalNights = null, accentColor = "var(--active-color)") {
-        return `
-            <div class="ticket-date-box" style="--accent-color: ${accentColor}">
-                ${steps.map(step => `
-                    <div class="ticket-step">
-                        <span class="ticket-dates">📅 ${step.dates}</span>
-                        <span class="ticket-nights">🌙 ${step.nights}</span>
+    function escapeHtml(str) {
+        if (!str) return "";
+        return str.replace(/[&<>"']/g, m => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[m]));
+    }
+
+    function renderTodaySchedule() {
+        const todayStr = new Date().toISOString().split('T')[0];
+        const container = document.getElementById("today-schedule-container");
+        const titleEl = document.getElementById("today-title");
+        const subTitleEl = document.getElementById("today-subtitle");
+
+        const daySchedule = appData.schedule.find(s => s.date === todayStr);
+
+        if (!daySchedule) {
+            titleEl.textContent = "Aucune activité prévus";
+            subTitleEl.textContent = "Profitez de votre journée libre !";
+            container.innerHTML = `<div class="card"><p class="place-desc">Aucun événement programmé à la date du jour.</p></div>`;
+            return;
+        }
+
+        titleEl.textContent = daySchedule.title;
+        subTitleEl.textContent = appData.cities[daySchedule.cityKey]?.name || "";
+
+        container.innerHTML = `
+            <div class="card details-card">
+                ${daySchedule.items.map(item => `
+                    <div class="detail-row">
+                        <div class="detail-left">
+                            <span class="place-name">${escapeHtml(item.label)}</span>
+                            <span class="place-desc">${escapeHtml(item.time)}</span>
+                        </div>
                     </div>
                 `).join("")}
-                ${totalNights ? `<div class="ticket-total">🌕 ${totalNights}</div>` : ''}
             </div>
         `;
     }
 
     function renderTimeline() {
-        const timelineList = document.getElementById("timeline-list");
-        timelineList.innerHTML = TIMELINE_NODES.map(node => {
-            const city = appData[node.cityKey];
-            const currentStep = city.steps[node.stepIdx];
+        const container = document.getElementById("timeline-list");
+        container.innerHTML = Object.keys(appData.cities).map(key => {
+            const city = appData.cities[key];
             return `
-                <div class="thread-node" style="--node-color: ${city.color}">
-                    <div class="node-bullet">${node.icon}</div>
-                    <div class="thread-card" data-city="${node.cityKey}">
-                        <div class="thread-header">
-                            <span class="thread-title">${city.name}</span>
-                            <span class="vibe-badge">${city.vibe}</span>
+                <div class="timeline-item" data-city="${key}">
+                    <div class="timeline-left">
+                        <span class="timeline-icon">⛩️</span>
+                        <div class="timeline-info">
+                            <span class="city-title">${escapeHtml(city.name)}</span>
+                            <span class="city-dates">${escapeHtml(city.dates)}</span>
                         </div>
-                        ${generateTicketHTML([currentStep], null, city.color)}
                     </div>
-                    ${node.interTransport ? `
-                        <div class="inter-transport">
-                            <span>${node.interTransport}</span>
-                        </div>
-                    ` : ''}
+                    <span class="vibe-badge">${escapeHtml(city.vibe.split("/")[0])}</span>
                 </div>
             `;
         }).join("");
 
-        document.querySelectorAll(".thread-card").forEach(card => {
-            card.addEventListener("click", () => {
-                hapticFeedback();
-                renderCityDetails(card.dataset.city);
-                swipeContainer.scrollTo({ left: window.innerWidth, behavior: 'smooth' });
+        container.querySelectorAll(".timeline-item").forEach(item => {
+            item.addEventListener("click", () => {
+                renderCityDetails(item.dataset.city);
+                swipeContainer.scrollTo({ left: window.innerWidth * 3, behavior: 'smooth' });
             });
         });
     }
 
-    const pills = document.querySelectorAll(".pill");
-
     function renderCityDetails(cityKey) {
-        currentSelectedCity = cityKey;
-        const cityData = appData[cityKey];
+        currentCityKey = cityKey;
+        const city = appData.cities[cityKey];
+        if (!city) return;
 
-        document.documentElement.style.setProperty("--active-color", cityData.color);
+        document.body.setAttribute("data-theme", city.theme || "tokyo");
 
-        document.getElementById("current-city-title").textContent = cityData.name;
-        document.getElementById("current-city-vibe").textContent = cityData.vibe;
-        
-        document.getElementById("current-city-dates-container").innerHTML = generateTicketHTML(cityData.steps, cityData.totalNights, cityData.color);
+        document.getElementById("current-city-title").textContent = city.name;
+        document.getElementById("current-city-vibe").textContent = city.vibe;
+        document.getElementById("current-city-dates").textContent = city.dates;
 
-        pills.forEach(p => p.classList.toggle("active", p.dataset.city === cityKey));
+        document.querySelectorAll("#city-pills .pill").forEach(p => {
+            p.classList.toggle("active", p.dataset.city === cityKey);
+        });
 
-        renderCategoryStack("hotels-list", cityData.hotels, "Hôtel", true);
-        renderCategoryStack("activities-list", cityData.activities, "Visite", false);
-        renderCategoryStack("food-list", cityData.food, "Resto", false);
+        renderCategoryList("hotels-list", city.hotels, true);
+        renderCategoryList("activities-list", city.activities, false);
+        renderCategoryList("food-list", city.food, false);
     }
 
-    function renderCategoryStack(containerId, items, defaultCategoryTag, isHotel) {
+    function renderCategoryList(containerId, items, isHotel) {
         const container = document.getElementById(containerId);
         if (!items || items.length === 0) {
-            container.innerHTML = `<div class="place-card"><div class="place-info"><span class="place-desc">Aucun lieu enregistré. Cliquez sur + pour ajouter.</span></div></div>`;
+            container.innerHTML = `<div class="detail-row"><span class="place-desc">Aucun lieu enregistré.</span></div>`;
             return;
         }
 
-        container.innerHTML = items.map((item) => `
-            <div class="place-card">
-                <div class="place-info">
-                    <div class="place-header-line">
-                        <span class="place-title">${item.name}</span>
-                        <span class="category-tag">${defaultCategoryTag}</span>
-                    </div>
-                    ${item.desc ? `<span class="place-desc">${item.desc}</span>` : ''}
+        container.innerHTML = items.map(item => `
+            <div class="detail-row">
+                <div class="detail-left">
+                    <span class="place-name">${escapeHtml(item.name)}</span>
+                    ${item.desc ? `<span class="place-desc">${escapeHtml(item.desc)}</span>` : ''}
+                    ${isHotel && item.taxi ? `<button class="btn-taxi-trigger" data-taxi="${escapeHtml(item.taxi)}">Adresse Taxi 🚕</button>` : ''}
                 </div>
-                ${isHotel ? `
-                    <div class="action-zone-dual">
-                        <button class="dual-btn dual-btn-maps trigger-gps" data-query="${item.query || item.name}">
-                            <span class="action-icon">🗺️</span>
-                        </button>
-                        ${item.taxi ? `
-                            <button class="dual-btn dual-btn-taxi trigger-taxi" data-taxi="${item.taxi}">
-                                <span class="action-icon">🚕</span>
-                            </button>
-                        ` : ''}
-                    </div>
-                ` : `
-                    <div class="action-zone-single trigger-gps" data-query="${item.query || item.name}">
-                        <span class="action-icon">🗺️</span>
-                        <span class="action-label">MAPS</span>
-                    </div>
-                `}
+                ${item.map ? `<a href="${escapeHtml(item.map)}" target="_blank" class="chevron">📍</a>` : ''}
             </div>
         `).join("");
     }
 
-    pills.forEach(pill => {
-        pill.addEventListener("click", () => {
-            hapticFeedback();
-            renderCityDetails(pill.dataset.city);
-        });
+    document.querySelectorAll("#city-pills .pill").forEach(pill => {
+        pill.addEventListener("click", () => renderCityDetails(pill.dataset.city));
     });
 
-    const mapsModal = document.getElementById("maps-modal");
-    const mapsSelect = document.getElementById("maps-preference-select");
-
-    let mapsPreference = localStorage.getItem("japan_maps_pref") || "ask";
-    mapsSelect.value = mapsPreference;
-
-    mapsSelect.addEventListener("change", (e) => {
-        mapsPreference = e.target.value;
-        localStorage.setItem("japan_maps_pref", mapsPreference);
-    });
-
-    document.addEventListener("click", (e) => {
-        const gpsBtn = e.target.closest(".trigger-gps");
-        if (gpsBtn) {
-            hapticFeedback();
-            pendingMapQuery = gpsBtn.dataset.query;
-            if (mapsPreference === "apple") {
-                openAppleMaps(pendingMapQuery);
-            } else if (mapsPreference === "google") {
-                openGoogleMaps(pendingMapQuery);
-            } else {
-                mapsModal.classList.add("active");
-            }
-        }
-
-        const taxiBtn = e.target.closest(".trigger-taxi");
-        if (taxiBtn) {
-            hapticFeedback();
-            document.getElementById("taxi-modal-address").textContent = taxiBtn.dataset.taxi;
-            document.getElementById("taxi-modal").classList.add("active");
-        }
-    });
-
-    function openAppleMaps(q) {
-        window.open(`https://maps.apple.com/?q=${encodeURIComponent(q)}`, '_blank');
-    }
-
-    function openGoogleMaps(q) {
-        window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`, '_blank');
-    }
-
-    document.getElementById("btn-open-apple").addEventListener("click", () => {
-        if (document.getElementById("remember-maps-choice").checked) {
-            mapsPreference = "apple";
-            localStorage.setItem("japan_maps_pref", "apple");
-            mapsSelect.value = "apple";
-        }
-        openAppleMaps(pendingMapQuery);
-        mapsModal.classList.remove("active");
-    });
-
-    document.getElementById("btn-open-google").addEventListener("click", () => {
-        if (document.getElementById("remember-maps-choice").checked) {
-            mapsPreference = "google";
-            localStorage.setItem("japan_maps_pref", "google");
-            mapsSelect.value = "google";
-        }
-        openGoogleMaps(pendingMapQuery);
-        mapsModal.classList.remove("active");
-    });
-
-    document.getElementById("close-maps-modal").addEventListener("click", () => mapsModal.classList.remove("active"));
-    document.getElementById("close-taxi-modal").addEventListener("click", () => document.getElementById("taxi-modal").classList.remove("active"));
-
-    let exchangeRate = 165.0;
     const jpyInput = document.getElementById("jpy-input");
     const eurInput = document.getElementById("eur-input");
 
-    async function fetchExchangeRate() {
-        try {
-            const res = await fetch("https://open.er-api.com/v6/latest/JPY");
-            const data = await res.json();
-            if (data && data.rates && data.rates.EUR) {
-                exchangeRate = 1 / data.rates.EUR;
-                document.getElementById("rate-info-text").textContent = `Taux direct : 1 € = ${exchangeRate.toFixed(2)} ¥`;
-            }
-        } catch (e) {
-            document.getElementById("rate-info-text").textContent = `Taux fixe (Hors-ligne) : 1 € = ${exchangeRate.toFixed(2)} ¥`;
-        }
-    }
-    fetchExchangeRate();
-
     jpyInput.addEventListener("input", () => {
         const val = parseFloat(jpyInput.value);
-        eurInput.value = isNaN(val) ? "" : (val / exchangeRate).toFixed(2);
+        eurInput.value = isNaN(val) ? "" : (val / EXCHANGE_RATE).toFixed(2);
     });
 
     eurInput.addEventListener("input", () => {
         const val = parseFloat(eurInput.value);
-        jpyInput.value = isNaN(val) ? "" : Math.round(val * exchangeRate);
-    });
-
-    const addModal = document.getElementById("add-modal");
-
-    document.getElementById("open-add-modal").addEventListener("click", () => {
-        hapticFeedback();
-        document.getElementById("form-city").value = currentSelectedCity;
-        addModal.classList.add("active");
-    });
-
-    document.getElementById("close-add-modal").addEventListener("click", () => addModal.classList.remove("active"));
-
-    document.getElementById("form-category").addEventListener("change", (e) => {
-        document.getElementById("taxi-address-group").style.display = e.target.value === "hotels" ? "flex" : "none";
-    });
-
-    document.getElementById("add-place-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const city = document.getElementById("form-city").value;
-        const cat = document.getElementById("form-category").value;
-        const title = document.getElementById("form-title").value;
-        const desc = document.getElementById("form-desc").value;
-        const map = document.getElementById("form-map").value;
-        const taxi = document.getElementById("form-taxi").value;
-
-        const newItem = { name: title, desc: desc, query: map || title };
-        if (cat === "hotels" && taxi) newItem.taxi = taxi;
-
-        appData[city][cat].push(newItem);
-        localStorage.setItem("japan_app_data", JSON.stringify(appData));
-
-        renderCityDetails(city);
-        addModal.classList.remove("active");
-        e.target.reset();
-    });
-
-    document.getElementById("btn-export-json").addEventListener("click", () => {
-        const jsonStr = JSON.stringify(appData, null, 2);
-        navigator.clipboard.writeText(jsonStr).then(() => {
-            alert("Données JSON copiées dans le presse-papier ! 📋");
-        }).catch(() => {
-            prompt("Copiez le texte ci-dessous :", jsonStr);
-        });
-    });
-
-    document.getElementById("btn-import-json").addEventListener("click", () => {
-        const inputStr = prompt("Collez vos données JSON ici :");
-        if (inputStr) {
-            try {
-                appData = JSON.parse(inputStr);
-                localStorage.setItem("japan_app_data", JSON.stringify(appData));
-                renderTimeline();
-                renderCityDetails(currentSelectedCity);
-                alert("Données importées avec succès !");
-            } catch (err) {
-                alert("Erreur de format JSON.");
-            }
-        }
+        jpyInput.value = isNaN(val) ? "" : Math.round(val * EXCHANGE_RATE);
     });
 
     const lexiconContainer = document.getElementById("lexicon-container");
     const lexiconSearch = document.getElementById("lexicon-search");
 
     function renderLexicon(filter = "") {
-        const filtered = LEXICON_DATA.filter(item =>
+        const filtered = appData.lexicon.filter(item =>
             item.fr.toLowerCase().includes(filter.toLowerCase()) ||
-            item.jp.toLowerCase().includes(filter.toLowerCase()) ||
-            item.cat.toLowerCase().includes(filter.toLowerCase())
+            item.jp.toLowerCase().includes(filter.toLowerCase())
         );
 
         lexiconContainer.innerHTML = filtered.map(item => `
             <div class="lexicon-item">
-                <span class="lex-fr">${item.fr} (${item.cat})</span>
-                <span class="lex-jp">${item.jp}</span>
+                <span class="lex-fr">${escapeHtml(item.fr)} (${escapeHtml(item.cat)})</span>
+                <span class="lex-jp">${escapeHtml(item.jp)}</span>
             </div>
         `).join("");
     }
 
     lexiconSearch.addEventListener("input", (e) => renderLexicon(e.target.value));
 
+    const taxiModal = document.getElementById("taxi-modal");
+    document.addEventListener("click", (e) => {
+        if (e.target.classList.contains("btn-taxi-trigger")) {
+            document.getElementById("taxi-modal-address").textContent = e.target.dataset.taxi;
+            taxiModal.classList.add("active");
+        }
+    });
+
+    document.getElementById("close-taxi-modal").addEventListener("click", () => {
+        taxiModal.classList.remove("active");
+    });
+
+    renderTodaySchedule();
     renderTimeline();
     renderCityDetails("tokyo");
     renderLexicon();

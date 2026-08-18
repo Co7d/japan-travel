@@ -4,40 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Japon 2026</title>
-    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Japon 2026">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' width='512' height='512'><rect width='512' height='512' rx='110' fill='%23121214'/><circle cx='256' cy='220' r='140' fill='%23BC4749'/><path d='M256 160 L140 380 L372 380 Z' fill='%231D3557'/><path d='M256 160 L220 220 L240 210 L256 230 L272 210 L292 220 Z' fill='%23FFFFFF'/></svg>">
-
+    <link rel="apple-touch-icon" href="icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="tokyo">
+
+    <div class="dots-indicator" id="dots-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
 
     <main class="app-swipe-container" id="swipe-container">
 
+        <section class="tab-page" id="page-lexicon">
+            <div class="content-wrapper">
+                <h1>🗣️ Lexique</h1>
+                <p class="subtitle">Expressions indispensables</p>
+                <div class="search-box">
+                    <input type="text" id="lexicon-search" placeholder="Rechercher un mot...">
+                </div>
+                <div class="card lexicon-card" id="lexicon-container"></div>
+            </div>
+        </section>
+
         <section class="tab-page" id="page-timeline">
             <div class="content-wrapper">
-                <h1>🇯🇵 JAPON 2026</h1>
-                
-                <div class="card stat-card">
-                    <span class="stat-label">STATUT ACTUEL</span>
-                    <span class="stat-value" id="next-step">Calcul en cours...</span>
+                <h1>🗺️ Itinéraire</h1>
+                <p class="subtitle">Vue d'ensemble du voyage</p>
+                <div class="card card-map">
+                    <img src="itineraire.png" alt="Carte du Japon">
                 </div>
+                <div class="modern-timeline" id="timeline-list"></div>
+            </div>
+        </section>
 
-                <div class="card countdown-card">
-                    <div id="timer">000 : 00 : 00 : 00</div>
-                    <div class="countdown-label" id="countdown-label">AVANT L'AVENTURE</div>
-                </div>
-
-                <div class="journey-thread" id="timeline-list"></div>
+        <section class="tab-page" id="page-today">
+            <div class="content-wrapper">
+                <span class="vibe-badge" id="today-date-badge">AUJOURD'HUI</span>
+                <h1 id="today-title">Planning du jour</h1>
+                <p class="subtitle" id="today-subtitle">Chargement du programme...</p>
+                <div id="today-schedule-container"></div>
             </div>
         </section>
 
         <section class="tab-page" id="page-city">
             <div class="content-wrapper">
-                
                 <div class="city-selector-pills" id="city-pills">
                     <button class="pill active" data-city="tokyo">Tokyo</button>
                     <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
@@ -48,56 +65,41 @@
                 </div>
 
                 <div class="city-header">
-                    <div class="city-title-row">
-                        <h1 id="current-city-title">Tokyo</h1>
-                        <span class="vibe-badge" id="current-city-vibe">Urbain</span>
-                    </div>
-                    <div id="current-city-dates-container"></div>
+                    <span class="vibe-badge" id="current-city-vibe"></span>
+                    <h1 id="current-city-title"></h1>
+                    <p class="subtitle" id="current-city-dates"></p>
                 </div>
 
                 <h3 class="section-title">🏨 Hébergement</h3>
-                <div class="places-stack" id="hotels-list"></div>
+                <div class="card details-card" id="hotels-list"></div>
 
-                <h3 class="section-title">⛩️ À visiter & Activités</h3>
-                <div class="places-stack" id="activities-list"></div>
+                <h3 class="section-title">⛩️ Visites & Activités</h3>
+                <div class="card details-card" id="activities-list"></div>
 
-                <h3 class="section-title">🍜 Restaurants & Food</h3>
-                <div class="places-stack" id="food-list"></div>
-
+                <h3 class="section-title">🍜 Restaurants</h3>
+                <div class="card details-card" id="food-list"></div>
             </div>
-
-            <button class="fab-btn" id="open-add-modal" aria-label="Ajouter un lieu">+</button>
         </section>
 
         <section class="tab-page" id="page-tools">
             <div class="content-wrapper">
                 <h1>🛠️ Utiles</h1>
-                <p class="subtitle">Convertisseur, Cartes & Urgences</p>
+                <p class="subtitle">Convertisseur & Urgences</p>
 
                 <div class="card tool-card">
                     <h3>💴 Convertisseur Yens ↔ Euros</h3>
                     <div class="converter-box">
                         <div class="input-group">
                             <label for="jpy-input">JPY (¥)</label>
-                            <input type="number" id="jpy-input" placeholder="1000" pattern="[0-9]*">
+                            <input type="number" id="jpy-input" placeholder="1000" inputmode="decimal">
                         </div>
                         <div class="converter-arrow">⇆</div>
                         <div class="input-group">
                             <label for="eur-input">EUR (€)</label>
-                            <input type="number" id="eur-input" placeholder="6.50" step="0.01">
+                            <input type="number" id="eur-input" placeholder="6.50" step="0.01" inputmode="decimal">
                         </div>
                     </div>
-                    <p class="rate-info" id="rate-info-text">Taux : 1 € = 165.00 ¥ (Mode hors-ligne)</p>
-                </div>
-
-                <div class="card tool-card">
-                    <h3>🗺️ Application de Cartes</h3>
-                    <p class="desc-text">Choisissez votre application GPS préférée par défaut.</p>
-                    <select id="maps-preference-select" class="form-select">
-                        <option value="ask">Toujours me demander</option>
-                        <option value="apple">🍎 Apple Maps</option>
-                        <option value="google">🗺️ Google Maps</option>
-                    </select>
+                    <p class="rate-info" id="rate-info-text">Taux fixe : 1 € = 165.00 ¥</p>
                 </div>
 
                 <div class="card tool-card">
@@ -105,110 +107,20 @@
                     <div class="emergency-list">
                         <a href="tel:110" class="emergency-item"><span>Police</span><strong>110</strong></a>
                         <a href="tel:119" class="emergency-item"><span>Ambulance / Pompiers</span><strong>119</strong></a>
-                        <a href="tel:0357986000" class="emergency-item"><span>Ambassade de France (Tokyo)</span><strong>03-5798-6000</strong></a>
+                        <a href="tel:0357986000" class="emergency-item"><span>Ambassade de France</span><strong>03-5798-6000</strong></a>
                     </div>
                 </div>
-
-                <div class="card tool-card">
-                    <h3>💾 Transfert des données</h3>
-                    <p class="desc-text">Exportez vos lieux ajoutés sous forme de code JSON pour les coller sur un autre appareil.</p>
-                    <div class="btn-group">
-                        <button class="btn btn-primary" id="btn-export-json">Copier les données JSON 📋</button>
-                        <button class="btn btn-secondary" id="btn-import-json">Importer du JSON 📥</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="tab-page" id="page-lexicon">
-            <div class="content-wrapper">
-                <h1>🗣️ Lexique</h1>
-                <p class="subtitle">Phrases & mots indispensables</p>
-
-                <div class="search-box">
-                    <input type="text" id="lexicon-search" placeholder="Rechercher un mot (ex: eau, merci)...">
-                </div>
-
-                <div class="card lexicon-card" id="lexicon-container"></div>
             </div>
         </section>
 
     </main>
 
-    <div class="dots-indicator" id="dots-container">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-    </div>
-
-    <div class="modal-overlay" id="add-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Ajouter un lieu</h3>
-                <button class="close-modal" id="close-add-modal">&times;</button>
-            </div>
-            <form id="add-place-form">
-                <div class="form-group">
-                    <label>Ville</label>
-                    <select id="form-city" required>
-                        <option value="tokyo">Tokyo</option>
-                        <option value="kawaguchiko">Kawaguchiko</option>
-                        <option value="kiso">Vallée de Kiso</option>
-                        <option value="kyoto">Kyoto</option>
-                        <option value="hiroshima">Hiroshima</option>
-                        <option value="osaka">Osaka</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Catégorie</label>
-                    <select id="form-category" required>
-                        <option value="hotels">Hôtel</option>
-                        <option value="activities">Activité / Visite</option>
-                        <option value="food">Restaurant / Food</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Nom du lieu</label>
-                    <input type="text" id="form-title" placeholder="Ex: Ichiran Ramen" required>
-                </div>
-                <div class="form-group">
-                    <label>Notes / Infos</label>
-                    <input type="text" id="form-desc" placeholder="Ex: Payer en liquide au distributeur">
-                </div>
-                <div class="form-group">
-                    <label>Recherche Google Maps / Adresse</label>
-                    <input type="text" id="form-map" placeholder="Ex: Shibuya Crossing Tokyo">
-                </div>
-                <div class="form-group" id="taxi-address-group">
-                    <label>Adresse en Japonais (Pour Taxi)</label>
-                    <input type="text" id="form-taxi" placeholder="Ex: 東京都渋谷区宇田川町1-1">
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">Enregistrer le lieu</button>
-            </form>
-        </div>
-    </div>
-
     <div class="modal-overlay" id="taxi-modal">
         <div class="modal-content modal-taxi">
             <button class="close-modal" id="close-taxi-modal">&times;</button>
             <span class="taxi-badge">🚕 POUR LE CHAUFFEUR DE TAXI</span>
-            <div class="jp-address-box" id="taxi-modal-address">---</div>
+            <div class="jp-address-box" id="taxi-modal-address"></div>
             <p class="taxi-hint">Montrez cet écran directement au chauffeur.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="maps-modal">
-        <div class="modal-content modal-action-sheet">
-            <h3>Ouvrir dans quel GPS ?</h3>
-            <div class="action-sheet-buttons">
-                <button class="btn btn-secondary btn-full" id="btn-open-apple">🍎 Apple Maps</button>
-                <button class="btn btn-secondary btn-full" id="btn-open-google">🗺️ Google Maps</button>
-                <label class="remember-checkbox">
-                    <input type="checkbox" id="remember-maps-choice"> Mémoriser mon choix
-                </label>
-                <button class="btn btn-full btn-close-sheet" id="close-maps-modal">Annuler</button>
-            </div>
         </div>
     </div>
 

@@ -1,0 +1,129 @@
+{
+  "cities": {
+    "tokyo": {
+      "name": "Tokyo",
+      "vibe": "Urbain / Shopping",
+      "dates": "16 Nov — 20 Nov • 4 nuits",
+      "theme": "tokyo",
+      "hotels": [
+        {
+          "name": "Shinjuku Washington Hotel",
+          "desc": "Quartier Shinjuku",
+          "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
+        }
+      ],
+      "activities": [
+        {
+          "name": "Shibuya Sky",
+          "desc": "Vue panoramique 360°",
+          "map": "https://maps.apple.com"
+        }
+      ],
+      "food": [
+        {
+          "name": "Ichiran Ramen",
+          "desc": "Ramen Tonkotsu",
+          "map": "https://maps.apple.com"
+        }
+      ]
+    },
+    "kawaguchiko": {
+      "name": "Kawaguchiko",
+      "vibe": "Nature & Mont Fuji",
+      "dates": "20 Nov — 22 Nov • 2 nuits",
+      "theme": "kawaguchiko",
+      "hotels": [
+        {
+          "name": "Mizno Hotel",
+          "desc": "Sur les hauteurs — Vue lac et Fuji",
+          "map": "https://maps.apple.com/place?place-id=I50659DD6551DE6D7&address=187%2C+Azagawa%2C+Fujikawaguchiko-Machi%2C+Yamanashi%2C+Japan+401-0303&coordinate=35.513844%2C138.773511&name=Mizno+Hotel"
+        }
+      ],
+      "activities": [],
+      "food": []
+    },
+    "kiso": {
+      "name": "Vallée de Kiso",
+      "vibe": "Histoire & Rando",
+      "dates": "22 Nov — 23 Nov • 1 nuit",
+      "theme": "kiso",
+      "hotels": [
+        {
+          "name": "Guest House Hanaya",
+          "desc": "Otsumago — Hameau historique",
+          "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
+        }
+      ],
+      "activities": [],
+      "food": []
+    },
+    "kyoto": {
+      "name": "Kyoto",
+      "vibe": "Tradition & Temples",
+      "dates": "23 Nov — 28 Nov • 5 nuits",
+      "theme": "kyoto",
+      "hotels": [
+        {
+          "name": "Agora Place Kyoto Nijo",
+          "desc": "Quartier Nijo",
+          "map": "https://maps.apple.com"
+        }
+      ],
+      "activities": [],
+      "food": []
+    },
+    "hiroshima": {
+      "name": "Hiroshima",
+      "vibe": "Histoire & Culture",
+      "dates": "28 Nov — 29 Nov • 1 nuit",
+      "theme": "hiroshima",
+      "hotels": [
+        {
+          "name": "Livemax Resort Akimiyajima",
+          "desc": "Île de Miyajima",
+          "map": "https://maps.apple.com"
+        }
+      ],
+      "activities": [],
+      "food": []
+    },
+    "osaka": {
+      "name": "Osaka",
+      "vibe": "Gastronomie & Street Food",
+      "dates": "29 Nov — 02 Déc • 3 nuits",
+      "theme": "osaka",
+      "hotels": [
+        {
+          "name": "Ruka Hotel Tennoji",
+          "desc": "Quartier Tennoji",
+          "map": "https://maps.apple.com"
+        }
+      ],
+      "activities": [],
+      "food": []
+    }
+  },
+  "schedule": [
+    {
+      "date": "2026-11-16",
+      "title": "Arrivée à Tokyo",
+      "cityKey": "tokyo",
+      "items": [
+        { "time": "08:55", "label": "Atterrissage Tokyo" },
+        { "time": "14:00", "label": "Check-in Hôtel" },
+        { "time": "18:00", "label": "Exploration initiale" }
+      ]
+    }
+  ],
+  "lexicon": [
+    { "cat": "Général", "fr": "Bonjour", "jp": "Konnichiwa" },
+    { "cat": "Général", "fr": "Merci", "jp": "Arigatō gozaimasu" },
+    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" },
+    { "cat": "Général", "fr": "Excusez-moi / SVP", "jp": "Sumimasen" },
+    { "cat": "Restaurant", "fr": "L'addition SVP", "jp": "O-kaikei onegashimasu" },
+    { "cat": "Restaurant", "fr": "C'était délicieux", "jp": "Gochisōsama deshita" },
+    { "cat": "Restaurant", "fr": "De l'eau SVP", "jp": "Mizu o onegashimasu" },
+    { "cat": "Orientation", "fr": "Où sont les toilettes ?", "jp": "Toire wa doko desu ka ?" },
+    { "cat": "Orientation", "fr": "Où est la gare ?", "jp": "Eki wa doko desu ka ?" }
+  ]
+}
