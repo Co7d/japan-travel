@@ -2,6 +2,7 @@
   "cities": {
     "tokyo": {
       "name": "Tokyo",
+      "icon": "🗼",
       "vibe": "Urbain / Shopping",
       "dates": "16 Nov — 20 Nov • 4 nuits",
       "theme": "tokyo",
@@ -29,6 +30,7 @@
     },
     "kawaguchiko": {
       "name": "Kawaguchiko",
+      "icon": "🗻",
       "vibe": "Nature & Mont Fuji",
       "dates": "20 Nov — 22 Nov • 2 nuits",
       "theme": "kawaguchiko",
@@ -36,7 +38,7 @@
         {
           "name": "Mizno Hotel",
           "desc": "Sur les hauteurs — Vue lac et Fuji",
-          "map": "https://maps.apple.com/place?place-id=I50659DD6551DE6D7&address=187%2C+Azagawa%2C+Fujikawaguchiko-Machi%2C+Yamanashi%2C+Japan+401-0303&coordinate=35.513844%2C138.773511&name=Mizno+Hotel"
+          "map": "https://maps.apple.com"
         }
       ],
       "activities": [],
@@ -44,6 +46,7 @@
     },
     "kiso": {
       "name": "Vallée de Kiso",
+      "icon": "🌲",
       "vibe": "Histoire & Rando",
       "dates": "22 Nov — 23 Nov • 1 nuit",
       "theme": "kiso",
@@ -59,6 +62,7 @@
     },
     "kyoto": {
       "name": "Kyoto",
+      "icon": "⛩️",
       "vibe": "Tradition & Temples",
       "dates": "23 Nov — 28 Nov • 5 nuits",
       "theme": "kyoto",
@@ -74,6 +78,7 @@
     },
     "hiroshima": {
       "name": "Hiroshima",
+      "icon": "🕊️",
       "vibe": "Histoire & Culture",
       "dates": "28 Nov — 29 Nov • 1 nuit",
       "theme": "hiroshima",
@@ -89,6 +94,7 @@
     },
     "osaka": {
       "name": "Osaka",
+      "icon": "🐙",
       "vibe": "Gastronomie & Street Food",
       "dates": "29 Nov — 02 Déc • 3 nuits",
       "theme": "osaka",
@@ -118,12 +124,6 @@
   "lexicon": [
     { "cat": "Général", "fr": "Bonjour", "jp": "Konnichiwa" },
     { "cat": "Général", "fr": "Merci", "jp": "Arigatō gozaimasu" },
-    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" },
-    { "cat": "Général", "fr": "Excusez-moi / SVP", "jp": "Sumimasen" },
-    { "cat": "Restaurant", "fr": "L'addition SVP", "jp": "O-kaikei onegashimasu" },
-    { "cat": "Restaurant", "fr": "C'était délicieux", "jp": "Gochisōsama deshita" },
-    { "cat": "Restaurant", "fr": "De l'eau SVP", "jp": "Mizu o onegashimasu" },
-    { "cat": "Orientation", "fr": "Où sont les toilettes ?", "jp": "Toire wa doko desu ka ?" },
-    { "cat": "Orientation", "fr": "Où est la gare ?", "jp": "Eki wa doko desu ka ?" }
+    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" }
   ]
 }
