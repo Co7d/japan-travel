@@ -2,118 +2,114 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Japon 2026</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Voyage au Japon</title>
+    
+    <!-- CSS de Leaflet pour afficher la carte -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        /* Design de la page */
+        body { 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            height: 100vh; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        /* Panneau de gauche pour l'itinéraire */
+        #sidebar { 
+            width: 35%; 
+            background: #f8f9fa; 
+            padding: 20px; 
+            overflow-y: auto; 
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        /* Panneau de droite pour la carte */
+        #map { 
+            width: 65%; 
+            height: 100vh; 
+        }
+        
+        /* Styles du texte de l'itinéraire */
+        h1 { color: #E60012; text-align: center; }
+        h2 { color: #333; border-bottom: 2px solid #E60012; padding-bottom: 5px; margin-top: 30px; font-size: 1.2em; }
+        .jour { 
+            background: white; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .jour h3 { margin: 0 0 10px 0; color: #0056b3; font-size: 1.1em; }
+        .etape { margin-bottom: 8px; font-size: 14px; line-height: 1.4; }
+        .etape strong { color: #444; }
+    </style>
 </head>
-<body data-theme="tokyo">
+<body>
 
-    <div class="dots-indicator" id="dots-container">
-        <span class="dot" data-index="0"></span>
-        <span class="dot" data-index="1"></span>
-        <span class="dot active" data-index="2"></span>
-        <span class="dot" data-index="3"></span>
-        <span class="dot" data-index="4"></span>
-    </div>
+    <!-- PARTIE GAUCHE : TON PLANNING -->
+    <div id="sidebar">
+        <h1>Mon Itinéraire au Japon</h1>
+        
+        <h2>TOKYO (16 - 20 Novembre)</h2>
+        <div class="jour">
+            <h3>Jour 1 - Shibuya & Shinjuku</h3>
+            <div class="etape"><strong>Matin :</strong> Arrivée à Haneda + Dépôt des bagages à l'hôtel</div>
+            <div class="etape"><strong>Après-midi :</strong> Carrefour de Shibuya, Hachiko, Observatoire Shibuya Sky</div>
+            <div class="etape"><strong>Soir :</strong> Dîner à Omoide Yokocho, Golden Gai</div>
+        </div>
+        <div class="jour">
+            <h3>Jour 3 - Asakusa & Akihabara</h3>
+            <div class="etape"><strong>Matin :</strong> Temple Senso-ji et allée Nakamise-dori</div>
+            <div class="etape"><strong>Après-midi :</strong> Parc d'Ueno + Musée Edo-Tokyo</div>
+            <div class="etape"><strong>Soir :</strong> Immersion Akihabara Electric Town</div>
+        </div>
+        
+        <h2>FUJI & KAWAGUCHIKO (20 - 22 Novembre)</h2>
+        <div class="jour">
+            <h3>Jour 2 - Autour du Mont Fuji</h3>
+            <div class="etape"><strong>Matin :</strong> Pagode de Chureito, Kachi Kachi Ropeway</div>
+            <div class="etape"><strong>Après-midi :</strong> Parc Oishi, Musée Itchiku Kubota</div>
+        </div>
 
-    <main class="app-swipe-container" id="swipe-container">
+        <h2>KYOTO & NARA (23 - 28 Novembre)</h2>
+        <div class="jour">
+            <h3>Jour 2 - Arashiyama</h3>
+            <div class="etape"><strong>Matin :</strong> Forêt de bambous de Sagano + Temple Tenryu-ji</div>
+            <div class="etape"><strong>Après-midi :</strong> Route des temples du Nord (Jojakko-ji, etc.)</div>
+        </div>
+        <div class="jour">
+            <h3>Jour 4 - Nara</h3>
+            <div class="etape"><strong>Matin :</strong> Parc de Nara, Temple Todai-ji (Grand Bouddha)</div>
+            <div class="etape"><strong>Après-midi :</strong> Sanctuaire Kasuga-taisha, Naramachi</div>
+        </div>
+        
+        <h2>HIROSHIMA & MIYAJIMA (28 - 29 Novembre)</h2>
+        <div class="jour">
+            <h3>Jour 1 - Hiroshima</h3>
+            <div class="etape"><strong>Matin :</strong> Mémorial de la Paix, Dôme de Genbaku + Okonomiyaki</div>
+            <div class="etape"><strong>Soir :</strong> Arrivée Miyajima, Torii au coucher du soleil</div>
+        </div>
 
-        <section class="tab-page" id="page-lexicon">
-            <div class="content-wrapper">
-                <h1>🗣️ Lexique</h1>
-                <p class="subtitle">Expressions indispensables</p>
-                <div class="search-box">
-                    <input type="text" id="lexicon-search" placeholder="Rechercher un mot...">
-                </div>
-                <div class="card lexicon-card" id="lexicon-container"></div>
-            </div>
-        </section>
-
-        <section class="tab-page" id="page-timeline">
-            <div class="content-wrapper">
-                <h1>🗺️ Itinéraire</h1>
-                <p class="subtitle">Vue d'ensemble du voyage</p>
-                <div class="modern-timeline" id="timeline-list"></div>
-            </div>
-        </section>
-
-        <section class="tab-page" id="page-today">
-            <div class="content-wrapper">
-                <span class="vibe-badge" id="today-date-badge">AUJOURD'HUI</span>
-                <h1 id="today-title">Planning du jour</h1>
-                <p class="subtitle" id="today-subtitle">Chargement du programme...</p>
-                <div id="today-schedule-container"></div>
-            </div>
-        </section>
-
-        <section class="tab-page" id="page-city">
-            <div class="content-wrapper">
-                <div class="city-selector-pills" id="city-pills"></div>
-
-                <div class="city-header">
-                    <span class="vibe-badge" id="current-city-vibe"></span>
-                    <h1 id="current-city-title"></h1>
-                    <p class="subtitle" id="current-city-dates"></p>
-                </div>
-
-                <h3 class="section-title">🏨 Hébergement</h3>
-                <div class="card details-card" id="hotels-list"></div>
-
-                <h3 class="section-title">⛩️ Visites & Activités</h3>
-                <div class="card details-card" id="activities-list"></div>
-
-                <h3 class="section-title">🍜 Restaurants</h3>
-                <div class="card details-card" id="food-list"></div>
-            </div>
-        </section>
-
-        <section class="tab-page" id="page-tools">
-            <div class="content-wrapper">
-                <h1>🛠️ Utiles</h1>
-                <p class="subtitle">Convertisseur & Urgences</p>
-
-                <div class="card tool-card">
-                    <h3>💴 Convertisseur Yens ↔ Euros</h3>
-                    <div class="converter-box">
-                        <div class="input-group">
-                            <label for="jpy-input">JPY (¥)</label>
-                            <input type="number" id="jpy-input" placeholder="1000" inputmode="decimal">
-                        </div>
-                        <div class="converter-arrow">⇆</div>
-                        <div class="input-group">
-                            <label for="eur-input">EUR (€)</label>
-                            <input type="number" id="eur-input" placeholder="6.50" step="0.01" inputmode="decimal">
-                        </div>
-                    </div>
-                    <p class="rate-info" id="rate-info-text">Taux fixe : 1 € = 165.00 ¥</p>
-                </div>
-
-                <div class="card tool-card">
-                    <h3>🚨 Urgences au Japon</h3>
-                    <div class="emergency-list">
-                        <a href="tel:110" class="emergency-item"><span>Police</span><strong>110</strong></a>
-                        <a href="tel:119" class="emergency-item"><span>Ambulance / Pompiers</span><strong>119</strong></a>
-                        <a href="tel:0357986000" class="emergency-item"><span>Ambassade de France</span><strong>03-5798-6000</strong></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <div class="modal-overlay" id="taxi-modal">
-        <div class="modal-content modal-taxi">
-            <button class="close-modal" id="close-taxi-modal">&times;</button>
-            <span class="taxi-badge">🚕 POUR LE CHAUFFEUR DE TAXI</span>
-            <div class="jp-address-box" id="taxi-modal-address"></div>
-            <p class="taxi-hint">Montrez cet écran directement au chauffeur.</p>
+        <h2>OSAKA (29 Novembre - 2 Décembre)</h2>
+        <div class="jour">
+            <h3>Jour 1 - Dotonbori</h3>
+            <div class="etape"><strong>Fin d'après-midi :</strong> Observatoire du Umeda Sky Building</div>
+            <div class="etape"><strong>Soir :</strong> Immersion dans Dotonbori & Hozenji-yokocho (street food)</div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- PARTIE DROITE : LA CARTE -->
+    <div id="map"></div>
+
+    <!-- Scripts JavaScript obligatoires -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
+    
+    <!-- L'AJOUT EST LÀ : Connexion à ton fichier app.js -->
+    <script src="app.js"></script>
+
 </body>
 </html>
