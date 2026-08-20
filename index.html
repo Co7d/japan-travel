@@ -2,114 +2,40 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Voyage au Japon</title>
-    
-    <!-- CSS de Leaflet pour afficher la carte -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <style>
-        /* Design de la page */
-        body { 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            height: 100vh; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-        }
-        /* Panneau de gauche pour l'itinéraire */
-        #sidebar { 
-            width: 35%; 
-            background: #f8f9fa; 
-            padding: 20px; 
-            overflow-y: auto; 
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        /* Panneau de droite pour la carte */
-        #map { 
-            width: 65%; 
-            height: 100vh; 
-        }
-        
-        /* Styles du texte de l'itinéraire */
-        h1 { color: #E60012; text-align: center; }
-        h2 { color: #333; border-bottom: 2px solid #E60012; padding-bottom: 5px; margin-top: 30px; font-size: 1.2em; }
-        .jour { 
-            background: white; 
-            padding: 15px; 
-            margin-bottom: 15px; 
-            border-radius: 8px; 
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .jour h3 { margin: 0 0 10px 0; color: #0056b3; font-size: 1.1em; }
-        .etape { margin-bottom: 8px; font-size: 14px; line-height: 1.4; }
-        .etape strong { color: #444; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Japon 2026</title>
+
+    <!-- PWA & Icônes (iPhone & Web) -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Japon 2026">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- PARTIE GAUCHE : TON PLANNING -->
-    <div id="sidebar">
-        <h1>Mon Itinéraire au Japon</h1>
-        
-        <h2>TOKYO (16 - 20 Novembre)</h2>
-        <div class="jour">
-            <h3>Jour 1 - Shibuya & Shinjuku</h3>
-            <div class="etape"><strong>Matin :</strong> Arrivée à Haneda + Dépôt des bagages à l'hôtel</div>
-            <div class="etape"><strong>Après-midi :</strong> Carrefour de Shibuya, Hachiko, Observatoire Shibuya Sky</div>
-            <div class="etape"><strong>Soir :</strong> Dîner à Omoide Yokocho, Golden Gai</div>
-        </div>
-        <div class="jour">
-            <h3>Jour 3 - Asakusa & Akihabara</h3>
-            <div class="etape"><strong>Matin :</strong> Temple Senso-ji et allée Nakamise-dori</div>
-            <div class="etape"><strong>Après-midi :</strong> Parc d'Ueno + Musée Edo-Tokyo</div>
-            <div class="etape"><strong>Soir :</strong> Immersion Akihabara Electric Town</div>
-        </div>
-        
-        <h2>FUJI & KAWAGUCHIKO (20 - 22 Novembre)</h2>
-        <div class="jour">
-            <h3>Jour 2 - Autour du Mont Fuji</h3>
-            <div class="etape"><strong>Matin :</strong> Pagode de Chureito, Kachi Kachi Ropeway</div>
-            <div class="etape"><strong>Après-midi :</strong> Parc Oishi, Musée Itchiku Kubota</div>
-        </div>
+    <!-- En-tête de l'application -->
+    <header class="app-header">
+        <img src="icon.png" alt="Logo" class="header-icon">
+        <h1>Voyage au Japon</h1>
+    </header>
 
-        <h2>KYOTO & NARA (23 - 28 Novembre)</h2>
-        <div class="jour">
-            <h3>Jour 2 - Arashiyama</h3>
-            <div class="etape"><strong>Matin :</strong> Forêt de bambous de Sagano + Temple Tenryu-ji</div>
-            <div class="etape"><strong>Après-midi :</strong> Route des temples du Nord (Jojakko-ji, etc.)</div>
-        </div>
-        <div class="jour">
-            <h3>Jour 4 - Nara</h3>
-            <div class="etape"><strong>Matin :</strong> Parc de Nara, Temple Todai-ji (Grand Bouddha)</div>
-            <div class="etape"><strong>Après-midi :</strong> Sanctuaire Kasuga-taisha, Naramachi</div>
-        </div>
-        
-        <h2>HIROSHIMA & MIYAJIMA (28 - 29 Novembre)</h2>
-        <div class="jour">
-            <h3>Jour 1 - Hiroshima</h3>
-            <div class="etape"><strong>Matin :</strong> Mémorial de la Paix, Dôme de Genbaku + Okonomiyaki</div>
-            <div class="etape"><strong>Soir :</strong> Arrivée Miyajima, Torii au coucher du soleil</div>
-        </div>
+    <!-- Barre de navigation -->
+    <nav class="app-nav" id="main-nav">
+        <button class="nav-btn active" onclick="afficherPlanning()">📅 Planning</button>
+        <!-- Les boutons de villes seront générés automatiquement ici -->
+    </nav>
 
-        <h2>OSAKA (29 Novembre - 2 Décembre)</h2>
-        <div class="jour">
-            <h3>Jour 1 - Dotonbori</h3>
-            <div class="etape"><strong>Fin d'après-midi :</strong> Observatoire du Umeda Sky Building</div>
-            <div class="etape"><strong>Soir :</strong> Immersion dans Dotonbori & Hozenji-yokocho (street food)</div>
-        </div>
-    </div>
+    <!-- Contenu dynamique -->
+    <main class="app-content" id="app-content">
+        <div class="loading">Chargement des données...</div>
+    </main>
 
-    <!-- PARTIE DROITE : LA CARTE -->
-    <div id="map"></div>
-
-    <!-- Scripts JavaScript obligatoires -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
-    
-    <!-- L'AJOUT EST LÀ : Connexion à ton fichier app.js -->
-    <script src="app.js"></script>
-
+    <!-- Script principal -->
+    <script src="script.js"></script>
 </body>
 </html>
