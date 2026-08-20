@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function getTokyoDateString() {
-        // MODE TEST: Forcé au 27 novembre pour prévisualisation de la page d'accueil
-        return "2026-11-27";
+        const options = { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" };
+        const formatter = new Intl.DateTimeFormat("en-CA", options);
+        return formatter.format(new Date());
     }
 
     function renderTodaySchedule() {
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const titleEl = document.getElementById("today-title");
         const subTitleEl = document.getElementById("today-subtitle");
 
-        const daySchedule = appData.schedule.find(s => s.date === todayStr);
+        const daySchedule = (appData.schedule || []).find(s => s.date === todayStr);
 
         if (!daySchedule) {
             titleEl.textContent = "Aucune activité prévue";
@@ -202,7 +203,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     }
                 }
             } catch (e) {
-                // Utilisation du cache ou fallback data.json silencieuse
             }
         }
 
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const lexiconSearch = document.getElementById("lexicon-search");
 
     function renderLexicon(filter = "") {
-        const filtered = appData.lexicon.filter(item =>
+        const filtered = (appData.lexicon || []).filter(item =>
             item.fr.toLowerCase().includes(filter.toLowerCase()) ||
             item.jp.toLowerCase().includes(filter.toLowerCase())
         );
