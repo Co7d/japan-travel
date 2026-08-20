@@ -17,9 +17,6 @@
     {"id":"osaka","cityKey":"osaka","dates":"29 Nov — 02 Déc • 3 nuits","label":"Osaka"},
     {"id":"tokyo_2","cityKey":"tokyo","dates":"02 Déc — 05 Déc • 3 nuits","label":"Tokyo (Fin)"}
   ],
-  "places": {
-PLACEHOLDER
-  },
   "schedule": [
     {"date":"2026-11-16","title":"Arrivée à Tokyo","cityKey":"tokyo","items":[{"time":"08:55","label":"Atterrissage Tokyo Haneda"},{"time":"14:00","label":"Check-in Hôtel Shinjuku"},{"time":"18:00","label":"Soirée à Omoide Yokocho"}]},
     {"date":"2026-11-27","title":"Temples & Arashiyama","cityKey":"kyoto","items":[{"time":"08:00","label":"Bambouseraie d'Arashiyama"},{"time":"10:30","label":"Temple Tenryu-ji"},{"time":"13:00","label":"Déjeuner Tonkatsu"},{"time":"15:30","label":"Kinkaku-ji (Pavillon d'Or)"},{"time":"19:00","label":"Dîner quartier Gion"}]}
