@@ -52,13 +52,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function getTokyoDateString() {
-        const now = new Date();
-        const options = { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" };
-        const parts = new Intl.DateTimeFormat("fr-CA", options).formatToParts(now);
-        const year = parts.find(p => p.type === "year").value;
-        const month = parts.find(p => p.type === "month").value;
-        const day = parts.find(p => p.type === "day").value;
-        return `${year}-${month}-${day}`;
+        // MODE TEST: Forcé au 27 novembre pour prévisualisation de la page d'accueil
+        return "2026-11-27";
     }
 
     function renderTodaySchedule() {
