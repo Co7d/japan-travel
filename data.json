@@ -1,143 +1,54 @@
 {
-  "defaultExchangeRate": 165.0,
-  "timeline": [
-    { "cityKey": "tokyo", "dates": "16 Nov — 20 Nov • 4 nuits" },
-    { "cityKey": "kawaguchiko", "dates": "20 Nov — 22 Nov • 2 nuits" },
-    { "cityKey": "kiso", "dates": "22 Nov — 23 Nov • 1 nuit" },
-    { "cityKey": "kyoto", "dates": "23 Nov — 28 Nov • 5 nuits" },
-    { "cityKey": "hiroshima", "dates": "28 Nov — 29 Nov • 1 nuit" },
-    { "cityKey": "osaka", "dates": "29 Nov — 02 Déc • 3 nuits" },
-    { "cityKey": "tokyo", "dates": "02 Déc — 05 Déc • 3 nuits" }
-  ],
-  "cities": {
-    "tokyo": {
-      "name": "Tokyo",
-      "icon": "🗼",
-      "vibe": "Urbain / Shopping",
-      "theme": "tokyo",
-      "hotels": [
-        {
-          "name": "Shinjuku Washington Hotel (Début du séjour)",
-          "desc": "Quartier Shinjuku",
-          "taxi": "〒160-8336 東京都新宿区西新宿3-2-9 新宿ワシントンホテル",
-          "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
-        },
-        {
-          "name": "Hotel Gracery Shinjuku (Fin du séjour)",
-          "desc": "Tête de Godzilla — Shinjuku",
-          "taxi": "〒160-0021 東京都新宿区歌舞伎町1-19-1",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "activities": [
-        {
-          "name": "Shibuya Sky",
-          "desc": "Vue panoramique 360°",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "food": [
-        {
-          "name": "Ichiran Ramen",
-          "desc": "Ramen Tonkotsu",
-          "map": "https://maps.apple.com"
-        }
-      ]
-    },
-    "kawaguchiko": {
-      "name": "Kawaguchiko",
-      "icon": "🗻",
-      "vibe": "Nature & Mont Fuji",
-      "theme": "kawaguchiko",
-      "hotels": [
-        {
-          "name": "Mizno Hotel",
-          "desc": "Sur les hauteurs — Vue lac et Fuji",
-          "taxi": "〒401-0303 山梨県南都留郡富士河口湖町浅川187 ミズノホテル",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "activities": [],
-      "food": []
-    },
-    "kiso": {
-      "name": "Vallée de Kiso",
-      "icon": "🌲",
-      "vibe": "Histoire & Rando",
-      "theme": "kiso",
-      "hotels": [
-        {
-          "name": "Guest House Hanaya",
-          "desc": "Otsumago — Hameau historique",
-          "taxi": "〒399-5302 長野県木曽郡南木曽町吾妻2185-1 花屋",
-          "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
-        }
-      ],
-      "activities": [],
-      "food": []
-    },
-    "kyoto": {
-      "name": "Kyoto",
-      "icon": "⛩️",
-      "vibe": "Tradition & Temples",
-      "theme": "kyoto",
-      "hotels": [
-        {
-          "name": "Agora Place Kyoto Nijo",
-          "desc": "Quartier Nijo",
-          "taxi": "〒604-8381 京都府京都市中京区西ノ京職人町1-1 アゴラプレイス京都二条",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "activities": [],
-      "food": []
-    },
-    "hiroshima": {
-      "name": "Hiroshima",
-      "icon": "🕊️",
-      "vibe": "Histoire & Culture",
-      "theme": "hiroshima",
-      "hotels": [
-        {
-          "name": "Livemax Resort Akimiyajima",
-          "desc": "Île de Miyajima",
-          "taxi": "〒739-0518 広島県廿日市市宮島町大江浦 リブマックスリゾート安芸宮島",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "activities": [],
-      "food": []
-    },
-    "osaka": {
-      "name": "Osaka",
-      "icon": "🐙",
-      "vibe": "Gastronomie & Street Food",
-      "theme": "osaka",
-      "hotels": [
-        {
-          "name": "Ruka Hotel Tennoji",
-          "desc": "Quartier Tennoji",
-          "taxi": "〒543-0056 大阪府大阪市天王寺区堀越町10-12",
-          "map": "https://maps.apple.com"
-        }
-      ],
-      "activities": [],
-      "food": []
-    }
-  },
-  "schedule": [
+  "lieux": [
     {
-      "date": "2026-11-16",
-      "title": "Titre de la journée (Modèle à copier)",
-      "cityKey": "tokyo",
-      "items": [
-        { "time": "00:00", "label": "Activité" }
-      ]
+      "id": "shibuya_sky",
+      "nom": "Shibuya Sky",
+      "ville": "Tokyo",
+      "categorie": "Lieux & Visites",
+      "lat": 35.6585,
+      "lng": 139.7013,
+      "adresse": "Shibuya, Tokyo"
+    },
+    {
+      "id": "sensoji",
+      "nom": "Temple Senso-ji",
+      "ville": "Tokyo",
+      "categorie": "Lieux & Visites",
+      "lat": 35.7148,
+      "lng": 139.7967,
+      "adresse": "Asakusa, Tokyo"
+    },
+    {
+      "id": "osaka_chateau",
+      "nom": "Château d'Osaka",
+      "ville": "Osaka",
+      "categorie": "Lieux & Visites",
+      "lat": 34.6873,
+      "lng": 135.5262,
+      "adresse": "Chuo Ward, Osaka"
+    },
+    {
+      "id": "dotonbori",
+      "nom": "Dotonbori Street Food",
+      "ville": "Osaka",
+      "categorie": "Restaurants",
+      "lat": 34.6687,
+      "lng": 135.5013,
+      "adresse": "Dotonbori, Osaka"
     }
   ],
-  "lexicon": [
-    { "cat": "Général", "fr": "Bonjour", "jp": "Konnichiwa" },
-    { "cat": "Général", "fr": "Merci (beaucoup)", "jp": "Arigatō gozaimasu" },
-    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" }
+  "planning": [
+    {
+      "jour": "Jour 1",
+      "titre": "Arrivée & Exploration",
+      "ville": "Tokyo",
+      "lieuxIds": ["shibuya_sky", "sensoji"]
+    },
+    {
+      "jour": "Jour 2",
+      "titre": "Découverte culinaire",
+      "ville": "Osaka",
+      "lieuxIds": ["osaka_chateau", "dotonbori"]
+    }
   ]
 }
