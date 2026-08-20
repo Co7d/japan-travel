@@ -1,1 +1,30 @@
-__PLACEHOLDER__
+{
+  "defaultExchangeRate": 165.0,
+  "cities": {
+    "tokyo": {"name":"Tokyo","icon":"🗼","vibe":"Urbain / Shopping","theme":"tokyo","dates":"16 Nov — 20 Nov • 4 nuits"},
+    "kawaguchiko": {"name":"Kawaguchiko","icon":"🗻","vibe":"Nature & Mont Fuji","theme":"kawaguchiko","dates":"20 Nov — 22 Nov • 2 nuits"},
+    "kiso": {"name":"Vallée de Kiso","icon":"🌲","vibe":"Histoire & Rando","theme":"kiso","dates":"22 Nov — 23 Nov • 1 nuit"},
+    "kyoto": {"name":"Kyoto","icon":"⛩️","vibe":"Tradition & Temples","theme":"kyoto","dates":"23 Nov — 28 Nov • 5 nuits"},
+    "hiroshima": {"name":"Hiroshima / Miyajima","icon":"🕊️","vibe":"Histoire & Culture","theme":"hiroshima","dates":"28 Nov — 29 Nov • 1 nuit"},
+    "osaka": {"name":"Osaka","icon":"🐙","vibe":"Gastronomie & Street Food","theme":"osaka","dates":"29 Nov — 02 Déc • 3 nuits"}
+  },
+  "itinerary": [
+    {"id":"tokyo_1","cityKey":"tokyo","dates":"16 Nov — 20 Nov • 4 nuits","label":"Tokyo"},
+    {"id":"kawaguchiko","cityKey":"kawaguchiko","dates":"20 Nov — 22 Nov • 2 nuits","label":"Kawaguchiko"},
+    {"id":"kiso","cityKey":"kiso","dates":"22 Nov — 23 Nov • 1 nuit","label":"Vallée de Kiso"},
+    {"id":"kyoto","cityKey":"kyoto","dates":"23 Nov — 28 Nov • 5 nuits","label":"Kyoto"},
+    {"id":"hiroshima","cityKey":"hiroshima","dates":"28 Nov — 29 Nov • 1 nuit","label":"Hiroshima / Miyajima"},
+    {"id":"osaka","cityKey":"osaka","dates":"29 Nov — 02 Déc • 3 nuits","label":"Osaka"},
+    {"id":"tokyo_2","cityKey":"tokyo","dates":"02 Déc — 05 Déc • 3 nuits","label":"Tokyo (Fin)"}
+  ],
+  "places": {
+PLACEHOLDER
+  },
+  "schedule": [
+    {"date":"2026-11-16","title":"Arrivée à Tokyo","cityKey":"tokyo","items":[{"time":"08:55","label":"Atterrissage Tokyo Haneda"},{"time":"14:00","label":"Check-in Hôtel Shinjuku"},{"time":"18:00","label":"Soirée à Omoide Yokocho"}]},
+    {"date":"2026-11-27","title":"Temples & Arashiyama","cityKey":"kyoto","items":[{"time":"08:00","label":"Bambouseraie d'Arashiyama"},{"time":"10:30","label":"Temple Tenryu-ji"},{"time":"13:00","label":"Déjeuner Tonkatsu"},{"time":"15:30","label":"Kinkaku-ji (Pavillon d'Or)"},{"time":"19:00","label":"Dîner quartier Gion"}]}
+  ],
+  "lexicon": [
+    {"cat":"Général","fr":"Bonjour","jp":"Konnichiwa"},{"cat":"Général","fr":"Merci (beaucoup)","jp":"Arigatō gozaimasu"},{"cat":"Général","fr":"S'il vous plaît","jp":"Onegashimasu"},{"cat":"Général","fr":"Pardon / Excusez-moi","jp":"Sumimasen"},{"cat":"Général","fr":"Oui / Non","jp":"Hai / Iie"},{"cat":"Général","fr":"Où est... ?","jp":"... wa doko desu ka ?"},{"cat":"Resto","fr":"L'addition s'il vous plaît","jp":"Okanjou o onegashimasu"},{"cat":"Resto","fr":"C'était délicieux","jp":"Gochisousama deshita"},{"cat":"Resto","fr":"Avez-vous un menu en anglais ?","jp":"Eigo no メニュー wa arimasu ka ?"},{"cat":"Resto","fr":"Eau s'il vous plaît","jp":"Mizu onegashimasu"},{"cat":"Achats","fr":"Combien ça coûte ?","jp":"Kore wa ikura desu ka ?"},{"cat":"Achats","fr":"Puis-je payer par carte ?","jp":"Kareeto de haraemasu ka ?"},{"cat":"Transport","fr":"Gare","jp":"Eki"},{"cat":"Transport","fr":"Où se trouve la station de métro ?","jp":"Chikatetsu no eki wa doko desu ka ?"},{"cat":"Urgences","fr":"Aidez-moi s'il vous plaît","jp":"Tasukete kudasai"},{"cat":"Urgences","fr":"Où sont les toilettes ?","jp":"Toire wa doko desu ka ?"}
+  ]
+}
