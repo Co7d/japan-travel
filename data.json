@@ -114,6 +114,23 @@
       ],
       "activities": [],
       "food": []
+    },
+    "tokyo_return": {
+      "name": "Tokyo (Fin)",
+      "icon": "🏙️",
+      "vibe": "Derniers achats & Départ",
+      "dates": "02 Déc — 05 Déc • 3 nuits",
+      "theme": "tokyo",
+      "hotels": [
+        {
+          "name": "Hotel Gracery Shinjuku",
+          "desc": "Tête de Godzilla — Shinjuku",
+          "taxi": "〒160-0021 東京都新宿区歌舞伎町1-19-1",
+          "map": "https://maps.apple.com"
+        }
+      ],
+      "activities": [],
+      "food": []
     }
   },
   "schedule": [
@@ -122,15 +139,40 @@
       "title": "Arrivée à Tokyo",
       "cityKey": "tokyo",
       "items": [
-        { "time": "08:55", "label": "Atterrissage Tokyo" },
-        { "time": "14:00", "label": "Check-in Hôtel" },
-        { "time": "18:00", "label": "Exploration initiale" }
+        { "time": "08:55", "label": "Atterrissage Tokyo Haneda" },
+        { "time": "14:00", "label": "Check-in Hôtel Shinjuku" },
+        { "time": "18:00", "label": "Soirée à Omoide Yokocho" }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "title": "Temples & Arashiyama",
+      "cityKey": "kyoto",
+      "items": [
+        { "time": "08:00", "label": "Bambouseraie d'Arashiyama" },
+        { "time": "10:30", "label": "Temple Tenryu-ji" },
+        { "time": "13:00", "label": "Déjeuner Tonkatsu" },
+        { "time": "15:30", "label": "Kinkaku-ji (Pavillon d'Or)" },
+        { "time": "19:00", "label": "Dîner quartier Gion" }
       ]
     }
   ],
   "lexicon": [
     { "cat": "Général", "fr": "Bonjour", "jp": "Konnichiwa" },
-    { "cat": "Général", "fr": "Merci", "jp": "Arigatō gozaimasu" },
-    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" }
+    { "cat": "Général", "fr": "Merci (beaucoup)", "jp": "Arigatō gozaimasu" },
+    { "cat": "Général", "fr": "S'il vous plaît", "jp": "Onegashimasu" },
+    { "cat": "Général", "fr": "Pardon / Excusez-moi", "jp": "Sumimasen" },
+    { "cat": "Général", "fr": "Oui / Non", "jp": "Hai / Iie" },
+    { "cat": "Général", "fr": "Où est... ?", "jp": "... wa doko desu ka ?" },
+    { "cat": "Resto", "fr": "L'addition s'il vous plaît", "jp": "Okanjou o onegashimasu" },
+    { "cat": "Resto", "fr": "C'était délicieux", "jp": "Gochisousama deshita" },
+    { "cat": "Resto", "fr": "Avez-vous un menu en anglais ?", "jp": "Eigo noメニュー wa arimasu ka ?" },
+    { "cat": "Resto", "fr": "Eau s'il vous plaît", "jp": "Oshibori / Mizu onegashimasu" },
+    { "cat": "Achats", "fr": "Combien ça coûte ?", "jp": "Kore wa ikura desu ka ?" },
+    { "cat": "Achats", "fr": "Puis-je payer par carte ?", "jp": "Kareeto de haraemasu ka ?" },
+    { "cat": "Transport", "fr": "Gare", "jp": "Eki" },
+    { "cat": "Transport", "fr": "Où se trouve la station de métro ?", "jp": "Chikatetsu no eki wa doko desu ka ?" },
+    { "cat": "Urgences", "fr": "Aidez-moi s'il vous plaît", "jp": "Tasukete kudasai" },
+    { "cat": "Urgences", "fr": "Où sont les toilettes ?", "jp": "Toire wa doko desu ka ?" }
   ]
 }
