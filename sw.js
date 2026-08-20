@@ -1,54 +1,56 @@
-const CACHE_NAME = 'pwa-app-v1';
-const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/script.js',
-  '/style.css',
-  '/manifest.json'
+const CACHE_NAME = "japan-2026-v4";
+const ASSETS = [
+    "./",
+    "./index.html",
+    "./style.css",
+    "./script.js",
+    "./data.json",
+    "./manifest.json",
+    "./itineraire.png",
+    "./icon.png"
 ];
 
-// Installation : Mise en cache des fichiers de base
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
-  );
-  self.skipWaiting();
+self.addEventListener("install", (e) => {
+    e.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    );
 });
 
-// Activation : Nettoyage des anciens caches si besoin
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      );
-    })
-  );
-  self.clients.claim();
+self.addEventListener("activate", (e) => {
+    e.waitUntil(
+        caches.keys().then((keys) => {
+            return Promise.all(
+                keys.map((key) => {
+                    if (key !== CACHE_NAME) {
+                        return caches.delete(key);
+                    }
+                })
+            );
+        }).then(() => self.clients.claim())
+    );
 });
 
-// Interception des requêtes (Stratégie: Cache first, network fallback)
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((response) => {
-        // Ne met en cache que les réponses valides
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-        return response;
-      });
-    }).catch(() => {
-      // Optionnel : afficher une page offline personnalisée si la requête échoue
-    })
-  );
+self.addEventListener("fetch", (e) => {
+    if (e.request.method !== "GET") return;
+
+    if (e.request.url.includes("open.er-api.com")) {
+        return;
+    }
+
+    e.respondWith(
+        caches.match(e.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(e.request).then((networkResponse) => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseToCache = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(e.request, responseToCache);
+                    });
+                }
+                return networkResponse;
+            });
+        })
+    );
 });
