@@ -13,11 +13,11 @@
 <body data-theme="tokyo">
 
     <div class="dots-indicator" id="dots-container">
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <span class="dot" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot active" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
     </div>
 
     <main class="app-swipe-container" id="swipe-container">
@@ -34,12 +34,12 @@
         </section>
 
         <section class="tab-page" id="page-timeline">
-    <div class="content-wrapper">
-        <h1>🗺️ Itinéraire</h1>
-        <p class="subtitle">Vue d'ensemble du voyage</p>
-        <div class="modern-timeline" id="timeline-list"></div>
-    </div>
-</section>
+            <div class="content-wrapper">
+                <h1>🗺️ Itinéraire</h1>
+                <p class="subtitle">Vue d'ensemble du voyage</p>
+                <div class="modern-timeline" id="timeline-list"></div>
+            </div>
+        </section>
 
         <section class="tab-page" id="page-today">
             <div class="content-wrapper">
@@ -52,14 +52,7 @@
 
         <section class="tab-page" id="page-city">
             <div class="content-wrapper">
-                <div class="city-selector-pills" id="city-pills">
-                    <button class="pill active" data-city="tokyo">Tokyo</button>
-                    <button class="pill" data-city="kawaguchiko">Kawaguchiko</button>
-                    <button class="pill" data-city="kiso">Kiso</button>
-                    <button class="pill" data-city="kyoto">Kyoto</button>
-                    <button class="pill" data-city="hiroshima">Hiroshima</button>
-                    <button class="pill" data-city="osaka">Osaka</button>
-                </div>
+                <div class="city-selector-pills" id="city-pills"></div>
 
                 <div class="city-header">
                     <span class="vibe-badge" id="current-city-vibe"></span>

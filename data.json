@@ -1,4 +1,5 @@
 {
+  "defaultExchangeRate": 165.0,
   "cities": {
     "tokyo": {
       "name": "Tokyo",
@@ -10,6 +11,7 @@
         {
           "name": "Shinjuku Washington Hotel",
           "desc": "Quartier Shinjuku",
+          "taxi": "〒160-8336 東京都新宿区西新宿3-2-9 新宿ワシントンホテル",
           "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
         }
       ],
@@ -38,6 +40,7 @@
         {
           "name": "Mizno Hotel",
           "desc": "Sur les hauteurs — Vue lac et Fuji",
+          "taxi": "〒401-0303 山梨県南都留郡富士河口湖町浅川187 ミズノホテル",
           "map": "https://maps.apple.com"
         }
       ],
@@ -54,6 +57,7 @@
         {
           "name": "Guest House Hanaya",
           "desc": "Otsumago — Hameau historique",
+          "taxi": "〒399-5302 長野県木曽郡南木曽町吾妻2185-1 花屋",
           "map": "https://maps.apple/p/zb-oVDKkgUHWB.z"
         }
       ],
@@ -70,6 +74,7 @@
         {
           "name": "Agora Place Kyoto Nijo",
           "desc": "Quartier Nijo",
+          "taxi": "〒604-8381 京都府京都市中京区西ノ京職人町1-1 アゴラプレイス京都二条",
           "map": "https://maps.apple.com"
         }
       ],
@@ -86,6 +91,7 @@
         {
           "name": "Livemax Resort Akimiyajima",
           "desc": "Île de Miyajima",
+          "taxi": "〒739-0518 広島県廿日市市宮島町大江浦 リブマックスリゾート安芸宮島",
           "map": "https://maps.apple.com"
         }
       ],
@@ -102,6 +108,7 @@
         {
           "name": "Ruka Hotel Tennoji",
           "desc": "Quartier Tennoji",
+          "taxi": "〒543-0056 大阪府大阪市天王寺区堀越町10-12",
           "map": "https://maps.apple.com"
         }
       ],
