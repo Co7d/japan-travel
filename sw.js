@@ -1,56 +1,51 @@
-const CACHE_NAME = "japan-2026-v4";
-const ASSETS = [
-    "./",
-    "./index.html",
-    "./style.css",
-    "./script.js",
-    "./data.json",
-    "./manifest.json",
-    "./itineraire.png",
-    "./icon.png"
+const CACHE_NAME = "japan-2026-v8";
+const APP_SHELL = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./places.js",
+  "./planning_places.js",
+  "./planning_places_more.js",
+  "./data.json",
+  "./manifest.json",
+  "./icon.png"
 ];
 
-self.addEventListener("install", (e) => {
-    e.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
-    );
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(APP_SHELL))
+      .then(() => self.skipWaiting())
+  );
 });
 
-self.addEventListener("activate", (e) => {
-    e.waitUntil(
-        caches.keys().then((keys) => {
-            return Promise.all(
-                keys.map((key) => {
-                    if (key !== CACHE_NAME) {
-                        return caches.delete(key);
-                    }
-                })
-            );
-        }).then(() => self.clients.claim())
-    );
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+      .then(() => self.clients.claim())
+  );
 });
 
-self.addEventListener("fetch", (e) => {
-    if (e.request.method !== "GET") return;
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
+  if (event.request.url.includes("api.frankfurter.dev")) return;
 
-    if (e.request.url.includes("open.er-api.com")) {
-        return;
-    }
+  const requestUrl = new URL(event.request.url);
+  if (requestUrl.origin !== location.origin) return;
 
-    e.respondWith(
-        caches.match(e.request).then((cachedResponse) => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(e.request).then((networkResponse) => {
-                if (networkResponse && networkResponse.status === 200) {
-                    const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(e.request, responseToCache);
-                    });
-                }
-                return networkResponse;
-            });
-        })
-    );
+  const isDocument = event.request.mode === "navigate" || requestUrl.pathname.endsWith("/index.html") || requestUrl.pathname.endsWith("/data.json");
+
+  event.respondWith(
+    isDocument
+      ? fetch(event.request).then(response => {
+          if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
+          return response;
+        }).catch(() => caches.match(event.request).then(cached => cached || caches.match("./index.html")))
+      : caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
+          if (response.ok) caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
+          return response;
+        }))
+  );
 });
