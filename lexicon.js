@@ -1,4 +1,4 @@
-/* Japan 2026 — lexique data module. */
+/* Japan 2026 — lexicon data module. No runtime patch files. */
 const JAPAN_LEXICON = [
   ['Salutations','Bonjour / bonsoir','こんにちは / こんばんは'],['Salutations','Bonjour (matin)','おはようございます'],['Salutations','Au revoir','さようなら'],
   ['Politesse','Merci','ありがとうございます'],['Politesse','Merci beaucoup','どうもありがとうございます'],['Politesse','S’il vous plaît / je vous en prie','お願いします'],['Politesse','Excusez-moi / pardon','すみません'],['Politesse','Désolé','ごめんなさい'],['Politesse','Oui','はい'],['Politesse','Non','いいえ'],['Politesse','D’accord / compris','わかりました'],['Politesse','Je ne comprends pas','わかりません'],
@@ -11,27 +11,26 @@ const JAPAN_LEXICON = [
   ['Japon','Gare JR','JR駅'],['Japon','Carte Suica','Suica'],['Japon','Konbini (supérette)','コンビニ'],['Japon','Distributeur automatique','自動販売機'],['Japon','Onsen','温泉'],['Japon','Ryokan','旅館'],['Japon','Temple bouddhiste','お寺'],['Japon','Sanctuaire shinto','神社'],['Japon','Torii','鳥居'],['Japon','Omikuji (prédiction)','おみくじ'],['Japon','Omamori (amulette)','お守り'],['Japon','Attention / danger','危険'],['Japon','Interdit','禁止'],['Japon','Merci pour le repas','ごちそうさまでした'],['Japon','Bon appétit','いただきます']
 ];
 
-/* The existing runtime reads data.lexicon. Keep this vocabulary separate from the large itinerary JSON. */
-const japanOriginalFetch = window.fetch.bind(window);
-window.fetch = async (...args) => {
-  const response = await japanOriginalFetch(...args);
-  const url = String(args[0] ?? '');
-  if (!url.endsWith('data.json')) return response;
-  const payload = await response.json();
-  payload.lexicon = JAPAN_LEXICON;
-  return new Response(JSON.stringify(payload), {status:response.status,statusText:response.statusText,headers:{'Content-Type':'application/json'}});
-};
-
-/* Keep planning place actions compact: show the place name, not "Ouvrir dans Maps". */
 window.addEventListener('DOMContentLoaded', () => {
-  const updatePlanningPlaceLabels = () => {
+  // app.js performs its initial render first; this module then restores the standalone lexicon.
+  setTimeout(() => {
+    const target = document.getElementById('lexicon-container');
+    const input = document.getElementById('lexicon-search');
+    if (!target || !input) return;
+    const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const draw = () => {
+      const q = input.value.trim().toLowerCase();
+      target.innerHTML = JAPAN_LEXICON.filter(x => x.join(' ').toLowerCase().includes(q)).map(x =>
+        `<div class="lexicon-row"><div><span class="lex-fr">${esc(x[1])}</span><span class="lex-cat">${esc(x[0])}</span></div><span class="lex-jp">${esc(x[2])}</span></div>`
+      ).join('');
+    };
+    input.oninput = draw;
+    draw();
+
+    // Replace the map label with the place name without touching the map-opening behavior.
     document.querySelectorAll('.schedule-map[data-place-id]').forEach(button => {
-      const place = places?.[button.dataset.placeId];
-      if (place) button.textContent = place.name;
+      const place = typeof places !== 'undefined' ? places[button.dataset.placeId] : null;
+      if (place?.name) button.textContent = place.name;
     });
-  };
-  const observer = new MutationObserver(updatePlanningPlaceLabels);
-  const target = document.getElementById('planning-container');
-  if (target) observer.observe(target, {childList:true, subtree:true});
-  updatePlanningPlaceLabels();
+  }, 0);
 });
