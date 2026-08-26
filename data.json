@@ -27,7 +27,7 @@
   },
   "schedule":[
     {"date":"2026-11-16","title":"Shibuya & Shinjuku","cityKey":"tokyo","items":[
-      {"slot":"Matin","time":"09h00","label":"Arrivée à Haneda (T3)","description":"Trajet vers Shinjuku et dépôt des bagages à l'hôtel.","place":"Haneda Airport Terminal 3 Station","transport":{"mode":"Train · Variante A ou B · Suica","duration":"51 min / 54 min"}},
+      {"slot":"Matin","label":"Arrivée à Haneda (T3)","description":"Trajet vers Shinjuku et dépôt des bagages à l'hôtel.","place":"Haneda Airport Terminal 3 Station","transport":{"mode":"Train · Variante A ou B · Suica","duration":"51 min / 54 min"}},
       {"slot":"Après-midi","label":"Carrefour de Shibuya","description":"Photo avec Hachiko, Tower Records et Shibuya Parco (Pokémon Center & Statue Mewtwo).","place":"Shibuya Crossing","pois":["Hachiko Statue","Tower Records Shibuya","Shibuya Parco"]},
       {"slot":"Fin d'après-midi","label":"Observatoire Shibuya Sky","description":"Coucher du soleil sur rooftop.","place":"Shibuya Sky"},
       {"slot":"Soirée","label":"Omoide Yokocho","description":"Dîner à Omoide Yokocho, session au Shinjuku Batting Center dans Kabukicho puis verre dans les micro-bars de Golden Gai.","place":"Omoide Yokocho","pois":["Shinjuku Batting Center","Shinjuku Golden Gai"]}
