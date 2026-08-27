@@ -121,18 +121,18 @@
       {"slot":"Fin d'après-midi","label":"Umeda Sky Building","description":"Observatoire au coucher du soleil.","place":"Umeda Sky Building"},
       {"slot":"Soirée","label":"Dotonbori & Hozenji-yokocho","description":"Immersion dans Dotonbori et Hozenji-yokocho. Option croisière Tombori River Cruise (20 min), puis dîner libre.","place":"Dōtonbori"}
     ]},
-    {"date":"2026-11-30","title":"Universal Studios Japan","cityKey":"osaka","items":[
-      {"slot":"Matin","label":"Osaka → Universal Studios Japan","description":"Trajet vers USJ : Osaka Loop Line → JR Yumesaki Line.","place":"Universal Studios Japan","transport":{"mode":"Train · Osaka Loop Line → JR Yumesaki Line · PASS JR","duration":"24 min"}},
-      {"slot":"Après-midi","label":"Universal Studios Japan","description":"Journée complète : Super Nintendo World, Harry Potter…","place":"Universal Studios Japan"},
-      {"slot":"Soirée","label":"Retour depuis USJ","description":"Temps libre, dîner libre à Universal Citywalk ou retour en ville.","transport":{"mode":"Train · JR Yumesaki Line → Osaka Loop Line · PASS JR","duration":"19 min"}}
-    ]},
-    {"date":"2026-12-01","title":"Ikeda, Osaka & Shinsekai","cityKey":"osaka","items":[
-      {"slot":"Matin","label":"CupNoodles Museum à Ikeda","description":"Visite du CupNoodles Museum à Ikeda.","place":"Musée des Nouilles Instantanées de Momofuku Ando"},
+    {"date":"2026-11-30","title":"Ikeda, Osaka & Shinsekai","cityKey":"osaka","items":[
       {"slot":"Matin","label":"Château d'Osaka","description":"Parc, douves et donjon.","place":"Château d'Osaka"},
       {"slot":"Midi","label":"Déjeuner libre","description":"Déjeuner libre."},
+      {"slot":"Après-midi","label":"CupNoodles Museum à Ikeda","description":"Visite du CupNoodles Museum à Ikeda.","place":"Musée des Nouilles Instantanées de Momofuku Ando"},
       {"slot":"Après-midi","label":"Namba Yasaka-jinja","description":"Sanctuaire avec sa sculpture géante en tête de lion.","place":"Namba Yasaka Jinja"},
       {"slot":"Fin d'après-midi","label":"Shinsekai","description":"Quartier rétro de Shinsekai et montée à la tour Tsutenkaku.","place":"Shinsekai","pois":["Tsūtenkaku"]},
       {"slot":"Soirée","label":"Dîner libre","description":"Spécialités à Shinsekai (Kushikatsu)."}
+    ]},
+    {"date":"2026-12-01","title":"Universal Studios Japan","cityKey":"osaka","items":[
+      {"slot":"Matin","label":"Osaka → Universal Studios Japan","description":"Trajet vers USJ : Osaka Loop Line → JR Yumesaki Line.","place":"Universal Studios Japan","transport":{"mode":"Train · Osaka Loop Line → JR Yumesaki Line · PASS JR","duration":"24 min"}},
+      {"slot":"Après-midi","label":"Universal Studios Japan","description":"Journée complète : Super Nintendo World, Harry Potter…","place":"Universal Studios Japan"},
+      {"slot":"Soirée","label":"Retour depuis USJ","description":"Temps libre, dîner libre à Universal Citywalk ou retour en ville.","transport":{"mode":"Train · JR Yumesaki Line → Osaka Loop Line · PASS JR","duration":"19 min"}}
     ]},
     {"date":"2026-12-02","title":"Osaka → Tokyo","cityKey":"tokyo","items":[
       {"slot":"Matin","label":"Check-out de l'hôtel","description":"Trajet vers la gare de Shin-Osaka, direction Tokyo.","transport":{"mode":"Shinkansen · Suica","duration":"2 h 19"}},
