@@ -191,7 +191,7 @@ const PLACE_ROWS = [
   ["Universal Studios Japan", "osaka", "activity", 34.6656768, 135.4323185],
   ["Universal CityWalk Osaka", "osaka", "shopping", 34.6685808, 135.4377782],
   ["Gare de Shinjuku", "tokyo", "transport", 35.68959645, 139.700478185062],
-  ["Nagiso", "kiso", "activity", 35.5652667, 137.5930944],
+  ["Hanaya", "kiso", "activity", 35.5652667, 137.5930944],
   ["Gare de Nara", "kyoto", "transport", 34.681332, 135.818245],
   ["Jardin Momiji-en", "kyoto", "nature", 35.0311737, 135.7351227],
   ["JR Nishi-Hiroshima", "hiroshima", "transport", 34.398389, 132.427978],
