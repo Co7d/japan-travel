@@ -28,7 +28,7 @@
   "schedule":[
     {"date":"2026-11-16","title":"Shibuya & Shinjuku","cityKey":"tokyo","items":[
       {"slot":"Matin","label":"Arrivée à Haneda (T3)","description":"Trajet vers Shinjuku et dépôt des bagages à l'hôtel.","place":"Haneda Airport Terminal 3 Station","transport":{"mode":"Train · Variante A ou B · Suica","duration":"51 min / 54 min"}},
-      {"slot":"Après-midi","label":"Carrefour de Shibuya","description":"Photo avec Hachiko, Tower Records et Shibuya Parco (Pokémon Center & Statue Mewtwo).","place":"Shibuya Crossing","pois":["Hachiko Statue","Tower Records Shibuya","Shibuya Parco"]},
+      {"slot":"Après-midi","label":"Carrefour de Shibuya","description":"Hachiko, Tower Records et Shibuya Parco.","place":"Shibuya Crossing","pois":["Hachiko Statue","Tower Records Shibuya","Shibuya Parco"]},
       {"slot":"Fin d'après-midi","label":"Observatoire Shibuya Sky","description":"Coucher du soleil sur rooftop.","place":"Shibuya Sky"},
       {"slot":"Soirée","label":"Omoide Yokocho","description":"Dîner à Omoide Yokocho, session au Shinjuku Batting Center dans Kabukicho puis verre dans les micro-bars de Golden Gai.","place":"Omoide Yokocho","pois":["Shinjuku Batting Center","Shinjuku Golden Gai"]}
     ]},
@@ -67,7 +67,7 @@
       {"slot":"Matin","label":"Départ de Kawaguchiko","description":"Matinée libre puis départ en voiture avant midi vers Narai.","transport":{"mode":"Voiture · Suica","duration":"2 h 14 · 146 km"}},
       {"slot":"Midi","label":"Narai","description":"Visite du village puis déjeuner sur place : soba locale.","place":"Narai-juku"},
       {"slot":"Après-midi","label":"Route vers Nagiso","description":"Départ de Narai et route vers Nagiso.","transport":{"mode":"Voiture","duration":"1 h 13 · 61,3 km"}},
-      {"slot":"Fin d'après-midi","label":"Arrivée à l'Airbnb","description":"Installation. Repas à 18h00 sur place.","place":"Nagiso"},
+      {"slot":"Fin d'après-midi","label":"Arrivée à l'Airbnb","description":"Installation. Repas à 18h00 sur place.","place":"Hanaya"},
       {"slot":"Soirée","label":"Balade à Tsumago","description":"Balade dans la lumière dorée, ambiance calme.","place":"Tsumago-juku"}
     ]},
     {"date":"2026-11-23","title":"Tsumago → Magome → Nagoya → Kyoto","cityKey":"kyoto","items":[
