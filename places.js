@@ -120,7 +120,7 @@ const PLACE_ROWS = [
   ["Akasaka Station", "tokyo", "transport", 35.6722117, 139.73638],
   ["Narai-juku", "kiso", "activity", 35.9682997, 137.8145375],
   ["Yoyogi-kōen", "tokyo", "nature", 35.6700649, 139.6949656],
-  ["Houkan-ji", "kyoto", "activity", 34.998558, 139.7792358],
+  ["Houkan-ji", "kyoto", "activity", 34.998558, 135.7792358],
   ["Parfum Satori", "tokyo", "activity", 35.66340880956641, 139.73628195308092],
   ["Hiroshima Orizuru Tower", "hiroshima", "activity", 34.3956868, 132.4547167],
   ["Gare de Kyoto", "kyoto", "transport", 34.985849, 135.7587667],
