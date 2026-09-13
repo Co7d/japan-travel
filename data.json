@@ -53,7 +53,7 @@
     {"date":"2026-11-20","title":"Shinjuku → Fuji","cityKey":"kawaguchiko","items":[
       {"slot":"Matin","label":"Check-out de l'hôtel Shinjuku Washington","description":"Check-out puis direction la Gare de Shinjuku.","place":"Shinjuku Washington Hotel"},
       {"slot":"Matin","label":"Fuji Excursion","description":"Trajet direct en train Fuji Excursion vers Kawaguchiko.","transport":{"mode":"Train · Fuji Excursion · Suica","duration":"2 h 01"}},
-      {"slot":"Midi","label":"Arrivée à Kawaguchiko","description":"Prise de la voiture de location puis direction le Mizno Hotel.","place":"Mizno Hotel","transport":{"mode":"Voiture","duration":"Trajet local"}},
+      {"slot":"Midi","label":"Arrivée à Kawaguchiko","description":"Prise de la voiture de location puis direction le Mizno Hotel.","place":"Mizno Hotel","pois":["Nippon Rent-a-Car Fujisan Kawaguchiko"],"transport":{"mode":"Voiture","duration":"Trajet local"}},
       {"slot":"Après-midi","label":"Mizno Hotel","description":"Check-in, réservation immédiate d'un créneau d'onsen privé, puis balade tranquille dans la zone sud (gare/village).","place":"Mizno Hotel"}
     ]},
     {"date":"2026-11-21","title":"Mont Fuji & rive nord","cityKey":"kawaguchiko","items":[
@@ -73,7 +73,7 @@
     {"date":"2026-11-23","title":"Tsumago → Magome → Nagoya → Kyoto","cityKey":"kyoto","items":[
       {"slot":"Matin","label":"Tsumago → Magome","description":"Avant 9h00 : petit-déjeuner, check-out, voiture laissée sur place. 8h00-12h00 : randonnée Tsumago → Magome (2-3h), puis visite et déjeuner à Magome.","place":"Tsumago-juku"},
       {"slot":"Midi","label":"Retour Magome → Tsumago","description":"12h50-13h15 : bus retour Magome → Tsumago (environ 20 min), puis récupération de la voiture.","place":"Magome-juku","transport":{"mode":"Bus · PASS JR","duration":"~20 min"}},
-      {"slot":"Après-midi","label":"Nagiso → Nagoya","description":"Vers 13h15 : environ 1h30 de route, direction Nagoya, puis restitution de la voiture à la gare JR Nagoya.","transport":{"mode":"Voiture","duration":"1 h 31 · 104 km"}},
+      {"slot":"Après-midi","label":"Nagiso → Nagoya","description":"Vers 13h15 : environ 1h30 de route, direction Nagoya, puis restitution de la voiture à la gare JR Nagoya.","place":"Nippon Rent-a-Car Nagoya","transport":{"mode":"Voiture","duration":"1 h 31 · 104 km"}},
       {"slot":"Après-midi","label":"Nagoya → Kyoto","description":"15h45-17h00 : Shinkansen Nagoya → Kyoto, arrivée à Kyoto vers 17h00.","transport":{"mode":"Shinkansen · Suica","duration":"34 min"}},
       {"slot":"Fin d'après-midi","label":"Arrivée à Kyoto","description":"Installation à l'hôtel Agora Place.","place":"Agora Place Kyoto Nijo"},
       {"slot":"Soirée","label":"Ninenzaka & Sannenzaka / Higashiyama","description":"Ruelles illuminées de Ninenzaka et Sannenzaka, Temple Kodai-ji et illuminations de nuit (fermeture 21h30). Dîner libre, ruelle de Pontocho ou canal Shirakawa.","place":"Kōdai-ji"}
