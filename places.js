@@ -202,6 +202,8 @@ const PLACE_ROWS = [
   ["Mori Art Museum", "tokyo", "museum", 35.6605056, 139.7290667],
   ["Tokyo City View", "tokyo", "activity", 35.6602598, 139.7250618],
   ["Roppongi Hills", "tokyo", "activity", 35.66022, 139.73005],
+  ["Nippon Rent-a-Car Fujisan Kawaguchiko", "kawaguchiko", "transport", 35.498398, 138.771096],
+  ["Nippon Rent-a-Car Nagoya", "kiso", "transport", 35.171476, 136.872780],
   ["The National Art Center", "tokyo", "museum", 35.66529, 139.72637],
 ];
 
