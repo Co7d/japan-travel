@@ -34,7 +34,7 @@
     ]},
     {"date":"2026-11-17","title":"Harajuku & Shinjuku","cityKey":"tokyo","items":[
       {"slot":"Matin","label":"Sanctuaire Meiji-jingu","description":"Sanctuaire Meiji-jingu et balade dans le parc de Yoyogi.","place":"Meiji-jingū","pois":["Yoyogi-kōen"]},
-      {"slot":"Après-midi","label":"Takeshita Street","description":"Friperies Kinji et Chicago, puis Harry Potter Shop Harajuku.","place":"Takeshita Street","pois":["Kinji Used Clothing Harajuku Branch","Chicago Inc.","Harry Potter Shop Harajuku"]},
+      {"slot":"Après-midi","label":"Takeshita Street","description":"Friperies Kinji et Chicago, puis Harry Potter Shop Harajuku.","place":"Takeshita Street","pois":["Kinji Used Clothing Harajuku Branch","Chicago Inc.","LIBERTY WALK TOKYO","Harry Potter Shop Harajuku"]},
       {"slot":"Fin d'après-midi","label":"Vue panoramique depuis la Mairie de Tokyo","description":"Vue panoramique gratuite depuis la Mairie de Tokyo (Tocho).","place":"Siège du gouvernement métropolitain de Tokyo"},
       {"slot":"Soirée","label":"Shopping high-tech / appareils photo d'occasion à Shinjuku","description":"Yodobashi et Map Camera.","place":"Yodobashi Caméra Shinjuku Nishiguchi","pois":["Map Camera"]}
     ]},
