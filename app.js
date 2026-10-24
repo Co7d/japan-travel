@@ -1,3 +1,4 @@
+/* Japan 2026 — application runtime. All geographic data lives in places.js. */
 document.addEventListener('DOMContentLoaded', async () => {
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cityJp = {tokyo:'東京', kawaguchiko:'河口湖', kiso:'木曽', kyoto:'京都', hiroshima:'広島', osaka:'大阪'};
@@ -230,14 +231,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     cityDetail.classList.remove('hidden');
     nav.forEach(n => n.classList.toggle('active', n.dataset.page === 'itinerary'));
     if (push) history.pushState({ page: 'itinerary', city: k }, '', `#itinerary/${k}`);
-    page('itinerary').scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
   }
 
   function showItinerary(push = true) {
     currentCity = null;
     cityDetail.classList.add('hidden');
+    restorePlanningTheme();
     if (push) history.pushState({ page: 'itinerary', city: null }, '', '#itinerary');
-    go('itinerary', false);
   }
 
   document.getElementById('city-back')?.addEventListener('click', () => showItinerary(false));
@@ -396,10 +396,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     let rate = localStorage.getItem('japan2026-exchange-rate') || data.defaultExchangeRate || 165;
     const info = document.getElementById('rate-info-text');
     const dateInfo = localStorage.getItem('japan2026-exchange-date') || 'inconnu';
-    
-    // Afficher le taux actuel (même hors ligne)
+
     info.textContent = `Dernier taux connu · 1 € = ${rate.toFixed(2)} ¥ · ${dateInfo}`;
-    
+
     try {
       const r = await fetch('https://api.frankfurter.dev/v1/latest?base=EUR&symbols=JPY');
       const x = await r.json();
@@ -410,10 +409,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         info.textContent = `Dernier taux publié · 1 € = ${rate.toFixed(2)} ¥ · ${x.date}`;
       }
     } catch (e) {
-      // Si l'API échoue, on garde le taux localStorage ou par défaut
       console.log('Impossible de récupérer le taux en ligne, utilisation du taux local.');
     }
-    
+
     const j = document.getElementById('jpy-input');
     const e = document.getElementById('eur-input');
     j.oninput = () => { e.value = (Number(j.value) / rate).toFixed(2); };
@@ -422,7 +420,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   window.addEventListener('popstate', e => {
     if (!e.state) {
-      // État initial (pas d'historique)
       currentCity = null;
       cityDetail.classList.add('hidden');
       restorePlanningTheme();
@@ -442,7 +439,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
-  // Initialisation
   renderItinerary();
   renderDayStrip();
   renderPlanning();
