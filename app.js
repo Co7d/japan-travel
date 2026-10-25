@@ -10,38 +10,66 @@ document.addEventListener('DOMContentLoaded', async () => {
   let pendingPlace = null;
   const page = k => document.querySelector(`.top-page[data-page="${k}"]`);
   const nav = [...document.querySelectorAll('.nav-item')];
-  const cityDetail = document.getElementById('city-detail-view');
+  const cityDetailPage = document.getElementById('page-city-detail');
+  const cityDetailContent = document.getElementById('city-categories');
   const overlay = document.getElementById('maps-choice-overlay');
+
+  // Détermine la date actuelle pour le planning
+  function getCurrentDateForPlanning() {
+    const today = new Date();
+    const todayStr = today.toISOString().split('T')[0];
+    // Vérifie si la date actuelle est dans le schedule
+    const currentScheduleItem = data.schedule?.find(d => d.date === todayStr);
+    if (currentScheduleItem) {
+      return todayStr;
+    }
+    // Sinon, retourne la première date du schedule
+    return data.schedule?.[0]?.date || selectedDate;
+  }
+
   const planningDay = () => data.schedule?.find(d => d.date === selectedDate) || data.schedule?.[0];
   const planningTheme = () => planningDay()?.cityKey || 'tokyo';
   const setTheme = key => document.body.dataset.theme = key || 'tokyo';
-  const restorePlanningTheme = () => { if (!currentCity) setTheme(planningTheme()); };
+  const restorePlanningTheme = () => {
+    if (!currentCity && !cityDetailPage.classList.contains('hidden')) return;
+    setTheme(planningTheme());
+  };
   const placeByName = name => getPlaceByName(name);
 
+  // Navigation entre les pages
   function go(key, push = true) {
-    const target = page(key); if (!target) return;
-    if (push) history.pushState({page:key, city:null}, '', `#${key}`);
-    target.scrollIntoView({behavior:'smooth', inline:'start', block:'nearest'});
+    const target = page(key);
+    if (!target) return;
+    if (push) history.pushState({page: key, city: null}, '', `#${key}`);
+    target.scrollIntoView({behavior: 'smooth', inline: 'start', block: 'nearest'});
     nav.forEach(n => n.classList.toggle('active', n.dataset.page === key));
   }
 
+  // Navigation depuis la barre du bas
   nav.forEach(n => n.addEventListener('click', () => {
     const key = n.dataset.page;
-    if (key !== 'itinerary') {
+    if (key !== 'city-detail') {
       currentCity = null;
-      cityDetail.classList.add('hidden');
+      cityDetailPage.classList.add('hidden');
       restorePlanningTheme();
     }
     go(key);
   }));
 
-  document.getElementById('app-shell').addEventListener('touchstart', e => { window.__sx = e.changedTouches[0].clientX; }, {passive:true});
+  // Gestion du swipe pour revenir en arrière
+  document.getElementById('app-shell').addEventListener('touchstart', e => {
+    window.__sx = e.changedTouches[0].clientX;
+  }, {passive: true});
+
   document.getElementById('app-shell').addEventListener('touchend', e => {
     const x = e.changedTouches[0].clientX;
-    if (window.__sx != null && x - window.__sx > 70 && window.__sx < 40) history.back();
+    if (window.__sx != null && x - window.__sx > 70 && window.__sx < 40) {
+      history.back();
+    }
     window.__sx = null;
-  }, {passive:true});
+  }, {passive: true});
 
+  // Catégorisation des lieux
   function category(place) {
     const n = place.name.toLowerCase();
     if (place.category === 'hotel') return ['Hébergements', /ryokan/.test(n) ? 'Ryokan' : /guest/.test(n) ? 'Guest House' : 'Hôtel'];
@@ -96,6 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return null;
   }
 
+  // Ouverture des maps
   function openMap(place) {
     if (!place || place.lat == null || place.lng == null) return;
     if (!mapChoice) {
@@ -110,6 +139,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.href = url;
   }
 
+  // Gestion du choix des maps
   document.getElementById('maps-choice-close')?.addEventListener('click', () => {
     overlay.classList.remove('active');
     overlay.setAttribute('aria-hidden', 'true');
@@ -132,6 +162,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     overlay.setAttribute('aria-hidden', 'false');
   });
 
+  // Affichage de l'itinéraire
   function renderItinerary() {
     const target = document.getElementById('timeline-list');
     target.innerHTML = (data.itinerary || []).map(s =>
@@ -147,6 +178,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     target.querySelectorAll('.journey-stop').forEach(b => b.addEventListener('click', () => showCity(b.dataset.city)));
   }
 
+  // Bloc des spécialités culinaires
   function specialtyBlock(k) {
     const list = data.culinarySpecialties?.[k] || [];
     if (!list.length) return '';
@@ -168,6 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     </section>`;
   }
 
+  // Affichage du détail d'une ville
   function showCity(k, push = true) {
     currentCity = k;
     setTheme(k);
@@ -215,33 +248,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         html += '</div></section>';
       }
     }
-    const root = document.getElementById('city-categories');
-    root.innerHTML = html;
-    root.querySelectorAll('.section-toggle').forEach(t => t.addEventListener('click', () => {
+    cityDetailContent.innerHTML = html;
+    cityDetailContent.querySelectorAll('.section-toggle').forEach(t => t.addEventListener('click', () => {
       const b = t.closest('.city-block');
       const open = !b.classList.toggle('collapsed');
       t.setAttribute('aria-expanded', String(open));
     }));
-    root.querySelectorAll('.specialty-row').forEach(b => b.addEventListener('click', () => {
+    cityDetailContent.querySelectorAll('.specialty-row').forEach(b => b.addEventListener('click', () => {
       const open = b.classList.toggle('open');
       b.setAttribute('aria-expanded', String(open));
     }));
-    root.querySelectorAll('[data-place-id]').forEach(b => b.addEventListener('click', () => openMap(allPlaces[b.dataset.placeId])));
+    cityDetailContent.querySelectorAll('[data-place-id]').forEach(b => b.addEventListener('click', () => openMap(allPlaces[b.dataset.placeId])));
 
-    cityDetail.classList.remove('hidden');
+    // Afficher la page de détail et masquer les autres
+    cityDetailPage.classList.remove('hidden');
+    document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.add('hidden'));
     nav.forEach(n => n.classList.toggle('active', n.dataset.page === 'itinerary'));
-    if (push) history.pushState({ page: 'itinerary', city: k }, '', `#itinerary/${k}`);
+
+    if (push) history.pushState({ page: 'city-detail', city: k }, '', `#city-detail/${k}`);
   }
 
+  // Retour à l'itinéraire
   function showItinerary(push = true) {
     currentCity = null;
-    cityDetail.classList.add('hidden');
+    cityDetailPage.classList.add('hidden');
+    document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
     restorePlanningTheme();
     if (push) history.pushState({ page: 'itinerary', city: null }, '', '#itinerary');
   }
 
   document.getElementById('city-back')?.addEventListener('click', () => showItinerary(false));
 
+  // Données des transports
   const transportOverrides = {
     '2026-11-16|Arrivée à Haneda (T3)': { type: 'train', variants: [{ label: 'Variante A', route: 'Tokyo Monorail → Toei Oedo Line', duration: '51 min', payment: 'SUICA' }, { label: 'Variante B', route: 'Tokyo Monorail → JR Yamanote Line', duration: '54 min', payment: 'SUICA' }] },
     '2026-11-20|Fuji Excursion': { type: 'train', route: 'JR Limited Express (ligne Chuo) → Fujikyuko Line', duration: '2 h 01', payment: 'SUICA' },
@@ -298,10 +336,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     return transportRow(t, k, override);
   }
 
+  // Affichage du planning
   function renderPlanning() {
     const d = planningDay();
     if (!d) return;
-    currentCity = null;
     setTheme(d.cityKey);
     const c = data.cities[d.cityKey];
     document.getElementById('planning-head').innerHTML = `
@@ -311,6 +349,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('day-strip').querySelectorAll('.day-choice').forEach(b =>
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
+
     const slots = ['Matin', 'Midi', 'Après-midi', "Fin d'après-midi", 'Soirée'];
     document.getElementById('planning-container').innerHTML = slots.map(slot => {
       const items = (d.items || []).filter(x => x.slot === slot);
@@ -347,6 +386,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       </section>`;
     }).join('');
+
+    // Les sections (Matin, Midi, etc.) sont DÉPLOYÉES par défaut
+    document.querySelectorAll('.schedule-card').forEach(card => {
+      card.classList.add('open');
+      card.querySelector('.schedule-summary')?.setAttribute('aria-expanded', 'true');
+    });
+
     document.querySelectorAll('.schedule-summary').forEach(b => b.addEventListener('click', () => {
       const card = b.closest('.schedule-card');
       const open = card.classList.toggle('open');
@@ -357,6 +403,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
   }
 
+  // Bandeau des jours
   function renderDayStrip() {
     const strip = document.getElementById('day-strip');
     strip.innerHTML = (data.schedule || []).map(d =>
@@ -372,6 +419,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }));
   }
 
+  // Lexique
   function renderLexicon() {
     const target = document.getElementById('lexicon-container'),
           input = document.getElementById('lexicon-search');
@@ -392,6 +440,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     draw();
   }
 
+  // Taux de change avec localStorage
   async function exchange() {
     let rate = localStorage.getItem('japan2026-exchange-rate') || data.defaultExchangeRate || 165;
     const info = document.getElementById('rate-info-text');
@@ -418,27 +467,32 @@ document.addEventListener('DOMContentLoaded', async () => {
     e.oninput = () => { j.value = Math.round(Number(e.value) * rate).toString(); };
   }
 
+  // Gestion de l'historique
   window.addEventListener('popstate', e => {
     if (!e.state) {
       currentCity = null;
-      cityDetail.classList.add('hidden');
+      cityDetailPage.classList.add('hidden');
+      document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
       restorePlanningTheme();
       return;
     }
-    if (e.state.page === 'itinerary') {
-      if (e.state.city) {
-        showCity(e.state.city, false);
-      } else {
-        showItinerary(false);
-      }
-    } else if (e.state.page) {
+    if (e.state.page === 'city-detail') {
+      showCity(e.state.city, false);
+    } else if (e.state.page === 'itinerary') {
+      showItinerary(false);
+    } else {
       currentCity = null;
-      cityDetail.classList.add('hidden');
+      cityDetailPage.classList.add('hidden');
+      document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
       restorePlanningTheme();
       go(e.state.page, false);
     }
   });
 
+  // Initialisation : sélection du jour actuel si possible
+  selectedDate = getCurrentDateForPlanning();
+
+  // Rendu initial
   renderItinerary();
   renderDayStrip();
   renderPlanning();
