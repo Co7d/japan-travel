@@ -164,6 +164,8 @@ const PLACE_ROWS = [
   ["Nezu-jinja", "tokyo", "activity", 35.7201366, 139.7607695],
   ["Starbucks Reserve® Roastery Tokyo", "tokyo", "restaurant", 35.6492642, 139.6925907],
   ["Namba Ramen Ichiza", "osaka", "restaurant", 34.6656767, 135.5018757],
+  ["Ebisu Sushi Hatsume", "tokyo", "restaurant", 35.6465933, 139.7161474],
+  ["Yakiniku Fujimoto Umeda Ohatsutenjin", "osaka", "restaurant", 34.6996825, 135.500852],
   ["Shibuya Crossing", "tokyo", "activity", 35.659482, 139.7005596],
   ["Tenjinbashi-suji Shopping Street 5 Chome ( Tengo )", "osaka", "shopping", 34.7076237, 135.5113001],
   ["Haneda Airport Terminal 3 Station", "tokyo", "transport", 35.5446693, 139.7676181],
