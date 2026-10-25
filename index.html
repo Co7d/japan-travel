@@ -17,10 +17,13 @@
     .section-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0 12px;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent;color:var(--theme-main);text-align:left;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
     .section-toggle-mark{font:400 20px "Noto Serif JP",serif;line-height:1;transition:transform .2s;color:var(--theme-main)}
     .city-block:not(.collapsed)>.section-toggle .section-toggle-mark{transform:rotate(90deg)}
+    .schedule-details{display:grid;grid-template-columns:1fr auto;gap:12px;max-height:none;opacity:1;padding:0 0 15px}
+    .schedule-card.open .schedule-details{max-height:none}
   </style>
 </head>
 <body data-theme="tokyo">
   <main class="app-shell" id="app-shell">
+    <!-- Page Itinéraire (avec détail des villes intégré) -->
     <section class="top-page" id="page-itinerary" data-page="itinerary">
       <div class="page-scroll">
         <div class="content-wrapper">
@@ -28,21 +31,27 @@
           <h1>Itinéraire</h1>
           <p class="subtitle">Le fil du voyage, de Tokyo à Tokyo.</p>
           <div class="journey-line" id="timeline-list"></div>
-          <!-- Vue détaillée des villes intégrée ici -->
-          <div id="city-detail-view" class="hidden">
-            <button class="back-link" id="city-back" type="button"><span>‹</span> Itinéraire</button>
-            <div class="city-hero">
-              <div class="eyebrow" id="current-city-vibe"></div>
-              <h1 id="current-city-title"></h1>
-              <div class="city-jp" id="current-city-jp"></div>
-              <p class="subtitle" id="current-city-dates"></p>
-            </div>
-            <div id="city-categories"></div>
-          </div>
         </div>
       </div>
     </section>
 
+    <!-- Page Détail d'une ville (affichée comme une page à part) -->
+    <section class="top-page" id="page-city-detail" data-page="city-detail">
+      <div class="page-scroll">
+        <div class="content-wrapper">
+          <button class="back-link" id="city-back" type="button"><span>‹</span> Itinéraire</button>
+          <div class="city-hero">
+            <div class="eyebrow" id="current-city-vibe"></div>
+            <h1 id="current-city-title"></h1>
+            <div class="city-jp" id="current-city-jp"></div>
+            <p class="subtitle" id="current-city-dates"></p>
+          </div>
+          <div id="city-categories"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Planning -->
     <section class="top-page" id="page-planning" data-page="planning">
       <div class="page-scroll">
         <div class="content-wrapper">
@@ -55,6 +64,7 @@
       </div>
     </section>
 
+    <!-- Page Lexique -->
     <section class="top-page" id="page-lexicon" data-page="lexicon">
       <div class="page-scroll">
         <div class="content-wrapper">
@@ -69,6 +79,7 @@
       </div>
     </section>
 
+    <!-- Page Utiles -->
     <section class="top-page" id="page-tools" data-page="tools">
       <div class="page-scroll">
         <div class="content-wrapper">
@@ -113,6 +124,7 @@
     </section>
   </main>
 
+  <!-- Barre de navigation avec 4 onglets (répartition égale) -->
   <nav class="bottom-nav" id="bottom-nav" aria-label="Navigation principale">
     <button class="nav-item active" data-page="itinerary" type="button">
       <span class="nav-icon">
@@ -143,6 +155,7 @@
     </button>
   </nav>
 
+  <!-- Overlay pour le choix des maps -->
   <div class="choice-overlay" id="maps-choice-overlay" aria-hidden="true">
     <div class="choice-sheet">
       <button class="choice-close" id="maps-choice-close" type="button" aria-label="Fermer">×</button>
@@ -171,17 +184,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const shell = document.getElementById('app-shell'),
             pages = [...document.querySelectorAll('.top-page')],
-            nav = [...document.querySelectorAll('.nav-item')],
-            cityDetail = document.getElementById('city-detail-view');
-      const themeForPlanning = () => {
-        const n = (document.querySelector('#planning-head .planning-location')?.textContent || '').trim().toLowerCase();
-        if (n.includes('kawaguchiko')) return 'kawaguchiko';
-        if (n.includes('kiso')) return 'kiso';
-        if (n.includes('kyoto')) return 'kyoto';
-        if (n.includes('hiroshima')) return 'hiroshima';
-        if (n.includes('osaka')) return 'osaka';
-        return 'tokyo';
-      };
+            nav = [...document.querySelectorAll('.nav-item')];
       let raf = 0;
       const sync = () => {
         raf = 0;
@@ -193,8 +196,15 @@
           if (d < distance) { distance = d; active = p }
         });
         nav.forEach(n => n.classList.toggle('active', n.dataset.page === active.dataset.page));
-        if (active.dataset.page !== 'itinerary' || cityDetail?.classList.contains('hidden'))
-          document.body.dataset.theme = themeForPlanning();
+        document.body.dataset.theme = active.dataset.page === 'city-detail' ? document.body.dataset.theme : (() => {
+          const n = (document.querySelector('#planning-head .planning-location')?.textContent || '').trim().toLowerCase();
+          if (n.includes('kawaguchiko')) return 'kawaguchiko';
+          if (n.includes('kiso')) return 'kiso';
+          if (n.includes('kyoto')) return 'kyoto';
+          if (n.includes('hiroshima')) return 'hiroshima';
+          if (n.includes('osaka')) return 'osaka';
+          return 'tokyo';
+        })();
       };
       shell?.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sync) }, { passive: true });
       window.addEventListener('resize', sync, { passive: true });
