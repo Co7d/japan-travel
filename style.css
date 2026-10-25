@@ -157,20 +157,15 @@ h1 {
   font-size: 11px;
   margin-top: 12px;
 }
-.journey-arrow, .place-indicator, .specialty-arrow {
+.journey-arrow {
   font-family: "Noto Serif JP", serif;
   color: var(--theme-main);
   font-size: 25px;
-}
-.journey-arrow {
   position: absolute;
   right: 2px;
   top: 50%;
   transform: translateY(-50%);
 }
-
-/* Masquer les chevrons dans l'Itinéraire uniquement */
-#page-itinerary .schedule-chevron { display: none; }
 
 /* Planning */
 .planning-head {
@@ -268,6 +263,10 @@ h1 {
 }
 .schedule-chevron { transition: transform 0.2s; }
 .schedule-card.open .schedule-chevron { transform: rotate(90deg); }
+
+/* MODIFICATION 1 : Masquer les chevrons dans le Planning */
+#page-planning .schedule-chevron { display: none; }
+
 .schedule-details {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -544,7 +543,10 @@ h1 {
   opacity: 1;
   padding-top: 8px;
 }
-.specialty-arrow { transition: transform 0.2s; flex: 0 0 auto; }
+.specialty-arrow {
+  transition: transform 0.2s;
+  flex: 0 0 auto;
+}
 
 /* Lexique */
 .search-box { margin: 24px 0 18px; }
@@ -658,7 +660,7 @@ h1 {
   text-align: left;
 }
 
-/* Barre de navigation (4 onglets + bordure colorée pour l'actif) */
+/* MODIFICATION 2 : Barre de navigation à 4 onglets + bordure colorée */
 .bottom-nav {
   position: fixed;
   z-index: 100;
@@ -670,7 +672,7 @@ h1 {
   height: calc(58px + env(safe-area-inset-bottom));
   padding: 4px 5px env(safe-area-inset-bottom);
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 onglets au lieu de 5 */
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   background: rgba(20, 18, 16, 0.94);
   border: 0;
@@ -714,16 +716,13 @@ h1 {
   stroke-linejoin: round;
 }
 
-/* Onglet actif : texte blanc + icône colorée + bordure supérieure colorée */
 .nav-item.active {
   color: var(--cream);
+  border-top: 2px solid var(--theme-main);
+  margin-top: -2px;
 }
 .nav-item.active .nav-icon {
   color: var(--theme-main);
-}
-.nav-item.active {
-  border-top: 2px solid var(--theme-main); /* Bordure colorée en haut */
-  margin-top: -2px; /* Compense la bordure pour aligner */
 }
 
 /* Overlay pour le choix des maps */
