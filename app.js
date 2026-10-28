@@ -83,8 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const n = name.toLowerCase();
     if (/shrine|jinja|jingu|inari|taisha/.test(n)) return 'Sanctuaire';
     if (/temple|dera|-ji|ji$|kōdai|zojo/.test(n)) return 'Temple';
-    if (/museum|musée|gallery/.test(n)) return '
-Musée';
+    if (/museum|musée|gallery/.test(n)) return 'Musée';
     if (/park|parc|garden|jardin|forest|forêt|hill|pavilion/.test(n)) return 'Jardin / Nature';
     if (/station|gare|ferry|teleph|téléph/.test(n)) return 'Transport';
     if (/street|yokocho|district|crossing|ginza|shibuya|shinjuku|akihabara|naramachi|odaiba/.test(n)) return 'Quartier / Rue';
@@ -115,8 +114,7 @@ Musée';
       if (/nijo|kinkaku|kitano|nishiki|ichihara|gare de kyoto/.test(n)) return 'Centre / Nord de Kyoto';
       return 'Kyoto / Autres';
     }
-    if (city === 'hiroshima') return /miyajima|itsukushima|daish
-|misen|torii|momiji|anago|kaki|ferry/.test(n) ? 'Miyajima' : 'Hiroshima';
+    if (city === 'hiroshima') return /miyajima|itsukushima|daish|misen|torii|momiji|anago|kaki|ferry/.test(n) ? 'Miyajima' : 'Hiroshima';
     if (city === 'osaka') {
       if (/doton|hozenji|namba/.test(n)) return 'Namba / Dotonbori';
       if (/shinsekai|tsūten|tsuten/.test(n)) return 'Shinsekai';
@@ -261,8 +259,7 @@ Musée';
     }));
     cityDetailContent.querySelectorAll('.specialty-row').forEach(b => b.addEventListener('click', () => {
       const open = b.classList.toggle('open');
-      b.setAttribute('aria-expand
-ed', String(open));
+      b.setAttribute('aria-expanded', String(open));
     }));
     cityDetailContent.querySelectorAll('[data-place-id]').forEach(b => b.addEventListener('click', () => openMap(allPlaces[b.dataset.placeId])));
 
@@ -325,8 +322,7 @@ ed', String(open));
       <div class="planning-location">${esc(c.name)}</div>
       <h2>${new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: 'long' }).format(new Date(`${d.date}T12:00:00`))}</h2>
       <p>${esc(d.title || '')}</p>`;
-    document.getElementById('d
-ay-strip').querySelectorAll('.day-choice').forEach(b =>
+    document.getElementById('day-strip').querySelectorAll('.day-choice').forEach(b =>
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
 
@@ -411,8 +407,7 @@ ay-strip').querySelectorAll('.day-choice').forEach(b =>
         `<div class="lexicon-row">
           <div>
             <span class="lex-fr">${esc(x[1])}</span>
-            <span class="lex-ca
-t">${esc(x[0])}</span>
+            <span class="lex-cat">${esc(x[0])}</span>
           </div>
           <span class="lex-jp">${esc(x[2])}${x[3] ? `<small class="lex-romaji">${esc(x[3])}</small>` : ''}</span>
         </div>`
