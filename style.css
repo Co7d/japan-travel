@@ -77,7 +77,8 @@ button { color: inherit; }
   margin-bottom: 12px;
 }
 
-h1, h2, .journey-city, .ticket-city, .place-name, .lex-fr, .editorial-block h2, .planning-head h2, .choice-sheet h2, .schedule-title {
+h1, h
+2, .journey-city, .ticket-city, .place-name, .lex-fr, .editorial-block h2, .planning-head h2, .choice-sheet h2, .schedule-title {
   font-family: "Noto Serif JP", serif;
   font-weight: 400;
 }
@@ -177,7 +178,8 @@ h1 {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--theme-main);
+  colo
+r: var(--theme-main);
   font-weight: 800;
 }
 .planning-head h2 { font-size: 32px; margin: 4px 0; }
@@ -272,7 +274,8 @@ h1 {
   grid-template-columns: 1fr auto;
   gap: 12px;
   max-height: 0;
-  overflow: hidden;
+  o
+verflow: hidden;
   opacity: 0;
   transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
   padding: 0;
@@ -364,7 +367,8 @@ h1 {
 }
 .empty-day {
   padding: 25px 0;
-  border-top: 1px solid var(--line);
+  border-top: 1px 
+solid var(--line);
   border-bottom: 1px solid var(--line);
   color: var(--muted);
 }
@@ -470,7 +474,8 @@ h1 {
 }
 .back-link span { font-size: 25px; color: var(--theme-main); }
 .city-hero {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--
+line);
   padding-bottom: 24px;
   margin-bottom: 26px;
 }
@@ -554,7 +559,8 @@ h1 {
   width: 100%;
   border: 0;
   border-bottom: 1px solid var(--line);
-  background: transparent;
+  background: tra
+nsparent;
   color: var(--cream);
   padding: 11px 0;
   font-size: 15px;
@@ -647,7 +653,8 @@ h1 {
   font: 400 18px "Noto Serif JP", serif;
   color: var(--theme-main);
 }
-.map-setting {
+.map-setting 
+{
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -672,7 +679,7 @@ h1 {
   height: calc(58px + env(safe-area-inset-bottom));
   padding: 4px 5px env(safe-area-inset-bottom);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: rgba(20, 18, 16, 0.94);
   border: 0;
@@ -746,7 +753,8 @@ h1 {
   width: 100%;
   max-width: 620px;
   margin: auto auto 0;
-  background: var(--paper);
+  ba
+ckground: var(--paper);
   color: var(--ink);
   padding: 28px 20px calc(26px + env(safe-area-inset-bottom));
   position: relative;
