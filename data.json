@@ -94,7 +94,7 @@
       ],
       [
         "Fukagawa Meshi",
-        "Bol de riz cuit avec des palourdes et de la ciboule, dans \nun bouillon au miso ou au dashi (recette traditionnelle de pêcheurs)"
+        "Bol de riz cuit avec des palourdes et de la ciboule, dans un bouillon au miso ou au dashi (recette traditionnelle de pêcheurs)"
       ],
       [
         "Ningyo-yaki",
@@ -152,7 +152,7 @@
       ],
       [
         "Yuba",
-        "Peau de lait de soja fraîche, récupérée lors de la cuisson du tofu. C'\nest un mets délicat à la texture soyeuse, servi frais ou en rouleaux frits."
+        "Peau de lait de soja fraîche, récupérée lors de la cuisson du tofu. C'est un mets délicat à la texture soyeuse, servi frais ou en rouleaux frits."
       ],
       [
         "Yatsuhashi",
@@ -236,7 +236,7 @@
         },
         {
           "slot": "Après-midi",
-          "\nlabel": "Carrefour de Shibuya",
+          "label": "Carrefour de Shibuya",
           "description": "Hachiko, Tower Records et Shibuya Parco.",
           "place": "Shibuya Crossing",
           "pois": [
@@ -325,7 +325,7 @@
           "label": "Sanctuaire Nezu-jinja",
           "description": "Sanctuaire Nezu-jinja puis crochet par le quartier rétro de Yanaka.",
           "place": "Nezu-jinja",
-          "poi\ns": [
+          "pois": [
             "Yanaka Ginza"
           ]
         },
@@ -421,7 +421,7 @@
         {
           "slot": "Après-midi",
           "label": "Mizno Hotel",
-          "description": "Check-in, ré\nservation immédiate d'un créneau d'onsen privé, puis balade tranquille dans la zone sud (gare/village).",
+          "description": "Check-in, réservation immédiate d'un créneau d'onsen privé, puis balade tranquille dans la zone sud (gare/village).",
           "place": "Mizno Hotel"
         }
       ]
@@ -590,7 +590,7 @@
         {
           "slot": "Midi",
           "label": "Déjeuner libre",
-          "description": "Déjeuner libre vers la ga\nre d'Arashiyama."
+          "description": "Déjeuner libre vers la gare d'Arashiyama."
         },
         {
           "slot": "Après-midi",
@@ -685,7 +685,7 @@
           "place": "Kasuga-taisha"
         },
         {
-          "slot": "Après\n-midi",
+          "slot": "Après-midi",
           "label": "Naramachi",
           "description": "Balade, temps libre et pause goûter dans le quartier historique de Naramachi.",
           "place": "Naramachi Street"
@@ -874,7 +874,7 @@
         {
           "slot": "Soirée",
           "label": "Dotonbori & Hozenji-yokocho",
-          "description": "Immersion dans Dotonbori et Hozenji-yokocho\n. Option croisière Tombori River Cruise (20 min), puis dîner libre.",
+          "description": "Immersion dans Dotonbori et Hozenji-yokocho. Option croisière Tombori River Cruise (20 min), puis dîner libre.",
           "place": "Dōtonbori"
         }
       ]
@@ -969,7 +969,7 @@
         {
           "slot": "Matin",
           "label": "Check-out de l'hôtel",
-          "de\nscription": "Trajet vers la gare de Shin-Osaka, direction Tokyo.",
+          "description": "Trajet vers la gare de Shin-Osaka, direction Tokyo.",
           "transport": {
             "type": "shinkansen",
             "route": "Tokaido Shinkansen",
@@ -1057,7 +1057,7 @@
         {
           "slot": "Après-midi",
           "label": "Roppongi Hills",
-          "description": "Jardin japonais gratuit\n, shopping et balade dans le complexe.",
+          "description": "Jardin japonais gratuit, shopping et balade dans le complexe.",
           "place": "Roppongi Hills"
         },
         {
