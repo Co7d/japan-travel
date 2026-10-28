@@ -33,7 +33,8 @@
           <div class="journey-line" id="timeline-list"></div>
         </div>
       </div>
-    </section>
+    
+</section>
 
     <!-- Page Détail d'une ville (affichée comme une page à part) -->
     <section class="top-page" id="page-city-detail" data-page="city-detail">
@@ -75,33 +76,6 @@
             <input type="text" id="lexicon-search" placeholder="Rechercher un mot…" autocomplete="off">
           </div>
           <div class="paper-list" id="lexicon-container"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Page Utiles -->
-    <section class="top-page" id="page-tools" data-page="tools">
-      <div class="page-scroll">
-        <div class="content-wrapper">
-          <div class="eyebrow">JAPON 2026 · PRATIQUE</div>
-          <h1>Utiles</h1>
-          <p class="subtitle">Les outils du voyage.</p>
-          <div class="editorial-block">
-            <div class="block-label">TAUX DE CHANGE</div>
-            <h2>Yens ↔ Euros</h2>
-            <div class="converter-box">
-              <div class="input-group">
-                <label for="jpy-input">JPY</label>
-                <input type="number" id="jpy-input" placeholder="1000" inputmode="decimal">
-              </div>
-              <div class="converter-arrow">↔</div>
-              <div class="input-group">
-                <label for="eur-input">EUR</label>
-                <input type="number" id="eur-input" placeholder="6.50" step="0.01" inputmode="decimal">
-              </div>
-            </div>
-            <p class="rate-info" id="rate-info-text">Chargement du taux…</p>
-          </div>
           <div class="editorial-block">
             <div class="block-label">NAVIGATION</div>
             <h2>Plans / Maps</h2>
@@ -110,25 +84,18 @@
               <span>›</span>
             </button>
           </div>
-          <div class="editorial-block">
-            <div class="block-label">EN CAS D’URGENCE</div>
-            <h2>Numéros utiles</h2>
-            <div class="emergency-list">
-              <a href="tel:110" class="emergency-item"><span>Police</span><strong>110</strong></a>
-              <a href="tel:119" class="emergency-item"><span>Ambulance / Pompiers</span><strong>119</strong></a>
-              <a href="tel:0357986000" class="emergency-item"><span>Ambassade de France</span><strong>03 57 98 60 00</strong></a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
+
   </main>
 
-  <!-- Barre de navigation avec 4 onglets (répartition égale) -->
+  <!-- Barre de navigation avec 3 onglets (répartition égale) -->
   <nav class="bottom-nav" id="bottom-nav" aria-label="Navigation principale">
     <button class="nav-item active" data-page="itinerary" type="button">
       <span class="nav-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
+        <svg viewBox=
+"0 0 24 24" aria-hidden="true">
           <circle cx="5" cy="6" r="1.5"/>
           <circle cx="19" cy="18" r="1.5"/>
           <path d="M6.5 6.5c5 0 5 4 5 4s0 4 5 4h2"/>
@@ -148,10 +115,6 @@
     <button class="nav-item" data-page="lexicon" type="button">
       <span class="nav-icon">文</span>
       <span>Lexique</span>
-    </button>
-    <button class="nav-item" data-page="tools" type="button">
-      <span class="nav-icon">∴</span>
-      <span>Utiles</span>
     </button>
   </nav>
 
@@ -183,7 +146,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const shell = document.getElementById('app-shell'),
-            pages = [...document.querySelectorAll('.top-page')],
+            pages = [...document.querySelector
+All('.top-page')],
             nav = [...document.querySelectorAll('.nav-item')];
       let raf = 0;
       const sync = () => {
