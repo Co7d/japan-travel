@@ -1,166 +1,1126 @@
 {
-  "defaultExchangeRate":165.0,
-  "cities":{
-    "tokyo":{"name":"Tokyo","vibe":"Urbain / Shopping","theme":"tokyo","dates":"16 Nov — 20 Nov • 4 nuits"},
-    "kawaguchiko":{"name":"Kawaguchiko","vibe":"Nature & Mont Fuji","theme":"kawaguchiko","dates":"20 Nov — 22 Nov • 2 nuits"},
-    "kiso":{"name":"Vallée de Kiso","vibe":"Histoire & Randonnée","theme":"kiso","dates":"22 Nov — 23 Nov • 1 nuit"},
-    "kyoto":{"name":"Kyoto","vibe":"Tradition & Temples","theme":"kyoto","dates":"23 Nov — 28 Nov • 5 nuits"},
-    "hiroshima":{"name":"Hiroshima / Miyajima","vibe":"Histoire & Culture","theme":"hiroshima","dates":"28 Nov — 29 Nov • 1 nuit"},
-    "osaka":{"name":"Osaka","vibe":"Gastronomie & Street Food","theme":"osaka","dates":"29 Nov — 02 Déc • 3 nuits"}
+  "cities": {
+    "tokyo": {
+      "name": "Tokyo",
+      "vibe": "Urbain / Shopping",
+      "theme": "tokyo",
+      "dates": "16 Nov — 20 Nov • 4 nuits"
+    },
+    "kawaguchiko": {
+      "name": "Kawaguchiko",
+      "vibe": "Nature & Mont Fuji",
+      "theme": "kawaguchiko",
+      "dates": "20 Nov — 22 Nov • 2 nuits"
+    },
+    "kiso": {
+      "name": "Vallée de Kiso",
+      "vibe": "Histoire & Randonnée",
+      "theme": "kiso",
+      "dates": "22 Nov — 23 Nov • 1 nuit"
+    },
+    "kyoto": {
+      "name": "Kyoto",
+      "vibe": "Tradition & Temples",
+      "theme": "kyoto",
+      "dates": "23 Nov — 28 Nov • 5 nuits"
+    },
+    "hiroshima": {
+      "name": "Hiroshima / Miyajima",
+      "vibe": "Histoire & Culture",
+      "theme": "hiroshima",
+      "dates": "28 Nov — 29 Nov • 1 nuit"
+    },
+    "osaka": {
+      "name": "Osaka",
+      "vibe": "Gastronomie & Street Food",
+      "theme": "osaka",
+      "dates": "29 Nov — 02 Déc • 3 nuits"
+    }
   },
-  "itinerary":[
-    {"cityKey":"tokyo","dates":"16 Nov — 20 Nov • 4 nuits","label":"Tokyo"},
-    {"cityKey":"kawaguchiko","dates":"20 Nov — 22 Nov • 2 nuits","label":"Kawaguchiko"},
-    {"cityKey":"kiso","dates":"22 Nov — 23 Nov • 1 nuit","label":"Vallée de Kiso"},
-    {"cityKey":"kyoto","dates":"23 Nov — 28 Nov • 5 nuits","label":"Kyoto"},
-    {"cityKey":"hiroshima","dates":"28 Nov — 29 Nov • 1 nuit","label":"Hiroshima / Miyajima"},
-    {"cityKey":"osaka","dates":"29 Nov — 02 Déc • 3 nuits","label":"Osaka"},
-    {"cityKey":"tokyo","dates":"02 Déc — 05 Déc • 3 nuits","label":"Tokyo"}
+  "itinerary": [
+    {
+      "cityKey": "tokyo",
+      "dates": "16 Nov — 20 Nov • 4 nuits",
+      "label": "Tokyo"
+    },
+    {
+      "cityKey": "kawaguchiko",
+      "dates": "20 Nov — 22 Nov • 2 nuits",
+      "label": "Kawaguchiko"
+    },
+    {
+      "cityKey": "kiso",
+      "dates": "22 Nov — 23 Nov • 1 nuit",
+      "label": "Vallée de Kiso"
+    },
+    {
+      "cityKey": "kyoto",
+      "dates": "23 Nov — 28 Nov • 5 nuits",
+      "label": "Kyoto"
+    },
+    {
+      "cityKey": "hiroshima",
+      "dates": "28 Nov — 29 Nov • 1 nuit",
+      "label": "Hiroshima / Miyajima"
+    },
+    {
+      "cityKey": "osaka",
+      "dates": "29 Nov — 02 Déc • 3 nuits",
+      "label": "Osaka"
+    },
+    {
+      "cityKey": "tokyo",
+      "dates": "02 Déc — 05 Déc • 3 nuits",
+      "label": "Tokyo"
+    }
   ],
-  "culinarySpecialties":{
-    "tokyo":[["Monjayaki","Variante locale de l'okonomiyaki, pâte plus liquide cuite sur plaque chauffante, typique du quartier de Tsukishima"],["Edomae Sushi","Le style original du sushi de Tokyo (nigiri) né sous l'ère Edo, préparé avec du poisson frais fumé, mariné ou assaisonné"],["Abura Soba","Nouilles ramen sans bouillon, mélangées à une sauce riche au fond du bol, de l'huile aromatisée et un œuf poché"],["Tendon","Bol de riz recouvert de beignets de tempura croustillants (crevettes, légumes) nappés d'une sauce soja sucrée"],["Fukagawa Meshi","Bol de riz cuit avec des palourdes et de la ciboule, dans un bouillon au miso ou au dashi (recette traditionnelle de pêcheurs)"],["Ningyo-yaki","Petits gâteaux génoise cuits dans des moules en forme de poupées ou de mascottes, fourrés à la pâte de haricot rouge (Anko), typiques d'Asakusa"],["Yakitori","Brochettes de poulet grillées au charbon de bois et assaisonnées au sel ou à la sauce tare, incontournables des allées comme Omoide Yokocho"],["Crêpes d'Harajuku","Crêpes roulées en cône généreusement garnies de chantilly, fruits frais, gâteau ou glace, emblématiques de Takeshita Street"]],
-    "kawaguchiko":[["Nouilles Hōtō","Grosses nouilles épaisses et plates, bouillon miso copieux, légumes de saison (potiron, champignons, carottes), parfois poulet, servi dans une petite marmite avec feu pour garder la chaleur"]],
-    "kiso":[["Soba","Nouilles de sarrasin, faites main, réputées parmi les meilleures du Japon, présentes à Narai, Magome et Tsumago"],["Gohei mochi","Boulettes de riz grillées enrobées d'une sauce (souvent à base de noix/miso)"],["Oyaki","Chaussons fourrés (légumes ou pâte de haricot)"]],
-    "kyoto":[["Yudofu","Tofu artisanal mijoté dans un bouillon léger au kombu, servi très chaud avec une sauce ponzu et des condiments. Une institution à Arashiyama et autour des temples."],["Kaiseki Ryori","Gastronomie traditionnelle japonaise haute couture. Une succession de multiples petits plats de saison, ultra-raffinés, présentés comme des œuvres d'art."],["Matcha & Pâtisseries","Kyoto (et la ville voisine d'Uji) est la capitale du thé vert. À tester : parfait au matcha, tiramisu au matcha, glaces artisanales ou Cha-soba (nouilles soba au thé vert)."],["Obanzai","Cuisine familiale traditionnelle de Kyoto composée de plusieurs petits ramequins de légumes de saison locaux (Kyoyasai), poissons séchés et tofu mijoté."],["Tsukemono","Légumes locaux fermentés ou marinés (navet, aubergine, concombre). Indispensable à déguster au marché de Nishiki."],["Yuba","Peau de lait de soja fraîche, récupérée lors de la cuisson du tofu. C'est un mets délicat à la texture soyeuse, servi frais ou en rouleaux frits."],["Yatsuhashi","La confiserie phare de Kyoto. Pâte à base de farine de riz, de sucre et de cannelle, déclinée en version cuite ou crue (Nama-yatsuhashi : triangle moelleux fourré)."]],
-    "hiroshima":[["Anagomeshi","Anguille de mer grillée sur riz, sauce soja sucrée — LE plat emblématique"],["Huîtres grillées","Région réputée, vendues en rue ou en restaurant"],["Momiji manju","Petit gâteau en forme de feuille d'érable (matcha, chocolat, custard...)"],["Momiji manju frit","Version street food, pâte frite"],["Okonomiyaki style Hiroshima","En couches (nouilles, chou, œuf) — différent du style Osaka"]],
-    "osaka":[["Takoyaki","Boulettes de pâte cuites dans un moule alvéolé, fourrées au poulpe, nappées de sauce brune sucrée-salée, de mayonnaise et de copeaux de bonite séchée (katsuobushi). L'incontournable absolu de Dotonbori."],["Okonomiyaki","Galette/omelette japonaise épaisse composée de chou, de pâte, de porc (ou fruits de mer), grillée sur une plaque chauffante (teppan). Style Osaka : tout est mélangé avant cuisson."],["Kushikatsu","Brochettes d'ingrédients variés (viandes, légumes, fromage) panées au panko et frites, servies croustillantes et brûlantes. La spécialité reine du quartier de Shinsekai."],["Kitsune Udon","Soupe de nouilles udon épaisses servie dans un dashi léger, surmontée d'un grand morceau de tofu frit mijoté et légèrement sucré (abura-age)."],["Rikuro Ojisan Cheese Cake","Gâteau au fromage japonais ultra-fluffy et tremblotant (soufflé cheesecake), très léger, servi chaud à la sortie du four."]]
+  "culinarySpecialties": {
+    "tokyo": [
+      [
+        "Monjayaki",
+        "Variante locale de l'okonomiyaki, pâte plus liquide cuite sur plaque chauffante, typique du quartier de Tsukishima"
+      ],
+      [
+        "Edomae Sushi",
+        "Le style original du sushi de Tokyo (nigiri) né sous l'ère Edo, préparé avec du poisson frais fumé, mariné ou assaisonné"
+      ],
+      [
+        "Abura Soba",
+        "Nouilles ramen sans bouillon, mélangées à une sauce riche au fond du bol, de l'huile aromatisée et un œuf poché"
+      ],
+      [
+        "Tendon",
+        "Bol de riz recouvert de beignets de tempura croustillants (crevettes, légumes) nappés d'une sauce soja sucrée"
+      ],
+      [
+        "Fukagawa Meshi",
+        "Bol de riz cuit avec des palourdes et de la ciboule, dans \nun bouillon au miso ou au dashi (recette traditionnelle de pêcheurs)"
+      ],
+      [
+        "Ningyo-yaki",
+        "Petits gâteaux génoise cuits dans des moules en forme de poupées ou de mascottes, fourrés à la pâte de haricot rouge (Anko), typiques d'Asakusa"
+      ],
+      [
+        "Yakitori",
+        "Brochettes de poulet grillées au charbon de bois et assaisonnées au sel ou à la sauce tare, incontournables des allées comme Omoide Yokocho"
+      ],
+      [
+        "Crêpes d'Harajuku",
+        "Crêpes roulées en cône généreusement garnies de chantilly, fruits frais, gâteau ou glace, emblématiques de Takeshita Street"
+      ]
+    ],
+    "kawaguchiko": [
+      [
+        "Nouilles Hōtō",
+        "Grosses nouilles épaisses et plates, bouillon miso copieux, légumes de saison (potiron, champignons, carottes), parfois poulet, servi dans une petite marmite avec feu pour garder la chaleur"
+      ]
+    ],
+    "kiso": [
+      [
+        "Soba",
+        "Nouilles de sarrasin, faites main, réputées parmi les meilleures du Japon, présentes à Narai, Magome et Tsumago"
+      ],
+      [
+        "Gohei mochi",
+        "Boulettes de riz grillées enrobées d'une sauce (souvent à base de noix/miso)"
+      ],
+      [
+        "Oyaki",
+        "Chaussons fourrés (légumes ou pâte de haricot)"
+      ]
+    ],
+    "kyoto": [
+      [
+        "Yudofu",
+        "Tofu artisanal mijoté dans un bouillon léger au kombu, servi très chaud avec une sauce ponzu et des condiments. Une institution à Arashiyama et autour des temples."
+      ],
+      [
+        "Kaiseki Ryori",
+        "Gastronomie traditionnelle japonaise haute couture. Une succession de multiples petits plats de saison, ultra-raffinés, présentés comme des œuvres d'art."
+      ],
+      [
+        "Matcha & Pâtisseries",
+        "Kyoto (et la ville voisine d'Uji) est la capitale du thé vert. À tester : parfait au matcha, tiramisu au matcha, glaces artisanales ou Cha-soba (nouilles soba au thé vert)."
+      ],
+      [
+        "Obanzai",
+        "Cuisine familiale traditionnelle de Kyoto composée de plusieurs petits ramequins de légumes de saison locaux (Kyoyasai), poissons séchés et tofu mijoté."
+      ],
+      [
+        "Tsukemono",
+        "Légumes locaux fermentés ou marinés (navet, aubergine, concombre). Indispensable à déguster au marché de Nishiki."
+      ],
+      [
+        "Yuba",
+        "Peau de lait de soja fraîche, récupérée lors de la cuisson du tofu. C'\nest un mets délicat à la texture soyeuse, servi frais ou en rouleaux frits."
+      ],
+      [
+        "Yatsuhashi",
+        "La confiserie phare de Kyoto. Pâte à base de farine de riz, de sucre et de cannelle, déclinée en version cuite ou crue (Nama-yatsuhashi : triangle moelleux fourré)."
+      ]
+    ],
+    "hiroshima": [
+      [
+        "Anagomeshi",
+        "Anguille de mer grillée sur riz, sauce soja sucrée — LE plat emblématique"
+      ],
+      [
+        "Huîtres grillées",
+        "Région réputée, vendues en rue ou en restaurant"
+      ],
+      [
+        "Momiji manju",
+        "Petit gâteau en forme de feuille d'érable (matcha, chocolat, custard...)"
+      ],
+      [
+        "Momiji manju frit",
+        "Version street food, pâte frite"
+      ],
+      [
+        "Okonomiyaki style Hiroshima",
+        "En couches (nouilles, chou, œuf) — différent du style Osaka"
+      ]
+    ],
+    "osaka": [
+      [
+        "Takoyaki",
+        "Boulettes de pâte cuites dans un moule alvéolé, fourrées au poulpe, nappées de sauce brune sucrée-salée, de mayonnaise et de copeaux de bonite séchée (katsuobushi). L'incontournable absolu de Dotonbori."
+      ],
+      [
+        "Okonomiyaki",
+        "Galette/omelette japonaise épaisse composée de chou, de pâte, de porc (ou fruits de mer), grillée sur une plaque chauffante (teppan). Style Osaka : tout est mélangé avant cuisson."
+      ],
+      [
+        "Kushikatsu",
+        "Brochettes d'ingrédients variés (viandes, légumes, fromage) panées au panko et frites, servies croustillantes et brûlantes. La spécialité reine du quartier de Shinsekai."
+      ],
+      [
+        "Kitsune Udon",
+        "Soupe de nouilles udon épaisses servie dans un dashi léger, surmontée d'un grand morceau de tofu frit mijoté et légèrement sucré (abura-age)."
+      ],
+      [
+        "Rikuro Ojisan Cheese Cake",
+        "Gâteau au fromage japonais ultra-fluffy et tremblotant (soufflé cheesecake), très léger, servi chaud à la sortie du four."
+      ]
+    ]
   },
-  "schedule":[
-    {"date":"2026-11-16","title":"Shibuya & Shinjuku","cityKey":"tokyo","items":[
-      {"slot":"Matin","label":"Arrivée à Haneda (T3)","description":"Trajet vers Shinjuku et dépôt des bagages à l'hôtel.","place":"Haneda Airport Terminal 3 Station","transport":{"mode":"Train · Variante A ou B · Suica","duration":"51 min / 54 min"}},
-      {"slot":"Après-midi","label":"Carrefour de Shibuya","description":"Hachiko, Tower Records et Shibuya Parco.","place":"Shibuya Crossing","pois":["Hachiko Statue","Tower Records Shibuya","Shibuya Parco"]},
-      {"slot":"Fin d'après-midi","label":"Observatoire Shibuya Sky","description":"Coucher du soleil sur rooftop.","place":"Shibuya Sky"},
-      {"slot":"Soirée","label":"Omoide Yokocho","description":"Dîner à Omoide Yokocho, session au Shinjuku Batting Center dans Kabukicho puis verre dans les micro-bars de Golden Gai.","place":"Omoide Yokocho","pois":["Shinjuku Batting Center","Shinjuku Golden Gai"]}
-    ]},
-    {"date":"2026-11-17","title":"Harajuku & Shinjuku","cityKey":"tokyo","items":[
-      {"slot":"Matin","label":"Sanctuaire Meiji-jingu","description":"Sanctuaire Meiji-jingu et balade dans le parc de Yoyogi.","place":"Meiji-jingū","pois":["Yoyogi-kōen"]},
-      {"slot":"Après-midi","label":"Takeshita Street","description":"Friperies Kinji et Chicago, puis Harry Potter Shop Harajuku.","place":"Takeshita Street","pois":["Kinji Used Clothing Harajuku Branch","Chicago Inc.","LIBERTY WALK TOKYO","Harry Potter Shop Harajuku"]},
-      {"slot":"Fin d'après-midi","label":"Vue panoramique depuis la Mairie de Tokyo","description":"Vue panoramique gratuite depuis la Mairie de Tokyo (Tocho).","place":"Siège du gouvernement métropolitain de Tokyo"},
-      {"slot":"Soirée","label":"Shopping high-tech / appareils photo d'occasion à Shinjuku","description":"Yodobashi et Map Camera.","place":"Yodobashi Caméra Shinjuku Nishiguchi","pois":["Map Camera"]}
-    ]},
-    {"date":"2026-11-18","title":"Asakusa, Yanaka / Nezu, Ueno & Akihabara","cityKey":"tokyo","items":[
-      {"slot":"Matin","label":"Temple Senso-ji","description":"Temple Senso-ji et allée commerçante Nakamise-dori.","place":"Senso-ji Hondo","pois":["Nakamise Shopping Street"]},
-      {"slot":"Midi","label":"Sanctuaire Nezu-jinja","description":"Sanctuaire Nezu-jinja puis crochet par le quartier rétro de Yanaka.","place":"Nezu-jinja","pois":["Yanaka Ginza"]},
-      {"slot":"Après-midi","label":"Parc d'Ueno","description":"Parc d'Ueno, magasin de figurines et jouets Yamashiroya, puis Musée Edo-Tokyo (environ 2h sur place).","place":"Parc d'Ueno","pois":["Yamashiroya Ueno","Musée d'Edo-Tokyo"]},
-      {"slot":"Soirée","label":"Immersion à Akihabara Electric Town","description":"Arcades GiGO 1 & 3, Hey Arcade et magasins de pop-culture d'occasion.","place":"Akihabara Electric Town"}
-    ]},
-    {"date":"2026-11-19","title":"Shinjuku & Ginza","cityKey":"tokyo","items":[
-      {"slot":"Matin","label":"Atelier de fabrication de baguettes","description":"09h00 : atelier de fabrication de baguettes chez 禅 ZEN Chopsticks Workshop, Shinjuku.","place":"禅 ZEN Chopsticks Workshop, Shinjuku"},
-      {"slot":"Matin","label":"Parc Shinjuku Gyoen","description":"Balade d'automne au parc Shinjuku Gyoen. Penser au Takkyubin.","place":"Shinjuku Gyoen Park"},
-      {"slot":"Après-midi","label":"Flânerie et shopping chic à Ginza","description":"Uniqlo Flagship sur 12 étages et Muji Ginza Flagship Store.","place":"Ginza","pois":["Uniqlo Ginza Flagship Store"]},
-      {"slot":"Soirée","label":"Soirée libre.","description":"Soirée libre."}
-    ]},
-    {"date":"2026-11-20","title":"Shinjuku → Fuji","cityKey":"kawaguchiko","items":[
-      {"slot":"Matin","label":"Check-out de l'hôtel Shinjuku Washington","description":"Check-out puis direction la Gare de Shinjuku.","place":"Shinjuku Washington Hotel"},
-      {"slot":"Matin","label":"Fuji Excursion","description":"Trajet direct en train Fuji Excursion vers Kawaguchiko.","transport":{"mode":"Train · Fuji Excursion · Suica","duration":"2 h 01"}},
-      {"slot":"Midi","label":"Arrivée à Kawaguchiko","description":"Prise de la voiture de location puis direction le Mizno Hotel.","place":"Mizno Hotel","pois":["Nippon Rent-a-Car Fujisan Kawaguchiko"],"transport":{"mode":"Voiture","duration":"Trajet local"}},
-      {"slot":"Après-midi","label":"Mizno Hotel","description":"Check-in, réservation immédiate d'un créneau d'onsen privé, puis balade tranquille dans la zone sud (gare/village).","place":"Mizno Hotel"}
-    ]},
-    {"date":"2026-11-21","title":"Mont Fuji & rive nord","cityKey":"kawaguchiko","items":[
-      {"slot":"Matin","label":"Pagode de Chureito","description":"Pagode de Chureito dans la lumière du matin, puis Kachi Kachi Ropeway.","place":"Pagode de Chureito"},
-      {"slot":"Matin","label":"Kachi Kachi Ropeway","description":"Kachi Kachi Ropeway.","place":"Téléphérique du mont Kachi Kachi"},
-      {"slot":"Après-midi","label":"Saiko Iyashi-no-Sato Nenba","description":"Déjeuner, puis bascule vers le nord et visite de Saiko Iyashi-no-Sato Nenba.","place":"Saiko Iyashi-no-Sato Nemba (Traditional Japanese Village)"},
-      {"slot":"Après-midi","label":"Kawaguchiko Natural Living Center + Parc Oishi","description":"Kawaguchiko Natural Living Center, Parc Oishi, balade à pied ou à vélo sur la rive nord du lac puis Musée Itchiku Kubota.","place":"Kawaguchiko Natural Living Center","pois":["Parc Oishi","Kubota Itchiku Art Museum"]},
-      {"slot":"Soirée","label":"Onsen privé et dîner à l'hôtel","description":"Onsen privé et dîner à l'hôtel.","place":"Mizno Hotel"}
-    ]},
-    {"date":"2026-11-22","title":"Kawaguchiko → Narai → Nagiso","cityKey":"kiso","items":[
-      {"slot":"Matin","label":"Départ de Kawaguchiko","description":"Matinée libre puis départ en voiture avant midi vers Narai.","transport":{"mode":"Voiture · Suica","duration":"2 h 14 · 146 km"}},
-      {"slot":"Midi","label":"Narai","description":"Visite du village puis déjeuner sur place : soba locale.","place":"Narai-juku"},
-      {"slot":"Après-midi","label":"Route vers Nagiso","description":"Départ de Narai et route vers Nagiso.","transport":{"mode":"Voiture","duration":"1 h 13 · 61,3 km"}},
-      {"slot":"Fin d'après-midi","label":"Arrivée à l'Airbnb","description":"Installation. Repas à 18h00 sur place.","place":"Hanaya"},
-      {"slot":"Soirée","label":"Balade à Tsumago","description":"Balade dans la lumière dorée, ambiance calme.","place":"Tsumago-juku"}
-    ]},
-    {"date":"2026-11-23","title":"Tsumago → Magome → Nagoya → Kyoto","cityKey":"kyoto","items":[
-      {"slot":"Matin","label":"Tsumago → Magome","description":"Avant 9h00 : petit-déjeuner, check-out, voiture laissée sur place. 8h00-12h00 : randonnée Tsumago → Magome (2-3h), puis visite et déjeuner à Magome.","place":"Tsumago-juku"},
-      {"slot":"Midi","label":"Retour Magome → Tsumago","description":"12h50-13h15 : bus retour Magome → Tsumago (environ 20 min), puis récupération de la voiture.","place":"Magome-juku","transport":{"mode":"Bus · PASS JR","duration":"~20 min"}},
-      {"slot":"Après-midi","label":"Nagiso → Nagoya","description":"Vers 13h15 : environ 1h30 de route, direction Nagoya, puis restitution de la voiture à la gare JR Nagoya.","place":"Nippon Rent-a-Car Nagoya","transport":{"mode":"Voiture","duration":"1 h 31 · 104 km"}},
-      {"slot":"Après-midi","label":"Nagoya → Kyoto","description":"15h45-17h00 : Shinkansen Nagoya → Kyoto, arrivée à Kyoto vers 17h00.","transport":{"mode":"Shinkansen · Suica","duration":"34 min"}},
-      {"slot":"Fin d'après-midi","label":"Arrivée à Kyoto","description":"Installation à l'hôtel Agora Place.","place":"Agora Place Kyoto Nijo"},
-      {"slot":"Soirée","label":"Ninenzaka & Sannenzaka / Higashiyama","description":"Ruelles illuminées de Ninenzaka et Sannenzaka, Temple Kodai-ji et illuminations de nuit (fermeture 21h30). Dîner libre, ruelle de Pontocho ou canal Shirakawa.","place":"Kōdai-ji"}
-    ]},
-    {"date":"2026-11-24","title":"Arashiyama","cityKey":"kyoto","items":[
-      {"slot":"Matin","label":"Arashiyama","description":"Forêt de bambous de Sagano, Temple Tenryu-ji, Galerie Yusai-Tei (sur réservation) et Pont Togetsukyo.","place":"Forêt de bambous de Sagano","pois":["Tenryu-ji","Arashiyama Yusai-Tei Gallery","Togetsukyō Bridge"]},
-      {"slot":"Midi","label":"Déjeuner libre","description":"Déjeuner libre vers la gare d'Arashiyama."},
-      {"slot":"Après-midi","label":"Route des temples du Nord","description":"Jōjakkō-ji, Giō-ji, Adashino Nenbutsu-ji et Otagi Nenbutsu-ji.","place":"Jōjakkō-ji","pois":["Giō-ji","Adashino Nenbutsuji Temple","Temple bouddhiste Otagi Nenbutsuji"]},
-      {"slot":"Fin d'après-midi","label":"Temps libre à Arashiyama","description":"Snack, boutiques et dîner libre."}
-    ]},
-    {"date":"2026-11-25","title":"Higashiyama","cityKey":"kyoto","items":[
-      {"slot":"Matin","label":"Kiyomizu-dera → Higashiyama","description":"Temple Kiyomizu-dera (dès 07h30), descente de Sannenzaka et Ninenzaka, Sanctuaire Yasaka-jinja et parc Maruyama.","place":"Kiyomizu-dera","pois":["Yasaka-jinja","Parc Maruyama"]},
-      {"slot":"Midi","label":"Marché de Nishiki","description":"Déjeuner au marché de Nishiki puis achats de baguettes chez Ichihara Heibei Shoten.","place":"Nishiki Market","pois":["Ichihara Heibei Shōten"]},
-      {"slot":"Après-midi","label":"Pause matcha + Sanjusangen-do","description":"Temps libre, pause matcha (Maccha House ou Gion Tsujiri), puis Temple Sanjusangen-do (les 1001 statues).","place":"Sanjūsangen-dō"},
-      {"slot":"Soirée","label":"Eikan-do","description":"Temple Eikan-do, illuminations de nuit (fermeture 20h30), puis dîner libre.","place":"Eikan-dō Zenrin-ji"}
-    ]},
-    {"date":"2026-11-26","title":"Excursion à Nara","cityKey":"kyoto","items":[
-      {"slot":"Matin","label":"Kyoto → Nara","description":"Train JR Nara Line vers Nara.","transport":{"mode":"Train · Nara Line · PASS JR","duration":"1 h 11"}},
-      {"slot":"Matin","label":"Parc de Nara & Todai-ji","description":"Parc de Nara et Temple Todai-ji (Grand Bouddha), puis Jardin Yoshiki-en.","place":"Tōdai-ji","pois":["Yoshiki-en"]},
-      {"slot":"Midi","label":"Déjeuner libre","description":"Déjeuner libre."},
-      {"slot":"Midi","label":"Kasuga-taisha","description":"Sanctuaire Kasuga-taisha à travers la forêt aux lanternes.","place":"Kasuga-taisha"},
-      {"slot":"Après-midi","label":"Naramachi","description":"Balade, temps libre et pause goûter dans le quartier historique de Naramachi.","place":"Naramachi Street"},
-      {"slot":"Fin d'après-midi","label":"Nara → Kyoto","description":"Retour en train JR vers Kyoto puis traversée des pierres de la rivière Kamogawa. Dîner libre.","transport":{"mode":"Train · Nara Line · PASS JR","duration":"1 h 02"}}
-    ]},
-    {"date":"2026-11-27","title":"Nijo, Kinkaku-ji & Fushimi Inari","cityKey":"kyoto","items":[
-      {"slot":"Matin","label":"Nijo-jo → Kinkaku-ji","description":"Château de Nijo-jo, Pavillon d'Or (Kinkaku-ji) puis Sanctuaire Kitano Tenman-gū et jardin Momiji-en.","place":"Nijō-jō","pois":["Kinkaku-ji","Kitano Tenman-gū"]},
-      {"slot":"Midi","label":"Déjeuner libre","description":"Déjeuner libre."},
-      {"slot":"Après-midi","label":"Ginkaku-ji & Chemin de la Philosophie","description":"Pavillon d'Argent (Ginkaku-ji) puis balade sur le Chemin de la Philosophie.","place":"Ginkaku-ji (Silver Pavilion)","pois":["Le chemin de la Philosophie"]},
-      {"slot":"Fin d'après-midi","label":"Tofuku-ji → Fushimi Inari","description":"Temple Tofuku-ji puis Sanctuaire Fushimi Inari-taisha au coucher du soleil.","place":"Fushimi Inari-taisha","pois":["Tōfuku-ji"]},
-      {"slot":"Soirée","label":"Gare de Kyoto","description":"Achats souvenirs au sous-sol de la gare de Kyoto, puis dîner libre.","place":"Gare de Kyoto"}
-    ]},
-    {"date":"2026-11-28","title":"Hiroshima / Miyajima","cityKey":"hiroshima","items":[
-      {"slot":"Matin","label":"Kyoto → Hiroshima","description":"Check-out de l'hôtel puis Shinkansen depuis la gare de Kyoto vers Hiroshima.","transport":{"mode":"Shinkansen · PASS JR","duration":"1 h 36"}},
-      {"slot":"Matin","label":"Parc du Mémorial de la Paix","description":"Parc du Mémorial de la Paix, Dôme de Genbaku et Musée du Mémorial.","place":"Parc du Mémorial de la Paix de Hiroshima","pois":["Dôme de Genbaku","Musée du mémorial de la Paix de Hiroshima"]},
-      {"slot":"Midi","label":"Déjeuner à Hiroshima","description":"Déjeuner : okonomiyaki."},
-      {"slot":"Midi","label":"Château d'Hiroshima & Shukkei-en","description":"Château d'Hiroshima puis jardin Shukkei-en.","place":"Château d'Hiroshima","pois":["Jardin Shukkei-en"]},
-      {"slot":"Après-midi","label":"Hiroshima → Miyajimaguchi","description":"Direction Miyajimaguchi en train.","transport":{"mode":"Train · San-yo Line · PASS JR","duration":"27 min"}},
-      {"slot":"Après-midi","label":"Ferry vers Miyajima","description":"Ferry JR Miyajimaguchi ↔ Miyajima, puis installation à l'hôtel (check-in jusqu'à 17h00).","transport":{"mode":"Ferry · JR · PASS JR","duration":"13 min"}},
-      {"slot":"Soirée","label":"Torii au coucher du soleil","description":"Torii d'Itsukushima-jinja au coucher du soleil, balade dans les rues et dîner libre.","place":"Itsukushima-jinja"}
-    ]},
-    {"date":"2026-11-29","title":"Miyajima → Osaka","cityKey":"osaka","items":[
-      {"slot":"Matin","label":"Itsukushima & Daisho-in","description":"Sanctuaire Itsukushima et Daisho-in, avant la foule, puis Mont Misen : téléphérique et randonnée jusqu'au sommet.","place":"Itsukushima-jinja","pois":["Daishō-in","Téléphérique du mont Misen"]},
-      {"slot":"Matin","label":"Miyajima → Miyajimaguchi","description":"Ferry retour vers Miyajimaguchi.","transport":{"mode":"Ferry · JR · PASS JR","duration":"13 min"}},
-      {"slot":"Matin","label":"Miyajimaguchi → Osaka","description":"Train puis Shinkansen vers Osaka.","transport":{"mode":"Train + Shinkansen · PASS JR","duration":"2 h"}},
-      {"slot":"Après-midi","label":"Arrivée à Shin-Osaka","description":"Arrivée depuis Hiroshima puis check-in à l'hôtel.","place":"JR Shin-Osaka Station"},
-      {"slot":"Fin d'après-midi","label":"Umeda Sky Building","description":"Observatoire au coucher du soleil.","place":"Umeda Sky Building"},
-      {"slot":"Soirée","label":"Dotonbori & Hozenji-yokocho","description":"Immersion dans Dotonbori et Hozenji-yokocho. Option croisière Tombori River Cruise (20 min), puis dîner libre.","place":"Dōtonbori"}
-    ]},
-    {"date":"2026-11-30","title":"Ikeda, Osaka & Shinsekai","cityKey":"osaka","items":[
-  {"slot":"Matin","label":"Château d'Osaka","description":"Parc, douves et donjon.","place":"Château d'Osaka"},
-  {"slot":"Midi","label":"Déjeuner libre","description":"Déjeuner libre."},
-  {"slot":"Après-midi","label":"CupNoodles Museum à Ikeda","description":"Visite du CupNoodles Museum à Ikeda. Réservation : c226113097279. Créneau : 15h10–16h20.","place":"Musée des Nouilles Instantanées de Momofuku Ando"},
-  {"slot":"Après-midi","label":"Namba Yasaka-jinja","description":"Sanctuaire avec sa sculpture géante en tête de lion.","place":"Namba Yasaka Jinja"},
-  {"slot":"Fin d'après-midi","label":"Shinsekai","description":"Quartier rétro de Shinsekai et montée à la tour Tsutenkaku.","place":"Shinsekai","pois":["Tsūtenkaku"]},
-  {"slot":"Soirée","label":"Yakiniku Fujimoto – 20h30","description":"Dîner réservé à 20h30 chez Yakiniku Fujimoto Umeda Ohatsutenjin.","place":"Yakiniku Fujimoto Umeda Ohatsutenjin"}
-]},
-    {"date":"2026-12-01","title":"Universal Studios Japan","cityKey":"osaka","items":[
-      {"slot":"Matin","label":"Osaka → Universal Studios Japan","description":"Trajet vers USJ : Osaka Loop Line → JR Yumesaki Line.","place":"Universal Studios Japan","transport":{"mode":"Train · Osaka Loop Line → JR Yumesaki Line · PASS JR","duration":"24 min"}},
-      {"slot":"Après-midi","label":"Universal Studios Japan","description":"Journée complète : Super Nintendo World, Harry Potter…","place":"Universal Studios Japan"},
-      {"slot":"Soirée","label":"Retour depuis USJ","description":"Temps libre, dîner libre à Universal Citywalk ou retour en ville.","transport":{"mode":"Train · JR Yumesaki Line → Osaka Loop Line · PASS JR","duration":"19 min"}}
-    ]},
-    {"date":"2026-12-02","title":"Osaka → Tokyo","cityKey":"tokyo","items":[
-      {"slot":"Matin","label":"Check-out de l'hôtel","description":"Trajet vers la gare de Shin-Osaka, direction Tokyo.","transport":{"mode":"Shinkansen · Suica","duration":"2 h 19"}},
-      {"slot":"Matin","label":"Shinagawa → Ōimachi","description":"Correspondance à Shinagawa puis trajet vers Ōimachi.","transport":{"mode":"Train · Keihin-Tōhoku Line · Suica","duration":"4 min"}},
-      {"slot":"Matin","label":"Arrivée à Tokyo","description":"Arrivée à la gare de Shinagawa puis check-in au Hotel Metropolitan Oimachi Tracks.","place":"Hotel Metropolitan Oimachi Tracks Tokyo"},
-      {"slot":"Après-midi","label":"teamLab Borderless","description":"Expérience immersive à teamLab Borderless (Azabudai Hills).","place":"Teamlab Borderless Museum"},
-      {"slot":"Fin d'après-midi","label":"Shiba / Oimachi","description":"Passage au temple Zojo-ji puis Tokyo Tower illuminée depuis le parc Shiba.","place":"Zojo-ji","pois":["La Tour de Tokyo"]},
-      {"slot":"Soirée","label":"Oimachi Yokocho","description":"Dîner local à Oimachi Yokocho.","place":"Oimachi Yokocho"}
-    ]},
-    {"date":"2026-12-03","title":"Roppongi","cityKey":"tokyo","items":[
-  {"slot":"Matin","label":"Petit-déjeuner / café à Roppongi","description":"Petit-déjeuner ou café sur place avant l'ouverture."},
-  {"slot":"Matin","label":"Parfum Satori","description":"11h00 : arrivée à l'ouverture pour profiter du calme, découverte de la collection avec le personnel.","place":"Parfum Satori"},
-  {"slot":"Midi","label":"Déjeuner à Roppongi","description":"Déjeuner à Roppongi."},
-  {"slot":"Après-midi","label":"The National Art Center","description":"Entrée gratuite, à 10 min à pied de la boutique. Architecture et art contemporain.","place":"The National Art Center"},
-  {"slot":"Après-midi","label":"Mori Art Museum + Tokyo City View","description":"Billet à prendre sur place au comptoir (3e étage, Mori Tower) ou en ligne (Klook).","place":"Mori Art Museum","pois":["Tokyo City View"]},
-  {"slot":"Après-midi","label":"Roppongi Hills","description":"Jardin japonais gratuit, shopping et balade dans le complexe.","place":"Roppongi Hills"},
-  {"slot":"Soirée","label":"Coucher de soleil à Tokyo City View","description":"Coucher de soleil depuis l'observatoire Tokyo City View, avec une belle lumière en fin d'après-midi début décembre.","place":"Tokyo City View"},
-  {"slot":"Soirée","label":"Keyakizaka Dōri","description":"Balade sur Keyakizaka Dōri pour profiter des illuminations de Noël.","place":"Keyakizaka Dōri"},
-  {"slot":"Soirée","label":"Dîner à Roppongi","description":"Dîner à Roppongi ou retour vers Oimachi selon l'envie."}
-]},
-    {"date":"2026-12-04","title":"Dernière journée à Tokyo","cityKey":"tokyo","items":[
-  {"slot":"Matin","label":"Achats de souvenirs","description":"Souvenirs, snacks, friandises japonaises et derniers cadeaux."},
-  {"slot":"Après-midi","label":"Derniers achats","description":"Temps libre pour compléter les achats et préparer les derniers cadeaux."},
-  {"slot":"Soirée","label":"Ebisu Sushi Hatsume – 19h30","description":"Dîner de sushis réservé à 19h30 chez Ebisu Sushi Hatsume.","place":"Ebisu Sushi Hatsume"}
-]},
-    {"date":"2026-12-05","title":"Retour","cityKey":"tokyo","items":[
-      {"slot":"Matin","time":"07h30","label":"Départ pour Haneda","description":"Check-out puis trajet vers l'aéroport de Haneda Terminal 3. Vol retour à 10h45.","place":"Haneda Airport Terminal 3 Station","transport":{"mode":"Bus · Haneda Airport Limousine Bus · Suica","duration":"55 min"}}
-    ]}
+  "schedule": [
+    {
+      "date": "2026-11-16",
+      "title": "Shibuya & Shinjuku",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Arrivée à Haneda (T3)",
+          "description": "Trajet vers Shinjuku et dépôt des bagages à l'hôtel.",
+          "place": "Haneda Airport Terminal 3 Station",
+          "transport": {
+            "type": "train",
+            "variants": [
+              {
+                "label": "Variante A",
+                "route": "Tokyo Monorail → Toei Oedo Line",
+                "duration": "51 min",
+                "payment": "SUICA"
+              },
+              {
+                "label": "Variante B",
+                "route": "Tokyo Monorail → JR Yamanote Line",
+                "duration": "54 min",
+                "payment": "SUICA"
+              }
+            ]
+          },
+          "time": "09h15"
+        },
+        {
+          "slot": "Après-midi",
+          "\nlabel": "Carrefour de Shibuya",
+          "description": "Hachiko, Tower Records et Shibuya Parco.",
+          "place": "Shibuya Crossing",
+          "pois": [
+            "Hachiko Statue",
+            "Tower Records Shibuya",
+            "Shibuya Parco"
+          ]
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Observatoire Shibuya Sky",
+          "description": "Coucher du soleil sur rooftop.",
+          "place": "Shibuya Sky"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Omoide Yokocho",
+          "description": "Dîner à Omoide Yokocho, session au Shinjuku Batting Center dans Kabukicho puis verre dans les micro-bars de Golden Gai.",
+          "place": "Omoide Yokocho",
+          "pois": [
+            "Shinjuku Batting Center",
+            "Shinjuku Golden Gai"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-17",
+      "title": "Harajuku & Shinjuku",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Sanctuaire Meiji-jingu",
+          "description": "Sanctuaire Meiji-jingu et balade dans le parc de Yoyogi.",
+          "place": "Meiji-jingū",
+          "pois": [
+            "Yoyogi-kōen"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Takeshita Street",
+          "description": "Friperies Kinji et Chicago, puis Harry Potter Shop Harajuku.",
+          "place": "Takeshita Street",
+          "pois": [
+            "Kinji Used Clothing Harajuku Branch",
+            "Chicago Inc.",
+            "LIBERTY WALK TOKYO",
+            "Harry Potter Shop Harajuku"
+          ]
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Vue panoramique depuis la Mairie de Tokyo",
+          "description": "Vue panoramique gratuite depuis la Mairie de Tokyo (Tocho).",
+          "place": "Siège du gouvernement métropolitain de Tokyo"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Shopping high-tech / appareils photo d'occasion à Shinjuku",
+          "description": "Yodobashi et Map Camera.",
+          "place": "Yodobashi Caméra Shinjuku Nishiguchi",
+          "pois": [
+            "Map Camera"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-11-18",
+      "title": "Asakusa, Yanaka / Nezu, Ueno & Akihabara",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Temple Senso-ji",
+          "description": "Temple Senso-ji et allée commerçante Nakamise-dori.",
+          "place": "Senso-ji Hondo",
+          "pois": [
+            "Nakamise Shopping Street"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Sanctuaire Nezu-jinja",
+          "description": "Sanctuaire Nezu-jinja puis crochet par le quartier rétro de Yanaka.",
+          "place": "Nezu-jinja",
+          "poi\ns": [
+            "Yanaka Ginza"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Parc d'Ueno",
+          "description": "Parc d'Ueno, magasin de figurines et jouets Yamashiroya, puis Musée Edo-Tokyo (environ 2h sur place).",
+          "place": "Parc d'Ueno",
+          "pois": [
+            "Yamashiroya Ueno",
+            "Musée d'Edo-Tokyo"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Immersion à Akihabara Electric Town",
+          "description": "Arcades GiGO 1 & 3, Hey Arcade et magasins de pop-culture d'occasion.",
+          "place": "Akihabara Electric Town"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "title": "Shinjuku & Ginza",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Atelier de fabrication de baguettes",
+          "description": "09h00 : atelier de fabrication de baguettes chez 禅 ZEN Chopsticks Workshop, Shinjuku.",
+          "place": "禅 ZEN Chopsticks Workshop, Shinjuku",
+          "time": "09h00"
+        },
+        {
+          "slot": "Matin",
+          "label": "Parc Shinjuku Gyoen",
+          "description": "Balade d'automne au parc Shinjuku Gyoen. Penser au Takkyubin.",
+          "place": "Shinjuku Gyoen Park"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Flânerie et shopping chic à Ginza",
+          "description": "Uniqlo Flagship sur 12 étages et Muji Ginza Flagship Store.",
+          "place": "Ginza",
+          "pois": [
+            "Uniqlo Ginza Flagship Store"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Soirée libre.",
+          "description": "Soirée libre."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "title": "Shinjuku → Fuji",
+      "cityKey": "kawaguchiko",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Check-out de l'hôtel Shinjuku Washington",
+          "description": "Check-out avant 10h00 puis direction la Gare de Shinjuku.",
+          "place": "Shinjuku Washington Hotel"
+        },
+        {
+          "slot": "Matin",
+          "label": "Fuji Excursion",
+          "description": "Trajet direct en train Fuji Excursion vers Kawaguchiko (places réservées).",
+          "transport": {
+            "type": "train",
+            "route": "Fuji Excursion · Shinjuku → Kawaguchiko",
+            "duration": "10h30 → 12h24 · 1 h 54",
+            "payment": "SUICA"
+          },
+          "time": "10h30"
+        },
+        {
+          "slot": "Midi",
+          "label": "Arrivée à Kawaguchiko",
+          "description": "Prise de la voiture de location puis direction le Mizno Hotel.",
+          "place": "Mizno Hotel",
+          "pois": [
+            "Nippon Rent-a-Car Fujisan Kawaguchiko"
+          ],
+          "transport": {
+            "type": "car",
+            "route": "Voiture de location (Nippon Rent-a-Car)",
+            "duration": "Trajet local"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Mizno Hotel",
+          "description": "Check-in, ré\nservation immédiate d'un créneau d'onsen privé, puis balade tranquille dans la zone sud (gare/village).",
+          "place": "Mizno Hotel"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "title": "Mont Fuji & rive nord",
+      "cityKey": "kawaguchiko",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Pagode de Chureito",
+          "description": "Pagode de Chureito dans la lumière du matin, puis Kachi Kachi Ropeway.",
+          "place": "Pagode de Chureito"
+        },
+        {
+          "slot": "Matin",
+          "label": "Kachi Kachi Ropeway",
+          "description": "Kachi Kachi Ropeway.",
+          "place": "Téléphérique du mont Kachi Kachi"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Saiko Iyashi-no-Sato Nenba",
+          "description": "Déjeuner, puis bascule vers le nord et visite de Saiko Iyashi-no-Sato Nenba.",
+          "place": "Saiko Iyashi-no-Sato Nemba (Traditional Japanese Village)"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Kawaguchiko Natural Living Center + Parc Oishi",
+          "description": "Kawaguchiko Natural Living Center, Parc Oishi, balade à pied ou à vélo sur la rive nord du lac puis Musée Itchiku Kubota.",
+          "place": "Kawaguchiko Natural Living Center",
+          "pois": [
+            "Parc Oishi",
+            "Kubota Itchiku Art Museum"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Onsen privé et dîner à l'hôtel",
+          "description": "Onsen privé et dîner à l'hôtel.",
+          "place": "Mizno Hotel"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "title": "Kawaguchiko → Narai → Nagiso",
+      "cityKey": "kiso",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Départ de Kawaguchiko",
+          "description": "Matinée libre puis départ en voiture avant midi vers Narai.",
+          "transport": {
+            "type": "car",
+            "route": "via Chuo Expressway",
+            "duration": "2 h 14 · 146 km"
+          }
+        },
+        {
+          "slot": "Midi",
+          "label": "Narai",
+          "description": "Visite du village puis déjeuner sur place : soba locale.",
+          "place": "Narai-juku"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Route vers Nagiso",
+          "description": "Départ de Narai et route vers Nagiso.",
+          "transport": {
+            "type": "car",
+            "route": "via Nakasendo / Route 19",
+            "duration": "1 h 13 · 61,3 km"
+          }
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Arrivée à l'Airbnb",
+          "description": "Installation. Repas à 18h00 sur place.",
+          "place": "Hanaya"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Balade à Tsumago",
+          "description": "Balade dans la lumière dorée, ambiance calme.",
+          "place": "Tsumago-juku"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "title": "Tsumago → Magome → Nagoya → Kyoto",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Tsumago → Magome",
+          "description": "Avant 9h00 : petit-déjeuner, check-out, voiture laissée sur place. 8h00-12h00 : randonnée Tsumago → Magome (2-3h), puis visite et déjeuner à Magome.",
+          "place": "Tsumago-juku"
+        },
+        {
+          "slot": "Midi",
+          "label": "Retour Magome → Tsumago",
+          "description": "12h50-13h15 : bus retour Magome → Tsumago (environ 20 min, billet pris à bord en espèces — jour férié au Japon, prévoir de la marge), puis récupération de la voiture.",
+          "place": "Magome-juku",
+          "transport": {
+            "type": "bus",
+            "route": "Bus local Magome → Tsumago",
+            "duration": "~20 min",
+            "payment": "ESPÈCES"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Nagiso → Nagoya",
+          "description": "Vers 13h15 : environ 1h30 de route, direction Nagoya, puis restitution de la voiture à la gare JR Nagoya.",
+          "place": "Nippon Rent-a-Car Nagoya",
+          "transport": {
+            "type": "car",
+            "route": "via Chuo Expressway",
+            "duration": "1 h 31 · 104 km"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Nagoya → Kyoto",
+          "description": "15h45-17h00 : Shinkansen Nagoya → Kyoto, arrivée à Kyoto vers 17h00.",
+          "transport": {
+            "type": "shinkansen",
+            "route": "Tokaido Shinkansen",
+            "duration": "34 min",
+            "payment": "SUICA"
+          }
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Arrivée à Kyoto",
+          "description": "Installation à l'hôtel Agora Place.",
+          "place": "Agora Place Kyoto Nijo"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Ninenzaka & Sannenzaka / Higashiyama",
+          "description": "Ruelles illuminées de Ninenzaka et Sannenzaka, Temple Kodai-ji et illuminations de nuit (fermeture 21h30). Dîner libre, ruelle de Pontocho ou canal Shirakawa.",
+          "place": "Kōdai-ji"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-24",
+      "title": "Arashiyama",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Arashiyama",
+          "description": "Forêt de bambous de Sagano, Temple Tenryu-ji, Galerie Yusai-Tei (sur réservation) et Pont Togetsukyo.",
+          "place": "Forêt de bambous de Sagano",
+          "pois": [
+            "Tenryu-ji",
+            "Arashiyama Yusai-Tei Gallery",
+            "Togetsukyō Bridge"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner libre",
+          "description": "Déjeuner libre vers la ga\nre d'Arashiyama."
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Route des temples du Nord",
+          "description": "Jōjakkō-ji, Giō-ji, Adashino Nenbutsu-ji et Otagi Nenbutsu-ji.",
+          "place": "Jōjakkō-ji",
+          "pois": [
+            "Giō-ji",
+            "Adashino Nenbutsuji Temple",
+            "Temple bouddhiste Otagi Nenbutsuji"
+          ]
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Temps libre à Arashiyama",
+          "description": "Snack, boutiques et dîner libre."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-25",
+      "title": "Higashiyama",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Kiyomizu-dera → Higashiyama",
+          "description": "Temple Kiyomizu-dera (dès 07h30), descente de Sannenzaka et Ninenzaka, Sanctuaire Yasaka-jinja et parc Maruyama.",
+          "place": "Kiyomizu-dera",
+          "pois": [
+            "Yasaka-jinja",
+            "Parc Maruyama"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Marché de Nishiki",
+          "description": "Déjeuner au marché de Nishiki puis achats de baguettes chez Ichihara Heibei Shoten.",
+          "place": "Nishiki Market",
+          "pois": [
+            "Ichihara Heibei Shōten"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Pause matcha + Sanjusangen-do",
+          "description": "Temps libre, pause matcha (Maccha House ou Gion Tsujiri), puis Temple Sanjusangen-do (les 1001 statues).",
+          "place": "Sanjūsangen-dō"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Eikan-do",
+          "description": "Temple Eikan-do, illuminations de nuit (fermeture 20h30), puis dîner libre.",
+          "place": "Eikan-dō Zenrin-ji"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-26",
+      "title": "Excursion à Nara",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Kyoto → Nara",
+          "description": "Train JR Nara Line vers Nara. Activation du JR Kansai-Hiroshima Pass à la gare de Kyoto avant le départ (5 jours consécutifs : 26 → 30 nov), si l'échange n'a pas déjà été fait à l'arrivée le 23 nov.",
+          "transport": {
+            "type": "train",
+            "route": "Nara Line",
+            "duration": "1 h 11",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Matin",
+          "label": "Parc de Nara & Todai-ji",
+          "description": "Parc de Nara et Temple Todai-ji (Grand Bouddha), puis Jardin Yoshiki-en.",
+          "place": "Tōdai-ji",
+          "pois": [
+            "Yoshiki-en"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner libre",
+          "description": "Déjeuner libre."
+        },
+        {
+          "slot": "Midi",
+          "label": "Kasuga-taisha",
+          "description": "Sanctuaire Kasuga-taisha à travers la forêt aux lanternes.",
+          "place": "Kasuga-taisha"
+        },
+        {
+          "slot": "Après\n-midi",
+          "label": "Naramachi",
+          "description": "Balade, temps libre et pause goûter dans le quartier historique de Naramachi.",
+          "place": "Naramachi Street"
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Nara → Kyoto",
+          "description": "Retour en train JR vers Kyoto puis traversée des pierres de la rivière Kamogawa. Dîner libre.",
+          "transport": {
+            "type": "train",
+            "route": "Nara Line",
+            "duration": "1 h 02",
+            "payment": "JR PASS"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-11-27",
+      "title": "Nijo, Kinkaku-ji & Fushimi Inari",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Nijo-jo → Kinkaku-ji",
+          "description": "Château de Nijo-jo, Pavillon d'Or (Kinkaku-ji) puis Sanctuaire Kitano Tenman-gū et jardin Momiji-en.",
+          "place": "Nijō-jō",
+          "pois": [
+            "Kinkaku-ji",
+            "Kitano Tenman-gū"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner libre",
+          "description": "Déjeuner libre."
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Ginkaku-ji & Chemin de la Philosophie",
+          "description": "Pavillon d'Argent (Ginkaku-ji) puis balade sur le Chemin de la Philosophie.",
+          "place": "Ginkaku-ji (Silver Pavilion)",
+          "pois": [
+            "Le chemin de la Philosophie"
+          ]
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Tofuku-ji → Fushimi Inari",
+          "description": "Temple Tofuku-ji puis Sanctuaire Fushimi Inari-taisha au coucher du soleil.",
+          "place": "Fushimi Inari-taisha",
+          "pois": [
+            "Tōfuku-ji"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Gare de Kyoto",
+          "description": "Achats souvenirs au sous-sol de la gare de Kyoto, puis dîner libre.",
+          "place": "Gare de Kyoto"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-28",
+      "title": "Hiroshima / Miyajima",
+      "cityKey": "hiroshima",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Kyoto → Hiroshima",
+          "description": "Check-out de l'hôtel puis Shinkansen depuis la gare de Kyoto vers Hiroshima. Sièges à réserver avec le pass (samedi chargé).",
+          "transport": {
+            "type": "shinkansen",
+            "route": "Tokaido + Sanyo Shinkansen (Nozomi/Hikari)",
+            "duration": "1 h 36",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Matin",
+          "label": "Parc du Mémorial de la Paix",
+          "description": "Parc du Mémorial de la Paix, Dôme de Genbaku et Musée du Mémorial.",
+          "place": "Parc du Mémorial de la Paix de Hiroshima",
+          "pois": [
+            "Dôme de Genbaku",
+            "Musée du mémorial de la Paix de Hiroshima"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner à Hiroshima",
+          "description": "Déjeuner : okonomiyaki."
+        },
+        {
+          "slot": "Midi",
+          "label": "Château d'Hiroshima & Shukkei-en",
+          "description": "Château d'Hiroshima puis jardin Shukkei-en.",
+          "place": "Château d'Hiroshima",
+          "pois": [
+            "Jardin Shukkei-en"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Hiroshima → Miyajimaguchi",
+          "description": "Direction Miyajimaguchi en train.",
+          "transport": {
+            "type": "train",
+            "route": "San-yo Line",
+            "duration": "27 min",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Ferry vers Miyajima",
+          "description": "Ferry JR Miyajimaguchi ↔ Miyajima, puis installation à l'hôtel (check-in jusqu'à 17h00).",
+          "transport": {
+            "type": "ferry",
+            "route": "Ferry JR Miyajimaguchi ↔ Miyajima",
+            "duration": "13 min",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Soirée",
+          "label": "Torii au coucher du soleil",
+          "description": "Torii d'Itsukushima-jinja au coucher du soleil, balade dans les rues et dîner libre.",
+          "place": "Itsukushima-jinja"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-29",
+      "title": "Miyajima → Osaka",
+      "cityKey": "osaka",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Itsukushima & Daisho-in",
+          "description": "Sanctuaire Itsukushima et Daisho-in, avant la foule, puis Mont Misen : téléphérique et randonnée jusqu'au sommet.",
+          "place": "Itsukushima-jinja",
+          "pois": [
+            "Daishō-in",
+            "Téléphérique du mont Misen"
+          ]
+        },
+        {
+          "slot": "Matin",
+          "label": "Miyajima → Miyajimaguchi",
+          "description": "Ferry retour vers Miyajimaguchi.",
+          "transport": {
+            "type": "ferry",
+            "route": "Ferry JR Miyajimaguchi ↔ Miyajima",
+            "duration": "13 min",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Matin",
+          "label": "Miyajimaguchi → Osaka",
+          "description": "Train puis Shinkansen vers Osaka.",
+          "transport": {
+            "type": "shinkansen",
+            "route": "San-yo Line + Sanyo Shinkansen vers Shin-Osaka",
+            "duration": "~2 h",
+            "payment": "JR PASS"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Arrivée à Osaka",
+          "description": "Arrivée à Shin-Osaka, métro Midosuji jusqu'à Shinsaibashi puis check-in au Hotel Kojan Shinsaibashi.",
+          "place": "JR Shin-Osaka Station",
+          "pois": [
+            "Hotel Kojan Shinsaibashi"
+          ]
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Umeda Sky Building",
+          "description": "Observatoire au coucher du soleil.",
+          "place": "Umeda Sky Building"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Dotonbori & Hozenji-yokocho",
+          "description": "Immersion dans Dotonbori et Hozenji-yokocho\n. Option croisière Tombori River Cruise (20 min), puis dîner libre.",
+          "place": "Dōtonbori"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-30",
+      "title": "Ikeda, Osaka & Shinsekai",
+      "cityKey": "osaka",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Château d'Osaka",
+          "description": "Parc, douves et donjon.",
+          "place": "Château d'Osaka"
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner libre",
+          "description": "Déjeuner libre."
+        },
+        {
+          "slot": "Après-midi",
+          "label": "CupNoodles Museum à Ikeda",
+          "description": "Visite du CupNoodles Museum à Ikeda. Réservation : c226113097279. Créneau : 15h10–16h20.",
+          "place": "Musée des Nouilles Instantanées de Momofuku Ando",
+          "time": "15h10"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Namba Yasaka-jinja",
+          "description": "Sanctuaire avec sa sculpture géante en tête de lion.",
+          "place": "Namba Yasaka Jinja"
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Shinsekai",
+          "description": "Quartier rétro de Shinsekai et montée à la tour Tsutenkaku.",
+          "place": "Shinsekai",
+          "pois": [
+            "Tsūtenkaku"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Yakiniku Fujimoto – 20h30",
+          "description": "Dîner réservé à 20h30 chez Yakiniku Fujimoto Umeda Ohatsutenjin.",
+          "place": "Yakiniku Fujimoto Umeda Ohatsutenjin"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-01",
+      "title": "Universal Studios Japan",
+      "cityKey": "osaka",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Osaka → Universal Studios Japan",
+          "description": "Trajet vers USJ : Osaka Loop Line → JR Yumesaki Line.",
+          "place": "Universal Studios Japan",
+          "transport": {
+            "type": "train",
+            "route": "Osaka Loop Line → JR Yumesaki Line",
+            "duration": "24 min",
+            "payment": "SUICA"
+          }
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Universal Studios Japan",
+          "description": "Journée complète : Super Nintendo World, Harry Potter…",
+          "place": "Universal Studios Japan"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Retour depuis USJ",
+          "description": "Temps libre, dîner libre à Universal Citywalk ou retour en ville.",
+          "transport": {
+            "type": "train",
+            "route": "JR Yumesaki Line → Osaka Loop Line",
+            "duration": "19 min",
+            "payment": "SUICA"
+          }
+        }
+      ]
+    },
+    {
+      "date": "2026-12-02",
+      "title": "Osaka → Tokyo",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Check-out de l'hôtel",
+          "de\nscription": "Trajet vers la gare de Shin-Osaka, direction Tokyo.",
+          "transport": {
+            "type": "shinkansen",
+            "route": "Tokaido Shinkansen",
+            "duration": "2 h 19",
+            "payment": "SUICA"
+          }
+        },
+        {
+          "slot": "Matin",
+          "label": "Shinagawa → Ōimachi",
+          "description": "Correspondance à Shinagawa puis trajet vers Ōimachi.",
+          "transport": {
+            "type": "train",
+            "route": "Keihin-Tōhoku Line",
+            "duration": "4 min",
+            "payment": "SUICA"
+          }
+        },
+        {
+          "slot": "Matin",
+          "label": "Arrivée à Tokyo",
+          "description": "Arrivée à la gare de Shinagawa puis dépôt des bagages au Hotel Metropolitan Oimachi Tracks (check-in à partir de 15h00).",
+          "place": "Hotel Metropolitan Oimachi Tracks Tokyo"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "teamLab Borderless",
+          "description": "Expérience immersive à teamLab Borderless (Azabudai Hills) — billets 15h00 réservés (2 adultes).",
+          "place": "Teamlab Borderless Museum",
+          "time": "15h00"
+        },
+        {
+          "slot": "Fin d'après-midi",
+          "label": "Shiba / Oimachi",
+          "description": "Passage au temple Zojo-ji puis Tokyo Tower illuminée depuis le parc Shiba.",
+          "place": "Zojo-ji",
+          "pois": [
+            "La Tour de Tokyo"
+          ]
+        },
+        {
+          "slot": "Soirée",
+          "label": "Oimachi Yokocho",
+          "description": "Dîner local à Oimachi Yokocho.",
+          "place": "Oimachi Yokocho"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-03",
+      "title": "Roppongi",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Petit-déjeuner / café à Roppongi",
+          "description": "Petit-déjeuner ou café sur place avant l'ouverture."
+        },
+        {
+          "slot": "Matin",
+          "label": "Parfum Satori",
+          "description": "11h00 : arrivée à l'ouverture pour profiter du calme, découverte de la collection avec le personnel.",
+          "place": "Parfum Satori"
+        },
+        {
+          "slot": "Midi",
+          "label": "Déjeuner à Roppongi",
+          "description": "Déjeuner à Roppongi."
+        },
+        {
+          "slot": "Après-midi",
+          "label": "The National Art Center",
+          "description": "Entrée gratuite, à 10 min à pied de la boutique. Architecture et art contemporain.",
+          "place": "The National Art Center"
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Mori Art Museum + Tokyo City View",
+          "description": "Billet à prendre sur place au comptoir (3e étage, Mori Tower) ou en ligne (Klook).",
+          "place": "Mori Art Museum",
+          "pois": [
+            "Tokyo City View"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Roppongi Hills",
+          "description": "Jardin japonais gratuit\n, shopping et balade dans le complexe.",
+          "place": "Roppongi Hills"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Coucher de soleil à Tokyo City View",
+          "description": "Coucher de soleil depuis l'observatoire Tokyo City View, avec une belle lumière en fin d'après-midi début décembre.",
+          "place": "Tokyo City View"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Keyakizaka Dōri",
+          "description": "Balade sur Keyakizaka Dōri pour profiter des illuminations de Noël.",
+          "place": "Keyakizaka Dōri"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Dîner à Roppongi",
+          "description": "Dîner à Roppongi ou retour vers Oimachi selon l'envie."
+        }
+      ]
+    },
+    {
+      "date": "2026-12-04",
+      "title": "Dernière journée à Tokyo",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Achats de souvenirs",
+          "description": "Souvenirs, snacks, friandises japonaises et derniers cadeaux."
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Derniers achats",
+          "description": "Temps libre pour compléter les achats et préparer les derniers cadeaux."
+        },
+        {
+          "slot": "Soirée",
+          "label": "Ebisu Sushi Hatsume – 19h30",
+          "description": "Dîner de sushis réservé à 19h30 chez Ebisu Sushi Hatsume.",
+          "place": "Ebisu Sushi Hatsume"
+        }
+      ]
+    },
+    {
+      "date": "2026-12-05",
+      "title": "Retour",
+      "cityKey": "tokyo",
+      "items": [
+        {
+          "slot": "Matin",
+          "time": "07h30",
+          "label": "Départ pour Haneda",
+          "description": "Check-out puis trajet vers l'aéroport de Haneda Terminal 3. Vol retour à 10h45.",
+          "place": "Haneda Airport Terminal 3 Station",
+          "transport": {
+            "type": "bus",
+            "route": "Haneda Airport Limousine Bus",
+            "duration": "55 min",
+            "payment": "SUICA"
+          }
+        }
+      ]
+    }
   ]
 }
