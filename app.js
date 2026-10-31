@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const pois = (x.pois || []).map(placeByName).filter(Boolean);
       const mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
       const approx = /^~/.test(x.time || '');
-      const timeTxt = String(x.time || '').replace('~', '').trim();
+      const timeTxt = String(x.time || '').trim();
       const hasCard = Boolean(x.place && p);
       const poisHtml = mapPlaces.length
         ? `<span class="poi-list">${(hasCard ? mapPlaces.slice(1) : mapPlaces).map(q =>
