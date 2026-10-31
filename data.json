@@ -576,73 +576,115 @@
       "title": "Arashiyama",
       "cityKey": "kyoto",
       "items": [
-    {
-      "time": "~7h15",
-      "label": "Forêt de bambous de Sagano",
-      "description": "Entrée par le sud pour éviter la foule, balade dans la bambouseraie.",
-      "place": "Forêt de bambous de Sagano"
+        {
+          "time": "~7h15",
+          "label": "Forêt de bambous de Sagano",
+          "description": "Entrée par le sud pour éviter la foule, balade dans la bambouseraie.",
+          "place": "Forêt de bambous de Sagano"
+        },
+        {
+          "time": "~8h30",
+          "label": "Tenryu-ji",
+          "description": "Ouverture à 8h30. Temple et jardin paysager classé au patrimoine mondial.",
+          "place": "Tenryu-ji"
+        },
+        {
+          "time": "~10h00",
+          "label": "Otagi Nenbutsu-ji",
+          "description": "Les 1 200 statues rakan, à flanc de colline.",
+          "place": "Temple bouddhiste Otagi Nenbutsuji",
+          "transport": {
+            "type": "bus",
+            "route": "Taxi ou bus local (ligne 94)",
+            "duration": "~15 min",
+            "payment": "ESPÈCES"
+          }
+        },
+        {
+          "time": "~11h15",
+          "label": "Adashino Nenbutsu-ji",
+          "description": "Temple des 8 000 statues de pierre, ambiance paisible.",
+          "place": "Adashino Nenbutsuji Temple",
+          "transport": {
+            "type": "walk",
+            "route": "À pied",
+            "duration": "~10 min"
+          }
+        },
+        {
+          "time": "~12h30",
+          "label": "Giō-ji",
+          "description": "Petit temple moussu, l'un des plus discrets du quartier.",
+          "place": "Giō-ji"
+        },
+        {
+          "time": "~13h15",
+          "label": "🍽 Déjeuner à Saga-Toriimoto",
+          "description": "Ruelle historique préservée, maisons au toit de chaume."
+        },
+        {
+          "time": "~14h15",
+          "label": "Jōjakkō-ji",
+          "description": "Temple en hauteur, vue sur Kyoto, embrun d'érable.",
+          "place": "Jōjakkō-ji"
+        },
+        {
+          "time": "~15h30",
+          "label": "Pont Togetsukyō, snacks, boutiques",
+          "description": "Le pont emblématique d'Arashiyama au-dessus de la rivière Katsura.",
+          "place": "Togetsukyō Bridge",
+          "transport": {
+            "type": "walk",
+            "route": "Descente à pied vers Arashiyama",
+            "duration": "~15 min"
+          }
+        },
+        {
+          "time": "16h30",
+          "label": "Yusai-Tei Gallery",
+          "description": "Visite réservée à 16h30. Arriver 5-10 min en avance.",
+          "place": "Arashiyama Yusai-Tei Gallery",
+          "fixed": true
+        }
+      ]
     },
     {
-      "time": "~8h30",
-      "label": "Tenryu-ji",
-      "description": "Ouverture à 8h30. Temple et jardin paysager classé au patrimoine mondial.",
-      "place": "Tenryu-ji"
-    },
-    {
-      "time": "~9h45",
-      "label": "Taxi ou bus vers le nord d'Arashiyama",
-      "description": "Direction Otagi Nenbutsu-ji pour la route des temples du Nord.",
-      "transport": { "type": "bus", "route": "Bus 94 ou taxi", "duration": "~15 min", "payment": "SUICA" }
-    },
-    {
-      "time": "~10h",
-      "label": "Otagi Nenbutsu-ji",
-      "description": "Plus de 1 200 statues rakan sculptées, très photogénique.",
-      "place": "Temple bouddhiste Otagi Nenbutsuji"
-    },
-    {
-      "time": "~11h15",
-      "label": "Adashino Nenbutsu-ji",
-      "description": "Temple des 8 000 statues de pierre, ambiance paisible.",
-      "place": "Adashino Nenbutsuji Temple",
-      "transport": { "type": "walk", "route": "À pied", "duration": "10 min" }
-    },
-    {
-      "time": "~12h30",
-      "label": "Giō-ji",
-      "description": "Petit temple moussu, l'un des plus discrets du quartier.",
-      "place": "Giō-ji",
-      "transport": { "type": "walk", "route": "À pied", "duration": "5 min" }
-    },
-    {
-      "time": "~13h15",
-      "label": "Déjeuner à Saga-Toriimoto",
-      "description": "Ruelle historique préservée, maisons au toit de chaume.",
-      "transport": { "type": "walk", "route": "À pied", "duration": "15 min" }
-    },
-    {
-      "time": "~14h15",
-      "label": "Jōjakkō-ji",
-      "description": "Temple en hauteur, vue sur Kyoto, embrun d'érable.",
-      "place": "Jōjakkō-ji",
-      "transport": { "type": "walk", "route": "À pied · montée", "duration": "15 min" }
-    },
-    {
-      "time": "~15h30",
-      "label": "Togetsukyō Bridge",
-      "description": "Le pont emblématique d'Arashiyama au-dessus de la rivière Katsura.",
-      "place": "Togetsukyō Bridge",
-      "transport": { "type": "walk", "route": "Descente à pied", "duration": "~20 min" }
-    },
-    {
-      "time": "16h30",
-      "label": "Arashiyama Yusai-Tei Gallery",
-      "description": "Visite sur réservation, arrivée 10 min en avance.",
-      "place": "Arashiyama Yusai-Tei Gallery",
-      "fixed": true,
-      "transport": { "type": "walk", "route": "À pied", "duration": "12 min" }
-    }
-  ]
+      "date": "2026-11-25",
+      "title": "Higashiyama",
+      "cityKey": "kyoto",
+      "items": [
+        {
+          "slot": "Matin",
+          "label": "Kiyomizu-dera → Higashiyama",
+          "description": "Temple Kiyomizu-dera (dès 07h30), descente de Sannenzaka et Ninenzaka, Sanctuaire Yasaka-jinja et parc Maruyama.",
+          "place": "Kiyomizu-dera",
+          "pois": [
+            "Yasaka-jinja",
+            "Parc Maruyama"
+          ]
+        },
+        {
+          "slot": "Midi",
+          "label": "Marché de Nishiki",
+          "description": "Déjeuner au marché de Nishiki puis achats de baguettes chez Ichihara Heibei Shoten.",
+          "place": "Nishiki Market",
+          "pois": [
+            "Ichihara Heibei Shōten"
+          ]
+        },
+        {
+          "slot": "Après-midi",
+          "label": "Pause matcha + Sanjusangen-do",
+          "description": "Temps libre, pause matcha (Maccha House ou Gion Tsujiri), puis Temple Sanjusangen-do (les 1001 statues).",
+          "place": "Sanjūsangen-dō"
+        },
+        {
+          "slot": "Soirée",
+          "label": "Eikan-do",
+          "description": "Temple Eikan-do, illuminations de nuit (fermeture 20h30), puis dîner libre.",
+          "place": "Eikan-dō Zenrin-ji"
+        }
+      ]
     },
     {
       "date": "2026-11-26",
