@@ -822,15 +822,28 @@ ckground: var(--paper);
 }
 
 
-/* ===== Planning : journée en flux chronologique (format time/fixed sans slot) ===== */
+/* ===== Planning : journée en flux chronologique — cartes (style maquette) ===== */
+#planning-container.flow-mode { padding: 4px 18px 10px; }
 .flow-step {
   position: relative;
   display: grid;
   grid-template-columns: 52px 1fr;
   gap: 10px;
   align-items: start;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
+/* ligne verticale reliant les étapes */
+.flow-step::before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 32px;
+  bottom: -12px;
+  width: 2px;
+  background: var(--line);
+  border-radius: 2px;
+}
+.flow-step:last-of-type::before { display: none; }
 .flow-time {
   font-size: 10.5px;
   font-weight: 600;
@@ -845,38 +858,35 @@ ckground: var(--paper);
   background: var(--theme-main);
   border-radius: 8px;
   font-weight: 800;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-main) 35%, transparent);
 }
+/* carte : boîte arrondie */
 .flow-card {
   position: relative;
   display: block;
   width: 100%;
   text-align: left;
-  border-bottom: 1px solid var(--line);
-  padding: 12px 26px 14px 2px;
+  background: color-mix(in srgb, var(--cream) 4%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
 }
-.flow-card.clickable { cursor: pointer; }
+.flow-card.clickable { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease; }
 .flow-card.clickable:active {
-  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), transparent);
-  border-bottom-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
+  transform: scale(0.97);
+  border-color: var(--theme-main);
+  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), color-mix(in srgb, var(--cream) 4%, transparent));
 }
-.flow-label {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.25;
-}
-.flow-desc {
-  display: block;
-  font-size: 12.5px;
-  color: var(--muted);
-  margin-top: 3px;
-  line-height: 1.5;
-}
+.flow-card.no-place { background: transparent; border-style: dashed; }
+.flow-card.no-place .flow-label { font-weight: 500; }
+.flow-label { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
+.flow-desc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
 .flow-open {
   position: absolute;
-  top: 14px;
-  right: 4px;
+  top: 12px;
+  right: 14px;
   font-size: 13px;
+  font-weight: 600;
   line-height: 1;
   color: var(--muted);
   opacity: 0.55;
@@ -895,10 +905,49 @@ ckground: var(--paper);
   background: var(--theme-main);
   border-radius: 999px;
   padding: 3px 9px;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 }
 .flow-step.fixed .flow-card {
-  border-bottom-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
-  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 6%, transparent), transparent);
+  border-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
+  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 7%, transparent), color-mix(in srgb, var(--cream) 4%, transparent));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--theme-main) 12%, transparent);
 }
 .flow-card .poi-list { margin-top: 8px; }
+/* connecteurs compacts entre les cartes (flux) */
+#planning-container.flow-mode .schedule-connector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 0;
+  margin: -4px 0 10px;
+  padding: 0 0 0 62px;
+}
+#planning-container.flow-mode .connector-line {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 0;
+  border-left: none;
+  border-top: 2px solid var(--transport-color);
+  margin-left: 0;
+  border-radius: 2px;
+}
+#planning-container.flow-mode .connector-line:after { display: none; }
+#planning-container.flow-mode .connector-mode {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--cream);
+  line-height: 1.3;
+}
+#planning-container.flow-mode .connector-duration { font-size: 11px; color: var(--muted); text-align: left; }
+#planning-container.flow-mode .connector-payment {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
