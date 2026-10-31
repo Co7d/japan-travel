@@ -326,8 +326,66 @@ document.addEventListener('DOMContentLoaded', async () => {
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
 
+    const useFlow = (d.items || []).some(x => !x.slot);
+    document.getElementById('planning-container').innerHTML = useFlow ? flowHTML(d) : slotsHTML(d);
+
+    if (!useFlow) {
+      // Les sections (Matin, Midi, etc.) sont DÉPLOYÉES par défaut
+      document.querySelectorAll('.schedule-card').forEach(card => {
+        card.classList.add('open');
+        card.querySelector('.schedule-summary')?.setAttribute('aria-expanded', 'true');
+      });
+
+      document.querySelectorAll('.schedule-summary').forEach(b => b.addEventListener('click', () => {
+        const card = b.closest('.schedule-card');
+        const open = card.classList.toggle('open');
+        b.setAttribute('aria-expanded', String(open));
+      }));
+    }
+
+    document.querySelectorAll('#planning-container [data-place-id]').forEach(b =>
+      b.addEventListener('click', e => {
+        e.stopPropagation();
+        openMap(allPlaces[b.dataset.placeId]);
+      })
+    );
+  }
+
+  // Journée au format "flux chronologique" (items sans slot : time / fixed / place)
+  function flowHTML(d) {
+    return (d.items || []).map(x => {
+      const p = placeByName(x.place);
+      const pois = (x.pois || []).map(placeByName).filter(Boolean);
+      const mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
+      const approx = /^~/.test(x.time || '');
+      const timeTxt = String(x.time || '').replace('~', '').trim();
+      const hasCard = Boolean(x.place && p);
+      const poisHtml = mapPlaces.length
+        ? `<span class="poi-list">${(hasCard ? mapPlaces.slice(1) : mapPlaces).map(q =>
+            `<button class="poi-link" data-place-id="${esc(q.id)}" type="button">${esc(q.name)} <span>›</span></button>`
+          ).join('')}</span>`
+        : '';
+      const attrs = hasCard
+        ? ` class="flow-card clickable" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
+        : ' class="flow-card"';
+      return `<div class="flow-step${x.fixed ? ' fixed' : ''}">
+        ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
+        <div${attrs}>
+          ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
+          <span class="flow-label">${esc(x.label || '')}</span>
+          ${hasCard ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
+          ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
+          ${poisHtml}
+        </div>
+      </div>
+      ${transportMarker(x.transport)}`;
+    }).join('');
+  }
+
+  // Journée au format "créneaux" (items avec slot : Matin / Midi / …)
+  function slotsHTML(d) {
     const slots = ['Matin', 'Midi', 'Après-midi', "Fin d'après-midi", 'Soirée'];
-    document.getElementById('planning-container').innerHTML = slots.map(slot => {
+    return slots.map(slot => {
       const items = (d.items || []).filter(x => x.slot === slot);
       if (!items.length) return '';
       return `<section class="planning-slot">
@@ -363,23 +421,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         </div>
       </section>`;
     }).join('');
-
-    // Les sections (Matin, Midi, etc.) sont DÉPLOYÉES par défaut
-    document.querySelectorAll('.schedule-card').forEach(card => {
-      card.classList.add('open');
-      card.querySelector('.schedule-summary')?.setAttribute('aria-expanded', 'true');
-    });
-
-    document.querySelectorAll('.schedule-summary').forEach(b => b.addEventListener('click', () => {
-      const card = b.closest('.schedule-card');
-      const open = card.classList.toggle('open');
-      b.setAttribute('aria-expanded', String(open));
-    }));
-    document.querySelectorAll('#planning-container [data-place-id]').forEach(b =>
-      b.addEventListener('click', () => openMap(allPlaces[b.dataset.placeId]))
-    );
   }
-
   // Bandeau des jours
   function renderDayStrip() {
     const strip = document.getElementById('day-strip');
