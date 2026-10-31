@@ -820,3 +820,85 @@ ckground: var(--paper);
 @media all and (display-mode: standalone) {
   .app-shell, .top-page { height: 100vh; }
 }
+
+
+/* ===== Planning : journée en flux chronologique (format time/fixed sans slot) ===== */
+.flow-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+.flow-time {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: center;
+  padding: 5px 0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.flow-time.exact {
+  color: var(--ink);
+  background: var(--theme-main);
+  border-radius: 8px;
+  font-weight: 800;
+}
+.flow-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 26px 14px 2px;
+}
+.flow-card.clickable { cursor: pointer; }
+.flow-card.clickable:active {
+  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), transparent);
+  border-bottom-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
+}
+.flow-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.flow-desc {
+  display: block;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 3px;
+  line-height: 1.5;
+}
+.flow-open {
+  position: absolute;
+  top: 14px;
+  right: 4px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--muted);
+  opacity: 0.55;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+.flow-card.clickable:active .flow-open { opacity: 1; color: var(--theme-main); }
+.flow-fixed {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--theme-main);
+  border-radius: 999px;
+  padding: 3px 9px;
+  margin-bottom: 7px;
+}
+.flow-step.fixed .flow-card {
+  border-bottom-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
+  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 6%, transparent), transparent);
+}
+.flow-card .poi-list { margin-top: 8px; }
