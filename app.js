@@ -327,7 +327,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
 
     const useFlow = (d.items || []).some(x => !x.slot);
-    document.getElementById('planning-container').innerHTML = useFlow ? flowHTML(d) : slotsHTML(d);
+    const cont = document.getElementById('planning-container');
+    cont.innerHTML = useFlow ? flowHTML(d) : slotsHTML(d);
+    cont.classList.toggle('flow-mode', useFlow);
 
     if (!useFlow) {
       // Les sections (Matin, Midi, etc.) sont DÉPLOYÉES par défaut
@@ -367,7 +369,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         : '';
       const attrs = hasCard
         ? ` class="flow-card clickable" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
-        : ' class="flow-card"';
+        : ' class="flow-card no-place"';
       return `<div class="flow-step${x.fixed ? ' fixed' : ''}">
         ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
         <div${attrs}>
