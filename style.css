@@ -815,45 +815,45 @@ h1 {
 }
 
 
-/* ===== Planning : journée en flux chronologique — cartes (style maquette) ===== */
-#planning-container.flow-mode { padding: 4px 18px 10px; }
-.flow-step {
+/* ===== Planning : flux chronologique — CSS de la maquette validée ===== */
+#planning-container.flow-mode {
   position: relative;
-  display: grid;
-  grid-template-columns: 48px 14px 1fr;
-  gap: 10px;
-  align-items: start;
-  margin-bottom: 12px;
+  padding: 4px 18px 10px 70px;
 }
-/* ligne verticale dans sa propre colonne (entre les heures et les cartes) */
-.flow-step::before {
+/* ligne verticale de la timeline */
+#planning-container.flow-mode::before {
   content: "";
   position: absolute;
-  left: 64px;
-  top: 2px;
-  bottom: -12px;
+  left: 60px;
+  top: 10px;
+  bottom: 14px;
   width: 2px;
   background: var(--line);
   border-radius: 2px;
 }
-.flow-step:last-of-type::before { display: none; }
+.flow-step { position: relative; margin-bottom: 12px; }
+/* pastille d'heure, à gauche de la ligne */
 .flow-time {
-  font-size: 10.5px;
+  position: absolute;
+  left: -70px;
+  top: 0;
+  width: 46px;
+  text-align: center;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--muted);
-  text-align: center;
-  padding: 5px 0;
+  padding: 4px 0;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .flow-time.exact {
   color: var(--ink);
   background: var(--theme-main);
-  border-radius: 8px;
   font-weight: 800;
+  border-radius: 8px;
   box-shadow: 0 0 12px color-mix(in srgb, var(--theme-main) 35%, transparent);
 }
-/* carte : boîte arrondie */
+/* carte : boîte arrondie (style maquette) */
 .flow-card {
   position: relative;
   display: block;
@@ -906,26 +906,27 @@ h1 {
   box-shadow: 0 0 18px color-mix(in srgb, var(--theme-main) 12%, transparent);
 }
 .flow-card .poi-list { margin-top: 8px; }
-/* connecteurs compacts entre les cartes (flux) */
+/* connecteurs compacts (style maquette) */
 #planning-container.flow-mode .schedule-connector {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
   min-height: 0;
-  margin: -4px 0 10px;
-  padding: 0 0 0 82px;
+  margin: -2px 0 10px;
+  padding: 2px 0 2px 8px;
 }
 #planning-container.flow-mode .connector-line {
   flex: 0 0 22px;
   width: 22px;
-  height: 0;
+  height: 2px;
   border-left: none;
-  border-top: 2px solid var(--transport-color);
-  margin-left: 0;
   border-radius: 2px;
+  background: var(--transport-color, var(--theme-main));
+  margin-left: 0;
 }
 #planning-container.flow-mode .connector-line:after { display: none; }
+#planning-container.flow-mode .connector-symbol { display: none; }
 #planning-container.flow-mode .connector-mode {
   font-size: 12px;
   font-weight: 600;
