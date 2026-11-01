@@ -252,17 +252,18 @@
           "label": "Shibuya",
           "description": "Shibuya Crossing, statue de Hachiko, Tower Records et Shibuya Parco (Pokémon Center, Nintendo Tokyo, Jump Shop).",
           "place": "Shibuya Crossing",
-          "pois": [
-            "Hachiko Statue",
-            "Tower Records Shibuya",
-            "Shibuya Parco"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Shibuya",
             "duration": "~15 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Shibuya Crossing",
+            "Hachiko Statue",
+            "Tower Records Shibuya",
+            "Shibuya Parco"
+          ]
         },
         {
           "time": "16h00",
@@ -288,7 +289,8 @@
           "label": "Shinjuku by night",
           "description": "Dîner de yakitori à Omoide Yokocho, session au batting center de Kabukicho, verre dans les micro-bars du Golden Gai.",
           "place": "Omoide Yokocho",
-          "pois": [
+          "spots": [
+            "Omoide Yokocho",
             "Shinjuku Batting Center",
             "Shinjuku Golden Gai"
           ]
@@ -305,7 +307,8 @@
           "label": "Meiji-jingū & Yoyogi-kōen",
           "description": "Sanctuaire shinto à l'ouverture et promenade matinale dans le parc.",
           "place": "Meiji-jingū",
-          "pois": [
+          "spots": [
+            "Meiji-jingū",
             "Yoyogi-kōen"
           ]
         },
@@ -314,8 +317,13 @@
           "label": "Takeshita Street & Omotesando",
           "description": "Street food kawaii, purikura, friperies vintage (Kinji, Chicago Inc.), Harry Potter Shop, Liberty Walk Tokyo.",
           "place": "Takeshita Street",
-          "pois": [
-            "Harry Potter Shop Harajuku"
+          "spots": [
+            "Takeshita Street",
+            "Purikura (sous-sol d'Egnam)",
+            "Kinji Used Clothing Harajuku Branch",
+            "Chicago Inc.",
+            "Harry Potter Shop Harajuku",
+            "LIBERTY WALK TOKYO"
           ]
         },
         {
@@ -323,16 +331,17 @@
           "label": "Shinjuku West & Central",
           "description": "Observatoire gratuit du siège du gouvernement métropolitain au coucher du soleil, puis Yodobashi Caméra et Map Camera.",
           "place": "Siège du gouvernement métropolitain de Tokyo",
-          "pois": [
-            "Yodobashi Caméra Shinjuku Nishiguchi",
-            "Map Camera"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Shinjuku",
             "duration": "~30 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Siège du gouvernement métropolitain de Tokyo",
+            "Yodobashi Caméra Shinjuku Nishiguchi",
+            "Map Camera"
+          ]
         }
       ]
     },
@@ -346,15 +355,16 @@
           "label": "Asakusa",
           "description": "Senso-ji Hondo au matin et Nakamise Shopping Street (snacks & souvenirs).",
           "place": "Senso-ji Hondo",
-          "pois": [
-            "Nakamise Shopping Street"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Asakusa",
             "duration": "~30 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Senso-ji Hondo",
+            "Nakamise Shopping Street"
+          ]
         },
         {
           "time": "~11h00",
@@ -366,38 +376,45 @@
             "route": "Metro/Train vers Ryogoku",
             "duration": "~15 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Musée d'Edo-Tokyo",
+            "Kokugikan (extérieur)"
+          ]
         },
         {
           "time": "~13h15",
           "label": "Ueno",
           "description": "Déjeuner street food dans la rue Ameyoko, parc d'Ueno et magasin de jouets Yamashiroya.",
           "place": "Parc d'Ueno",
-          "pois": [
-            "Yamashiroya Ueno"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Ueno",
             "duration": "~15 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Rue Ameyoko",
+            "Parc d'Ueno",
+            "Yamashiroya Ueno"
+          ]
         },
         {
           "time": "~16h15",
           "label": "Akihabara",
           "description": "Electric Town pour le retrogaming et les figurines, GiGO Building 3 et l'arcade Hey.",
           "place": "Akihabara Electric Town",
-          "pois": [
-            "GiGO Akihabara Building 3",
-            "Hey Arcade"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Akihabara",
             "duration": "~15 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Akihabara Electric Town",
+            "GiGO Akihabara Building 3",
+            "Hey Arcade"
+          ]
         }
       ]
     },
@@ -417,16 +434,17 @@
           "label": "Yanaka / Nezu",
           "description": "Nezu-jinja et sa galerie de mini torii, promenade dans Yanaka et déjeuner street food dans Yanaka Ginza.",
           "place": "Nezu-jinja",
-          "pois": [
-            "Yanaka",
-            "Yanaka Ginza"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train",
             "duration": "~30 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Nezu-jinja",
+            "Yanaka",
+            "Yanaka Ginza"
+          ]
         },
         {
           "time": "~13h45",
@@ -445,15 +463,15 @@
           "label": "Ginza",
           "description": "Grandes avenues commerçantes et Uniqlo Flagship Store (12 étages).",
           "place": "Ginza",
-          "pois": [
-            "Uniqlo Ginza Flagship Store"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Ginza",
             "duration": "~15 min",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Uniqlo Ginza Flagship Store"
+          ]
         }
       ]
     },
@@ -696,21 +714,28 @@
           "label": "Higashiyama nocturne",
           "description": "Promenade dans Ninenzaka & Sannenzaka, illuminations nocturnes du temple Kōdai-ji (fermeture 21h30).",
           "place": "Ninenzaka",
-          "pois": [
-            "Sannenzaka"
-          ],
           "transport": {
             "type": "train",
             "route": "Metro/Train vers Higashiyama",
             "duration": "~1 h",
             "payment": "SUICA"
-          }
+          },
+          "spots": [
+            "Ninenzaka",
+            "Sannenzaka",
+            "Kōdai-ji",
+            "Houkan-ji"
+          ]
         },
         {
           "time": "~20h30",
           "label": "Dîner libre à Pontocho",
           "description": "Ruelle de Pontocho Alley ou berges du canal Shirakawa.",
-          "place": "Pontocho Alley"
+          "place": "Pontocho Alley",
+          "spots": [
+            "Pontocho Alley",
+            "Shirakawa Canal"
+          ]
         }
       ]
     },
@@ -807,7 +832,8 @@
           "label": "Sannenzaka, Ninenzaka & Yasaka-jinja",
           "description": "Descente des ruelles pavées jusqu'au sanctuaire et au parc Maruyama.",
           "place": "Sannenzaka",
-          "pois": [
+          "spots": [
+            "Sannenzaka",
             "Ninenzaka",
             "Yasaka-jinja",
             "Parc Maruyama"
@@ -817,7 +843,11 @@
           "time": "~11h00",
           "label": "Pause matcha à Gion",
           "description": "Gion Tsujiri ou Maccha House.",
-          "place": "Gion Tsujiri Main Store"
+          "place": "Gion Tsujiri Main Store",
+          "spots": [
+            "Gion Tsujiri Main Store",
+            "MACCHA HOUSE 抹茶館 京都祇園四条"
+          ]
         },
         {
           "time": "12h00",
@@ -839,7 +869,8 @@
             "route": "Metro/Train",
             "duration": "~45 min",
             "payment": "SUICA"
-          }
+          },
+          "place": "Sanjūsangen-dō"
         },
         {
           "time": "~16h15",
@@ -868,15 +899,18 @@
           "time": "~9h00",
           "label": "Parc de Nara & Temple Todai-ji",
           "description": "Grand Bouddha et daims en liberté, puis jardin Yoshiki-en.",
-          "pois": [
-            "Yoshiki-en"
-          ],
           "transport": {
             "type": "train",
             "route": "Train JR Nara Line vers Nara",
             "duration": "~1 h",
             "payment": "JR PASS"
-          }
+          },
+          "place": "Parc de Nara",
+          "spots": [
+            "Parc de Nara",
+            "Tōdai-ji",
+            "Yoshiki-en"
+          ]
         },
         {
           "time": "12h00",
@@ -915,7 +949,8 @@
         {
           "time": "8h45",
           "label": "Château de Nijō-jō",
-          "description": "Visite à l'ouverture, palais Ninomaru et ses jardins."
+          "description": "Visite à l'ouverture, palais Ninomaru et ses jardins.",
+          "place": "Nijō-jō"
         },
         {
           "time": "~10h45",
@@ -931,7 +966,11 @@
           "time": "~11h45",
           "label": "Kitano Tenman-gū",
           "description": "Jardin Momiji-en + déjeuner rapide dans le quartier.",
-          "place": "Kitano Tenman-gū"
+          "place": "Kitano Tenman-gū",
+          "spots": [
+            "Kitano Tenman-gū",
+            "Jardin Momiji-en"
+          ]
         },
         {
           "time": "14h30",
@@ -942,7 +981,8 @@
             "route": "Bus et train JR vers Tōfuku-ji",
             "duration": "~1 h",
             "payment": "SUICA"
-          }
+          },
+          "place": "Tōfuku-ji"
         },
         {
           "time": "~15h45",
@@ -965,7 +1005,8 @@
             "route": "Train JR vers la Gare de Kyoto",
             "duration": "~15 min",
             "payment": "JR PASS"
-          }
+          },
+          "place": "Gare de Kyoto"
         }
       ]
     },
@@ -979,21 +1020,26 @@
           "label": "Parc du Mémorial de la Paix",
           "description": "Dôme de Genbaku et Musée du Mémorial de la Paix.",
           "place": "Parc du Mémorial de la Paix de Hiroshima",
-          "pois": [
-            "Dôme de Genbaku",
-            "Musée du mémorial de la Paix de Hiroshima"
-          ],
           "transport": {
             "type": "shinkansen",
             "route": "Shinkansen Gare de Kyoto → Gare d'Hiroshima",
             "duration": "~1 h 30",
             "payment": "JR PASS"
-          }
+          },
+          "spots": [
+            "Parc du Mémorial de la Paix de Hiroshima",
+            "Musée du mémorial de la Paix de Hiroshima",
+            "Dôme de Genbaku"
+          ]
         },
         {
           "time": "12h30",
           "label": "Déjeuner okonomiyaki",
-          "description": "Nagataya ou Okonomimura à Hondōri."
+          "description": "Nagataya ou Okonomimura à Hondōri.",
+          "spots": [
+            "Nagataya",
+            "Okonomimura"
+          ]
         },
         {
           "time": "~13h45",
@@ -1044,7 +1090,8 @@
           "label": "Itsukushima & Daishō-in",
           "description": "Visite matinale avant la foule.",
           "place": "Itsukushima-jinja",
-          "pois": [
+          "spots": [
+            "Itsukushima-jinja",
             "Daishō-in"
           ]
         },
@@ -1057,7 +1104,8 @@
         {
           "time": "12h30",
           "label": "Déjeuner à Miyajima",
-          "description": "Anagomeshi ou huîtres grillées."
+          "description": "Anagomeshi ou huîtres grillées.",
+          "place": "Fujitaya Anagomeshi"
         },
         {
           "time": "~16h30",
@@ -1080,7 +1128,9 @@
           "time": "~19h00",
           "label": "Dotonbori & Hozenji-yokocho",
           "description": "Néons, street food et ruelles traditionnelles.",
-          "pois": [
+          "place": "Dōtonbori",
+          "spots": [
+            "Dōtonbori",
             "Hozenji-yokocho"
           ]
         },
@@ -1106,13 +1156,18 @@
           "time": "~10h00",
           "label": "Namba & Den Den Town",
           "description": "Namba Parks, rue Sennichimae Doguyasuji, marché Kuromon Ichiba et Nipponbashi Den Den Town / Ota Road.",
-          "pois": [
-            "Kuromon Ichiba Market"
+          "place": "Kuromon Ichiba Market",
+          "spots": [
+            "Namba Parks",
+            "Sennichimae Doguyasuji",
+            "Kuromon Ichiba Market",
+            "Nipponbashi Den Den Town / Ota Road"
           ]
         },
         {
           "time": "12h20",
-          "label": "Shinsekai & Tour Tsutenkaku"
+          "label": "Shinsekai & Tour Tsutenkaku",
+          "place": "Tsūtenkaku"
         },
         {
           "time": "~13h20",
@@ -1224,8 +1279,10 @@
           "time": "~18h30",
           "label": "Shiba Park & Tokyo Tower",
           "description": "Vue sur la tour illuminée depuis le parc.",
-          "pois": [
-            "Shiba Park"
+          "place": "Shiba Park",
+          "spots": [
+            "Shiba Park",
+            "La Tour de Tokyo"
           ]
         },
         {
@@ -1274,15 +1331,20 @@
           "label": "Mori Art Museum & Tokyo City View",
           "description": "Visite du musée dès 14h00, passage à Tokyo City View vers 15h45 pour le coucher du soleil. Réservation.",
           "place": "Mori Art Museum",
-          "pois": [
+          "fixed": true,
+          "spots": [
+            "Mori Art Museum",
             "Tokyo City View"
-          ],
-          "fixed": true
+          ]
         },
         {
           "time": "~16h45",
           "label": "Roppongi Hills & Mohri Garden",
-          "place": "Roppongi Hills"
+          "place": "Roppongi Hills",
+          "spots": [
+            "Roppongi Hills",
+            "Jardin Mohri"
+          ]
         },
         {
           "time": "~17h30",
