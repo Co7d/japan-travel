@@ -166,17 +166,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Affichage de l'itinéraire
   function renderItinerary() {
     const target = document.getElementById('timeline-list');
-    target.innerHTML = (data.itinerary || []).map(s =>
-      `<button class="journey-stop" data-city="${esc(s.cityKey)}" type="button">
-     
-   <span class="journey-rail" style="border-color:var(--${s.cityKey})"></span>
-        <span class="journey-date">${esc(s.dates)}</span>
+    target.innerHTML = (data.itinerary || []).map(s => {
+      // "16 Nov — 20 Nov • 4 nuits" → étiquette papier : plage + nuits
+      const [range, nights] = String(s.dates || '').split('•').map(t => t.trim());
+      return `<button class="journey-stop" data-city="${esc(s.cityKey)}" type="button">
+        <span class="journey-rail" style="background:var(--${s.cityKey})"></span>
+        <span class="journey-date">
+          <strong>${esc(range || s.dates || '')}</strong>
+          ${nights ? `<em>${esc(nights)}</em>` : ''}
+        </span>
         <span class="journey-city" style="color:var(--${s.cityKey})">${esc(s.label)}</span>
         <span class="journey-jp" style="color:var(--${s.cityKey})">${esc(cityJp[s.cityKey] || '')}</span>
         <span class="journey-vibe">${esc(data.cities[s.cityKey]?.vibe || '')}</span>
-        <span class="journey-arrow">›</span>
-      </button>`
-    ).join('');
+        <span class="journey-arrow" style="color:var(--${s.cityKey})">›</span>
+      </button>`;
+    }).join('');
     target.querySelectorAll('.journey-stop').forEach(b => b.addEventListener('click', () => showCity(b.dataset.city)));
   }
 
@@ -329,7 +333,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <h2 class="planning-location">${esc(c.name)}</h2>
         <span class="planning-kana">${esc(cityJp[d.cityKey] || '')}</span>
       </div>
-      <p class="planning-subtitle">${new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(`${d.date}T12:00:00`))} · ${esc(d.title || '')}</p>`;
+      <p class="planning-subtitle">${esc(d.title || '')}</p>`;
     document.getElementById('day-strip').querySelectorAll('.day-choice').forEach(b =>
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
@@ -394,7 +398,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           : ' class="flow-card no-place spot-card"';
         return `<div class="flow-step spot">
           <div${sAttrs}>
-            <span class="flow-label">${esc(s)}</span>
+            <span class="flow-body"><span class="flow-label">${esc(s)}</span></span>
             ${sp ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
           </div>
         </div>`;
@@ -404,11 +408,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="flow-step${x.fixed ? ' fixed' : ''}">
         ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
         <div${attrs}>
-          ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
-          <span class="flow-label">${esc(x.label || '')}</span>
+          <span class="flow-body">
+            ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
+            <span class="flow-label">${esc(x.label || '')}</span>
+            ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
+            ${poisHtml}
+          </span>
           ${hasCard ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
-          ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
-          ${poisHtml}
         </div>
       </div>
       ${spotsHtml}`;
