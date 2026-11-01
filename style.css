@@ -5,22 +5,27 @@
   --cream: #f6f0e4;
   --muted: #aaa294;
   --line: rgba(246, 240, 228, 0.13);
+  --card-border: rgba(246, 240, 228, 0.16);
   --paper: #f0e7d5;
-  --tokyo: #b94b48;
-  --kawaguchiko: #6d8fa0;
-  --kiso: #7c9564;
-  --kyoto: #b18b62;
-  --hiroshima: #8792a1;
-  --osaka: #c37b61;
+  --ink-paper: #5c564d;
+  --tokyo: #b94b48; --tokyo-dark: #873a37;
+  --kawaguchiko: #6d8fa0; --kawaguchiko-dark: #526974;
+  --kiso: #7c9564; --kiso-dark: #5c6d4a;
+  --kyoto: #b18b62; --kyoto-dark: #715a41;
+  --hiroshima: #8792a1; --hiroshima-dark: #585e67;
+  --osaka: #c37b61; --osaka-dark: #8a4b00;
+  --train: #1f55c4; --shinkansen: #0b2f6b; --bus: #006a7c; --car: #b3402a; --ferry: #9b2f7f;
+  --suica: #1f6b4a; --jrpass: #5b3aa0; --especes: #8a4b00;
   --theme-main: var(--tokyo);
+  --theme-dark: var(--tokyo-dark);
 }
 
-body[data-theme=tokyo] { --theme-main: var(--tokyo); }
-body[data-theme=kawaguchiko] { --theme-main: var(--kawaguchiko); }
-body[data-theme=kiso] { --theme-main: var(--kiso); }
-body[data-theme=kyoto] { --theme-main: var(--kyoto); }
-body[data-theme=hiroshima] { --theme-main: var(--hiroshima); }
-body[data-theme=osaka] { --theme-main: var(--osaka); }
+body[data-theme=tokyo] { --theme-main: var(--tokyo); --theme-dark: var(--tokyo-dark); }
+body[data-theme=kawaguchiko] { --theme-main: var(--kawaguchiko); --theme-dark: var(--kawaguchiko-dark); }
+body[data-theme=kiso] { --theme-main: var(--kiso); --theme-dark: var(--kiso-dark); }
+body[data-theme=kyoto] { --theme-main: var(--kyoto); --theme-dark: var(--kyoto-dark); }
+body[data-theme=hiroshima] { --theme-main: var(--hiroshima); --theme-dark: var(--hiroshima-dark); }
+body[data-theme=osaka] { --theme-main: var(--osaka); --theme-dark: var(--osaka-dark); }
 
 html, body {
   width: 100%;
@@ -98,32 +103,32 @@ h1 {
 
 .hidden { display: none !important; }
 
-/* Itinéraire */
+/* Itinéraire — cartes séjour design unifié */
 .journey-line { position: relative; margin-top: 28px; }
 .journey-line:before {
   content: "";
   position: absolute;
   left: 10px;
-  top: 17px;
-  bottom: 20px;
+  top: 26px;
+  bottom: 26px;
   width: 1px;
-  background: linear-gradient(var(--theme-main), rgba(255, 255, 255, 0.08));
+  background: var(--line);
 }
 .journey-stop {
   position: relative;
   width: 100%;
   display: block;
   text-align: left;
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  padding: 18px 34px 22px;
-  min-height: 120px;
+  background: rgba(240, 231, 213, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
+  padding: 16px 44px 16px 16px;
+  margin: 0 0 12px 30px;
 }
-.journey-stop:first-child { padding-top: 8px; }
 .journey-rail {
   position: absolute;
-  left: 6px;
+  left: -24px;
   top: 24px;
   width: 9px;
   height: 9px;
@@ -134,57 +139,66 @@ h1 {
 .journey-date {
   display: block;
   color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 .journey-city {
   display: block;
   font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.08;
 }
 .journey-jp {
   display: block;
   color: var(--theme-main);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.2em;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 .journey-vibe {
   display: block;
   color: var(--muted);
   font-size: 11px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 .journey-arrow {
   font-family: "Noto Serif JP", serif;
   color: var(--theme-main);
-  font-size: 25px;
+  font-size: 24px;
   position: absolute;
-  right: 2px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* Planning */
-.planning-head {
-  margin: 28px 0 18px;
-  padding-left: 14px;
-  border-left: 2px solid var(--theme-main);
-}
-.planning-location {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--theme-main);
-  font-weight: 800;
-}
-.planning-head h2 { font-size: 32px; margin: 4px 0; }
-.planning-head p {
+/* Planning — en-tête design unifié : grand titre ville + kana + sous-titre */
+#page-planning .content-wrapper > .eyebrow,
+#page-planning .content-wrapper > h1 { display: none; }
+.planning-head { margin: 26px 0 18px; padding: 0; border: 0; }
+.planning-title-row { display: flex; align-items: baseline; gap: 12px; }
+.planning-head h2 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 46px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
   margin: 0;
-  color: var(--muted);
-  font-size: 13px;
+  line-height: 1;
+  color: var(--theme-main);
+}
+.planning-kana {
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  color: var(--theme-main);
+}
+.planning-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.82;
+  margin: 8px 0 22px;
+  color: var(--cream);
 }
 
 .day-strip {
@@ -197,27 +211,31 @@ h1 {
 }
 .day-strip::-webkit-scrollbar { display: none; }
 .day-choice {
-  min-width: 55px;
-  padding: 8px 5px 10px;
+  flex: none;
+  min-width: 54px;
+  padding: 8px 0 10px;
   background: transparent;
-  border: 1px solid transparent;
-  color: var(--muted);
+  border: 1px solid color-mix(in srgb, var(--theme-main) 33%, transparent);
+  border-radius: 2px;
+  color: var(--theme-main);
   text-align: center;
 }
 .day-choice span {
   display: block;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 .day-choice strong {
   display: block;
-  font: 400 20px "Noto Serif JP", serif;
+  font-size: 20px;
+  font-weight: 800;
   margin-top: 2px;
+  letter-spacing: -0.02em;
 }
 .day-choice.active {
   background: var(--paper);
-  color: var(--ink);
+  color: var(--theme-dark);
   border-color: var(--paper);
 }
 
@@ -312,54 +330,6 @@ h1 {
   font-size: 9px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  white-space: nowrap;
-}
-.schedule-connector {
-  display: grid;
-  grid-template-columns: 16px minmax(0, 1fr) auto auto;
-  column-gap: 9px;
-  align-items: center;
-  min-height: 54px;
-  position: relative;
-}
-.connector-line {
-  height: 34px;
-  border-left: 1px solid var(--transport-color);
-  margin-left: 7px;
-  position: relative;
-}
-.connector-line:after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: -4px;
-  width: 7px;
-  height: 7px;
-  border-right: 1px solid var(--transport-color);
-  border-bottom: 1px solid var(--transport-color);
-  transform: rotate(45deg);
-}
-.connector-symbol { display: none; }
-.connector-mode {
-  min-width: 0;
-  color: var(--transport-color);
-  font-size: 10px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  font-weight: 800;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-.connector-duration {
-  color: var(--cream);
-  font-size: 10px;
-  text-align: right;
-  white-space: nowrap;
-}
-.connector-payment {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
   white-space: nowrap;
 }
 .empty-day {
@@ -474,7 +444,12 @@ h1 {
   padding-bottom: 24px;
   margin-bottom: 26px;
 }
-.city-hero h1 { font-size: clamp(44px, 13vw, 70px); }
+.city-hero h1 {
+  font-size: clamp(44px, 13vw, 70px);
+  color: var(--theme-main);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
 .city-jp {
   font-size: 16px;
   letter-spacing: 0.3em;
@@ -483,6 +458,34 @@ h1 {
 }
 .city-hero .subtitle { margin-bottom: 0; }
 .city-block { margin: 0 0 28px; }
+/* sections repliables — bouton contour couleur ville, style chips unifié */
+.section-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--theme-main) 33%, transparent);
+  color: var(--theme-main);
+  border-radius: 2px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  margin-bottom: 14px;
+}
+.section-toggle-mark {
+  font-family: "Noto Serif JP", serif;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+.place-indicator {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 18px;
+}
 .section-kicker {
   font-size: 10px;
   letter-spacing: 0.18em;
@@ -783,12 +786,6 @@ h1 {
 
 /* Responsive */
 @media (max-width: 699px) {
-  .schedule-connector {
-    grid-template-columns: 16px minmax(0, 1fr) auto auto;
-    column-gap: 7px;
-  }
-  .connector-mode { font-size: 9px; letter-spacing: 0.1em; }
-  .connector-duration, .connector-payment { font-size: 9px; }
   .bottom-nav {
     position: fixed;
     left: 0;
@@ -815,7 +812,7 @@ h1 {
 }
 
 
-/* ===== Planning : flux chronologique — CSS de la maquette validée ===== */
+/* ===== Planning : flux chronologique — design unifié encre/papier ===== */
 #planning-container.flow-mode {
   position: relative;
   padding: 4px 18px 10px 70px;
@@ -827,42 +824,41 @@ h1 {
   left: 60px;
   top: 10px;
   bottom: 14px;
-  width: 2px;
+  width: 1px;
   background: var(--line);
-  border-radius: 2px;
 }
 .flow-step { position: relative; margin-bottom: 12px; }
-/* pastille d'heure, à gauche de la ligne */
+/* pastille d'heure : exacte = fond couleur foncée de la ville ; ~ = texte crème simple */
 .flow-time {
   position: absolute;
   left: -70px;
   top: 0;
   width: 46px;
   text-align: center;
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--cream);
   padding: 4px 0;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 .flow-time.exact {
-  color: var(--ink);
-  background: var(--theme-main);
+  color: var(--paper);
+  background: var(--theme-dark);
   font-weight: 800;
-  border-radius: 8px;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--theme-main) 35%, transparent);
+  border-radius: 2px;
 }
-/* carte : boîte arrondie (style maquette) */
+/* carte : boîte encadrée, double filet intérieur */
 .flow-card {
   position: relative;
   display: block;
   width: 100%;
   text-align: left;
-  background: color-mix(in srgb, var(--cream) 4%, transparent);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 12px 14px;
+  background: rgba(240, 231, 213, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
+  padding: 13px 34px 13px 16px;
 }
 .flow-card.clickable { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease; }
 .flow-card.clickable:active {
@@ -870,7 +866,7 @@ h1 {
   border-color: var(--theme-main);
   background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), color-mix(in srgb, var(--cream) 4%, transparent));
 }
-.flow-card.no-place { background: transparent; border-style: dashed; }
+.flow-card.no-place { background: transparent; border-style: dashed; box-shadow: none; }
 .flow-card.no-place .flow-label { font-weight: 500; }
 .flow-label { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
 .flow-desc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
@@ -894,73 +890,112 @@ h1 {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: var(--theme-main);
-  border-radius: 999px;
-  padding: 3px 9px;
+  color: var(--paper);
+  background: var(--theme-dark);
+  border-radius: 2px;
+  padding: 3px 8px;
   margin-bottom: 8px;
 }
+/* réservation : carte papier inversée */
 .flow-step.fixed .flow-card {
-  border-color: color-mix(in srgb, var(--theme-main) 55%, transparent);
-  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 7%, transparent), color-mix(in srgb, var(--cream) 4%, transparent));
-  box-shadow: 0 0 18px color-mix(in srgb, var(--theme-main) 12%, transparent);
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+  box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 5px rgba(18, 17, 15, 0.25);
 }
+.flow-step.fixed .flow-desc { color: var(--ink-paper); }
+.flow-step.fixed .flow-open { color: var(--ink); }
 .flow-card .poi-list { margin-top: 8px; }
-/* connecteurs compacts (style maquette) */
-#planning-container.flow-mode .schedule-connector {
+/* ── tickets de transport : papier à poinçons d'encre ── */
+.ticket {
+  position: relative;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  min-height: 0;
-  margin: -2px 0 10px;
-  padding: 2px 0 2px 8px;
+  gap: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 3px;
+  padding: 9px 14px;
+  margin: 0 0 12px;
 }
-#planning-container.flow-mode .connector-line {
-  flex: 0 0 22px;
-  width: 22px;
-  height: 2px;
-  border-left: none;
+.ticket:before, .ticket:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.ticket:before { left: -5px; }
+.ticket:after { right: -5px; }
+.tk-mode {
+  flex: none;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid var(--mode);
+  color: var(--mode);
   border-radius: 2px;
-  background: var(--transport-color, var(--theme-main));
-  margin-left: 0;
-}
-#planning-container.flow-mode .connector-line:after { display: none; }
-#planning-container.flow-mode .connector-symbol { display: none; }
-#planning-container.flow-mode .connector-mode {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--cream);
-  line-height: 1.3;
-}
-#planning-container.flow-mode .connector-duration { font-size: 11px; color: var(--muted); text-align: left; }
-#planning-container.flow-mode .connector-payment {
-  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  border-radius: 999px;
-  padding: 2px 8px;
-  border: 1px solid color-mix(in srgb, currentColor 45%, transparent);
-  background: color-mix(in srgb, currentColor 8%, transparent);
 }
+.tk-main { flex: 1; min-width: 0; }
+.tk-route {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--mode);
+  overflow-wrap: anywhere;
+}
+.tk-route .var { color: var(--ink-paper); font-weight: 600; }
+.tk-dur { display: block; font-size: 11.5px; color: var(--ink-paper); margin-top: 1px; }
+.tk-note { display: block; font-size: 11px; color: var(--ink-paper); margin-top: 2px; line-height: 1.4; }
+.tk-pay {
+  flex: none;
+  border-left: 1px dashed rgba(18, 17, 15, 0.35);
+  padding-left: 10px;
+}
+.pay {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: var(--paper);
+  border: 1px solid;
+  border-radius: 2px;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+/* trajet "pur" : le ticket EST l'étape, pastille d'heure centrée dessus */
+.flow-step.transit-step { margin-bottom: 0; }
+.flow-step.transit-step .flow-time { top: 12px; }
 
-/* --- quartiers : nom en couleur de la ville + points des sous-lieux sur la timeline --- */
+/* --- quartiers : nom en couleur de la ville + losanges des sous-lieux sur la timeline --- */
 .flow-card.quartier .flow-label { color: var(--theme-main); }
-.flow-step.spot { margin-bottom: 8px; }
+.flow-step.spot { position: relative; margin: -4px 0 8px; }
 .flow-step.spot::after {
   content: "";
   position: absolute;
   left: -13px;
   top: 13px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+  width: 7px;
+  height: 7px;
   background: var(--theme-main);
+  transform: rotate(45deg);
   box-shadow: 0 0 0 3px var(--ink);
 }
-.flow-card.spot-card { padding: 9px 14px; background: color-mix(in srgb, var(--cream) 2.5%, transparent); }
+.flow-card.spot-card {
+  padding: 9px 34px 9px 14px;
+  background: rgba(240, 231, 213, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 3px;
+  box-shadow: none;
+}
 .flow-card.spot-card.no-place { background: transparent; }
 .flow-card.spot-card .flow-label { font-size: 13.5px; font-weight: 500; color: color-mix(in srgb, var(--cream) 88%, transparent); }
 .flow-card.spot-card.no-place .flow-label { font-weight: 400; }
