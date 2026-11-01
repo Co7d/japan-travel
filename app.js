@@ -283,31 +283,37 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('city-back')?.addEventListener('click', () => showItinerary(false));
 
 
-  const paymentColors = { 'SUICA': '#D4A017', 'JR PASS': '#7C3AED', 'ESPÈCES': '#D97706' };
-  const transportColors = { train: '#2563EB', shinkansen: '#1D4ED8', car: '#C85A32', bus: '#D97706', ferry: '#059669' };
+  // ── Design unifié : tickets de transport papier à poinçons ──
+  const paymentColors = { 'SUICA': '#1f6b4a', 'JR PASS': '#5b3aa0', 'ESPÈCES': '#8a4b00' };
+  const transportColors = { train: '#1f55c4', shinkansen: '#0b2f6b', bus: '#006a7c', car: '#b3402a', ferry: '#9b2f7f', walk: '#5c564d' };
+  const transportKanji = { train: '電車', shinkansen: '新幹線', bus: 'バス', car: '車', ferry: 'フェリー' };
 
-  // Ligne de transport enrichie. Toutes les infos proviennent de data.json (champ transport).
+  // Ticket papier : kanji du mode, itinéraire couleur du mode, durée, note éventuelle, paiement à droite.
   function transportRow(t) {
-    const m = String(t?.mode || '').toLowerCase();
-    const type = t?.type || (m.includes('shinkansen') ? 'shinkansen' : (m.includes('voiture') || m.includes('car')) ? 'car' : m.includes('bus') ? 'bus' : m.includes('ferry') ? 'ferry' : 'train');
-    const route = t?.route || String(t?.mode || '').replace(/\s*(suica|pass jr)\s*/ig, '').trim();
-    const duration = t?.duration || '';
-    const payment = t?.payment || (/jr pass/i.test(m) ? 'JR PASS' : /suica/i.test(m) ? 'SUICA' : '');
+    if (!t) return '';
+    const m = String(t.mode || '').toLowerCase();
+    const type = t.type || (m.includes('shinkansen') ? 'shinkansen' : (m.includes('voiture') || m.includes('car')) ? 'car' : m.includes('bus') ? 'bus' : m.includes('ferry') ? 'ferry' : m.includes('pied') ? 'walk' : 'train');
+    const route = t.route || String(t.mode || '').replace(/\s*(suica|pass jr)\s*/ig, '').trim();
+    const duration = t.duration || '';
+    const payment = t.payment || (/jr pass/i.test(m) ? 'JR PASS' : /suica/i.test(m) ? 'SUICA' : '');
     const color = transportColors[type] || 'var(--theme-main)';
+    const kanji = transportKanji[type] || '';
     const paymentColor = paymentColors[payment] || '';
-    return `<div class="schedule-connector transport-${type}" style="--transport-color:${color}">
-      <span class="connector-line"></span>
-      <span class="connector-symbol" aria-hidden="true"></span>
-      <span class="connector-mode">${esc(route)}</span>
-      <span class="connector-duration">${esc(duration)}</span>
-      ${payment ? `<span class="connector-payment" style="color:${paymentColor}">${esc(payment)}</span>` : ''}
+    return `<div class="ticket transport-${type}" style="--mode:${color}">
+      ${kanji ? `<span class="tk-mode">${kanji}</span>` : ''}
+      <span class="tk-main">
+        <span class="tk-route">${t.variant ? `<span class="var">${esc(t.variant)} · </span>` : ''}${esc(route)}</span>
+        ${duration ? `<span class="tk-dur">${esc(duration)}</span>` : ''}
+        ${t.note ? `<span class="tk-note">${esc(t.note)}</span>` : ''}
+      </span>
+      ${payment ? `<span class="tk-pay"><span class="pay" style="color:${paymentColor};border-color:${paymentColor}">${esc(payment)}</span></span>` : ''}
     </div>`;
   }
 
   function transportMarker(t) {
     if (!t) return '';
     if (t.variants) return t.variants.map(v =>
-      transportRow({ type: 'train', route: `${v.label} · ${v.route}`, duration: v.duration, payment: v.payment })
+      transportRow({ type: t.type || 'train', variant: v.label, route: v.route, duration: v.duration, payment: v.payment })
     ).join('');
     return transportRow(t);
   }
@@ -319,9 +325,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     setTheme(d.cityKey);
     const c = data.cities[d.cityKey];
     document.getElementById('planning-head').innerHTML = `
-      <div class="planning-location">${esc(c.name)}</div>
-      <h2>${new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: 'long' }).format(new Date(`${d.date}T12:00:00`))}</h2>
-      <p>${esc(d.title || '')}</p>`;
+      <div class="planning-title-row">
+        <h2 class="planning-location">${esc(c.name)}</h2>
+        <span class="planning-kana">${esc(cityJp[d.cityKey] || '')}</span>
+      </div>
+      <p class="planning-subtitle">${new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date(`${d.date}T12:00:00`))} · ${esc(d.title || '')}</p>`;
     document.getElementById('day-strip').querySelectorAll('.day-choice').forEach(b =>
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
@@ -356,6 +364,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Journée au format "flux chronologique" (items sans slot : time / fixed / place / spots)
   function flowHTML(d) {
     return (d.items || []).map(x => {
+      // Trajet "pur" (transit: true) : uniquement le ticket enrichi, pas de carte doublon
+      if (x.transit && x.transport) {
+        const tApprox = /^~/.test(x.time || '');
+        return `<div class="flow-step transit-step">
+          ${x.time ? `<div class="flow-time${tApprox ? '' : ' exact'}">${esc(x.time)}</div>` : '<div class="flow-time"></div>'}
+          ${transportRow({ ...x.transport, note: x.description })}
+        </div>`;
+      }
       const p = placeByName(x.place);
       const pois = (x.pois || []).map(placeByName).filter(Boolean);
       const mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
@@ -383,7 +399,9 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
         </div>`;
       }).join('');
-      return `<div class="flow-step${x.fixed ? ' fixed' : ''}">
+      // Le ticket de transport s'affiche AVANT la carte : "on prend le transport avant de s'y rendre"
+      return `${transportMarker(x.transport)}
+      <div class="flow-step${x.fixed ? ' fixed' : ''}">
         ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
         <div${attrs}>
           ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
@@ -393,8 +411,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           ${poisHtml}
         </div>
       </div>
-      ${spotsHtml}
-      ${transportMarker(x.transport)}`;
+      ${spotsHtml}`;
     }).join('');
   }
 
@@ -411,7 +428,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const p = placeByName(x.place),
                   pois = (x.pois || []).map(placeByName).filter(Boolean),
                   mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
-            return `<article class="schedule-card" style="--city-color:var(--${d.cityKey})">
+            return `${transportMarker(x.transport)}
+            <article class="schedule-card" style="--city-color:var(--${d.cityKey})">
               <button class="schedule-summary${x.time ? '' : ' no-time'}" aria-expanded="false" type="button">
                 ${x.time ? `<span class="schedule-time">${esc(x.time)}</span>` : ''}
                 <span class="schedule-title">${esc(x.label || '')}</span>
@@ -430,7 +448,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ).join('')}
                   </div>` : ''}
               </div>
-              ${transportMarker(x.transport)}
             </article>`;
 
           }).join('')}
