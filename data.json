@@ -218,7 +218,13 @@
         {
           "time": "~9h00",
           "label": "Douane, bagages & carte Suica",
-          "description": "Formalités d'immigration, récupération des bagages, activation/recharge de la Suica.",
+          "description": "Formalités d'immigration, récupération des bagages, activation/recharge de la Suica."
+        },
+        {
+          "time": "~11h30",
+          "label": "Dépôt des bagages au Shinjuku Washington",
+          "description": "Conciergerie — check-in officiel à 14h00.",
+          "place": "Shinjuku Washington Hotel",
           "transport": {
             "type": "train",
             "variants": [
@@ -236,12 +242,6 @@
               }
             ]
           }
-        },
-        {
-          "time": "~11h30",
-          "label": "Dépôt des bagages au Shinjuku Washington",
-          "description": "Conciergerie — check-in officiel à 14h00.",
-          "place": "Shinjuku Washington Hotel"
         },
         {
           "time": "~12h00",
@@ -493,7 +493,8 @@
             "route": "Fuji Excursion · Shinjuku → Kawaguchiko",
             "duration": "10h30 → 12h24 · 1 h 54",
             "payment": "SUICA"
-          }
+          },
+          "transit": true
         },
         {
           "time": "12h24",
@@ -682,7 +683,8 @@
             "type": "bus",
             "route": "Bus Magome → Tsumago",
             "duration": "10h55 → 11h16"
-          }
+          },
+          "transit": true
         },
         {
           "time": "~11h20",
@@ -692,7 +694,8 @@
             "type": "car",
             "route": "Voiture vers Nagoya",
             "duration": "~3 h"
-          }
+          },
+          "transit": true
         },
         {
           "time": "15h30",
@@ -707,7 +710,8 @@
             "route": "Shinkansen Nagoya → Gare de Kyoto",
             "duration": "~35 min",
             "payment": "JR PASS"
-          }
+          },
+          "transit": true
         },
         {
           "time": "~18h00",
@@ -1393,7 +1397,8 @@
             "type": "bus",
             "route": "Limousine bus vers Haneda T3",
             "duration": "~35 min"
-          }
+          },
+          "transit": true
         },
         {
           "time": "8h15",
