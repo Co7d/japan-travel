@@ -123,26 +123,48 @@ h1 {
   border: 1px solid var(--card-border);
   border-radius: 3px;
   box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
-  padding: 16px 44px 16px 16px;
-  margin: 0 0 12px 30px;
+  padding: 16px 40px 16px 16px;
+  margin: 0 0 12px 106px;
 }
+/* pastille losange PLEINE, couleur de la ville, posée sur la ligne */
 .journey-rail {
   position: absolute;
-  left: -24px;
-  top: 24px;
+  left: -100px;
+  top: 22px;
   width: 9px;
   height: 9px;
-  border: 1px solid;
-  background: var(--ink);
   transform: rotate(45deg);
 }
+/* étiquette papier des dates, à gauche de la carte */
 .journey-date {
+  position: absolute;
+  left: -84px;
+  top: 50%;
+  width: 74px;
+  transform: translateY(-50%);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 2px;
+  padding: 8px 3px;
+  text-align: center;
+}
+.journey-date strong {
   display: block;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.journey-date em {
+  display: block;
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ink-paper);
+  margin-top: 2px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 .journey-city {
   display: block;
@@ -175,7 +197,8 @@ h1 {
 }
 
 /* Planning — en-tête design unifié : grand titre ville + kana + sous-titre */
-#page-planning .content-wrapper > .eyebrow,
+/* intitulés "JAPON 2026 · …" masqués sur toutes les pages (le vibe de la page ville reste visible) */
+.eyebrow:not(#current-city-vibe) { display: none; }
 #page-planning .content-wrapper > h1 { display: none; }
 .planning-head { margin: 26px 0 18px; padding: 0; border: 0; }
 .planning-title-row { display: flex; align-items: baseline; gap: 12px; }
@@ -848,18 +871,21 @@ h1 {
   font-weight: 800;
   border-radius: 2px;
 }
-/* carte : boîte encadrée, double filet intérieur */
+/* carte : boîte encadrée, double filet intérieur — texte et flèche centrés verticalement */
 .flow-card {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   width: 100%;
   text-align: left;
   background: rgba(240, 231, 213, 0.05);
   border: 1px solid var(--card-border);
   border-radius: 3px;
   box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
-  padding: 13px 34px 13px 16px;
+  padding: 13px 14px;
 }
+.flow-body { flex: 1; min-width: 0; display: block; }
 .flow-card.clickable { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease; }
 .flow-card.clickable:active {
   transform: scale(0.97);
@@ -871,9 +897,7 @@ h1 {
 .flow-label { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
 .flow-desc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
 .flow-open {
-  position: absolute;
-  top: 12px;
-  right: 14px;
+  flex: none;
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
@@ -932,6 +956,7 @@ h1 {
 .ticket:after { right: -5px; }
 .tk-mode {
   flex: none;
+  align-self: center;
   min-width: 30px;
   height: 30px;
   padding: 0 6px;
@@ -944,7 +969,7 @@ h1 {
   font-size: 11.5px;
   font-weight: 700;
 }
-.tk-main { flex: 1; min-width: 0; }
+.tk-main { flex: 1; min-width: 0; align-self: center; }
 .tk-route {
   display: block;
   font-size: 12.5px;
@@ -958,6 +983,9 @@ h1 {
 .tk-note { display: block; font-size: 11px; color: var(--ink-paper); margin-top: 2px; line-height: 1.4; }
 .tk-pay {
   flex: none;
+  align-self: center;
+  display: flex;
+  align-items: center;
   border-left: 1px dashed rgba(18, 17, 15, 0.35);
   padding-left: 10px;
 }
@@ -990,7 +1018,7 @@ h1 {
   box-shadow: 0 0 0 3px var(--ink);
 }
 .flow-card.spot-card {
-  padding: 9px 34px 9px 14px;
+  padding: 9px 12px;
   background: rgba(240, 231, 213, 0.03);
   border: 1px solid var(--card-border);
   border-radius: 3px;
@@ -999,4 +1027,4 @@ h1 {
 .flow-card.spot-card.no-place { background: transparent; }
 .flow-card.spot-card .flow-label { font-size: 13.5px; font-weight: 500; color: color-mix(in srgb, var(--cream) 88%, transparent); }
 .flow-card.spot-card.no-place .flow-label { font-weight: 400; }
-.flow-card.spot-card .flow-open { top: 9px; right: 12px; font-size: 12px; }
+.flow-card.spot-card .flow-open { font-size: 12px; }
