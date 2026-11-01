@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
   }
 
-  // Journée au format "flux chronologique" (items sans slot : time / fixed / place)
+  // Journée au format "flux chronologique" (items sans slot : time / fixed / place / spots)
   function flowHTML(d) {
     return (d.items || []).map(x => {
       const p = placeByName(x.place);
@@ -362,14 +362,27 @@ document.addEventListener('DOMContentLoaded', async () => {
       const approx = /^~/.test(x.time || '');
       const timeTxt = String(x.time || '').trim();
       const hasCard = Boolean(x.place && p);
+      const quartier = x.spots ? ' quartier' : '';
       const poisHtml = mapPlaces.length
         ? `<span class="poi-list">${(hasCard ? mapPlaces.slice(1) : mapPlaces).map(q =>
             `<button class="poi-link" data-place-id="${esc(q.id)}" type="button">${esc(q.name)} <span>›</span></button>`
           ).join('')}</span>`
         : '';
       const attrs = hasCard
-        ? ` class="flow-card clickable" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
-        : ' class="flow-card no-place"';
+        ? ` class="flow-card clickable${quartier}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
+        : ` class="flow-card no-place${quartier}"`;
+      const spotsHtml = (x.spots || []).map(s => {
+        const sp = placeByName(s);
+        const sAttrs = sp
+          ? ` class="flow-card clickable spot-card" data-place-id="${esc(sp.id)}" role="button" tabindex="0"`
+          : ' class="flow-card no-place spot-card"';
+        return `<div class="flow-step spot">
+          <div${sAttrs}>
+            <span class="flow-label">${esc(s)}</span>
+            ${sp ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
+          </div>
+        </div>`;
+      }).join('');
       return `<div class="flow-step${x.fixed ? ' fixed' : ''}">
         ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
         <div${attrs}>
@@ -380,6 +393,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           ${poisHtml}
         </div>
       </div>
+      ${spotsHtml}
       ${transportMarker(x.transport)}`;
     }).join('');
   }
