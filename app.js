@@ -438,19 +438,33 @@ nav.forEach(n => n.addEventListener('click', () => {
   // Lexique
   function renderLexicon() {
     const target = document.getElementById('lexicon-container'),
-          input = document.getElementById('lexicon-search');
+      input = document.getElementById('lexicon-search'),
+      count = document.getElementById('lexicon-count');
     const lexicon = window.JAPAN_LEXICON || data.lexicon || [];
     const draw = () => {
       const q = input.value.toLowerCase();
-      target.innerHTML = lexicon.filter(x => x.join(' ').toLowerCase().includes(q)).map(x =>
-        `<div class="lexicon-row">
-          <div>
-            <span class="lex-fr">${esc(x[1])}</span>
-            <span class="lex-cat">${esc(x[0])}</span>
-          </div>
-          <span class="lex-jp">${esc(x[2])}${x[3] ? `<small class="lex-romaji">${esc(x[3])}</small>` : ''}</span>
-        </div>`
-      ).join('');
+
+const filtered = lexicon.filter(x =>
+  x.join(' ').toLowerCase().includes(q)
+);
+
+if (count) {
+  count.textContent =
+    `${String(filtered.length).padStart(2, '0')} EXPRESSIONS`;
+}
+
+target.innerHTML = filtered.map(x =>
+  `<div class="lexicon-row">
+    <div>
+      <span class="lex-fr">${esc(x[1])}</span>
+      <span class="lex-cat">${esc(x[0])}</span>
+    </div>
+    <span class="lex-jp">
+      ${esc(x[2])}
+      ${x[3] ? `<small class="lex-romaji">${esc(x[3])}</small>` : ''}
+    </span>
+  </div>`
+).join('');
     };
     input.oninput = draw;
     draw();
