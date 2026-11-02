@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   const placeByName = name => getPlaceByName(name);
 
-  // Navigation entre les pages
+  // 
+Navigation entre les pages
   function go(key, push = true) {
     const target = page(key);
 
@@ -88,7 +89,8 @@ nav.forEach(n => n.addEventListener('click', () => {
 
   document.getElementById('app-shell').addEventListener('touchend', e => {
     const x = e.changedTouches[0].clientX;
-    if (window.__sx != null && x - window.__sx > 70 && window.__sx < 40) {
+    if (window.__sx != null &
+& x - window.__sx > 70 && window.__sx < 40) {
       history.back();
     }
     window.__sx = null;
@@ -121,7 +123,8 @@ nav.forEach(n => n.addEventListener('click', () => {
       if (/shibuya|hachiko|tower records|parco|harajuku|takeshita|harry potter|yoyogi/.test(n)) return 'Shibuya / Harajuku';
       if (/shinjuku|kabukicho|golden gai|omoide|yodobashi|map camera|metropolitan|batting/.test(n)) return 'Shinjuku';
       if (/asakusa|senso|nakamise/.test(n)) return 'Asakusa';
-      if (/yanaka|nezu|ueno|yamashiroya|edo-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
+      if (/yanaka|nezu|ueno|yamashiroya|e
+do-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
       if (/akihabara|gigo|hey arcade/.test(n)) return 'Akihabara';
       if (/ginza|uniqlo/.test(n)) return 'Ginza';
       if (/oimachi/.test(n)) return 'Oimachi';
@@ -160,7 +163,8 @@ nav.forEach(n => n.addEventListener('click', () => {
     }
     const url = mapChoice === 'apple'
       ? `https://maps.apple.com/?q=${encodeURIComponent(place.name)}&ll=${place.lat},${place.lng}`
-      : `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
+      : `https://www.google.com/maps/search/?api=1&query=${place
+.lat},${place.lng}`;
     window.location.href = url;
   }
 
@@ -206,29 +210,18 @@ nav.forEach(n => n.addEventListener('click', () => {
         <span class="journey-arrow">›</span>
       </button>`;
     }).join('');
-    target.querySelectorAll('.journey-stop').forEach(b => b.addEventListener('click', () => showCity(b.dataset.city)));
+    target.querySelectorAll('.journey-stop').forEach(b => b.addEventListen
+er('click', () => showCity(b.dataset.city)));
   }
 
   // Bloc des spécialités culinaires
   function specialtyBlock(k) {
     const list = data.culinarySpecialties?.[k] || [];
     if (!list.length) return '';
-    return `<section class="city-block collapsed">
-      <button class="section-toggle" aria-expanded="false" type="button">
-        <span>Spécialités culinaires</span>
-        <span class="section-toggle-mark">›</span>
-      </button>
-      <div class="city-section-content">
-        <div class="specialty-list">
-          ${list.map(([n, d]) =>
-            `<button class="specialty-row" aria-expanded="false" type="button">
-              <span><strong>${esc(n)}</strong><span class="specialty-description">${esc(d)}</span></span>
-              <span class="specialty-arrow">›</span>
-            </button>`
-          ).join('')}
-        </div>
-      </div>
-    </section>`;
+    // cartes papier sobres, directement en haut de la page, sans intitulé
+    return list.map(([n, d]) =>
+      `<div class="spec-card"><b>${esc(n)}</b><span>${esc(d)}</span></div>`
+    ).join('');
   }
 
   // Affichage du détail d'une ville
@@ -238,12 +231,20 @@ nav.forEach(n => n.addEventListener('click', () => {
     const c = data.cities[k];
     document.getElementById('current-city-title').textContent = c.name;
     document.getElementById('current-city-jp').textContent = cityJp[k] || '';
-    document.getElementById('current-city-dates').textContent = c.dates;
+    // tampon papier des dates (sans les nuits) : "23 Nov — 28 Nov • 5 nuits"
+    const hero = document.querySelector('.city-hero');
+    hero.querySelector('.city-stamp')?.remove();
+    const [, d1, m1, d2, m2] = String(c.dates || '').match(/(\d+)\s+(\S+)\s+—\s+(\d+)\s+(\S+)/) || [];
+    if (d1) {
+      const mois = x => (x || '').toLowerCase() + '.';
+      hero.insertAdjacentHTML('beforeend',
+        `<span class="city-stamp"><b>${esc(d1)}</b><i>${esc(mois(m1))}</i><u></u><em>${esc(d2)} ${esc(mois(m2))}</em></span>`);
+    }
 
     const groups = {};
     Object.values(allPlaces).forEach(p => {
       if (p.city !== k) return;
-    
+
   const [g, s] = category(p), a = area(p, k) || '_root';
       groups[a] ??= {};
       groups[a][g] ??= {};
@@ -251,43 +252,42 @@ nav.forEach(n => n.addEventListener('click', () => {
       groups[a][g][s].push(p);
     });
 
+    // sous-lieu : carte compacte sur la mini timeline (losange couleur ville)
+    const spotCard = p => `<div class="city-sp">
+          <button class="sp-card" data-place-id="${esc(p.id)}" type="button">
+            <span class="nm">${esc(p.name)}</span>
+            <span class="ind">↗</span>
+          </button>
+        </div>`;
+
     let html = specialtyBlock(k);
     for (const a of Object.keys(groups).sort((x, y) => x === '_root' ? -1 : y === '_root' ? 1 : x.localeCompare(y))) {
-      if (a !== '_root') html += `<div class="area-heading">${esc(a)}</div>`;
+      // groupes séparés par du simple texte, lieux en mini timeline
+      const bodyParts = [];
       for (const g of ['Hébergements', 'Lieux', 'Restaurants', 'Shopping']) {
         if (!groups[a][g]) continue;
-        html += `<section class="city-block collapsed">
-          <button class="section-toggle" aria-expanded="false" type="button">
-            <span>${g}</span>
-            <span class="section-toggle-mark">›</span>
-          </button>
-          <div class="city-section-content">`;
         for (const s of Object.keys(groups[a][g]).sort()) {
-          if (g === 'Lieux') html += `<div class="subcategory-label">${esc(s)}</div>`;
-          html += `<div class="place-list">
-            ${groups[a][g][s].map(p =>
-              `<button class="place-row" data-place-id="${esc(p.id)}" type="button">
-                <span class="place-row-main">
-                  <span class="place-name">${esc(p.name)}</span>
-                  <span class="place-subcategory">${esc(s)}</span>
-                </span>
-                <span class="place-indicator">›</span>
-              </button>`
-            ).join('')}
-          </div>`;
+          bodyParts.push(`<div class="subcategory-label">${esc(s)}</div>
+            <div class="spots">${groups[a][g][s].map(spotCard).join('')}</div>`);
         }
-        html += '</div></section>';
+      }
+      if (a === '_root') {
+        html += bodyParts.join('');
+      } else {
+        // quartier principal : ticket poinçonné qui déplie son contenu
+        const total = Object.values(groups[a]).reduce((t, g) => t + Object.values(g).reduce((tt, l) => tt + l.length, 0), 0);
+        html += `<button class="ticket area-ticket" aria-expanded="false" type="button">
+          <span class="tk-name">${esc(a)}</span>
+          <span class="tk-count">${total} lieu${total > 1 ? 'x' : ''}</span>
+        </button>
+        <div class="area-content collapsed">${bodyParts.join('')}</div>`;
       }
     }
     cityDetailContent.innerHTML = html;
-    cityDetailContent.querySelectorAll('.section-toggle').forEach(t => t.addEventListener('click', () => {
-      const b = t.closest('.city-block');
-      const open = !b.classList.toggle('collapsed');
+    cityDetailContent.querySelectorAll('.area-ticket').forEach(t => t.addEventListener('click', () => {
+      const body = t.nextElementSibling;
+      const open = !body.classList.toggle('collapsed');
       t.setAttribute('aria-expanded', String(open));
-    }));
-    cityDetailContent.querySelectorAll('.specialty-row').forEach(b => b.addEventListener('click', () => {
-      const open = b.classList.toggle('open');
-      b.setAttribute('aria-expanded', String(open));
     }));
     cityDetailContent.querySelectorAll('[data-place-id]').forEach(b => b.addEventListener('click', () => openMap(allPlaces[b.dataset.placeId])));
 
@@ -302,7 +302,8 @@ nav.forEach(n => n.addEventListener('click', () => {
   // Retour à l'itinéraire
   function showItinerary(push = true) {
     currentCity = null;
-    cityDetailPage.classList.add('hidden');
+    cityDetailPage.classList.add('hi
+dden');
     document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
     restorePlanningTheme();
     if (push) history.pushState({ page: 'itinerary', city: null }, '', '#itinerary');
@@ -347,7 +348,8 @@ nav.forEach(n => n.addEventListener('click', () => {
     const c = data.cities[d.cityKey];
     document.getElementById('planning-head').innerHTML = `
       <div class="planning-title-row">
-        <h2>${esc(c.name)}</h2>
+  
+      <h2>${esc(c.name)}</h2>
         <span class="planning-kana">${esc(cityJp[d.cityKey] || '')}</span>
       </div>
       <p class="planning-subtitle">${esc(d.title || '')}</p>`;
@@ -389,7 +391,8 @@ nav.forEach(n => n.addEventListener('click', () => {
           ).join('')}</span>`
         : '';
       const attrs = hasCard
-        ? ` class="flow-card clickable${quartier}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
+        ? ` class="flow-card clickable${quartier
+}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
         : ` class="flow-card no-place${quartier}"`;
       const spotsHtml = (x.spots || []).map(s => {
         const sp = placeByName(s);
@@ -429,7 +432,8 @@ nav.forEach(n => n.addEventListener('click', () => {
       </button>`
     ).join('');
     strip.querySelectorAll('.day-choice').forEach(b => b.addEventListener('click', () => {
-      selectedDate = b.dataset.date;
+ 
+     selectedDate = b.dataset.date;
       renderDayStrip();
       renderPlanning();
     }));
@@ -502,4 +506,5 @@ target.innerHTML = filtered.map(x =>
   renderPlanning();
   renderLexicon();
   restorePlanningTheme();
-});
+}
+);
