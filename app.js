@@ -62,16 +62,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelectorAll('.top-page').forEach(p => pageObserver.observe(p));
   }
 
-  // Navigation depuis la barre du bas
-  nav.forEach(n => n.addEventListener('click', () => {
-    const key = n.dataset.page;
-    if (key !== 'city-detail') {
-      currentCity = null;
-      cityDetailPage.classList.add('hidden');
-      restorePlanningTheme();
-    }
-    go(key);
-  }));
+// Navigation depuis la barre du bas
+nav.forEach(n => n.addEventListener('click', () => {
+  const key = n.dataset.page;
+
+  // Quitter le détail de la ville
+  currentCity = null;
+  cityDetailPage.classList.add('hidden');
+
+  // Réafficher toutes les pages principales
+  document.querySelectorAll('.top-page:not(#page-city-detail)')
+    .forEach(p => p.classList.remove('hidden'));
+
+  // Restaurer le thème du planning
+  restorePlanningTheme();
+
+  // Naviguer vers l'onglet sélectionné
+  go(key);
+}));
 
   // Gestion du swipe pour revenir en arrière
   document.getElementById('app-shell').addEventListener('touchstart', e => {
