@@ -461,8 +461,7 @@ h1 {
   text-transform: uppercase;
 }
 .editorial-block h2 { font-size: 27px; margin: 7px 0 18px; }
-.map-setting 
-{
+.map-setting {
   width: 100%;
   display: flex;
   justify-content: space-between;
