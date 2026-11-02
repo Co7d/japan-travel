@@ -66,24 +66,37 @@
     <section class="top-page" id="page-lexicon" data-page="lexicon">
       <div class="page-scroll">
         <div class="content-wrapper">
-          <h1>Lexique</h1>
-          <p class="subtitle">Expressions indispensables.</p>
-          <div class="search-box">
-            <input type="text" id="lexicon-search" placeholder="Rechercher un mot…" autocomplete="off">
-          </div>
-          <div class="paper-list" id="lexicon-container"></div>
-          <div class="editorial-block">
-            <div class="block-label">NAVIGATION</div>
-            <h2>Plans / Maps</h2>
-            <button class="map-setting" id="map-setting" type="button">
-              <span>Choisir l'application par défaut</span>
-              <span>›</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div class="lexicon-heading">
+    <h1>Lexique</h1>
+    <p class="subtitle">Expressions indispensables.</p>
+  </div>
 
+  <div class="search-box lexicon-search">
+    <span class="lexicon-search-icon">⌕</span>
+    <input
+      type="text"
+      id="lexicon-search"
+      placeholder="Rechercher un mot…"
+      autocomplete="off"
+    >
+  </div>
+
+  <div class="lexicon-list-heading">
+    <h2>Expressions utiles</h2>
+    <span class="lexicon-count" id="lexicon-count">00 EXPRESSIONS</span>
+  </div>
+
+  <div class="paper-list" id="lexicon-container"></div>
+
+  <div class="editorial-block">
+    <div class="block-label">NAVIGATION</div>
+    <h2>Plans / Maps</h2>
+    <button class="map-setting" id="map-setting" type="button">
+      <span>Choisir l'application par défaut</span>
+      <span>›</span>
+    </button>
+  </div>
+</div>
   </main>
 
   <!-- Barre de navigation avec 3 onglets (répartition égale) -->
