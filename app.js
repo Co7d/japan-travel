@@ -42,8 +42,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (!target) return;
     if (push) history.pushState({page: key, city: null}, '', `#${key}`);
+    navLockUntil = Date.now() + 800; // pendant l'animation, l'onglet visé reste affiché
     target.scrollIntoView({behavior: 'smooth', inline: 'start', block: 'nearest'});
-    nav.forEach(n => n.classList.toggle('active', n.dataset.page === key));
+    setActiveTab(key);
+  }
+
+  // L'onglet du bas suit la page réellement affichée (swipe compris), pas le geste.
+  let navLockUntil = 0;
+  const setActiveTab = key => {
+    const tab = key === 'city-detail' ? 'itinerary' : key;
+    nav.forEach(n => n.classList.toggle('active', n.dataset.page === tab));
+  };
+  if ('IntersectionObserver' in window) {
+    const pageObserver = new IntersectionObserver(entries => {
+      if (Date.now() < navLockUntil) return;
+      const shown = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (shown) setActiveTab(shown.target.dataset.page);
+    }, { root: document.getElementById('app-shell'), threshold: 0.6 });
+    document.querySelectorAll('.top-page').forEach(p => pageObserver.observe(p));
   }
 
   // Navigation depuis la barre du bas
@@ -214,7 +230,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const c = data.cities[k];
     document.getElementById('current-city-title').textContent = c.name;
     document.getElementById('current-city-jp').textContent = cityJp[k] || '';
-    document.getElementById('current-city-vibe').textContent = c.vibe;
     document.getElementById('current-city-dates').textContent = c.dates;
 
     const groups = {};
@@ -271,7 +286,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Afficher la page de détail et masquer les autres
     cityDetailPage.classList.remove('hidden');
     document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.add('hidden'));
-    nav.forEach(n => n.classList.toggle('active', n.dataset.page === 'itinerary'));
+    setActiveTab('itinerary');
 
     if (push) history.pushState({ page: 'city-detail', city: k }, '', `#city-detail/${k}`);
   }
