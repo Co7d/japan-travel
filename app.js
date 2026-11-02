@@ -166,19 +166,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Affichage de l'itinéraire
   function renderItinerary() {
     const target = document.getElementById('timeline-list');
+    const mois = x => (x || '').toLowerCase() + '.';
     target.innerHTML = (data.itinerary || []).map(s => {
-      // "16 Nov — 20 Nov • 4 nuits" → étiquette papier : plage + nuits
-      const [range, nights] = String(s.dates || '').split('•').map(t => t.trim());
-      return `<button class="journey-stop" data-city="${esc(s.cityKey)}" type="button">
-        <span class="journey-rail" style="background:var(--${s.cityKey})"></span>
-        <span class="journey-date">
-          <strong>${esc(range || s.dates || '')}</strong>
-          ${nights ? `<em>${esc(nights)}</em>` : ''}
+      // "16 Nov — 20 Nov • 4 nuits"
+      const [, d1, m1, d2, m2, nights] = s.dates.match(/(\d+)\s+(\S+)\s+—\s+(\d+)\s+(\S+)\s+•\s+(.+)/) || [];
+      const k = esc(s.cityKey);
+      return `<button class="journey-stop" data-city="${k}" type="button" style="--city:var(--${k});--city-dark:var(--${k}-dark)">
+        <span class="journey-rail"></span>
+        <span class="journey-stamp"><b>${esc(d1)}</b><i>${esc(mois(m1))}</i><u></u><em>${esc(d2)} ${esc(mois(m2))}</em></span>
+        <span class="journey-body">
+          <span class="journey-city">${esc(s.label)}</span>
+          <span class="journey-jp">${esc(cityJp[s.cityKey] || '')}</span>
+          <span class="journey-vibe">${esc(data.cities[s.cityKey]?.vibe || '')} · ${esc(nights)}</span>
         </span>
-        <span class="journey-city" style="color:var(--${s.cityKey})">${esc(s.label)}</span>
-        <span class="journey-jp" style="color:var(--${s.cityKey})">${esc(cityJp[s.cityKey] || '')}</span>
-        <span class="journey-vibe">${esc(data.cities[s.cityKey]?.vibe || '')}</span>
-        <span class="journey-arrow" style="color:var(--${s.cityKey})">›</span>
+        <span class="journey-arrow">›</span>
       </button>`;
     }).join('');
     target.querySelectorAll('.journey-stop').forEach(b => b.addEventListener('click', () => showCity(b.dataset.city)));
@@ -287,30 +288,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('city-back')?.addEventListener('click', () => showItinerary(false));
 
 
-  // ── Design unifié : tickets de transport papier à poinçons ──
-  const paymentColors = { 'SUICA': '#1f6b4a', 'JR PASS': '#5b3aa0', 'ESPÈCES': '#8a4b00' };
-  const transportColors = { train: '#1f55c4', shinkansen: '#0b2f6b', bus: '#006a7c', car: '#b3402a', ferry: '#9b2f7f', walk: '#5c564d' };
-  const transportKanji = { train: '電車', shinkansen: '新幹線', bus: 'バス', car: '車', ferry: 'フェリー' };
+  // ── Tickets de transport : papier à poinçons ──
+  // Couleurs (mode, paiement) dans style.css (.transport-*, .pay-*).
+  const transportKanji = { train: '電車', shinkansen: '新幹線', bus: 'バス', car: '車', ferry: '船', walk: '歩' };
+  const payClass = { 'SUICA': 'pay-suica', 'JR PASS': 'pay-jrpass', 'ESPÈCES': 'pay-especes' };
 
-  // Ticket papier : kanji du mode, itinéraire couleur du mode, durée, note éventuelle, paiement à droite.
+  // Ticket : kanji du mode, itinéraire (couleur du mode), durée, note éventuelle, paiement à droite.
   function transportRow(t) {
     if (!t) return '';
-    const m = String(t.mode || '').toLowerCase();
-    const type = t.type || (m.includes('shinkansen') ? 'shinkansen' : (m.includes('voiture') || m.includes('car')) ? 'car' : m.includes('bus') ? 'bus' : m.includes('ferry') ? 'ferry' : m.includes('pied') ? 'walk' : 'train');
-    const route = t.route || String(t.mode || '').replace(/\s*(suica|pass jr)\s*/ig, '').trim();
-    const duration = t.duration || '';
-    const payment = t.payment || (/jr pass/i.test(m) ? 'JR PASS' : /suica/i.test(m) ? 'SUICA' : '');
-    const color = transportColors[type] || 'var(--theme-main)';
-    const kanji = transportKanji[type] || '';
-    const paymentColor = paymentColors[payment] || '';
-    return `<div class="ticket transport-${type}" style="--mode:${color}">
+    const kanji = transportKanji[t.type] || '';
+    return `<div class="ticket transport-${esc(t.type || 'train')}">
       ${kanji ? `<span class="tk-mode">${kanji}</span>` : ''}
       <span class="tk-main">
-        <span class="tk-route">${t.variant ? `<span class="var">${esc(t.variant)} · </span>` : ''}${esc(route)}</span>
-        ${duration ? `<span class="tk-dur">${esc(duration)}</span>` : ''}
+        <span class="tk-route">${t.variant ? `<span class="var">${esc(t.variant)} · </span>` : ''}${esc(t.route || '')}</span>
+        ${t.duration ? `<span class="tk-dur">${esc(t.duration)}</span>` : ''}
         ${t.note ? `<span class="tk-note">${esc(t.note)}</span>` : ''}
       </span>
-      ${payment ? `<span class="tk-pay"><span class="pay" style="color:${paymentColor};border-color:${paymentColor}">${esc(payment)}</span></span>` : ''}
+      ${t.payment ? `<span class="tk-pay"><span class="pay ${payClass[t.payment] || ''}">${esc(t.payment)}</span></span>` : ''}
     </div>`;
   }
 
@@ -330,7 +324,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const c = data.cities[d.cityKey];
     document.getElementById('planning-head').innerHTML = `
       <div class="planning-title-row">
-        <h2 class="planning-location">${esc(c.name)}</h2>
+        <h2>${esc(c.name)}</h2>
         <span class="planning-kana">${esc(cityJp[d.cityKey] || '')}</span>
       </div>
       <p class="planning-subtitle">${esc(d.title || '')}</p>`;
@@ -338,24 +332,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       b.classList.toggle('active', b.dataset.date === selectedDate)
     );
 
-    const useFlow = (d.items || []).some(x => !x.slot);
-    const cont = document.getElementById('planning-container');
-    cont.innerHTML = useFlow ? flowHTML(d) : slotsHTML(d);
-    cont.classList.toggle('flow-mode', useFlow);
-
-    if (!useFlow) {
-      // Les sections (Matin, Midi, etc.) sont DÉPLOYÉES par défaut
-      document.querySelectorAll('.schedule-card').forEach(card => {
-        card.classList.add('open');
-        card.querySelector('.schedule-summary')?.setAttribute('aria-expanded', 'true');
-      });
-
-      document.querySelectorAll('.schedule-summary').forEach(b => b.addEventListener('click', () => {
-        const card = b.closest('.schedule-card');
-        const open = card.classList.toggle('open');
-        b.setAttribute('aria-expanded', String(open));
-      }));
-    }
+    document.getElementById('planning-container').innerHTML = flowHTML(d);
 
     document.querySelectorAll('#planning-container [data-place-id]').forEach(b =>
       b.addEventListener('click', e => {
@@ -365,7 +342,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     );
   }
 
-  // Journée au format "flux chronologique" (items sans slot : time / fixed / place / spots)
+  // Journée en flux chronologique (time / fixed / place / spots)
   function flowHTML(d) {
     return (d.items || []).map(x => {
       // Trajet "pur" (transit: true) : uniquement le ticket enrichi, pas de carte doublon
@@ -398,7 +375,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           : ' class="flow-card no-place spot-card"';
         return `<div class="flow-step spot">
           <div${sAttrs}>
-            <span class="flow-body"><span class="flow-label">${esc(s)}</span></span>
+            <span class="flow-label">${esc(s)}</span>
             ${sp ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
           </div>
         </div>`;
@@ -408,59 +385,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="flow-step${x.fixed ? ' fixed' : ''}">
         ${timeTxt ? `<div class="flow-time${approx ? '' : ' exact'}">${esc(timeTxt)}</div>` : '<div class="flow-time"></div>'}
         <div${attrs}>
-          <span class="flow-body">
-            ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
-            <span class="flow-label">${esc(x.label || '')}</span>
-            ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
-            ${poisHtml}
-          </span>
+          ${x.fixed ? `<span class="flow-fixed">Réservé</span>` : ''}
+          <span class="flow-label">${esc(x.label || '')}</span>
           ${hasCard ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
+          ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
+          ${poisHtml}
         </div>
       </div>
       ${spotsHtml}`;
     }).join('');
   }
 
-  // Journée au format "créneaux" (items avec slot : Matin / Midi / …)
-  function slotsHTML(d) {
-    const slots = ['Matin', 'Midi', 'Après-midi', "Fin d'après-midi", 'Soirée'];
-    return slots.map(slot => {
-      const items = (d.items || []).filter(x => x.slot === slot);
-      if (!items.length) return '';
-      return `<section class="planning-slot">
-        <div class="slot-label">${slot}</div>
-        <div class="slot-line">
-          ${items.map(x => {
-            const p = placeByName(x.place),
-                  pois = (x.pois || []).map(placeByName).filter(Boolean),
-                  mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
-            return `${transportMarker(x.transport)}
-            <article class="schedule-card" style="--city-color:var(--${d.cityKey})">
-              <button class="schedule-summary${x.time ? '' : ' no-time'}" aria-expanded="false" type="button">
-                ${x.time ? `<span class="schedule-time">${esc(x.time)}</span>` : ''}
-                <span class="schedule-title">${esc(x.label || '')}</span>
-                <span class="schedule-chevron">›</span>
-              </button>
-              <div class="schedule-details">
-                <div class="schedule-detail-text">
-                  ${x.description ? esc(x.description) : ''}
-                </div>
-                ${mapPlaces.length ?
-                  `<div class="poi-list">
-                    ${mapPlaces.map(q =>
-                      `<button class="poi-link" data-place-id="${esc(q.id)}" type="button">
-                        ${esc(q.name)} <span>›</span>
-                      </button>`
-                    ).join('')}
-                  </div>` : ''}
-              </div>
-            </article>`;
-
-          }).join('')}
-        </div>
-      </section>`;
-    }).join('');
-  }
   // Bandeau des jours
   function renderDayStrip() {
     const strip = document.getElementById('day-strip');
