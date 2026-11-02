@@ -27,7 +27,6 @@
     <section class="top-page" id="page-itinerary" data-page="itinerary">
       <div class="page-scroll">
         <div class="content-wrapper">
-          <div class="eyebrow">JAPON 2026 · VOYAGE</div>
           <h1>Itinéraire</h1>
           <p class="subtitle">Le fil du voyage, de Tokyo à Tokyo.</p>
           <div class="journey-line" id="timeline-list"></div>
@@ -56,8 +55,7 @@
     <section class="top-page" id="page-planning" data-page="planning">
       <div class="page-scroll">
         <div class="content-wrapper">
-          <div class="eyebrow">JAPON 2026 · PROGRAMME</div>
-          <h1>Planning</h1>
+          <h1 class="sr-only">Planning</h1>
           <div class="planning-head" id="planning-head"></div>
           <div class="day-strip" id="day-strip"></div>
           <div id="planning-container"></div>
@@ -142,39 +140,6 @@
   <script>
     if ("serviceWorker" in navigator)
       navigator.serviceWorker.register("./sw.js").catch(console.error);
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const shell = document.getElementById('app-shell'),
-            pages = [...document.querySelector
-All('.top-page')],
-            nav = [...document.querySelectorAll('.nav-item')];
-      let raf = 0;
-      const sync = () => {
-        raf = 0;
-        if (!shell) return;
-        const center = shell.scrollLeft + shell.clientWidth / 2;
-        let active = pages[0], distance = Infinity;
-        pages.forEach(p => {
-          const d = Math.abs((p.offsetLeft + p.offsetWidth / 2) - center);
-          if (d < distance) { distance = d; active = p }
-        });
-        nav.forEach(n => n.classList.toggle('active', n.dataset.page === active.dataset.page));
-        document.body.dataset.theme = active.dataset.page === 'city-detail' ? document.body.dataset.theme : (() => {
-          const n = (document.querySelector('#planning-head .planning-location')?.textContent || '').trim().toLowerCase();
-          if (n.includes('kawaguchiko')) return 'kawaguchiko';
-          if (n.includes('kiso')) return 'kiso';
-          if (n.includes('kyoto')) return 'kyoto';
-          if (n.includes('hiroshima')) return 'hiroshima';
-          if (n.includes('osaka')) return 'osaka';
-          return 'tokyo';
-        })();
-      };
-      shell?.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sync) }, { passive: true });
-      window.addEventListener('resize', sync, { passive: true });
-      setTimeout(sync, 50);
-      setTimeout(sync, 400);
-    });
   </script>
 </body>
 </html>
