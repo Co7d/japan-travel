@@ -1,4 +1,3 @@
-/* Japan 2026 — application runtime. All geographic data lives in places.js. */
 document.addEventListener('DOMContentLoaded', async () => {
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cityJp = {tokyo:'東京', kawaguchiko:'河口湖', kiso:'木曽', kyoto:'京都', hiroshima:'広島', osaka:'大阪'};
