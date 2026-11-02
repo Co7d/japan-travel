@@ -2,10 +2,9 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent }
 :root {
   --ink: #12110f;
-  --cream: #f6f0e4;
   --muted: #aaa294;
-  --line: rgba(246, 240, 228, 0.13);
-  --card-border: rgba(246, 240, 228, 0.16);
+  --line: rgba(240, 231, 213, 0.13);
+  --card-border: rgba(240, 231, 213, 0.16);
   --paper: #f0e7d5;
   --ink-paper: #5c564d;
   --tokyo: #b94b48; --tokyo-dark: #873a37;
@@ -13,8 +12,8 @@
   --kiso: #7c9564; --kiso-dark: #5c6d4a;
   --kyoto: #b18b62; --kyoto-dark: #715a41;
   --hiroshima: #8792a1; --hiroshima-dark: #585e67;
-  --osaka: #c37b61; --osaka-dark: #8a4b00;
-  --train: #1f55c4; --shinkansen: #0b2f6b; --bus: #006a7c; --car: #b3402a; --ferry: #9b2f7f;
+  --osaka: #c37b61; --osaka-dark: #8e5b48;
+  --train: #1f55c4; --shinkansen: #0b2f6b; --bus: #9b2f7f; --car: #b3402a; --ferry: #006a7c; --walk: #4a443c;
   --suica: #1f6b4a; --jrpass: #5b3aa0; --especes: #8a4b00;
   --theme-main: var(--tokyo);
   --theme-dark: var(--tokyo-dark);
@@ -32,7 +31,7 @@ html, body {
   height: 100%;
   margin: 0;
   background: var(--ink);
-  color: var(--cream);
+  color: var(--paper);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -82,7 +81,14 @@ button { color: inherit; }
   margin-bottom: 12px;
 }
 
-h1, h2, .journey-city, .ticket-city, .place-name, .lex-fr, .editorial-block h2, .planning-head h2, .choice-sheet h2, .schedule-title {
+h1,
+h2,
+.journey-city,
+.place-name,
+.lex-fr,
+.editorial-block h2,
+.planning-head h2,
+.choice-sheet h2 {
   font-family: "Noto Serif JP", serif;
   font-weight: 400;
 }
@@ -103,103 +109,88 @@ h1 {
 
 .hidden { display: none !important; }
 
-/* Itinéraire — cartes séjour design unifié */
+/* Itinéraire — cartes séjour */
 .journey-line { position: relative; margin-top: 28px; }
 .journey-line:before {
   content: "";
   position: absolute;
   left: 10px;
-  top: 26px;
-  bottom: 26px;
+  top: 48px;
+  bottom: 48px;
   width: 1px;
   background: var(--line);
 }
 .journey-stop {
   position: relative;
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 96px;
   text-align: left;
   background: rgba(240, 231, 213, 0.05);
   border: 1px solid var(--card-border);
   border-radius: 3px;
-  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
-  padding: 16px 40px 16px 16px;
-  margin: 0 0 12px 106px;
+  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(240, 231, 213, 0.08);
+  padding: 0 44px 0 14px;
+  margin: 0 0 12px 30px;
 }
-/* pastille losange PLEINE, couleur de la ville, posée sur la ligne */
 .journey-rail {
   position: absolute;
-  left: -100px;
-  top: 22px;
+  left: -24px;
+  top: 50%;
   width: 9px;
   height: 9px;
+  margin-top: -4.5px;
+  background: var(--city);
   transform: rotate(45deg);
 }
-/* étiquette papier des dates, à gauche de la carte */
-.journey-date {
-  position: absolute;
-  left: -84px;
-  top: 50%;
-  width: 74px;
-  transform: translateY(-50%);
-  background: var(--paper);
-  color: var(--ink);
-  border-radius: 2px;
-  padding: 8px 3px;
+.journey-stamp {
+  flex: none;
+  width: 56px;
+  padding: 7px 0 8px;
   text-align: center;
+  background: var(--paper);
+  color: var(--city-dark);
+  border-radius: 2px;
 }
-.journey-date strong {
-  display: block;
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  line-height: 1.35;
-}
-.journey-date em {
-  display: block;
-  font-style: normal;
-  font-size: 9px;
-  font-weight: 600;
-  color: var(--ink-paper);
-  margin-top: 2px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
+.journey-stamp b { display: block; font: 500 22px/1 "Noto Serif JP", serif; }
+.journey-stamp i { display: block; margin-top: 2px; font-size: 10px; font-style: normal; font-weight: 600; }
+.journey-stamp u { display: block; width: 10px; height: 1px; margin: 5px auto; background: currentColor; opacity: 0.45; }
+.journey-stamp em { font-size: 10.5px; font-style: normal; font-weight: 700; }
+.journey-body { flex: 1; min-width: 0; }
 .journey-city {
   display: block;
-  font-size: 29px;
+  color: var(--city);
+  font-size: 23px;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.08;
+  line-height: 1.1;
 }
 .journey-jp {
   display: block;
-  color: var(--theme-main);
-  font-size: 13px;
+  color: var(--city);
+  font-size: 11px;
   letter-spacing: 0.2em;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .journey-vibe {
   display: block;
   color: var(--muted);
-  font-size: 11px;
-  margin-top: 10px;
+  font-size: 12px;
+  margin-top: 7px;
 }
 .journey-arrow {
-  font-family: "Noto Serif JP", serif;
-  color: var(--theme-main);
-  font-size: 24px;
   position: absolute;
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--city);
+  font-family: "Noto Serif JP", serif;
+  font-size: 24px;
 }
 
 /* Planning — en-tête design unifié : grand titre ville + kana + sous-titre */
-/* intitulés "JAPON 2026 · …" masqués sur toutes les pages (le vibe de la page ville reste visible) */
-.eyebrow:not(#current-city-vibe) { display: none; }
-#page-planning .content-wrapper > h1 { display: none; }
 .planning-head { margin: 26px 0 18px; padding: 0; border: 0; }
 .planning-title-row { display: flex; align-items: baseline; gap: 12px; }
 .planning-head h2 {
@@ -221,7 +212,7 @@ h1 {
   font-weight: 500;
   opacity: 0.82;
   margin: 8px 0 22px;
-  color: var(--cream);
+  color: var(--paper);
 }
 
 .day-strip {
@@ -262,72 +253,6 @@ h1 {
   border-color: var(--paper);
 }
 
-.planning-slot { position: relative; margin-bottom: 22px; }
-.slot-label {
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 48px;
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  line-height: 1.25;
-}
-.slot-line {
-  margin-left: 68px;
-  border-left: 1px solid rgba(246, 240, 228, 0.16);
-  padding-left: 17px;
-}
-
-.schedule-card { border-bottom: 1px solid var(--line); }
-.schedule-summary {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 52px 1fr 20px;
-  gap: 10px;
-  align-items: center;
-  background: none;
-  border: 0;
-  text-align: left;
-  padding: 13px 0;
-}
-.schedule-summary.no-time { grid-template-columns: 1fr 20px; }
-.schedule-time {
-  font-size: 10px;
-  color: var(--muted);
-  white-space: nowrap;
-}
-.schedule-title {
-  font-size: 18px;
-  line-height: 1.2;
-}
-.schedule-chevron { transition: transform 0.2s; }
-.schedule-card.open .schedule-chevron { transform: rotate(90deg); }
-
-/* MODIFICATION 1 : Masquer les chevrons dans le Planning */
-#page-planning .schedule-chevron { display: none; }
-
-.schedule-details {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 12px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
-  padding: 0;
-}
-.schedule-card.open .schedule-details {
-  max-height: 500px;
-  opacity: 1;
-  padding: 0 0 15px;
-}
-.schedule-detail-text {
-  font-size: 12px;
-  color: #c7c0b5;
-  line-height: 1.6;
-}
 .poi-list {
   grid-column: 1 / -1;
   display: flex;
@@ -336,119 +261,16 @@ h1 {
   margin-top: 3px;
 }
 .poi-link {
-  border: 1px solid rgba(246, 240, 228, 0.15);
+  border: 1px solid rgba(240, 231, 213, 0.15);
   background: rgba(255, 255, 255, 0.025);
   padding: 7px 9px;
   font-size: 10px;
-  color: var(--cream);
+  color: var(--paper);
   text-align: left;
 }
 .poi-link span { color: var(--theme-main); }
-.schedule-map-row { grid-column: 2; align-self: center; }
-.schedule-map {
-  border: 1px solid var(--theme-main);
-  background: transparent;
-  color: var(--theme-main);
-  padding: 9px 11px;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.empty-day {
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-}
 
 /* Villes (détail) */
-.city-tickets {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 28px;
-}
-.city-ticket {
-  position: relative;
-  width: 100%;
-  min-height: 158px;
-  padding: 20px 25px;
-  background: #f0e7d5;
-  color: var(--ink);
-  border: 0;
-  text-align: left;
-  overflow: hidden;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
-}
-.city-ticket:before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border: 1px solid rgba(18, 17, 15, 0.22);
-}
-.city-ticket:after {
-  content: "";
-  position: absolute;
-  right: 22px;
-  top: 0;
-  bottom: 0;
-  border-left: 1px dashed color-mix(in srgb, var(--ticket-city) 65%, rgba(18, 17, 15, 0.25));
-}
-.ticket-notch {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--ink);
-  z-index: 2;
-}
-.ticket-notch-left {
-  left: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.ticket-notch-right {
-  right: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.ticket-route {
-  display: block;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  opacity: 0.58;
-}
-.ticket-city {
-  display: block;
-  font-size: 33px;
-  margin-top: 18px;
-  max-width: 75%;
-  color: var(--ticket-city);
-}
-.ticket-jp {
-  display: block;
-  font-size: 13px;
-  letter-spacing: 0.28em;
-  margin-top: 2px;
-  color: var(--ticket-city);
-}
-.ticket-dates {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  margin-top: 16px;
-  letter-spacing: 0.04em;
-}
-.ticket-mark {
-  position: absolute;
-  right: 43px;
-  top: 50%;
-  transform: translateY(-50%);
-  font: 300 30px "Noto Serif JP", serif;
-  color: var(--ticket-city);
-}
 
 .back-link {
   display: inline-flex;
@@ -508,14 +330,6 @@ h1 {
   flex: 0 0 auto;
   color: var(--muted);
   font-size: 18px;
-}
-.section-kicker {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--theme-main);
-  font-weight: 800;
-  margin: 0 0 8px;
 }
 .area-heading {
   font: 400 24px "Noto Serif JP", serif;
@@ -581,7 +395,7 @@ h1 {
   border: 0;
   border-bottom: 1px solid var(--line);
   background: transparent;
-  color: var(--cream);
+  color: var(--paper);
   padding: 11px 0;
   font-size: 15px;
   outline: none;
@@ -632,47 +446,6 @@ h1 {
   text-transform: uppercase;
 }
 .editorial-block h2 { font-size: 27px; margin: 7px 0 18px; }
-.converter-box { display: flex; align-items: end; gap: 10px; }
-.input-group { flex: 1; }
-.input-group label {
-  display: block;
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  margin-bottom: 6px;
-}
-.input-group input {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--line);
-  color: var(--cream);
-  padding: 12px;
-  font-size: 16px;
-}
-.converter-arrow {
-  color: var(--theme-main);
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-.rate-info {
-  font-size: 10px;
-  color: var(--muted);
-  margin: 10px 0;
-}
-.emergency-list { border-top: 1px solid var(--line); }
-.emergency-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: var(--cream);
-  font-size: 13px;
-}
-.emergency-item strong {
-  font: 400 18px "Noto Serif JP", serif;
-  color: var(--theme-main);
-}
 .map-setting 
 {
   width: 100%;
@@ -683,11 +456,11 @@ h1 {
   border-bottom: 1px solid var(--line);
   background: none;
   padding: 14px 0;
-  color: var(--cream);
+  color: var(--paper);
   text-align: left;
 }
 
-/* MODIFICATION 2 : Barre de navigation à 4 onglets + bordure colorée */
+/* Barre de navigation + bordure colorée */
 .bottom-nav {
   position: fixed;
   z-index: 100;
@@ -703,7 +476,7 @@ h1 {
   gap: 2px;
   background: rgba(20, 18, 16, 0.94);
   border: 0;
-  border-top: 1px solid rgba(246, 240, 228, 0.12);
+  border-top: 1px solid rgba(240, 231, 213, 0.12);
   border-radius: 0;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -744,7 +517,7 @@ h1 {
 }
 
 .nav-item.active {
-  color: var(--cream);
+  color: var(--paper);
   border-top: 2px solid var(--theme-main);
   margin-top: -2px;
 }
@@ -826,7 +599,6 @@ h1 {
 @media (min-width: 700px) {
   .page-scroll { padding-left: 32px; padding-right: 32px; }
   .bottom-nav { bottom: 0; }
-  .city-ticket { min-height: 170px; }
 }
 
 /* iOS Home Screen / standalone viewport correction */
@@ -834,14 +606,13 @@ h1 {
   .app-shell, .top-page { height: 100vh; }
 }
 
-
 /* ===== Planning : flux chronologique — design unifié encre/papier ===== */
-#planning-container.flow-mode {
+#planning-container {
   position: relative;
   padding: 4px 18px 10px 70px;
 }
 /* ligne verticale de la timeline */
-#planning-container.flow-mode::before {
+#planning-container::before {
   content: "";
   position: absolute;
   left: 60px;
@@ -851,7 +622,7 @@ h1 {
   background: var(--line);
 }
 .flow-step { position: relative; margin-bottom: 12px; }
-/* pastille d'heure : exacte = fond couleur foncée de la ville ; ~ = texte crème simple */
+/* pastille d'heure : exacte = fond couleur foncée de la ville ; ~ = texte papier simple */
 .flow-time {
   position: absolute;
   left: -70px;
@@ -860,7 +631,7 @@ h1 {
   text-align: center;
   font-size: 13px;
   font-weight: 600;
-  color: var(--cream);
+  color: var(--paper);
   padding: 4px 0;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -871,33 +642,32 @@ h1 {
   font-weight: 800;
   border-radius: 2px;
 }
-/* carte : boîte encadrée, double filet intérieur — texte et flèche centrés verticalement */
+/* carte : boîte encadrée, double filet intérieur */
 .flow-card {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
   width: 100%;
   text-align: left;
   background: rgba(240, 231, 213, 0.05);
   border: 1px solid var(--card-border);
   border-radius: 3px;
-  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(246, 240, 228, 0.08);
-  padding: 13px 14px;
+  box-shadow: inset 0 0 0 4px var(--ink), inset 0 0 0 5px rgba(240, 231, 213, 0.08);
+  padding: 13px 34px 13px 16px;
 }
-.flow-body { flex: 1; min-width: 0; display: block; }
 .flow-card.clickable { cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease; }
 .flow-card.clickable:active {
   transform: scale(0.97);
   border-color: var(--theme-main);
-  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), color-mix(in srgb, var(--cream) 4%, transparent));
+  background: linear-gradient(0deg, color-mix(in srgb, var(--theme-main) 10%, transparent), color-mix(in srgb, var(--paper) 4%, transparent));
 }
 .flow-card.no-place { background: transparent; border-style: dashed; box-shadow: none; }
 .flow-card.no-place .flow-label { font-weight: 500; }
 .flow-label { display: block; font-size: 15px; font-weight: 600; line-height: 1.3; }
 .flow-desc { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
 .flow-open {
-  flex: none;
+  position: absolute;
+  top: 12px;
+  right: 14px;
   font-size: 13px;
   font-weight: 600;
   line-height: 1;
@@ -932,6 +702,7 @@ h1 {
 .flow-card .poi-list { margin-top: 8px; }
 /* ── tickets de transport : papier à poinçons d'encre ── */
 .ticket {
+  --mode: var(--theme-main);
   position: relative;
   display: flex;
   align-items: center;
@@ -956,7 +727,6 @@ h1 {
 .ticket:after { right: -5px; }
 .tk-mode {
   flex: none;
-  align-self: center;
   min-width: 30px;
   height: 30px;
   padding: 0 6px;
@@ -969,7 +739,7 @@ h1 {
   font-size: 11.5px;
   font-weight: 700;
 }
-.tk-main { flex: 1; min-width: 0; align-self: center; }
+.tk-main { flex: 1; min-width: 0; }
 .tk-route {
   display: block;
   font-size: 12.5px;
@@ -983,9 +753,6 @@ h1 {
 .tk-note { display: block; font-size: 11px; color: var(--ink-paper); margin-top: 2px; line-height: 1.4; }
 .tk-pay {
   flex: none;
-  align-self: center;
-  display: flex;
-  align-items: center;
   border-left: 1px dashed rgba(18, 17, 15, 0.35);
   padding-left: 10px;
 }
@@ -1018,13 +785,33 @@ h1 {
   box-shadow: 0 0 0 3px var(--ink);
 }
 .flow-card.spot-card {
-  padding: 9px 12px;
+  padding: 9px 34px 9px 14px;
   background: rgba(240, 231, 213, 0.03);
   border: 1px solid var(--card-border);
   border-radius: 3px;
   box-shadow: none;
 }
 .flow-card.spot-card.no-place { background: transparent; }
-.flow-card.spot-card .flow-label { font-size: 13.5px; font-weight: 500; color: color-mix(in srgb, var(--cream) 88%, transparent); }
+.flow-card.spot-card .flow-label { font-size: 13.5px; font-weight: 500; color: color-mix(in srgb, var(--paper) 88%, transparent); }
 .flow-card.spot-card.no-place .flow-label { font-weight: 400; }
-.flow-card.spot-card .flow-open { font-size: 12px; }
+.flow-card.spot-card .flow-open { top: 9px; right: 12px; font-size: 12px; }
+
+/* couleurs des tickets : une teinte par mode, une par paiement */
+.transport-train { --mode: var(--train); }
+.transport-shinkansen { --mode: var(--shinkansen); }
+.transport-bus { --mode: var(--bus); }
+.transport-car { --mode: var(--car); }
+.transport-ferry { --mode: var(--ferry); }
+.transport-walk { --mode: var(--walk); }
+.pay-suica { color: var(--suica); }
+.pay-jrpass { color: var(--jrpass); }
+.pay-especes { color: var(--especes); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
