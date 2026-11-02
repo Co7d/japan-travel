@@ -1,3 +1,4 @@
+/* Japan 2026 — application runtime. All geographic data lives in places.js. */
 document.addEventListener('DOMContentLoaded', async () => {
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cityJp = {tokyo:'東京', kawaguchiko:'河口湖', kiso:'木曽', kyoto:'京都', hiroshima:'広島', osaka:'大阪'};
@@ -35,8 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   const placeByName = name => getPlaceByName(name);
 
-  // 
-Navigation entre les pages
+  // Navigation entre les pages
   function go(key, push = true) {
     const target = page(key);
 
@@ -88,8 +88,7 @@ nav.forEach(n => n.addEventListener('click', () => {
 
   document.getElementById('app-shell').addEventListener('touchend', e => {
     const x = e.changedTouches[0].clientX;
-    if (window.__sx != null &
-& x - window.__sx > 70 && window.__sx < 40) {
+    if (window.__sx != null && x - window.__sx > 70 && window.__sx < 40) {
       history.back();
     }
     window.__sx = null;
@@ -122,8 +121,7 @@ nav.forEach(n => n.addEventListener('click', () => {
       if (/shibuya|hachiko|tower records|parco|harajuku|takeshita|harry potter|yoyogi/.test(n)) return 'Shibuya / Harajuku';
       if (/shinjuku|kabukicho|golden gai|omoide|yodobashi|map camera|metropolitan|batting/.test(n)) return 'Shinjuku';
       if (/asakusa|senso|nakamise/.test(n)) return 'Asakusa';
-      if (/yanaka|nezu|ueno|yamashiroya|e
-do-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
+      if (/yanaka|nezu|ueno|yamashiroya|edo-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
       if (/akihabara|gigo|hey arcade/.test(n)) return 'Akihabara';
       if (/ginza|uniqlo/.test(n)) return 'Ginza';
       if (/oimachi/.test(n)) return 'Oimachi';
@@ -162,8 +160,7 @@ do-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
     }
     const url = mapChoice === 'apple'
       ? `https://maps.apple.com/?q=${encodeURIComponent(place.name)}&ll=${place.lat},${place.lng}`
-      : `https://www.google.com/maps/search/?api=1&query=${place
-.lat},${place.lng}`;
+      : `https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}`;
     window.location.href = url;
   }
 
@@ -209,8 +206,7 @@ do-tokyo/.test(n)) return 'Yanaka / Nezu / Ueno';
         <span class="journey-arrow">›</span>
       </button>`;
     }).join('');
-    target.querySelectorAll('.journey-stop').forEach(b => b.addEventListen
-er('click', () => showCity(b.dataset.city)));
+    target.querySelectorAll('.journey-stop').forEach(b => b.addEventListener('click', () => showCity(b.dataset.city)));
   }
 
   // Bloc des spécialités culinaires
@@ -244,7 +240,7 @@ er('click', () => showCity(b.dataset.city)));
     Object.values(allPlaces).forEach(p => {
       if (p.city !== k) return;
 
-  const [g, s] = category(p), a = area(p, k) || '_root';
+      const [g, s] = category(p), a = area(p, k) || '_root';
       groups[a] ??= {};
       groups[a][g] ??= {};
       groups[a][g][s] ??= [];
@@ -301,8 +297,7 @@ er('click', () => showCity(b.dataset.city)));
   // Retour à l'itinéraire
   function showItinerary(push = true) {
     currentCity = null;
-    cityDetailPage.classList.add('hi
-dden');
+    cityDetailPage.classList.add('hidden');
     document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
     restorePlanningTheme();
     if (push) history.pushState({ page: 'itinerary', city: null }, '', '#itinerary');
@@ -347,7 +342,6 @@ dden');
     const c = data.cities[d.cityKey];
     document.getElementById('planning-head').innerHTML = `
       <div class="planning-title-row">
-  
       <h2>${esc(c.name)}</h2>
         <span class="planning-kana">${esc(cityJp[d.cityKey] || '')}</span>
       </div>
@@ -390,8 +384,7 @@ dden');
           ).join('')}</span>`
         : '';
       const attrs = hasCard
-        ? ` class="flow-card clickable${quartier
-}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
+        ? ` class="flow-card clickable${quartier}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
         : ` class="flow-card no-place${quartier}"`;
       const spotsHtml = (x.spots || []).map(s => {
         const sp = placeByName(s);
@@ -431,8 +424,7 @@ dden');
       </button>`
     ).join('');
     strip.querySelectorAll('.day-choice').forEach(b => b.addEventListener('click', () => {
- 
-     selectedDate = b.dataset.date;
+      selectedDate = b.dataset.date;
       renderDayStrip();
       renderPlanning();
     }));
@@ -488,8 +480,7 @@ target.innerHTML = filtered.map(x =>
       showItinerary(false);
     } else {
       currentCity = null;
-      cityDetailPage.classList.add('hidden')
-;
+      cityDetailPage.classList.add('hidden');
       document.querySelectorAll('.top-page:not(#page-city-detail)').forEach(p => p.classList.remove('hidden'));
       restorePlanningTheme();
       go(e.state.page, false);
