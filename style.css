@@ -117,7 +117,7 @@ h1 {
 }
 .journey-stop {
   position: relative;
-  width: auto;
+  width: calc(100% - 30px);
   display: flex;
   align-items: center;
   gap: 14px;
