@@ -251,23 +251,6 @@ h1 {
   border-color: var(--paper);
 }
 
-.poi-list {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 3px;
-}
-.poi-link {
-  border: 1px solid rgba(240, 231, 213, 0.15);
-  background: rgba(255, 255, 255, 0.025);
-  padding: 7px 9px;
-  font-size: 10px;
-  color: var(--paper);
-  text-align: left;
-}
-.poi-link span { color: var(--theme-main); }
-
 /* Villes (détail) */
 
 .back-link {
@@ -653,7 +636,6 @@ h1 {
 }
 .flow-step.fixed .flow-desc { color: var(--ink-paper); }
 .flow-step.fixed .flow-open { color: var(--ink); }
-.flow-card .poi-list { margin-top: 8px; }
 /* ── tickets de transport : papier à poinçons d'encre ── */
 .ticket {
   --mode: var(--theme-main);
