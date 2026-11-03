@@ -839,11 +839,10 @@
           "fixed": true
         },
         {
-          "time": "18h00",
+          "time": "~18h00",
           "label": "Visite nocturne du Nijō-jō (option)",
           "place": "Nijō-jō",
-          "description": "Illuminations nocturnes du château.",
-          "fixed": true
+          "description": "Illuminations nocturnes du château."
         }
       ]
     },
@@ -978,11 +977,10 @@
           }
         },
         {
-          "time": "18h30",
+          "time": "~18h30",
           "label": "Visite nocturne du Nijō-jō (option)",
           "place": "Nijō-jō",
-          "description": "Illuminations nocturnes du château.",
-          "fixed": true
+          "description": "Illuminations nocturnes du château."
         }
       ]
     },
@@ -1049,11 +1047,10 @@
           "place": "Gare de Kyoto"
         },
         {
-          "time": "18h30",
+          "time": "~18h30",
           "label": "Visite nocturne du Nijō-jō (option)",
           "place": "Nijō-jō",
-          "description": "Illuminations nocturnes du château.",
-          "fixed": true
+          "description": "Illuminations nocturnes du château."
         }
       ]
     },
