@@ -1301,6 +1301,17 @@
       "cityKey": "tokyo",
       "items": [
         {
+          "time": "~9h15",
+          "label": "Shinkansen Shin-Osaka → Tokyo",
+          "transport": {
+            "type": "shinkansen",
+            "route": "Shinkansen Shin-Osaka → Tokyo/Shinagawa",
+            "duration": "~2 h 30",
+            "payment": "JR PASS"
+          },
+          "transit": true
+        },
+        {
           "time": "~13h00",
           "label": "Zōjō-ji",
           "place": "Zojo-ji",
