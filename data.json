@@ -1113,10 +1113,7 @@
           "time": "~17h00",
           "label": "Grand Torii au coucher du soleil",
           "description": "Balade dans les ruelles du village.",
-          "place": "Itsukushima-jinja",
-          "pois": [
-            "Otorii"
-          ]
+          "place": "Itsukushima-jinja"
         },
         {
           "time": "~19h00",
@@ -1153,8 +1150,8 @@
         },
         {
           "time": "~16h30",
-          "label": "Arrivée à Shin-Osaka & check-in",
-          "place": "JR Shin-Osaka Station",
+          "label": "Check-in au Hotel Kojan Shinsaibashi",
+          "place": "Hotel Kojan Shinsaibashi",
           "transport": {
             "type": "ferry",
             "route": "JR Ferry → Hiroshima → Shinkansen → Shin-Osaka",
@@ -1166,13 +1163,25 @@
           "time": "~17h30",
           "label": "Umeda Sky Building",
           "description": "Observatoire Kuchu Teien pour la vue au coucher du soleil.",
-          "place": "Umeda Sky Building"
+          "place": "Umeda Sky Building",
+          "transport": {
+            "type": "train",
+            "route": "Metro/Train vers Umeda Sky Building",
+            "duration": "~30 min",
+            "payment": "SUICA"
+          }
         },
         {
           "time": "~19h00",
           "label": "Dotonbori & Hozenji-yokocho",
           "description": "Néons, street food et ruelles traditionnelles.",
           "place": "Dōtonbori",
+          "transport": {
+            "type": "train",
+            "route": "Metro/Train vers Dōtonbori",
+            "duration": "~30 min",
+            "payment": "SUICA"
+          },
           "spots": [
             "Dōtonbori",
             "Hozenji-yokocho"
@@ -1194,7 +1203,13 @@
           "time": "~9h30",
           "label": "Namba Yasaka-jinja",
           "description": "Le sanctuaire à la tête de lion.",
-          "place": "Namba Yasaka Jinja"
+          "place": "Namba Yasaka Jinja",
+          "transport": {
+            "type": "train",
+            "route": "Metro/Train vers Namba Yasaka Jinja",
+            "duration": "~20 min",
+            "payment": "SUICA"
+          }
         },
         {
           "time": "~10h00",
@@ -1286,41 +1301,25 @@
       "cityKey": "tokyo",
       "items": [
         {
-          "time": "~12h00",
-          "label": "Check-in au Hotel Metropolitan Oimachi",
-          "description": "Dépôt des bagages et installation.",
-          "place": "Hotel Metropolitan Oimachi Tracks Tokyo"
-        },
-        {
-          "time": "~12h30",
-          "label": "Déjeuner vers Oimachi ou Azabudai"
+          "time": "~13h00",
+          "label": "Zōjō-ji",
+          "place": "Zojo-ji",
+          "transport": {
+            "type": "train",
+            "route": "Metro/Train",
+            "duration": "~15 min",
+            "payment": "SUICA"
+          }
         },
         {
           "time": "15h00",
           "label": "🖼️ teamLab Borderless",
           "description": "Azabudai Hills. Réservation.",
           "place": "Teamlab Borderless Museum",
-          "fixed": true,
-          "transport": {
-            "type": "train",
-            "route": "Metro/Train vers Azabudai Hills",
-            "duration": "~30 min",
-            "payment": "SUICA"
-          }
+          "fixed": true
         },
         {
-          "time": "~17h50",
-          "label": "Zōjō-ji",
-          "place": "Zojo-ji",
-          "transport": {
-            "type": "train",
-            "route": "Metro/Train",
-            "duration": "~20 min",
-            "payment": "SUICA"
-          }
-        },
-        {
-          "time": "~18h30",
+          "time": "~18h00",
           "label": "Shiba Park & Tokyo Tower",
           "description": "Vue sur la tour illuminée depuis le parc.",
           "place": "Shiba Park",
