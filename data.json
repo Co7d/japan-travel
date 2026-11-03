@@ -427,7 +427,8 @@
           "time": "9h00",
           "label": "🥢 Atelier baguettes ZEN Chopsticks Workshop",
           "description": "Atelier de fabrication de baguettes à Shinjuku. Réservation.",
-          "fixed": true
+          "fixed": true,
+          "place": "禅 ZEN Chopsticks Workshop, Shinjuku"
         },
         {
           "time": "~11h00",
@@ -536,7 +537,7 @@
           "transport": {
             "type": "car",
             "route": "Voiture",
-            "duration": "~30 min"
+            "duration": "~20 min"
           }
         },
         {
@@ -547,7 +548,7 @@
           "transport": {
             "type": "car",
             "route": "Voiture",
-            "duration": "~1 h"
+            "duration": "~15 min"
           }
         },
         {
@@ -566,20 +567,22 @@
           "label": "Kawaguchiko Natural Living Center & Parc Oishi",
           "description": "Balade à pied ou à vélo au bord du lac.",
           "place": "Kawaguchiko Natural Living Center",
-          "pois": [
-            "Parc Oishi"
-          ],
           "transport": {
             "type": "car",
             "route": "Voiture",
-            "duration": "~45 min"
+            "duration": "~20 min"
           }
         },
         {
           "time": "~16h30",
           "label": "Kubota Itchiku Art Museum",
           "description": "Kimonos de soie peints à la technique tsujigahana.",
-          "place": "Kubota Itchiku Art Museum"
+          "place": "Kubota Itchiku Art Museum",
+          "transport": {
+            "type": "car",
+            "route": "Voiture vers Kubota Itchiku Art Museum",
+            "duration": "~5 min"
+          }
         },
         {
           "time": "~18h30",
@@ -588,7 +591,7 @@
           "transport": {
             "type": "car",
             "route": "Voiture",
-            "duration": "~30 min"
+            "duration": "~10 min"
           }
         }
       ]
@@ -708,25 +711,36 @@
           "transport": {
             "type": "shinkansen",
             "route": "Shinkansen Nagoya → Gare de Kyoto",
-            "duration": "~35 min",
-            "payment": "JR PASS"
+            "duration": "~35 min"
           },
           "transit": true
         },
         {
-          "time": "~18h00",
-          "label": "Higashiyama nocturne",
-          "description": "Promenade dans Ninenzaka & Sannenzaka, illuminations nocturnes du temple Kōdai-ji (fermeture 21h30).",
-          "place": "Ninenzaka",
+          "time": "~16h45",
+          "label": "Check-in à l'Agora Place Kyoto Nijo",
+          "place": "Agora Place Kyoto Nijo",
+          "description": "Installation et dépôt des bagages avant la soirée.",
           "transport": {
             "type": "train",
-            "route": "Metro/Train vers Higashiyama",
-            "duration": "~1 h",
+            "route": "Metro/Train vers Agora Place Kyoto Nijo",
+            "duration": "~20 min",
+            "payment": "SUICA"
+          }
+        },
+        {
+          "time": "~18h00",
+          "label": "Higashiyama nocturne",
+          "description": "Promenade dans Sannenzaka & Ninenzaka, illuminations nocturnes du temple Kōdai-ji (fermeture 21h30).",
+          "place": "Sannenzaka",
+          "transport": {
+            "type": "bus",
+            "route": "Taxi/Bus vers Higashiyama",
+            "duration": "~20 min",
             "payment": "SUICA"
           },
           "spots": [
-            "Ninenzaka",
             "Sannenzaka",
+            "Ninenzaka",
             "Kōdai-ji",
             "Houkan-ji"
           ]
@@ -752,7 +766,13 @@
           "time": "~7h15",
           "label": "Forêt de bambous de Sagano",
           "description": "Entrée par le sud pour éviter la foule, balade dans la bambouseraie.",
-          "place": "Forêt de bambous de Sagano"
+          "place": "Forêt de bambous de Sagano",
+          "transport": {
+            "type": "bus",
+            "route": "Taxi/Bus vers la forêt de bambous de Sagano",
+            "duration": "~30 min",
+            "payment": "SUICA"
+          }
         },
         {
           "time": "~8h30",
@@ -767,9 +787,9 @@
           "place": "Temple bouddhiste Otagi Nenbutsuji",
           "transport": {
             "type": "bus",
-            "route": "Taxi ou bus local (ligne 94)",
+            "route": "Taxi/Bus (ligne 94)",
             "duration": "~15 min",
-            "payment": "ESPÈCES"
+            "payment": "SUICA"
           }
         },
         {
@@ -817,6 +837,13 @@
           "description": "Visite réservée à 16h30. Arriver 5-10 min en avance.",
           "place": "Arashiyama Yusai-Tei Gallery",
           "fixed": true
+        },
+        {
+          "time": "18h00",
+          "label": "Visite nocturne du Nijō-jō (option)",
+          "place": "Nijō-jō",
+          "description": "Illuminations nocturnes du château.",
+          "fixed": true
         }
       ]
     },
@@ -829,18 +856,23 @@
           "time": "7h30",
           "label": "Kiyomizu-dera",
           "description": "Visite matinale dans le calme, avant la foule.",
-          "place": "Kiyomizu-dera"
+          "place": "Kiyomizu-dera",
+          "transport": {
+            "type": "bus",
+            "route": "Taxi/Bus vers Kiyomizu-dera",
+            "duration": "~25 min",
+            "payment": "SUICA"
+          }
         },
         {
           "time": "~9h00",
           "label": "Sannenzaka, Ninenzaka & Yasaka-jinja",
-          "description": "Descente des ruelles pavées jusqu'au sanctuaire et au parc Maruyama.",
+          "description": "Descente des ruelles pavées jusqu'au sanctuaire.",
           "place": "Sannenzaka",
           "spots": [
             "Sannenzaka",
             "Ninenzaka",
-            "Yasaka-jinja",
-            "Parc Maruyama"
+            "Yasaka-jinja"
           ]
         },
         {
@@ -869,21 +901,23 @@
           "label": "Temple Sanjūsangen-dō",
           "description": "Les 1 001 statues de Kannon — fermeture à 16h00.",
           "transport": {
-            "type": "train",
-            "route": "Metro/Train",
-            "duration": "~45 min",
+            "type": "bus",
+            "route": "Taxi/Bus vers Sanjūsangen-dō",
+            "duration": "~20 min",
             "payment": "SUICA"
           },
           "place": "Sanjūsangen-dō"
         },
         {
           "time": "~16h15",
-          "label": "Pause café à Okazaki",
-          "description": "Repos dans le secteur d'Okazaki avant le light-up.",
+          "label": "Chemin de la Philosophie",
+          "place": "Le chemin de la Philosophie",
+          "description": "Balade sous les érables le long du canal, en direction d'Eikan-dō.",
           "transport": {
             "type": "bus",
-            "route": "Bus ou taxi vers Okazaki",
-            "duration": "~30 min"
+            "route": "Taxi/Bus vers le chemin de la Philosophie",
+            "duration": "~30 min",
+            "payment": "SUICA"
           }
         },
         {
@@ -942,32 +976,34 @@
             "duration": "~1 h",
             "payment": "JR PASS"
           }
+        },
+        {
+          "time": "18h30",
+          "label": "Visite nocturne du Nijō-jō (option)",
+          "place": "Nijō-jō",
+          "description": "Illuminations nocturnes du château.",
+          "fixed": true
         }
       ]
     },
     {
       "date": "2026-11-27",
-      "title": "Nijo, Kinkaku-ji & Fushimi Inari",
+      "title": "Kinkaku-ji & Fushimi Inari",
       "cityKey": "kyoto",
       "items": [
         {
-          "time": "8h45",
-          "label": "Château de Nijō-jō",
-          "description": "Visite à l'ouverture, palais Ninomaru et ses jardins.",
-          "place": "Nijō-jō"
-        },
-        {
-          "time": "~10h45",
+          "time": "9h00",
           "label": "Pavillon d'Or (Kinkaku-ji)",
           "place": "Kinkaku-ji",
           "transport": {
-            "type": "car",
-            "route": "Bus ou taxi vers Kinkaku-ji",
-            "duration": "~30 min"
+            "type": "bus",
+            "route": "Taxi/Bus vers Kinkaku-ji",
+            "duration": "~35 min",
+            "payment": "SUICA"
           }
         },
         {
-          "time": "~11h45",
+          "time": "~10h15",
           "label": "Kitano Tenman-gū",
           "description": "Jardin Momiji-en + déjeuner rapide dans le quartier.",
           "place": "Kitano Tenman-gū",
@@ -982,7 +1018,7 @@
           "description": "Feuillages d'automne — sortie à 15h30.",
           "transport": {
             "type": "bus",
-            "route": "Bus et train JR vers Tōfuku-ji",
+            "route": "Taxi/Bus vers Tōfuku-ji",
             "duration": "~1 h",
             "payment": "SUICA"
           },
@@ -1001,7 +1037,7 @@
           }
         },
         {
-          "time": "~18h15",
+          "time": "~17h15",
           "label": "Shopping à la Gare de Kyoto",
           "description": "Souvenirs au sous-sol Isetan.",
           "transport": {
@@ -1011,6 +1047,13 @@
             "payment": "JR PASS"
           },
           "place": "Gare de Kyoto"
+        },
+        {
+          "time": "18h30",
+          "label": "Visite nocturne du Nijō-jō (option)",
+          "place": "Nijō-jō",
+          "description": "Illuminations nocturnes du château.",
+          "fixed": true
         }
       ]
     },
