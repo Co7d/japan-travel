@@ -488,5 +488,12 @@ target.innerHTML = filtered.map(x =>
   renderPlanning();
   renderLexicon();
   restorePlanningTheme();
+
+  // Ouverture par défaut sur le planning (l'ancre d'URL reste prioritaire)
+  const hashPage = location.hash.slice(1);
+  const startPage = hashPage && hashPage !== 'city-detail' && page(hashPage) ? hashPage : 'planning';
+  history.replaceState({page: startPage, city: null}, '', `#${startPage}`);
+  page(startPage).scrollIntoView({inline: 'start', block: 'nearest'});
+  setActiveTab(startPage);
 }
 );
