@@ -372,17 +372,10 @@ nav.forEach(n => n.addEventListener('click', () => {
         </div>`;
       }
       const p = placeByName(x.place);
-      const pois = (x.pois || []).map(placeByName).filter(Boolean);
-      const mapPlaces = [p, ...pois].filter(Boolean).filter((q, i, a) => a.findIndex(z => z.id === q.id) === i);
       const approx = /^~/.test(x.time || '');
       const timeTxt = String(x.time || '').trim();
       const hasCard = Boolean(x.place && p);
       const quartier = x.spots ? ' quartier' : '';
-      const poisHtml = mapPlaces.length
-        ? `<span class="poi-list">${(hasCard ? mapPlaces.slice(1) : mapPlaces).map(q =>
-            `<button class="poi-link" data-place-id="${esc(q.id)}" type="button">${esc(q.name)} <span>›</span></button>`
-          ).join('')}</span>`
-        : '';
       const attrs = hasCard
         ? ` class="flow-card clickable${quartier}" data-place-id="${esc(p.id)}" role="button" tabindex="0"`
         : ` class="flow-card no-place${quartier}"`;
@@ -407,7 +400,6 @@ nav.forEach(n => n.addEventListener('click', () => {
           <span class="flow-label">${esc(x.label || '')}</span>
           ${hasCard ? '<span class="flow-open" aria-hidden="true">↗</span>' : ''}
           ${x.description ? `<span class="flow-desc">${esc(x.description)}</span>` : ''}
-          ${poisHtml}
         </div>
       </div>
       ${spotsHtml}`;
