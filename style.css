@@ -67,7 +67,7 @@ button { color: inherit; }
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-x: none;
-  padding: 34px 20px calc(94px + env(safe-area-inset-bottom));
+  padding: 60px 20px calc(94px + env(safe-area-inset-bottom));
   scrollbar-width: none;
 }
 .page-scroll::-webkit-scrollbar { display: none; }
@@ -189,7 +189,7 @@ h1 {
 }
 
 /* Planning — en-tête design unifié : grand titre ville + kana + sous-titre */
-.planning-head { margin: 26px 0 18px; padding: 0; border: 0; }
+.planning-head { margin: 0 0 18px; padding: 0; border: 0; }
 .planning-title-row { display: flex; align-items: baseline; gap: 12px; }
 .planning-head h2 {
   font-family: "Noto Serif JP", serif;
@@ -754,14 +754,6 @@ h1 {
 /* =========================
    LEXIQUE — NOUVELLE MISE EN PAGE
    ========================= */
-
-.lexicon-heading h1 {
-  margin: 0;
-}
-
-.lexicon-heading .subtitle {
-  margin: 11px 0 24px;
-}
 
 .lexicon-search {
   display: flex;
