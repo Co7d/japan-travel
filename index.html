@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#11100E">
+  <meta name="theme-color" content="#12110f">
   <title>Japon 2026</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,7 +25,7 @@
     </section>
 
     <!-- Page Détail d'une ville (affichée comme une page à part) -->
-    <section class="top-page" id="page-city-detail" data-page="city-detail">
+    <section class="top-page hidden" id="page-city-detail" data-page="city-detail">
       <div class="page-scroll">
         <div class="content-wrapper">
           <button class="back-link" id="city-back" type="button"><span>‹</span> Itinéraire</button>
@@ -54,42 +54,44 @@
     <section class="top-page" id="page-lexicon" data-page="lexicon">
       <div class="page-scroll">
         <div class="content-wrapper">
-  <div class="lexicon-heading">
-    <h1>Lexique</h1>
-    <p class="subtitle">Expressions indispensables.</p>
-  </div>
+          <div class="lexicon-heading">
+            <h1>Lexique</h1>
+            <p class="subtitle">Expressions indispensables.</p>
+          </div>
 
-  <div class="lexicon-search">
-    <span class="lexicon-search-icon">⌕</span>
-    <input
-      type="text"
-      id="lexicon-search"
-      placeholder="Rechercher un mot…"
-      autocomplete="off"
-    >
-  </div>
+          <div class="lexicon-search">
+            <span class="lexicon-search-icon">⌕</span>
+            <input
+              type="text"
+              id="lexicon-search"
+              placeholder="Rechercher un mot…"
+              autocomplete="off"
+            >
+          </div>
 
-  <div class="lexicon-list-heading">
-    <h2>Expressions utiles</h2>
-    <span class="lexicon-count" id="lexicon-count">00 EXPRESSIONS</span>
-  </div>
+          <div class="lexicon-list-heading">
+            <h2>Expressions utiles</h2>
+            <span class="lexicon-count" id="lexicon-count">00 EXPRESSIONS</span>
+          </div>
 
-  <div class="paper-list" id="lexicon-container"></div>
+          <div id="lexicon-container"></div>
 
-  <div class="editorial-block">
-    <div class="block-label">NAVIGATION</div>
-    <h2>Plans / Maps</h2>
-    <button class="map-setting" id="map-setting" type="button">
-      <span>Choisir l'application par défaut</span>
-      <span>›</span>
-    </button>
-  </div>
-</div>
+          <div class="editorial-block">
+            <div class="block-label">NAVIGATION</div>
+            <h2>Plans / Maps</h2>
+            <button class="map-setting" id="map-setting" type="button">
+              <span>Choisir l'application par défaut</span>
+              <span>›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Barre de navigation avec 3 onglets (répartition égale) -->
   <nav class="bottom-nav" id="bottom-nav" aria-label="Navigation principale">
-    <button class="nav-item active" data-page="itinerary" type="button">
+    <button class="nav-item" data-page="itinerary" type="button">
       <span class="nav-icon">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="5" cy="6" r="1.5"/>
