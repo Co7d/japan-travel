@@ -2,7 +2,21 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const cityJp = {tokyo:'東京', kawaguchiko:'河口湖', kiso:'木曽', kyoto:'京都', hiroshima:'広島', osaka:'大阪'};
-  const data = await fetch('./data.json', {cache:'no-store'}).then(r => r.json());
+  let data;
+  try {
+    const r = await fetch('./data.json', {cache: 'no-store'});
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    data = await r.json();
+  } catch (err) {
+    // Hors-ligne : repli sur la copie du planning mise en cache par le service worker
+    const cached = await caches?.match?.('./data.json');
+    if (!cached) {
+      document.getElementById('planning-container').innerHTML =
+        '<div class="flow-card no-place"><span class="flow-label">Impossible de charger le planning.</span><span class="flow-desc">Vérifie la connexion puis recharge la page.</span></div>';
+      throw err;
+    }
+    data = await cached.json();
+  }
   const allPlaces = places;
   let selectedDate = data.schedule?.[0]?.date;
   let currentCity = null;
@@ -419,7 +433,14 @@ nav.forEach(n => n.addEventListener('click', () => {
       selectedDate = b.dataset.date;
       renderDayStrip();
       renderPlanning();
+      // Le planning repart du haut de la journée
+      document.querySelector('#page-planning .page-scroll').scrollTop = 0;
     }));
+    // Le jour actif reste visible : le bandeau se centre dessus
+    const activeBtn = strip.querySelector('.day-choice.active');
+    if (activeBtn) {
+      strip.scrollLeft = Math.max(0, activeBtn.offsetLeft - strip.offsetLeft - (strip.clientWidth - activeBtn.offsetWidth) / 2);
+    }
   }
 
   // Lexique
@@ -493,7 +514,7 @@ target.innerHTML = filtered.map(x =>
   const hashPage = location.hash.slice(1);
   const startPage = hashPage && hashPage !== 'city-detail' && page(hashPage) ? hashPage : 'planning';
   history.replaceState({page: startPage, city: null}, '', `#${startPage}`);
-  page(startPage).scrollIntoView({inline: 'start', block: 'nearest'});
+  page(startPage).scrollIntoView({behavior: 'instant', inline: 'start', block: 'nearest'});
   setActiveTab(startPage);
 }
 );
